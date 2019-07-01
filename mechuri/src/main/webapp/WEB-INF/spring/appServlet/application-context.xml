@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- Application Context: defines shared resources visible to all other 
+		web components -->
+	<!-- DB프로퍼티의 경로를 알려줌 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"><!-- DB프로퍼티의 정보를 빈으로 선언해줌 -->
+		<property name="location"> <!-- DB프로퍼티의 경로를 알려줌 -->
+			<value>classpath:properties/db.properties</value>
+		</property>
+	</bean>
+
+	<!-- 2. db.properties 정보를 통해 dataSource 생성 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"><!-- 위헤서 선언한 db프로퍼티를 활용해서 데이터소스를 선언해서 등록함 -->
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+		<property name="defaultAutoCommit" value="true" />
+	</bean>
+
+
+	<!-- 3. dataSource객체를 sqlSessionFactoryBean 객체에 주입 -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="WEB-INF/spring/sqls/SqlMapConfig.xml" />
+	</bean>
+
+	<!-- 4. sqlSessionFactoryBean에서 sqlSeseionTemplate객체로 사용하기 위해 등록 -->
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSession" />
+	</bean>
+
+	<!-- Transaction 처리를 위한 객체를 등록 -->
+	<!-- 어떤 DB에 있는 것을 rollback, Commit하는지 판단해야하기 때문에 DB정보를 알려줘야 한다. -->
+	<!-- 프로퍼티의 dataSource는 위의 2. dataSource의 dataSource를 ref에 기재함 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Transaction을 처리하는 방법 -->
+	<!-- 1) @transactionional 을 해당 메서드에 선언 -->
+	<!-- proxy-target-class: 처리 대상 클래스가 인터페이스를 구현하지 않은 경우에도 처리해주겠다(true 인 경우) -->
+	<!-- 인터페이스를 구현하지 않은 객체를 [프록시 객체]라고 한다. -->
+	<!-- 단, 스프링에서는 인터페이스를 구현한 객체를 사용한다 (DI 때문에) -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+
+	<!-- 2) AOP 개념으로 구현 (tx: advice, aop:config 태그 이용 -->
+	<!-- propagation="REQUIRED" 전파옵션: 트랜젝션이 실행되고 있으면 그냥 쓰던거 쓰고 없으면 생성해서 쓰겠다는 
+		의미 -->
+	<!-- <tx:advice transaction-manager = "transactionManager" id="txAdvise"> 
+		<tx:attributes> <tx:method name="replyBoard" propagation="REQUIRED" rollback-for="Exception" 
+		/> </tx:attributes> </tx:advice> <aop:config> <aop:pointcut expression="execution(* 
+		com.hk.ansboard.service.*Service.*Board(..))" id="serviceTransaction" /> 
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceTransaction" /> </aop:config> -->
+
+</beans>
