@@ -1899,12 +1899,13 @@
 			content: "";
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
+			font-family: batang;
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
 		}
-
+		
+		
 		.select-wrapper:before {
 			color: #dee1e3;
 			display: block;

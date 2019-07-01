@@ -14,20 +14,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main2.css" />
 	</head>
 	<body>
+<jsp:include page="Header.jsp" />
+		
 
-		<!-- Header -->
-			<header id="header">
-				<nav class="left">
-					<a href="#menu"><span>Menu</span></a>
-				</nav>
-				<a href="index.html" class="logo">intensify</a>
-				<nav class="right">
-					<a href="#" class="button alt">Log in</a>
-				</nav>
-			</header>
-
+	
 		<!-- Menu -->
 			<nav id="menu">
 				<ul class="links">
@@ -43,42 +36,57 @@
 		<!-- Banner -->
 			<section id="banner">
 				<div class="content">
-					<h1>당신에게 맞는 제품을 찾아드립니다.</h1>
-					<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod<br />sed arcu cras consecuat lorem ipsum dolor sit amet.</p>
+					<h1>당신에게 맞는 제품을 찾아보세요.</h1>
+					<p>가장 경멸하는 것고 사람, 가장 사랑하는 것도 사람.<br />그 괴리 안에서 평생 살아갈 것이다.</p>
 					<ul class="actions">
 						<li><a href="#one" class="button scrolly">Get Started</a></li>
 					</ul>
 				</div>
 			</section>
 
-		<!-- One -->
-			<section id="one" class="wrapper">
-				<div class="inner flex flex-3">
-					<div class="flex-item left">
-						<div>
-							<h3>Magna ultricies</h3>
-							<p>Morbi in sem quis dui plalorem ipsum<br /> euismod in, pharetra sed ultricies.</p>
-						</div>
-						<div>
-							<h3>Ipsum adipiscing lorem</h3>
-							<p>Tristique yonve cursus jam nulla quam<br /> loreipsu gravida adipiscing lorem</p>
-						</div>
-					</div>
-					<div class="flex-item image fit round">
-						<img src="images/pic01.jpg" alt="" />
-					</div>
-					<div class="flex-item right">
-						<div>
-							<h3>Tempus nullam</h3>
-							<p>Sed adipiscing ornare risus. Morbi estes<br /> blandit sit et amet, sagittis magna.</p>
-						</div>
-						<div>
-							<h3>Suscipit nibh dolore</h3>
-							<p>Pellentesque egestas sem. Suspendisse<br /> modo ullamcorper feugiat lorem.</p>
-						</div>
-					</div>
-				</div>
-			</section>
+		<!-- Items -->
+					<section class="main items">
+						<article class="item">
+							<header>
+								<a href="#"><img src="images/product01.jpg" alt="" /></a>
+								<h3>Feugiat et faucibus</h3>
+							</header>
+							<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+						<article class="item">
+							<header>
+								<a href="#"><img src="images/product02.jpg" alt="" /></a>
+								<h3>Blandit adipiscing</h3>
+							</header>
+							<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+						<article class="item">
+							<header>
+								<a href="#"><img src="images/product03.jpg" alt="" /></a>
+								<h3>Lorem massa nulla</h3>
+							</header>
+							<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+						<article class="item">
+							<header>
+								<a href="#"><img src="images/product04.jpg" alt="" /></a>
+								<h3>Ipsum sed tempus</h3>
+							</header>
+							<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+					</section>
 
 		<!-- Two -->
 			<section id="two" class="wrapper style1 special">
@@ -129,21 +137,8 @@
 				</div>
 			</section>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<h2>Get In Touch</h2>
-					<ul class="actions">
-						<li><span class="icon fa-phone"></span> <a href="#">(000) 000-0000</a></li>
-						<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
-						<li><span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000</li>
-					</ul>
-				</div>
-				<div class="copyright">
-					&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
-				</div>
-			</footer>
 
+<jsp:include page="Footer.jsp" />
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
