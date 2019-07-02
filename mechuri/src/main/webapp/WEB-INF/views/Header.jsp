@@ -24,13 +24,16 @@
 	<!-- Menu -->
 			<nav id="menu">
 				<ul class="links">
+				<button class="accordion">accordion
+				 	<div class="panel">
 					<li><a href="index.html">랭킹</a></li>
 					<li><a href="generic.html">공동구매</a></li>
 					<li><a href="elements.html">커뮤니티</a></li>
+					</div>
 				</ul>
-				<ul class="actions vertical">
+				<!-- <ul class="actions vertical">
 					<li><a href="#" class="button fit">Login</a></li>
-				</ul>
+				</ul> -->
 			</nav>
 			
 			
