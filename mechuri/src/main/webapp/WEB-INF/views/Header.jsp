@@ -13,7 +13,7 @@
 <body>
 	<!-- Header -->
 	<header id="header"> <nav class="left"> <a href="#menu"><span>Menu</span></a>
-	</nav> <a href="index.html" class="logo">Mechuri</a> <nav class="right">
+	</nav> <a href="index.jsp" class="logo">Mechuri</a> <nav class="right">
 	<a href="#" class="button alt">Log in</a> </nav> </header>
 	
 	

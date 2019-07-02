@@ -14,7 +14,7 @@
 
 	<link rel="stylesheet" href="assets/css/style.min.css">
 	<link rel="stylesheet" href="assets/css/modules.css">
-
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean" rel="stylesheet">
 	<!-- Canonical URL usage -->
 	<link rel="canonical" href="https://aperitif.io/">
 
@@ -116,10 +116,10 @@ START MODULE AREA 2: Menu 1
 <!--
 START MODULE AREA 3: Hero 1
 -->
-<section class="MOD_HERO" style="background-image:url(https://unsplash.it/1400/?random)">
+<section class="MOD_HERO" style="background-image:url(images/banner003.jpg)">
   <div data-layout="_r">
     <div data-layout="de10">
-      <h1 id="maintext">당신에게 맞는 화장품을 찾아보세요</h1>
+      <h1>당신에게 맞는 화장품을 찾아보세요</h1>
       <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
       <a href="#" class="btn">Read more</a>
     </div>
@@ -127,42 +127,54 @@ START MODULE AREA 3: Hero 1
 </section>
 <!--END MODULE AREA 3: Hero 1-->
 
+<!-- 공동구매 -->
 <!--START MODULE AREA 4: Feature 1-->
 <section class="MOD_FEATURE">
   <div data-layout="_r">
-    <div data-layout="ch8 ec4">
+  <div class="groupbuyingHeader">
+  <p class="groupbuyingHeader"> 공동구매
+  </div>
+      <div data-layout="ch8 ec4">
       <a href="#" class="MOD_FEATURE_Container">
-        <img class="MOD_FEATURE_Picture" src="https://unsplash.it/400/300/?random" alt="">
+        <img class="MOD_FEATURE_Picture" src="images/product01.jpg" alt="">
         <div class="MOD_FEATURE_TextContainer">
           <p class="MOD_FEATURE_Title" data-theme="_ts2">Feature title</p>
-          <p class="MOD_FEATURE_Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+          <p class="MOD_FEATURE_Description">제품명: </p>
+          <p class="MOD_FEATURE_Description">가격:  </p>
+          <p class="MOD_FEATURE_Description">판매종료일:  </p>
         </div>
       </a>
     </div>
     <div data-layout="ch8 ec4">
       <a href="#" class="MOD_FEATURE_Container">
-        <img class="MOD_FEATURE_Picture" src="https://unsplash.it/400/300/?random" alt="">
+        <img class="MOD_FEATURE_Picture" src="images/product02.jpg" alt="">
         <div class="MOD_FEATURE_TextContainer">
           <p class="MOD_FEATURE_Title" data-theme="_ts2">Feature title</p>
-          <p class="MOD_FEATURE_Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+          <p class="MOD_FEATURE_Description">제품명: </p>
+          <p class="MOD_FEATURE_Description">가격:  </p>
+          <p class="MOD_FEATURE_Description">판매종료일:  </p>
         </div>
       </a>
     </div>
     <div data-layout="ch8 ec4">
       <a href="#" class="MOD_FEATURE_Container">
-        <img class="MOD_FEATURE_Picture" src="https://unsplash.it/400/300/?random" alt="">
+        <img class="MOD_FEATURE_Picture" src="images/product03.jpg" alt="">
         <div class="MOD_FEATURE_TextContainer">
           <p class="MOD_FEATURE_Title" data-theme="_ts2">Feature title</p>
-          <p class="MOD_FEATURE_Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+          <p class="MOD_FEATURE_Description">제품명: </p>
+          <p class="MOD_FEATURE_Description">가격:  </p>
+          <p class="MOD_FEATURE_Description">판매종료일:  </p>
         </div>
       </a>
     </div>
     <div data-layout="ch8 ec4">
       <a href="#" class="MOD_FEATURE_Container">
-        <img class="MOD_FEATURE_Picture" src="https://unsplash.it/400/300/?random" alt="">
+        <img class="MOD_FEATURE_Picture" src="images/product04.jpg" alt="">
         <div class="MOD_FEATURE_TextContainer">
           <p class="MOD_FEATURE_Title" data-theme="_ts2">Feature title</p>
-          <p class="MOD_FEATURE_Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+          <p class="MOD_FEATURE_Description">제품명: </p>
+          <p class="MOD_FEATURE_Description">가격:  </p>
+          <p class="MOD_FEATURE_Description">판매종료일:  </p>
         </div>
       </a>
     </div>
