@@ -3,6 +3,7 @@ package com.hk.mechuri.dtos;
 import java.util.Date;
 
 public class boardDto {
+	
 	private int board_no;
 	private String board_nick;
 	private String board_title;
