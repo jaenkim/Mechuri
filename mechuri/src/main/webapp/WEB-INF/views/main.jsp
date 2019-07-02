@@ -37,7 +37,7 @@
 			<section id="banner">
 				<div class="content">
 					<h1>당신에게 맞는 제품을 찾아보세요.</h1>
-					<p>가장 경멸하는 것고 사람, 가장 사랑하는 것도 사람.<br />그 괴리 안에서 평생 살아갈 것이다.</p>
+					<p>가장 경멸하는 것도 사람, 가장 사랑하는 것도 사람.<br />그 괴리 안에서 평생 살아갈 것이다.</p>
 					<ul class="actions">
 						<li><a href="#one" class="button scrolly">Get Started</a></li>
 					</ul>
