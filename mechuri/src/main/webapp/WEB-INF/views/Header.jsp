@@ -8,10 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Title insert here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/style.min.css" />
+<link rel="stylesheet" href="assets/css/modules.css" />
 <style type="text/css">
 #accordian li {
 	list-style-type: none;
-} /* 서브메뉴 스타일 */
+} 
+
+/* 서브메뉴 스타일 */
 #accordian ul ul li a {
 	color: white;
 	text-decoration: none;
