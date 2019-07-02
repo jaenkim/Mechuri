@@ -6,145 +6,174 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Title insert here</title>
+<title>Mechuri</title>
+<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Aperitif - Custom Template</title>
 
+	<link rel="stylesheet" href="assets/css/style.min.css">
+	<link rel="stylesheet" href="assets/css/modules.css">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean" rel="stylesheet">
+	<!-- Canonical URL usage -->
+	<link rel="canonical" href="https://aperitif.io/">
+
+	<!-- Facebook Open Graph -->
+	<meta property="og:url"                content="https://aperitif.io/" />
+	<meta property="og:title"              content="Aperitif | The web template generator" />
+	<meta property="og:description"        content="Aperitif is a rapid web template generation tool." />
+	<meta property="og:image"              content="https://aperitif.io/img/aperitif-facebook.png" />
+	<meta property="og:image:width"        content="1200" />
+	<meta property="og:image:height"       content="630" />
+
+	<!-- Twitter Cards -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@Aperitif">
+	<meta name="twitter:creator" content="@Aperitif">
+	<meta name="twitter:title" content="Aperitif - The web template generator">
+	<meta name="twitter:description" content="Aperitif is a rapid web template generation tool.">
+	<meta name="twitter:image" content="https://aperitif.io/img/aperitif-card.png">
+
+	<!-- Google Structured Data -->
+	<script type="application/ld+json">
+	{
+	"@context" : "http://schema.org",
+	"@type" : "SoftwareApplication",
+	"name" : "Aperitif",
+	"image" : "https://aperitif.io/img/aperitif-logo.svg",
+	"url" : "https://aperitif.io/",
+	"author" : {
+	  "@type" : "Person",
+	  "name" : "Octavector"
+	},
+	"datePublished" : "2017-MM-DD",
+	"applicationCategory" : "HTML"
+	}
+	</script>
 </head>
-<head>
-		<title>Intensify by TEMPLATED</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/main2.css" />
-	</head>
-	<body>
+<body class="default">
 <jsp:include page="Header.jsp" />
-		
 
-	
-		<!-- Menu -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
-				</ul>
-				<ul class="actions vertical">
-					<li><a href="#" class="button fit">Login</a></li>
-				</ul>
-			</nav>
 
-		<!-- Banner -->
-			<section id="banner">
-				<div class="content">
-					<h1>당신에게 맞는 제품을 찾아보세요.</h1>
-					<p>가장 경멸하는 것도 사람, 가장 사랑하는 것도 사람.<br />그 괴리 안에서 평생 살아갈 것이다.</p>
-					<ul class="actions">
-						<li><a href="#one" class="button scrolly">Get Started</a></li>
-					</ul>
-				</div>
-			</section>
+<!--
+START MODULE AREA 3: Hero 1
+-->
+<section class="MOD_HERO" style="background-image:url(images/banner003.jpg)">
+  <div data-layout="_r">
+    <div data-layout="de10">
+      <h1>당신에게 맞는 화장품을 찾아보세요</h1>
+      <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
+      <a href="#" class="btn">Read more</a>
+    </div>
+  </div>
+</section>
+<!--END MODULE AREA 3: Hero 1-->
 
-		<!-- Items -->
-					<section class="main items">
-						<article class="item">
-							<header>
-								<a href="#"><img src="images/product01.jpg" alt="" /></a>
-								<h3>Feugiat et faucibus</h3>
-							</header>
-							<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article class="item">
-							<header>
-								<a href="#"><img src="images/product02.jpg" alt="" /></a>
-								<h3>Blandit adipiscing</h3>
-							</header>
-							<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article class="item">
-							<header>
-								<a href="#"><img src="images/product03.jpg" alt="" /></a>
-								<h3>Lorem massa nulla</h3>
-							</header>
-							<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article class="item">
-							<header>
-								<a href="#"><img src="images/product04.jpg" alt="" /></a>
-								<h3>Ipsum sed tempus</h3>
-							</header>
-							<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-					</section>
+<!-- 공동구매 -->
+<!--START MODULE AREA 4: Feature 1-->
+<section class="MOD_FEATURE">
+  <div data-layout="_r">
+  <div class="mainHeader">
+  <p class="mainHeader"> 공동구매
+  </div>
+      <div data-layout="ch8 ec4">
+      <a href="#" class="MOD_FEATURE_Container">
+        <img class="MOD_FEATURE_Picture" src="images/product01.jpg" alt="">
+        <div class="MOD_FEATURE_TextContainer">
+          <p class="MOD_FEATURE_Title" data-theme="_ts2">Feature title</p>
+          <p class="MOD_FEATURE_Description">제품명: </p>
+          <p class="MOD_FEATURE_Description">가격:  </p>
+          <p class="MOD_FEATURE_Description">판매종료일:  </p>
+        </div>
+      </a>
+    </div>
+    <div data-layout="ch8 ec4">
+      <a href="#" class="MOD_FEATURE_Container">
+        <img class="MOD_FEATURE_Picture" src="images/product02.jpg" alt="">
+        <div class="MOD_FEATURE_TextContainer">
+          <p class="MOD_FEATURE_Title" data-theme="_ts2">Feature title</p>
+          <p class="MOD_FEATURE_Description">제품명: </p>
+          <p class="MOD_FEATURE_Description">가격:  </p>
+          <p class="MOD_FEATURE_Description">판매종료일:  </p>
+        </div>
+      </a>
+    </div>
+    <div data-layout="ch8 ec4">
+      <a href="#" class="MOD_FEATURE_Container">
+        <img class="MOD_FEATURE_Picture" src="images/product03.jpg" alt="">
+        <div class="MOD_FEATURE_TextContainer">
+          <p class="MOD_FEATURE_Title" data-theme="_ts2">Feature title</p>
+          <p class="MOD_FEATURE_Description">제품명: </p>
+          <p class="MOD_FEATURE_Description">가격:  </p>
+          <p class="MOD_FEATURE_Description">판매종료일:  </p>
+        </div>
+      </a>
+    </div>
+    <div data-layout="ch8 ec4">
+      <a href="#" class="MOD_FEATURE_Container">
+        <img class="MOD_FEATURE_Picture" src="images/product04.jpg" alt="">
+        <div class="MOD_FEATURE_TextContainer">
+          <p class="MOD_FEATURE_Title" data-theme="_ts2">Feature title</p>
+          <p class="MOD_FEATURE_Description">제품명: </p>
+          <p class="MOD_FEATURE_Description">가격:  </p>
+          <p class="MOD_FEATURE_Description">판매종료일:  </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<!--
+END MODULE AREA 4: Feature 1
+-->
 
-		<!-- Two -->
-			<section id="two" class="wrapper style1 special">
-				<div class="inner">
-					<h2>Feugiat lorem</h2>
-					<figure>
-					    <blockquote>
-					        "Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra<br /> magna etiam lorem ultricies in diam. Sed arcu cras consequat."
-					    </blockquote>
-					    <footer>
-					        <cite class="author">Jane Anderson</cite>
-					        <cite class="company">CEO, Untitled</cite>
-					    </footer>
-					</figure>
-				</div>
-			</section>
+<!--
+START MODULE AREA 5: Article Block 1
+-->
+<section data-theme="_bgp">
+<div class="mainHeader">
+  <p class="mainHeader">커뮤니티
+  </div>
+  <div data-layout="_r" class="MOD_ARTICLEBLOCKS1">
+    <div data-layout="al16 ec8" class="MOD_ARTICLEBLOCKS1_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockLarge">
+        <div style="background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
+        <div class="MOD_ARTICLEBLOCKS1_Txt">
+          <h3 class="MOD_ARTICLEBLOCKS1_Title">Article Title</h3>
+          <p class="MOD_ARTICLEBLOCKS1_Category">Category</p>
+        </div>
+      </a>
+    </div>
+    <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+        <div style="background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
 
-		<!-- Three -->
-			<section id="three" class="wrapper">
-				<div class="inner flex flex-3">
-					<div class="flex-item box">
-						<div class="image fit">
-							<img src="images/pic02.jpg" alt="" />
-						</div>
-						<div class="content">
-							<h3>Consequat</h3>
-							<p>Placerat ornare. Pellentesque od sed euismod in, pharetra ltricies edarcu cas consequat.</p>
-						</div>
-					</div>
-					<div class="flex-item box">
-						<div class="image fit">
-							<img src="images/pic03.jpg" alt="" />
-						</div>
-						<div class="content">
-							<h3>Adipiscing</h3>
-							<p>Morbi in sem quis dui placerat Pellentesque odio nisi, euismod pharetra lorem ipsum.</p>
-						</div>
-					</div>
-					<div class="flex-item box">
-						<div class="image fit">
-							<img src="images/pic04.jpg" alt="" />
-						</div>
-						<div class="content">
-							<h3>Malesuada</h3>
-							<p>Nam dui mi, tincidunt quis, accu an porttitor, facilisis luctus que metus vulputate sem magna.</p>
-						</div>
-					</div>
-				</div>
-			</section>
+        <div class="MOD_ARTICLEBLOCKS1_Txt">
+          <h3 class="MOD_ARTICLEBLOCKS1_Title">Article Title</h3>
+          <p class="MOD_ARTICLEBLOCKS1_Category">Category</p>
+        </div>
+      </a>
+    </div>
+    <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+        <div style="background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/aperitif-large-object1-luca-bravo.jpg)" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
 
+        <div class="MOD_ARTICLEBLOCKS1_Txt">
+          <h3 class="MOD_ARTICLEBLOCKS1_Title">Article Title</h3>
+          <p class="MOD_ARTICLEBLOCKS1_Category">Category</p>
+        </div>
+      </a>
+    </div>
+
+
+  </div>
+</section>
+<!--
+END MODULE AREA 5: Article Block 1
+-->
 
 <jsp:include page="Footer.jsp" />
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 
-	</body>
+<script src="assets/js/index.js"></script>
+</body>
+
 </html>
