@@ -59,7 +59,8 @@
       </a>
     </div>
     
-    <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont">
+    
+<div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont">
       <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall">
         <div style="background-image:url(images/product01.jpg)" class="MOD_ARTICLEBLOCKS2_Img" role="img" aria-label="alt text"></div>
         <div class="MOD_ARTICLEBLOCKS2_Txt">
@@ -68,7 +69,6 @@
         </div>
       </a>
     </div>
-
   </div>
 </section>
 <!--
