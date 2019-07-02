@@ -271,7 +271,6 @@ START MODULE AREA 3: Hero 1
           <p class="MOD_FEATURE_Description">제품명: </p>
           <p class="MOD_FEATURE_Description">가격:  </p>
           <p class="MOD_FEATURE_Description">판매종료일:  </p>
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
         </div>
       </a>
     </div>
