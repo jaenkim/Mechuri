@@ -42,5 +42,10 @@ public class HomeController {
 	
 		return "list";
 	}
+	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
+	public String groupbuying(Locale locale, Model model) {
 	
+	
+		return "groupbuying";
+	}
 }
