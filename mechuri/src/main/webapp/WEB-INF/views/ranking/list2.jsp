@@ -32,19 +32,47 @@
 <!--START MODULE AREA 2: Article Block 2-->
 <section class="MOD_ARTICLEBLOCKS2_Section">
   <div data-layout="_r" class="MOD_ARTICLEBLOCKS2">
-  <c:forEach items="${list}" var="dto">
+  <c:forEach items="${product}" var="dto">
   <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont">
       <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall">
         <div style="background-image:url(images/product01.jpg)" class="MOD_ARTICLEBLOCKS2_Img" role="img" aria-label="alt text"></div>
         <div class="MOD_ARTICLEBLOCKS2_Txt">
-        <p class="MOD_ARTICLEBLOCKS2_Category" data-theme="_ts4">${list.product_brand}</p>
-          <h3 class="MOD_ARTICLEBLOCKS2_Title">${list.product_name}</h3>
+        <p class="MOD_ARTICLEBLOCKS2_Category" data-theme="_ts4">${dto.product_brand}</p>
+          <h3 class="MOD_ARTICLEBLOCKS2_Title">${dto.product_name}</h3>
         </div>
       </a>
     </div>
 </c:forEach>  
-
-
+<div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall">
+        <div style="background-image:url(images/product01.jpg)" class="MOD_ARTICLEBLOCKS2_Img" role="img" aria-label="alt text"></div>
+        <div class="MOD_ARTICLEBLOCKS2_Txt">
+        <p class="MOD_ARTICLEBLOCKS2_Category" data-theme="_ts4">샤넬(CHANEL)</p>
+          <h3 class="MOD_ARTICLEBLOCKS2_Title">코코코코</h3>
+        </div>
+      </a>
+    </div>
+    
+    <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall">
+        <div style="background-image:url(images/product01.jpg)" class="MOD_ARTICLEBLOCKS2_Img" role="img" aria-label="alt text"></div>
+        <div class="MOD_ARTICLEBLOCKS2_Txt">
+        <p class="MOD_ARTICLEBLOCKS2_Category" data-theme="_ts4">샤넬(CHANEL)</p>
+          <h3 class="MOD_ARTICLEBLOCKS2_Title">코코코코</h3>
+        </div>
+      </a>
+    </div>
+    
+    
+<div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall">
+        <div style="background-image:url(images/product01.jpg)" class="MOD_ARTICLEBLOCKS2_Img" role="img" aria-label="alt text"></div>
+        <div class="MOD_ARTICLEBLOCKS2_Txt">
+        <p class="MOD_ARTICLEBLOCKS2_Category" data-theme="_ts4">샤넬(CHANEL)</p>
+          <h3 class="MOD_ARTICLEBLOCKS2_Title">코코코코</h3>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 <!--

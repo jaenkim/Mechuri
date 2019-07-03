@@ -21,11 +21,5 @@ public class HController {
 	
 	
 	
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
-	public String list(Locale locale, Model model) {
-	
-	
-		return "list";
-	}
-	
+
 }

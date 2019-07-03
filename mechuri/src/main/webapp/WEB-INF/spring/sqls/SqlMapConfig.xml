@@ -4,9 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
   <configuration>
-<!--   	<typeAliases>
-  		<typeAlias type="com.hk.mechuri.dtos.Dto" alias="Dto"/>
-  	</typeAliases> -->
+ 	<typeAliases>
+  		<typeAlias type="com.hk.mechuri.dtos.boardDto" alias="boardDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.eventDto" alias="eventDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.groupbuyingDto" alias="groupbuyingDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.ingreDto" alias="ingreDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.likesDto" alias="likesDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.membersDto" alias="membersDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.msgDto" alias="msgDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.productDto" alias="productDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.purchaseDto" alias="purchaseDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.replyDto" alias="replyDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.reviewDto" alias="reviewDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.tempinfoDto" alias="tempinfoDto"/>
+  	</typeAliases> 
   	
   	<mappers>
   		<mapper resource="sqls/mechuri_mapper.xml"  />
