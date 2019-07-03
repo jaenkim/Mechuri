@@ -53,4 +53,11 @@ public class HomeController {
 	
 		return "signUp";
 	}
+	
+	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
+	public String memLogin(Locale locale, Model model) {
+	
+	
+		return "memLogin";
+	}
 }
