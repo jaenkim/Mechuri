@@ -21,6 +21,7 @@
 <a href="groupbuying.do">공동구매 리스트 '3'</a><br>
 <a href="memLogin.do">로그인 페이지'3'</a><br>
 <a href="compSignUp.do">기업 회원가입'3'</a><br>
+<a href="addProduct.do">기업 제품등록'3'</a><br>
 </body>
 
 </html>

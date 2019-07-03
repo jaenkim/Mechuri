@@ -19,12 +19,8 @@ public class SController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
-	
-	
-	
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
 	public String signUp(Locale locale, Model model) {
-	
 	
 		return "signUp";
 	}
@@ -32,16 +28,19 @@ public class SController {
 	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin(Locale locale, Model model) {
 	
-	
 		return "memLogin";
 	}
-	
 	
 	@RequestMapping(value = "/compSignUp.do")
 	public String compSignUp(Locale locale, Model model) {
 	
-	
 		return "compSignUp";
+	}
+	
+	@RequestMapping(value = "/addProduct.do")
+	public String addProduct(Locale locale, Model model) {
+	
+		return "addProduct";
 	}
 	
 	

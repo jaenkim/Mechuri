@@ -320,7 +320,7 @@ input {
 				<form action="">
 					<h3>기업회원 가입</h3>
 					<div class="form-holder">
-						<input type="text" placeholder="브랜드명" class="form-control">
+						<input type="text" placeholder="브랜드명" class="form-control" style="font-size: 16px;">
 					</div>
 					
 					
@@ -335,27 +335,27 @@ input {
 					  </div>
 					</div><br>
 					<div class="form-holder">
-						<input type="text" placeholder="홈페이지" class="form-control">
+						<input type="text" placeholder="홈페이지" class="form-control" style="font-size: 16px;">
 					</div>
 					<br>
 					<h3>담당자 정보</h3>
 					<div class="form-holder">
-						<input type="text" placeholder="아이디" class="form-control" style="font-size: 15px;">
+						<input type="text" placeholder="아이디" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="password" placeholder="비밀번호" class="form-control" style="font-size: 15px;">
+						<input type="password" placeholder="비밀번호" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="password" placeholder="비밀번호확인" class="form-control" style="font-size: 15px;">
+						<input type="password" placeholder="비밀번호확인" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="text" placeholder="담당자명" class="form-control" style="font-size: 15px;">
+						<input type="text" placeholder="담당자명" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="email" placeholder="이메일" class="form-control" style="font-size: 15px;">
+						<input type="email" placeholder="이메일" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="text" placeholder="연락처" class="form-control" style="font-size: 15px;">
+						<input type="text" placeholder="연락처" class="form-control" style="font-size: 16px;">
 					</div>
 						<button>회원가입하기</button>
 					
