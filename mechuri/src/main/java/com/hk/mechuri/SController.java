@@ -19,22 +19,7 @@ public class SController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String main(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "main";
-	}
+	
 	
 	
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
@@ -52,7 +37,7 @@ public class SController {
 	}
 	
 	
-	@RequestMapping(value = "/compSignUp.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/compSignUp.do")
 	public String compSignUp(Locale locale, Model model) {
 	
 	

@@ -36,28 +36,5 @@ public class HomeController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
-	public String list(Locale locale, Model model) {
 	
-	
-		return "list";
-	}
-	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
-	public String groupbuying(Locale locale, Model model) {
-	
-		return "groupbuying";
-	}
-	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
-	public String signUp(Locale locale, Model model) {
-	
-	
-		return "signUp";
-	}
-	
-	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
-	public String memLogin(Locale locale, Model model) {
-	
-	
-		return "memLogin";
-	}
 }
