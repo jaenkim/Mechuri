@@ -252,11 +252,11 @@ input {
 </head>
 <body>
 <jsp:include page="Header.jsp" />
-<br>
+<br><br><br>
  
 			<!-- <div class="inner"> -->
 				<form action="">
-					<h3>회원 가입</h3>
+					<h3>일반회원 가입</h3>
 					<div class="form-holder">
 						<input type="text" placeholder="아이디" class="form-control">
 					</div>
@@ -279,7 +279,7 @@ input {
 						
 					</div>
 					
-						<button>회원가입</button>
+						<button>회원가입하기</button>
 					
 				</form>
 		<!-- 	</div>  -->

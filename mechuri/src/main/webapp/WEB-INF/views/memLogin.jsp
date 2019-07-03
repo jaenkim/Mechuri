@@ -1828,7 +1828,7 @@ body>#login form .idpw {
     <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
 </head>
 <body>
-
+<jsp:include page="Header.jsp" />
 <!-- <로그인 화면><br>
 <input type="text" name="id" maxlength="20" placeholder="아이디"
 			onchange='checkIdAjax(this.value)'
@@ -1877,6 +1877,6 @@ body>#login form .idpw {
       </div>
 </form>
   </div>
-
+<jsp:include page="Footer.jsp" />
 </body>
 </html>
