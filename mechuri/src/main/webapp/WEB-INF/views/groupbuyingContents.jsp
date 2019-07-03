@@ -15,14 +15,13 @@
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
 	<h2>공동구매</h2>
 	
 	<img class="aromatic_Picture" src="images/aromatic1.jpg" alt="">
-	
-	
 	
 	
 	
