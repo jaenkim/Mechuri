@@ -203,6 +203,8 @@ body.modern header .pi {
 
 .nopadding {
   padding: 0 1rem;
+  position: fixed;
+  background: #fff;
 }
 
 h1 {
