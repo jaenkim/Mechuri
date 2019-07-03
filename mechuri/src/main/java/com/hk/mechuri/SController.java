@@ -43,6 +43,12 @@ public class SController {
 		return "addProduct";
 	}
 	
+	@RequestMapping(value = "/testLogin.do")
+	public String testLogin(Locale locale, Model model) {
+	
+		return "testLogin";
+	}
+	
 	
 	
 	
