@@ -43,4 +43,10 @@ public class HomeController {
 		return "list";
 	}
 	
+	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
+	public String signUp(Locale locale, Model model) {
+	
+	
+		return "signUp";
+	}
 }

@@ -16,6 +16,7 @@
 <body>
 <a href="main.do">메인화면 '3'</a> <br />
 <a href="list.do">제품 리스트 '3'</a>
+<a href="signUp.do">회원가입 '3'</a>
 </body>
 
 </html>
