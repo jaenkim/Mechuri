@@ -123,7 +123,7 @@ a {
 form {
   padding: 20% 20% 20% 20%;
 
-  text-align:center;
+   text-align:center; 
   }
 
 h3 {
@@ -134,7 +134,8 @@ h3 {
   color: #ff9a9c; }
 
 .form-holder {
-  padding-left: 42%;
+    padding-left: 42%;  
+ /*   border:1px solid red; */
    }
   
 
@@ -297,14 +298,15 @@ button {
 	align:center;
 }
 
-input {
-	align:center;
-}
+ input { 
+ 	align:center; 
+ } 
 #sample4_button {
-	position : static;
-	bottom:128px;
-	top:18px;
-	
+/* 	position : static; */
+/* 	bottom:128px; */
+/* 	top:18px; */
+/*  	margin: 20px 0px;  */
+ 	display: block;
 }
 
 </style>
@@ -327,11 +329,11 @@ input {
 					
 					<div class="form-holder">
 					  <div class="well">
-					    <input type="text" id="sample4_postcode" placeholder="우편번호"><br><br>
-					<input type="button" id="sample4_button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample4_roadAddress" placeholder="도로명주소"><br>
-					<input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
-					<input type="text" id="sample4_detailAddress" placeholder="상세주소">
+					    <input type="text" id="sample4_postcode" placeholder="우편번호"><br>
+						<input type="button" id="sample4_button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+						<input type="text" id="sample4_roadAddress" placeholder="도로명주소"><br>
+						<input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
+						<input type="text" id="sample4_detailAddress" placeholder="상세주소">
 					  </div>
 					</div><br>
 					<div class="form-holder">
@@ -357,7 +359,7 @@ input {
 					<div class="form-holder">
 						<input type="text" placeholder="연락처" class="form-control" style="font-size: 16px;">
 					</div>
-						<button>회원가입하기</button>
+						<button style="background-color: #f6755e;">회원가입하기</button>
 					
 				</form>
 		<!-- 	</div>  -->

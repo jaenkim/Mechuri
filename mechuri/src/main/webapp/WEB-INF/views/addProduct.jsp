@@ -19,12 +19,12 @@
  		 <option value="saab">바디&핸드&풋</option>
 		 <option value="opel">베이비&맘</option>
  		 <option value="audi">남성</option>
-	 </select>
+	 </select><br>
 제품명 <input type="text">
 용량
 가격
 설명
-성분정보
+성분정보<br>
 대표이미지: <input type="image" src="../images/banner.jpg"><br>
 </body>
 </html>
