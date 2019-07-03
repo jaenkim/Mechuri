@@ -23,8 +23,7 @@
 	<div data-layout="_r">
 		<div data-layout="ch8 ec4">
 			<a href="#" class="MOD_FEATURE_Container"> 
-			<h4>카테고리>베이비보습</h4><br>
-			<a href="groupbuyingContents.jsp"><img class="MOD_FEATURE_Picture" src="images/aromatic23.jpg" alt=""></a> 
+			<a href="groupbuyingContents.do"><img class="MOD_FEATURE_Picture" src="images/aromatic23.jpg" alt=""></a> 
 				<div class="MOD_FEATURE_TextContainer">
 					<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>맘 앤 베이비 밤</p>
 					<p class="MOD_FEATURE_Description" style="bold";>상품명:맘 앤 베이비 밤 <br> 브랜드:아로마틱 <br>
@@ -33,8 +32,8 @@
 			
 		</div>
 		<div data-layout="ch8 ec4">
-			<a href="#" class="MOD_FEATURE_Container"> <img
-				class="MOD_FEATURE_Picture" src="images/dokdo2.jpg" alt="">
+			<a href="#" class="MOD_FEATURE_Container"> 
+			<a href="groupbuyingContents2.do"><img class="MOD_FEATURE_Picture" src="images/dokdo2.jpg" alt=""></a> 
 				<div class="MOD_FEATURE_TextContainer">
 					<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>독도토너</p>
 					<p class="MOD_FEATURE_Description">상품명:독도토너 <br> 브랜드:어라운드 <br> 
@@ -43,48 +42,48 @@
 			</a>
 		</div>
 		<div data-layout="ch8 ec4">
-			<a href="#" class="MOD_FEATURE_Container"> <img
-				class="MOD_FEATURE_Picture" src="images/hera c.jpg" alt="">
+			<a href="#" class="MOD_FEATURE_Container"> 
+			<a href="groupbuyingContents3.do"><img class="MOD_FEATURE_Picture" src="images/hera c.jpg" alt=""></a> 
 				<div class="MOD_FEATURE_TextContainer">
 					<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>블랙 쿠션</p>
 					<p class="MOD_FEATURE_Description">상품명:블랙 쿠션 <br> 브랜드:헤라 <br> 
 						용량/가격:15g/40,000원 22%<br> 구매 인원:<br> 판매 종료일: <br></p>
 				</div>
 			</a>
-		</div>
+		</div> 
 		<div data-layout="ch8 ec4">
-			<a href="#" class="MOD_FEATURE_Container"> <img
-				class="MOD_FEATURE_Picture" src="images/estee.jpg" alt="">
+			<a href="#" class="MOD_FEATURE_Container"> 
+			<a href="groupbuyingContents4.do"><img class="MOD_FEATURE_Picture" src="images/estee.jpg" alt=""></a> 
 				<div class="MOD_FEATURE_TextContainer">
 					<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>더블웨어 파운데이션</p>
 					<p class="MOD_FEATURE_Description">상품명:더블 웨어 파운데이션 <br> 브랜드:에스티로더 <br> 
 						용량/가격:30ml/58,000원 11%<br> 구매 인원:<br> 판매 종료일: <br></p>
 				</div>
 			</a>
-		</div>
+		</div> 
 	<div data-layout="ch8 ec4">
-		<a href="#" class="MOD_FEATURE_Container"> <img
-			class="MOD_FEATURE_Picture" src="images/mac shadow.jpg" alt="">
+		<a href="#" class="MOD_FEATURE_Container"> 
+		<a href="groupbuyingContents5.do"><img class="MOD_FEATURE_Picture" src="images/mac shadow.jpg" alt=""></a> 
 			<div class="MOD_FEATURE_TextContainer">
 				<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>아이섀도</p>
 				<p class="MOD_FEATURE_Description">상품명:아이섀도 <br> 브랜드:맥 <br> 
 						용량/가격:1.3g/26,000원 7%<br> 구매 인원:<br> 판매 종료일: <br></p>
 			</div>
 		</a>
-	</div>
+	</div> 
 	<div data-layout="ch8 ec4">
-		<a href="#" class="MOD_FEATURE_Container"> <img
-			class="MOD_FEATURE_Picture" src="images/hanu3.jpg" alt="">
+		<a href="#" class="MOD_FEATURE_Container"> 
+		<a href="groupbuyingContents6.do"><img class="MOD_FEATURE_Picture" src="images/hanu3.jpg" alt=""></a> 
 			<div class="MOD_FEATURE_TextContainer">
 				<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>어린쑥 수분진정</p>
 				<p class="MOD_FEATURE_Description">상품명:어린쑥 수분진정 크림 <br> 브랜드:한율 <br> 
 						용량/가격:80ml/37,000원 7%<br> 구매 인원:<br> 판매 종료일: <br></p>
 			</div>
 		</a>
-	</div>
+	</div> 
 	<div data-layout="ch8 ec4">
-		<a href="#" class="MOD_FEATURE_Container"> <img
-			class="MOD_FEATURE_Picture" src="images/nars lip.jpg" alt="">
+		<a href="#" class="MOD_FEATURE_Container"> 
+		<a href="groupbuyingContents7.do"><img class="MOD_FEATURE_Picture" src="images/nars lip.jpg" alt=""></a> 
 			<div class="MOD_FEATURE_TextContainer">
 				<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>울트라HD 립펜슬</p>
 				<p class="MOD_FEATURE_Description">상품명:울트라HD 립펜슬 <br> 브랜드:나스 <br> 
@@ -93,8 +92,8 @@
 		</a>
 	</div>
 	<div data-layout="ch8 ec4">
-		<a href="#" class="MOD_FEATURE_Container"> <img
-			class="MOD_FEATURE_Picture" src="images/onthebody.jpg" alt="">
+		<a href="#" class="MOD_FEATURE_Container"> 
+		<a href="groupbuyingContents8.do"><img class="MOD_FEATURE_Picture" src="images/onthebody.jpg" alt=""></a> 
 			<div class="MOD_FEATURE_TextContainer">
 				<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>데일리선크림 라이언</p>
 				<p class="MOD_FEATURE_Description">상품명:데일리 선크림 라이언 <br> 브랜드:온더바디X카카오 <br> 
