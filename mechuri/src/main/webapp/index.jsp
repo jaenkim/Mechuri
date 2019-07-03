@@ -15,7 +15,6 @@
 	</head>
 <body>
 <a href="main.do">메인화면 '3'</a> <br /><br>
-<<<<<<< HEAD
 <a href="list.do">제품 리스트 '3'</a><br>
 <a href="signUp.do">일반 회원가입 '3'</a><br>
 <a href="list.do">제품 리스트 '3'</a> <br /><br>
