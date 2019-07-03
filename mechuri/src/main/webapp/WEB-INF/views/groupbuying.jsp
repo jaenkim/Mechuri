@@ -24,13 +24,13 @@
 		<div data-layout="ch8 ec4">
 			<a href="#" class="MOD_FEATURE_Container"> 
 			<h4>카테고리>베이비보습</h4><br>
-			<img class="MOD_FEATURE_Picture" src="images/aromatic23.jpg" alt="">
+			<a href="groupbuyingContents.jsp"><img class="MOD_FEATURE_Picture" src="images/aromatic23.jpg" alt=""></a> 
 				<div class="MOD_FEATURE_TextContainer">
 					<p class="MOD_FEATURE_Title" data-theme="_ts2" style="color:gray";>맘 앤 베이비 밤</p>
-					<p class="MOD_FEATURE_Description" style="bold";>상품명:맘 앤 베이비 밤 <br> 브랜드:아로마틱 <br> 
-						용량/가격:120ml/40,700원 7%<br> 구매 인원:<br> 판매 종료일: <br> </p> 
-				</div>
-			</a>
+					<p class="MOD_FEATURE_Description" style="bold";>상품명:맘 앤 베이비 밤 <br> 브랜드:아로마틱 <br>
+						용량/가격:120ml/40,700원 7%<br> 구매 인원:<br> 판매 종료일: <br></p>
+				</div> 
+			
 		</div>
 		<div data-layout="ch8 ec4">
 			<a href="#" class="MOD_FEATURE_Container"> <img
