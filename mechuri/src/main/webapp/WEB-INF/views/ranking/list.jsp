@@ -34,13 +34,12 @@
   <div data-layout="_r" class="MOD_ARTICLEBLOCKS2">
   <c:forEach items="${list}" var="dto">
   <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont">
-      <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall">
-        <div style="background-image:url(images/product01.jpg)" class="MOD_ARTICLEBLOCKS2_Img" role="img" aria-label="alt text"></div>
-        <div class="MOD_ARTICLEBLOCKS2_Txt">
-        <p class="MOD_ARTICLEBLOCKS2_Category" data-theme="_ts4">${list.product_brand}</p>
-          <h3 class="MOD_ARTICLEBLOCKS2_Title">${list.product_name}</h3>
-        </div>
-      </a>
+      
+        
+        
+        <p >${list.product_brand}</p>
+          <h3 >${list.product_name}</h3>
+     
     </div>
 </c:forEach>  
 
