@@ -54,7 +54,7 @@
 <body class="default">
 <jsp:include page="Header.jsp" />
 
-
+<div>
 <!--
 START MODULE AREA 3: Hero 1
 -->
@@ -170,7 +170,7 @@ START MODULE AREA 5: Article Block 1
 <!--
 END MODULE AREA 5: Article Block 1
 -->
-
+</div>
 <jsp:include page="Footer.jsp" />
 
 <script src="assets/js/index.js"></script>

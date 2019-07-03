@@ -15,8 +15,13 @@
 	</head>
 <body>
 <a href="main.do">메인화면 '3'</a> <br />
+<<<<<<< HEAD
 <a href="list.do">제품 리스트 '3'</a>
 <a href="signUp.do">회원가입 '3'</a>
+=======
+<a href="list.do">제품 리스트 '3'</a> <br />
+<a href="groupbuying.do">공동구매 리스트 '3'</a>
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 </body>
 
 </html>

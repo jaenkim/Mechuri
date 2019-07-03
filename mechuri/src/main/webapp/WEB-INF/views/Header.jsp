@@ -8,38 +8,109 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Title insert here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/style.min.css" />
+<link rel="stylesheet" href="assets/css/modules.css" />
 <style type="text/css">
+#accordian li {
+	list-style-type: none;
+} 
 
+/* 서브메뉴 스타일 */
+#accordian ul ul li a {
+	color: white;
+	text-decoration: none;
+	font-size: 11px;
+	line-height: 27px;
+	display: block;
+	padding: 0 15px;
+	-webkit-transition: all 0.15s;
+	-moz-transition: all 0.15s;
+	-o-transition: all 0.15s;
+	-ms-transition: all 0.15s;
+	transition: all 0.15s;
+}
 
+#accordian ul ul li a:hover {
+	background: #003545;
+	border-left: 5px solid #09c;
+} 
+
+/* active 클래스 외에 것은 보이지 않게 하기 */
+#accordian ul ul {
+	display: none;
+}
+
+#accordian li.active ul {
+	display: block;
+}
 </style>
 </head>
 <body>
-	<!-- Header -->
-	<header id="header"> <nav class="left"> <a href="#menu"><span>Menu</span></a>
-	</nav> <a href="index.jsp" class="logo">Mechuri</a> <nav class="right">
-	<a href="#" class="button alt">Log in</a> </nav> </header>
-	
-	
-	
-	<!-- Menu -->
-			<nav id="menu">
-				<ul class="links">
-				<button class="accordion">accordion
-				 	<div class="panel">
-					<li><a href="index.html">랭킹</a></li>
-					<li><a href="generic.html">공동구매</a></li>
-					<li><a href="elements.html">커뮤니티</a></li>
-					</div>
+<!-- Header -->
+	<header id="header"> 
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a>
+		</nav>
+			<a href="index.jsp" class="logo">Mechuri</a>
+		<nav class="right">
+			<a href="#" class="button alt">Log in</a>
+		</nav>
+	</header>
+
+<!-- 우측 마이페이지 메뉴 -->
+<nav id="menu">
+	<div id="accordian">
+		<ul>
+			<li>
+				<p>
+					<span class="icon-dashboard"></span>Dashboard
+				</p>
+				<ul>
+					<li><a href="#">Reports</a></li>
+					<li><a href="#">Search</a></li>
+					<li><a href="#">Graphs</a></li>
+					<li><a href="#">Settings</a></li>
 				</ul>
-				<!-- <ul class="actions vertical">
-					<li><a href="#" class="button fit">Login</a></li>
-				</ul> -->
-			</nav>
-			
-			
-<!--
-START MODULE AREA 2: Menu 1
--->
+			</li>
+			<li class="active">
+				<p>
+					<span class="icon-tasks"></span>Tasks
+				</p>
+				<ul>
+					<li><a href="#">Today's tasks</a></li>
+					<li><a href="#">Urgent</a></li>
+					<li><a href="#">Overdues</a></li>
+					<li><a href="#">Recurring</a></li>
+					<li><a href="#">Settings</a></li>
+				</ul>
+			</li>
+			<li>
+				<p>
+					<span class="icon-calendar"></span>Calendar
+				</p>
+				<ul>
+					<li><a href="#">Team Calendar</a></li>
+					<li><a href="#">Private Calendar</a></li>
+					<li><a href="#">Settings</a></li>
+				</ul>
+			</li>
+			<li>
+				<p>
+					<span class="icon-heart"></span>Favourites
+				</p>
+				<ul>
+					<li><a href="#">Global favs</a></li>
+					<li><a href="#">My favs</a></li>
+					<li><a href="#">Team favs</a></li>
+					<li><a href="#">Settings</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>
+	
+	
+<!-- 헤더 네이게이션바 메뉴 -->
 <section class="MOD_MENU" data-theme="_bgp">
   <div data-layout="_r" class="nopadding">
     <nav class="MOD_MENU_Nav">
@@ -96,11 +167,14 @@ START MODULE AREA 2: Menu 1
 </section>
 <!--END MODULE AREA 2: Menu 1-->
 			
+			
+			
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/HeaderMenu.js"></script>
+	 		<script src="assets/js/HeaderMenu.js"></script> 
+
 </body>
 </html>

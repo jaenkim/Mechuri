@@ -42,11 +42,18 @@ public class HomeController {
 	
 		return "list";
 	}
+	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
+	public String groupbuying(Locale locale, Model model) {
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
 	public String signUp(Locale locale, Model model) {
 	
 	
 		return "signUp";
+=======
+	
+		return "groupbuying";
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 	}
 }
