@@ -16,7 +16,7 @@
 
 body {
   font-family: "Montserrat-Regular";
-  color: #999;
+  : #999;
   font-size: 12px;
   margin: 0; }
 
@@ -32,11 +32,11 @@ ul {
 
 a {
   text-decoration: none;
-  color: #ff9a9c;
+  : #ff9a9c;
   transition: all 0.3s ease; }
   a:hover {
     text-decoration: none;
-    color: #fe4447; }
+    : #fe4447; }
 
 :focus {
   outline: none; }
@@ -74,7 +74,7 @@ h3 {
   font-family: "ElMessiri-SemiBold";
   text-align: center;
   margin-bottom: 27px;
-  color: #ff9a9c; }
+  : #ff9a9c; }
 
 .form-holder {
   padding-left: 42%;
@@ -87,29 +87,29 @@ h3 {
   border-radius: 23.5px;
   height: 47px;
   padding: 0 24px;
-  color: #808080;
+  : #808080;
   font-size: 13px;
   border: none;
   background: #f7f7f7;
   margin-bottom: 25px; }
   .form-control::-webkit-input-placeholder {
     font-size: 13px;
-    color: #808080;
+    : #808080;
     text-transform: uppercase;
     font-family: "Montserrat-Regular"; }
   .form-control::-moz-placeholder {
     font-size: 13px;
-    color: #808080;
+    : #808080;
     text-transform: uppercase;
     font-family: "Montserrat-Regular"; }
   .form-control:-ms-input-placeholder {
     font-size: 13px;
-    color: #808080;
+    : #808080;
     text-transform: uppercase;
     font-family: "Montserrat-Regular"; }
   .form-control:-moz-placeholder {
     font-size: 13px;
-    color: #808080;
+    : #808080;
     text-transform: uppercase;
     font-family: "Montserrat-Regular"; }
 
@@ -165,7 +165,7 @@ button {
   padding: 0;
   background: #ff9a9c;
   font-size: 15px;
-  color: #fff;
+  : #fff;
   text-transform: uppercase;
   font-family: "Montserrat-SemiBold";
   -webkit-transform: perspective(1px) translateZ(0);
@@ -188,7 +188,7 @@ button {
   margin-left: 26px; }
   .checkbox label {
     cursor: pointer;
-    color: #999; }
+    : #999; }
   .checkbox input {
     position: absolute;
     opacity: 0;

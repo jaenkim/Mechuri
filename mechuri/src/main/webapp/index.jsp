@@ -15,7 +15,6 @@
 	</head>
 <body>
 <a href="main.do">메인화면 '3'</a> <br /><br>
-<<<<<<< HEAD
 <a href="list.do">제품 리스트 '3'</a><br>
 <a href="signUp.do">일반 회원가입 '3'</a><br>
 <a href="list.do">제품 리스트 '3'</a> <br /><br>
@@ -23,6 +22,21 @@
 <a href="memLogin.do">로그인 페이지'3'</a><br>
 <a href="compSignUp.do">기업 회원가입'3'</a><br>
 
+<a href="groupbuyingContents.do">공동구매 제품상세(아로마틱)'3'</a><br>
+<a href="groupbuyingContents2.do">공동구매 제품상세(독도)'3'</a><br>
+<a href="groupbuyingContents3.do">공동구매 제품상세(쿠션)'3'</a><br>
+<a href="groupbuyingContents4.do">공동구매 제품상세(파데)'3'</a><br>
+<a href="groupbuyingContents5.do">공동구매 제품상세(섀도)'3'</a><br>
+<a href="groupbuyingContents6.do">공동구매 제품상세(크림)'3'</a><br>
+<a href="groupbuyingContents7.do">공동구매 제품상세(립)'3'</a><br>
+<a href="groupbuyingContents8.do">공동구매 제품상세(썬크리)'3'</a><br>
+
+<a href="addProduct.do">기업 제품등록'3'</a><br>
+<a href="boardlist.do">커뮤니티 리스트'3'</a><br>
+<a href="boardwrite.do">커뮤니티 글 작성'3'</a><br>
+<a href="boardupdate.do">커뮤니티 글 수정'3'</a><br>
+<a href="boarddetail.do">커뮤니티 글 상세보기'3'</a><br>
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 </body>
 
 </html>

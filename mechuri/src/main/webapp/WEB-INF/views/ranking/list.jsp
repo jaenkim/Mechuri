@@ -13,7 +13,7 @@
 
 </head>
 <body class="default">
-<jsp:include page="Header.jsp" />
+<jsp:include page="../Header.jsp" />
 
 <!--  START MODULE AREA 1: Page Title 1-->
 <section>
@@ -76,7 +76,7 @@ END MODULE AREA 2: Article Block 2
 -->
 
 
-<jsp:include page="Footer.jsp" />
+<jsp:include page="../Footer.jsp" />
 <script src="assets/js/index.js"></script>
 </body>
 
