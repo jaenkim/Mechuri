@@ -36,17 +36,7 @@ public class SController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
-	public String list(Locale locale, Model model) {
 	
-	
-		return "list";
-	}
-	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
-	public String groupbuying(Locale locale, Model model) {
-	
-		return "groupbuying";
-	}
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
 	public String signUp(Locale locale, Model model) {
 	
@@ -60,4 +50,44 @@ public class SController {
 	
 		return "memLogin";
 	}
+	
+	
+	@RequestMapping(value = "/compSignUp.do", method = RequestMethod.GET)
+	public String compSignUp(Locale locale, Model model) {
+	
+	
+		return "compSignUp";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
