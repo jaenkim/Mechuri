@@ -22,6 +22,10 @@
 <a href="memLogin.do">로그인 페이지'3'</a><br>
 <a href="compSignUp.do">기업 회원가입'3'</a><br>
 <a href="addProduct.do">기업 제품등록'3'</a><br>
+<a href="boardlist.do">커뮤니티 리스트'3'</a><br>
+<a href="boardwrite.do">커뮤니티 글 작성'3'</a><br>
+<a href="boardupdate.do">커뮤니티 글 수정'3'</a><br>
+<a href="boarddetail.do">커뮤니티 글 상세보기'3'</a><br>
 </body>
 
 </html>
