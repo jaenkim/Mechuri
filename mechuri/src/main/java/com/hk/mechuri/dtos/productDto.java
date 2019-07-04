@@ -25,6 +25,7 @@ public class productDto implements Serializable {
 	private String product_review;
 	private int product_point;
 	private int product_pointcount;
+	private int product_rank;
 	private int product_fileno;
 	private String product_originfile;
 	private String product_storedfile;
@@ -138,9 +139,8 @@ public class productDto implements Serializable {
 	public int getProduct_pointcount() {return product_pointcount;}
 	public void setProduct_pointcount(int product_pointcount) {	this.product_pointcount = product_pointcount;}
 
-
-
-
+	public int getProduct_rank() {return product_rank;}
+	public void setProduct_rank(int product_rank) {this.product_rank = product_rank;}
 
 
 
@@ -153,13 +153,15 @@ public class productDto implements Serializable {
 				+ ", product_skinconts=" + product_skinconts + ", product_age=" + product_age + ", product_gender="
 				+ product_gender + ", product_ingre=" + product_ingre + ", product_like=" + product_like
 				+ ", product_review=" + product_review + ", product_point=" + product_point + ", product_pointcount="
-				+ product_pointcount + ", product_fileno=" + product_fileno + ", product_originfile="
-				+ product_originfile + ", product_storedfile=" + product_storedfile + ", product_fileregdate="
-				+ product_fileregdate + ", product_filesize=" + product_filesize + ", product_flag=" + product_flag
-				+ ", product_djflag=" + product_djflag + ", product_filedelflag=" + product_filedelflag
-				+ ", product_regdate=" + product_regdate + ", product_replacedate=" + product_replacedate
-				+ ", product_others01=" + product_others01 + ", product_others02=" + product_others02 + "]";
+				+ product_pointcount + ", product_rank=" + product_rank + ", product_fileno=" + product_fileno
+				+ ", product_originfile=" + product_originfile + ", product_storedfile=" + product_storedfile
+				+ ", product_fileregdate=" + product_fileregdate + ", product_filesize=" + product_filesize
+				+ ", product_flag=" + product_flag + ", product_djflag=" + product_djflag + ", product_filedelflag="
+				+ product_filedelflag + ", product_regdate=" + product_regdate + ", product_replacedate="
+				+ product_replacedate + ", product_others01=" + product_others01 + ", product_others02="
+				+ product_others02 + "]";
 	}
+
 	
 
 }

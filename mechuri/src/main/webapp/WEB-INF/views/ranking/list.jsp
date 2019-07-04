@@ -37,6 +37,7 @@
     <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall">
         <div style="background-image:url(images/product01.jpg)" class="MOD_ARTICLEBLOCKS2_Img" role="img" aria-label="alt text"></div>
         <div class="MOD_ARTICLEBLOCKS2_Txt">
+        <p>${dto.product_rank}</p>
         <p class="MOD_ARTICLEBLOCKS2_Category" data-theme="_ts4">${dto.product_brand}</p>
           <h3 class="MOD_ARTICLEBLOCKS2_Title">${dto.product_name}</h3>
         </div>
