@@ -15,7 +15,7 @@
 <body>
 <br><br><br>
 <div class="container">
-  <form action="/action_page.php">
+  <form action="insertWrite.do" method="post" enctype="multipart/form-data">
   <div class="row">
     <div class="col-25">
       <label for="title">제목</label>

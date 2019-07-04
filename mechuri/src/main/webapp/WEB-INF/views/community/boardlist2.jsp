@@ -68,7 +68,7 @@ START MODULE AREA 1: header1
       <h1 class="MOD_HEADER1_TextLogo">메추리톡</h1>
       <p class="MOD_HEADER1_Slogan">메추리 회원들의 커뮤니티 공간입니다</p>
       <br>
-      <button id= "postbutton" class="button">글 쓰기</button>
+      <button id= "postbutton" class="button" onclick="location.href='boardwrite.do'">글 쓰기</button>
     </div>
   </div>
 </header>
@@ -83,7 +83,7 @@ START MODULE AREA 2: Article Block 1
   <div data-layout="_r" class="MOD_ARTICLEBLOCKS1">
     <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
       <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
-        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
+        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div> <!-- 펭귄이미지 -->
 
         <div class="MOD_ARTICLEBLOCKS1_Txt">
           <h3 class="MOD_ARTICLEBLOCKS1_Title">이 제품 이름 궁금해요</h3>
@@ -91,6 +91,8 @@ START MODULE AREA 2: Article Block 1
         </div>
       </a>
     </div>
+    
+    
     <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
       <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
         <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>

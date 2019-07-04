@@ -62,6 +62,10 @@ public class boardDto {
 	}
 
 
+	public boardDto(String board_originfile, String board_storedfile, int board_filesize) {
+		// TODO Auto-generated constructor stub
+	}
+
 
 
 
