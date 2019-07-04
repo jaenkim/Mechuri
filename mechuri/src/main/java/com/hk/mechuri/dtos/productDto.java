@@ -24,6 +24,7 @@ public class productDto implements Serializable {
 	private String product_like;
 	private String product_review;
 	private int product_point;
+	private int product_pointcount;
 	private int product_fileno;
 	private String product_originfile;
 	private String product_storedfile;
@@ -44,6 +45,8 @@ public class productDto implements Serializable {
 	
 	
 	
+	
+
 	//Getter and Setter
 	public int getProduct_no() {	return product_no; }
 	public void setProduct_no(int product_no) {	this.product_no = product_no;	}
@@ -103,13 +106,13 @@ public class productDto implements Serializable {
 	public void setProduct_originfile(String product_originfile) {this.product_originfile = product_originfile;}
 
 	public String getProduct_storedfile() {return product_storedfile;}
-	public void setProduct_storedfile(String product_storedfile) {	this.product_storedfile = product_storedfile;	}
+	public void setProduct_storedfile(String product_storedfile) { this.product_storedfile = product_storedfile;	}
 
 	public Date getProduct_fileregdate() {	return product_fileregdate;	}
-	public void setProduct_fileregdate(Date product_fileregdate) {		this.product_fileregdate = product_fileregdate;	}
+	public void setProduct_fileregdate(Date product_fileregdate) {	this.product_fileregdate = product_fileregdate; }
 
 	public int getProduct_filesize() {	return product_filesize;	}
-	public void setProduct_filesizeilesize(int filesize) {	this.product_filesize = product_filesize;}
+	public void setProduct_filesize(int product_filesize) { this.product_filesize = product_filesize; }
 
 	public String getProduct_flag() {	return product_flag;	}
 	public void setProduct_flag(String product_flag) {	this.product_flag = product_flag;}
@@ -132,6 +135,15 @@ public class productDto implements Serializable {
 	public String getProduct_others02() {return product_others02;	}
 	public void setProduct_others02(String product_others02) {this.product_others02 = product_others02;}
 
+	public int getProduct_pointcount() {return product_pointcount;}
+	public void setProduct_pointcount(int product_pointcount) {	this.product_pointcount = product_pointcount;}
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "productDto [product_no=" + product_no + ", product_name=" + product_name + ", product_ml=" + product_ml
@@ -140,15 +152,14 @@ public class productDto implements Serializable {
 				+ ", product_catesname=" + product_catesname + ", product_skintype=" + product_skintype
 				+ ", product_skinconts=" + product_skinconts + ", product_age=" + product_age + ", product_gender="
 				+ product_gender + ", product_ingre=" + product_ingre + ", product_like=" + product_like
-				+ ", product_review=" + product_review + ", product_point=" + product_point + ", product_fileno="
-				+ product_fileno + ", product_originfile=" + product_originfile + ", product_storedfile="
-				+ product_storedfile + ", product_fileregdate=" + product_fileregdate + ", product_filesize="
-				+ product_filesize + ", product_flag=" + product_flag + ", product_djflag=" + product_djflag
-				+ ", product_filedelflag=" + product_filedelflag + ", product_regdate=" + product_regdate
-				+ ", product_replacedate=" + product_replacedate + ", product_others01=" + product_others01
-				+ ", product_others02=" + product_others02 + "]";
+				+ ", product_review=" + product_review + ", product_point=" + product_point + ", product_pointcount="
+				+ product_pointcount + ", product_fileno=" + product_fileno + ", product_originfile="
+				+ product_originfile + ", product_storedfile=" + product_storedfile + ", product_fileregdate="
+				+ product_fileregdate + ", product_filesize=" + product_filesize + ", product_flag=" + product_flag
+				+ ", product_djflag=" + product_djflag + ", product_filedelflag=" + product_filedelflag
+				+ ", product_regdate=" + product_regdate + ", product_replacedate=" + product_replacedate
+				+ ", product_others01=" + product_others01 + ", product_others02=" + product_others02 + "]";
 	}
-
-
 	
+
 }
