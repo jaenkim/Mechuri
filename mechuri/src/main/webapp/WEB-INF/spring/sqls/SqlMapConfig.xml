@@ -17,6 +17,8 @@
   		<typeAlias type="com.hk.mechuri.dtos.replyDto" alias="replyDto"/>
   		<typeAlias type="com.hk.mechuri.dtos.reviewDto" alias="reviewDto"/>
   		<typeAlias type="com.hk.mechuri.dtos.tempinfoDto" alias="tempinfoDto"/>
+  		<typeAlias type="com.hk.mechuri.dtos.filterDto" alias="filterDto"/>
+
   	</typeAliases> 
   	
   	<mappers>

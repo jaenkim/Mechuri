@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.mechuri.daos.iRankDao;
+import com.hk.mechuri.dtos.filterDto;
 import com.hk.mechuri.dtos.productDto;
 
 @Service
@@ -20,6 +21,11 @@ public class RankService implements iRankService {
 		return rankDao.getAllProductList();
 	}
 	
+	@Override
+	public List<productDto> getFilterProductList(filterDto dto){
+		System.out.println("service에서 출력한 10대의 값: ["+dto.getFilter_age10());
+		return rankDao.getFilterProductList(dto);
+	}
 	
 	
 	
