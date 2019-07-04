@@ -77,23 +77,27 @@ public class SController {
 	
 	
 	@RequestMapping(value = "/insertWrite.do") /*커뮤니티 글 작성*/
-	public String insertWrite(Locale locale, Model model, HttpServletRequest request,boardDto dto) {	
+	public String insertWrite(Locale locale, Model model, HttpServletRequest request) {	
 		logger.info("글 추가하기 {}.", locale);
 		
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
-		
-		dto.setBoard_conts(request.getParameter("title"));
-		dto.setBoard_title(request.getParameter("content"));
+		boardDto dto = new boardDto(title,content);
+		model.addAttribute("title",title);
+		model.addAttribute("content",content);
 		
 		
 		//파일업로드
 		boolean isS = boardService.insertFileInfo(request);
-		if(isS) {
+		return "boardlist2";
+		
+/*		if(isS) {
 			return "boardlist2";
 		} else {
 			logger.info("파일업로드 실패");
 			return "boardwrite";
-		}
+		}*/
 	}
 	
 	

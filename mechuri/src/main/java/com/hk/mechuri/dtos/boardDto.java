@@ -70,6 +70,14 @@ public class boardDto {
 
 
 
+	public boardDto(String title, String content) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+
 	public int getBoard_no() {
 		return board_no;
 	}
