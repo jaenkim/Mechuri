@@ -36,7 +36,6 @@
 <a href="boardwrite.do">커뮤니티 글 작성'3'</a><br>
 <a href="boardupdate.do">커뮤니티 글 수정'3'</a><br>
 <a href="boarddetail.do">커뮤니티 글 상세보기'3'</a><br>
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 </body>
 
 </html>

@@ -10,14 +10,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>제품 목록 페이지</title>
 
-<link rel="stylesheet" href="assets/css/style.min.css">
-<link rel="stylesheet" href="assets/css/modules.css">
+<!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
+<!-- <link rel="stylesheet" href="assets/css/modules.css"> -->
 <link	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean"
 	rel="stylesheet">
 
 </head>
 <body class="default">
-<jsp:include page="../Header.jsp" />
+<%-- <jsp:include page="../Header.jsp" />  --%>
 
 <!--  START MODULE AREA 1: Page Title 1-->
 <section>
@@ -28,27 +28,43 @@
   </div>
 </section>
 <!--  END MODULE AREA 1: Page Title 1-->
-
-<!--START MODULE AREA 2: Article Block 2-->
-<section class="MOD_ARTICLEBLOCKS2_Section">
-  <div data-layout="_r" class="MOD_ARTICLEBLOCKS2">
-  <c:forEach items="${list}" var="dto">
-  <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont">
-    <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall">
-        <div style="background-image:url(images/product01.jpg)" class="MOD_ARTICLEBLOCKS2_Img" role="img" aria-label="alt text"></div>
-        <div class="MOD_ARTICLEBLOCKS2_Txt">
-        <p>${dto.product_rank}</p>
-        <p class="MOD_ARTICLEBLOCKS2_Category" data-theme="_ts4">${dto.product_brand}</p>
-          <h3 class="MOD_ARTICLEBLOCKS2_Title">${dto.product_name}</h3>
-        </div>
-      </a>
-     </div>
-</c:forEach>  
-
-
-
-  </div>
+<section class="filter">
+<div>
+<form action="list.do" method="post" >
+	<input type="hidden" name="command" value="filter" />
+	<input type="checkbox" name="filter_age10" value="10대" /> 10대
+	<input type="checkbox" name="filter_age20" value="20대" /> 20대
+	<input type="checkbox" name="filter_age30" value="30대" /> 30대 <br />
+	<input type="checkbox" name="filter_age40" value="40대" /> 40대
+	<input type="checkbox" name="filter_age50" value="50대" /> 50대 이상 <br />
+	<input type="checkbox" name="filter_genderW" value="여성" /> 여성
+	<input type="checkbox" name="filter_genderM" value="남성" /> 남성 <br />
+<input type="submit" value="선택 조건으로 검색"/>
+</form>
+</div>
 </section>
+<!--START MODULE AREA 2: Article Block 2-->
+<!-- <section class="MOD_ARTICLEBLOCKS2_Section">
+  <div data-layout="_r" class="MOD_ARTICLEBLOCKS2"> -->
+  
+  
+<!--   <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS2_Cont"> -->
+  <!--   <a href="#" class="MOD_ARTICLEBLOCKS2_BlockSmall"> </a> -->
+  <table border='1'>
+  <th>순위</th>
+  <th>브랜드</th>
+  <th>제품명</th>
+  <c:forEach items="${list}" var="dto">
+  <tr>
+        <td>${dto.product_rank}</td>
+        <td>${dto.product_brand}</td>
+        <td>${dto.product_name}</td>
+   </tr>
+</c:forEach>  
+</table>
+
+<!--   </div>
+</section> -->
 <!--
 END MODULE AREA 2: Article Block 2
 -->
