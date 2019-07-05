@@ -29,38 +29,10 @@ public class SController {
 	@Autowired
 	private IBoardService boardService;
 	
-	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
-	public String signUp(Locale locale, Model model) {
 	
-		return "signUp";
-	}
 	
-	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
-	public String memLogin(Locale locale, Model model) {
-	
-		return "memLogin";
-	}
-	
-	@RequestMapping(value = "/compSignUp.do")
-	public String compSignUp(Locale locale, Model model) {
-	
-		return "compSignUp";
-	}
-	
-	@RequestMapping(value = "/addProduct.do")
-	public String addProduct(Locale locale, Model model) {
-	
-		return "addProduct";
-	}
-	
-	@RequestMapping(value = "/testLogin.do")
-	public String testLogin(Locale locale, Model model) {
-	
-		return "testLogin";
-	}
-	
-	//여기부터 랭킹 기능
-	@RequestMapping(value = "/boardlist2.do")
+	//여기부터 커뮤니티 기능
+	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
 	public String boardlist2(Locale locale, Model model) {
 		
 		List<boardDto> list=boardService.getAllList();
@@ -72,32 +44,33 @@ public class SController {
 	@RequestMapping(value = "/boardwrite.do") /*글작성 폼으로 이동*/
 	public String boardwrite(Locale locale, Model model) {	
 		
-		return "insertBoard";
+		return "insertWrite";
 	}
 	
 	
 	@RequestMapping(value = "/insertWrite.do") /*커뮤니티 글 작성*/
-	public String insertWrite(Locale locale, Model model, HttpServletRequest request) {	
+	public String insertWrite(Locale locale, Model model, HttpServletRequest request, boardDto dto) {	
 		logger.info("글 추가하기 {}.", locale);
 		
-		String title = request.getParameter("title");
+		String title = request.getParameter("titlename");
 		String content = request.getParameter("content");
 		
-		boardDto dto = new boardDto(title,content);
-		model.addAttribute("title",title);
-		model.addAttribute("content",content);
-		
+		boardDto dto1 = new boardDto(title,content);
+		/*model.addAttribute("titlename",titlename);
+		model.addAttribute("content",content); 얘는 화면에 보여줄 때만 필요한애 지금필요x
+		System.out.println( "title:["+request.getParameter("titlename")+"]");
+		System.out.println( "content:["+request.getParameter("content")+"]");*/
 		
 		//파일업로드
-		boolean isS = boardService.insertFileInfo(request);
-		return "boardlist2";
+		boolean isS = boardService.insertFileInfo(request, dto1);
 		
-/*		if(isS) {
-			return "boardlist2";
+		
+		if(isS) {
+			return "community/boardlist2";
 		} else {
 			logger.info("파일업로드 실패");
-			return "boardwrite";
-		}*/
+			return "insertWrite";
+		}
 	}
 	
 	
