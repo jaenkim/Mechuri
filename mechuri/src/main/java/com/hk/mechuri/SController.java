@@ -40,7 +40,7 @@ public class SController {
 		List<boardDto> list=boardService.getAllList();
 		model.addAttribute("list",list);
 		
-		return "boardlist2";
+		return "community/boardlist2";
 	}
 	
 	@RequestMapping(value = "/boardwrite.do") /*글작성 폼으로 이동*/
@@ -66,13 +66,12 @@ public class SController {
 		/*System.out.println( "title:["+request.getParameter("titlename")+"]");
 		System.out.println( "content:["+request.getParameter("content")+"]");*/
 		
-		
 		//파일업로드
 		boolean isS = boardService.insertFileInfo(request, dto1);
 		
 		
 		if(isS) {
-			return "community/boardlist2";
+			return "redirect:boardlist2.do";
 		} else {
 			logger.info("파일업로드 실패");
 			return "insertWrite";
