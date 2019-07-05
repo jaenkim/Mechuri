@@ -19,10 +19,10 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<h2>공동구매</h2>
-	
-	<img class="aromatic_Picture" src="images/aromatic1.jpg" alt="">
-	
+
+	<div>
+	<img class="aromatic_Picture" src="images/aromatic1.jpg" alt="" style = "padding: 0px 0px 30px 20px;">
+	</div>
 	
 	
 	<jsp:include page="Footer.jsp" />
