@@ -32,20 +32,30 @@ public class RankDao implements iRankDao {
 	public List<productDto> getFilterProductList(filterDto dto) {
 		//dto에 값이 담겨있는 걸 꺼내서
 		Map<String,String> maap = new HashMap<String,String>();
-		maap.put("filter_age10",dto.getFilter_age10()==null?"":dto.getFilter_age10());
+		maap.put("filter_age10",dto.getFilter_age10());
+		maap.put("filter_age20",dto.getFilter_age20());
+		maap.put("filter_age30",dto.getFilter_age30());
+		maap.put("filter_age40",dto.getFilter_age40());
+		maap.put("filter_age50",dto.getFilter_age50());
+		maap.put("filter_genderW",dto.getFilter_genderF());
+		maap.put("filter_genderM",dto.getFilter_genderM());
+		maap.put("filter_catelname",dto.getFilter_catelname());
+		maap.put("filter_catesname",dto.getFilter_catesname());
 		System.out.println("다오에서 출력 10대의 값이 들어왔는지? ["+dto.getFilter_age10()+"]");
-		maap.put("filter_age20",dto.getFilter_age20()==null?"":dto.getFilter_age20());
-		maap.put("filter_age30",dto.getFilter_age30()==null?"":dto.getFilter_age30());
 		System.out.println("다오에서 출력 30대의 값이 들어왔는지? ["+dto.getFilter_age30()+"]");
-		maap.put("filter_age40",dto.getFilter_age40()==null?"":dto.getFilter_age40());
-		maap.put("filter_age50",dto.getFilter_age50()==null?"":dto.getFilter_age50());
-		maap.put("filter_genderW",dto.getFilter_genderF()==null?"":dto.getFilter_genderF());
-		maap.put("filter_genderM",dto.getFilter_genderM()==null?"":dto.getFilter_genderM());
+		System.out.println("다오에서 출력 카테고리 대분류의 값이 들어왔는지? ["+dto.getFilter_catelname()+"]");
+		System.out.println("다오에서 출력 카테고리 소분류 값이 들어왔는지? ["+dto.getFilter_catesname()+"]");
 		return sqlSession.selectList(namepace+"filterdlist",maap);
 	}
 	
 	
-	
+//	maap.put("filter_age10",dto.getFilter_age10()==null?"":dto.getFilter_age10());
+//	maap.put("filter_age20",dto.getFilter_age20()==null?"":dto.getFilter_age20());
+//	maap.put("filter_age30",dto.getFilter_age30()==null?"":dto.getFilter_age30());
+//	maap.put("filter_age40",dto.getFilter_age40()==null?"":dto.getFilter_age40());
+//	maap.put("filter_age50",dto.getFilter_age50()==null?"":dto.getFilter_age50());
+//	maap.put("filter_genderW",dto.getFilter_genderF()==null?"":dto.getFilter_genderF());
+//	maap.put("filter_genderM",dto.getFilter_genderM()==null?"":dto.getFilter_genderM());
 	
 	
 	
