@@ -37,7 +37,53 @@ public class SController {
 
 	
 
+
+	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String signUp(Locale locale, Model model) {
+		logger.info("회원 추가폼으로 이동 {}.", locale);
+		return "signUp";
+		}
+
+	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String insertBoard(Locale locale, Model model, membersDto dto) {
+					
+		logger.info("회원 추가합니다. {}.", locale);
+		
+		boolean isS=membersService.signUpBoard(dto);
+		if(isS) {
+			return "redirect:main.do";
+		}else {
+			model.addAttribute("msg","회원가입 실패");
+			return "error";
+		}
+
+	}
+
 	
+	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
+	public String memLogin(Locale locale, Model model) {
+	
+		return "memLogin";
+	}
+	
+	@RequestMapping(value = "/compSignUp.do")
+	public String compSignUp(Locale locale, Model model) {
+	
+		return "compSignUp";
+	}
+	
+	@RequestMapping(value = "/addProduct.do")
+	public String addProduct(Locale locale, Model model) {
+	
+		return "addProduct";
+	}
+	
+	@RequestMapping(value = "/testLogin.do")
+	public String testLogin(Locale locale, Model model) {
+	
+		return "testLogin";
+	}
+
 	//여기부터 커뮤니티 기능
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
 	public String boardlist2(Locale locale, Model model) {

@@ -65,8 +65,10 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 	 
 </insert>
 
-<insert id="singUp" parameterType='membersDto'>
-	INSERT INTO MEMBERS VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_status},#{mem_brand},#{mem_name},#{mem_nick},#{mem_phone},#{mem_email},#{mem_post},#{mem_addr1},#{mem_addr2},SYSDATE,SYSDATE,#{mem_delflag},#{mem_apprflag},#{mem_homepage})
+<insert id="singUpBoard" parameterType='membersDto'>
+	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
+MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE) 
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nick},#{mem_phone})
 </insert>
 
 
