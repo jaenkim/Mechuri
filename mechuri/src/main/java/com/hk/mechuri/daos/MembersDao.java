@@ -14,8 +14,8 @@ public class MembersDao implements IMembersDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public boolean singUp(membersDto dto) {
-		int count=sqlSession.insert(namespace+"signUp",dto);
+	public boolean signUp(membersDto dto) {
+		int count=sqlSession.insert(namespace+"signup",dto);
 		return count>0?true:false;
 		}
 

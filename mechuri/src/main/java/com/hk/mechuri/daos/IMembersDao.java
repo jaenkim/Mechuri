@@ -4,5 +4,5 @@ import com.hk.mechuri.dtos.membersDto;
 
 public interface IMembersDao {
 	
-	public boolean singUp(membersDto dto);
+	public boolean signUp(membersDto dto);
 }

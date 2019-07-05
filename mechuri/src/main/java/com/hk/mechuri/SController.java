@@ -35,16 +35,10 @@ public class SController {
 	private IMembersService membersService;
 	
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String signUp(membersDto dto, Locale locale, Model model) {
-		boolean isS=membersService.singUp(dto);
-		if(isS) {
-			return "ranking/main";
-		}else {
-			model.addAttribute("msg","회원가입 실패");
-			return "error";
+	public String signUp(membersDto dto) {
+		membersService.signUp(dto);
+		return "ranking/main";
 		}
-
-	}
 	
 	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin(Locale locale, Model model) {
