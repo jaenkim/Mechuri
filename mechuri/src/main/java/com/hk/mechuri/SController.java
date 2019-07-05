@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hk.mechuri.dtos.boardDto;
+import com.hk.mechuri.dtos.membersDto;
 import com.hk.mechuri.service.IBoardService;
+import com.hk.mechuri.service.IMembersService;
 
 /**
  * Handles requests for the application home page.
@@ -29,10 +31,19 @@ public class SController {
 	@Autowired
 	private IBoardService boardService;
 	
-	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
-	public String signUp(Locale locale, Model model) {
+	@Autowired
+	private IMembersService membersService;
 	
-		return "signUp";
+	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String signUp(membersDto dto, Locale locale, Model model) {
+		boolean isS=membersService.singUp(dto);
+		if(isS) {
+			return "ranking/main";
+		}else {
+			model.addAttribute("msg","회원가입 실패");
+			return "error";
+		}
+
 	}
 	
 	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)

@@ -252,6 +252,7 @@ input {
 </head>
 <body>
 <jsp:include page="Header.jsp" />
+<form action='signUp.do' method='post'>
 <br><br><br>
  
 			<!-- <div class="inner"> -->
@@ -279,7 +280,7 @@ input {
 						
 					</div>
 					
-						<button>회원가입하기</button>
+						<button type="submit">회원가입하기</button>
 					
 				</form>
 		<!-- 	</div>  -->
@@ -287,5 +288,6 @@ input {
 
 
 <jsp:include page="Footer.jsp" />
+</form>
 </body>
 </html>
