@@ -32,11 +32,6 @@ public class SController {
 	private IBoardService boardService;
 	
 
-	@RequestMapping(value = "/testLogin.do")
-	public String testLogin(Locale locale, Model model) {
-	
-		return "testLogin";
-	}
 
 	//여기부터 커뮤니티 기능
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
@@ -70,7 +65,7 @@ public class SController {
 		model.addAttribute("content",content); 얘는 화면에 보여줄 때만 필요한애 지금필요x*/
 		/*System.out.println( "title:["+request.getParameter("titlename")+"]");
 		System.out.println( "content:["+request.getParameter("content")+"]");*/
-		model.addAttribute("dto1",dto1);
+		
 		
 		//파일업로드
 		boolean isS = boardService.insertFileInfo(request, dto1);

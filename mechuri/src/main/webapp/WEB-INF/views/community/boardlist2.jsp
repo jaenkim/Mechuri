@@ -80,22 +80,22 @@ END MODULE AREA 1: Header 1
 START MODULE AREA 2: Article Block 1
 -->
 <section data-theme="_bgp">
-<c:forEach items="${dto1}" var="dto">
+
   <div data-layout="_r" class="MOD_ARTICLEBLOCKS1">
     <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
       <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
       
-      	
+      	<c:forEach items="${list}" var="dto">
         <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text">${dto.board_fileno }</div> <!-- 펭귄이미지 -->
 
         <div class="MOD_ARTICLEBLOCKS1_Txt">
           <h3 class="MOD_ARTICLEBLOCKS1_Title">${dto.board_title}</h3>
           <p class="MOD_ARTICLEBLOCKS1_Category">${dto.board_nick}</p>
         </div>
-        
+        </c:forEach> 
       </a>
     </div>
-</c:forEach> 
+
     
     <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
       <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
