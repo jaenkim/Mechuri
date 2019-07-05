@@ -3,11 +3,9 @@
 
 <mapper namespace="com.hk.mechuri">
 
-<<<<<<< HEAD
-
 <!-- 김재원 -->
 <select id='productlist' resultType='productDto'>
-=======
+
 <select id='productlist' resultType='productDto' parameterType="Map">
 >>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
