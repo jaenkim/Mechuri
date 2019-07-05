@@ -50,7 +50,9 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 	INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,#{board_title},#{board_conts},BOARD_ORIGINFILE) 
 </insert>
 
-
+<insert id="singupBoard" parameterType='membersDto'>
+	INSERT INTO MEMBERS VALUES(MEMBERS_SEQ.NEWXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nick},#{mem_phone})
+</insert>
 
 
 
