@@ -35,11 +35,24 @@ public class SController {
 	private IMembersService membersService;
 	
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String signUp(membersDto dto) {
-		membersService.signUp(dto);
-		return "ranking/main";
+	public String signUp(Locale locale, Model model) {
+		logger.info("회원 추가폼으로 이동 {}.", locale);
+		return "signUp";
 		}
 	
+	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String insertBoard(Locale locale, Model model, membersDto dto) {
+					
+		logger.info("회원 추가합니다. {}.", locale);
+		
+		boolean isS=membersService.signUpBoard(dto);
+		if(isS) {
+			return "redirect:main.do";
+		}else {
+			model.addAttribute("msg", "회원추가실패");
+			return "error";
+		}	
+	}
 	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin(Locale locale, Model model) {
 	

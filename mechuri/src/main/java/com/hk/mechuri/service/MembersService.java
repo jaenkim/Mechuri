@@ -13,7 +13,7 @@ public class MembersService implements IMembersService {
 	private IMembersDao membersDao;
 	
 	@Override
-	public boolean signUp(membersDto dto) {
-		return membersDao.signUp(dto);
+	public boolean signUpBoard(membersDto dto) {
+		return membersDao.signUpBoard(dto);
 	}
 }

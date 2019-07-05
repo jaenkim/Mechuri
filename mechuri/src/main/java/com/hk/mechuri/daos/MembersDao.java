@@ -9,13 +9,13 @@ import com.hk.mechuri.dtos.membersDto;
 @Repository
 public class MembersDao implements IMembersDao {
 	
-	private String namespace="com.hk.mechuri";
+	private String namespace="com.hk.mechuri.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public boolean signUp(membersDto dto) {
-		int count=sqlSession.insert(namespace+"signup",dto);
+	public boolean signUpBoard(membersDto dto) {
+		int count=sqlSession.insert(namespace+"signupboard",dto);
 		return count>0?true:false;
 		}
 
