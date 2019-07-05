@@ -6,18 +6,57 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.hk.mechuri.dtos.membersDto;
+import com.hk.mechuri.service.IMembersService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class AController {
-	
 	private static final Logger logger = LoggerFactory.getLogger(AController.class);
+	
+	@Autowired
+	private IMembersService membersService;
+	
+	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String signUp(Locale locale, Model model) {
+		logger.info("회원 추가폼으로 이동 {}.", locale);
+		return "signUp";
+		}
+
+	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String signUpBoard(Locale locale, Model model, membersDto dto) {
+					
+		logger.info("회원 추가합니다. {}.", locale);
+		
+		boolean isS=membersService.signUpBoard(dto);
+		if(isS) {
+			return "redirect:main.do";
+		}else {
+			model.addAttribute("msg","회원가입 실패");
+			return "error";
+		}
+	}
+	
+	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
+	public String memLogin(Locale locale, Model model) {
+	
+		return "memLogin";
+	}
+	
+	@RequestMapping(value = "/compSignUp.do")
+	public String compSignUp(Locale locale, Model model) {
+	
+		return "compSignUp";
+	}
+	
 	
 	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
 	public String groupbuying(Locale locale, Model model) {
