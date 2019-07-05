@@ -28,6 +28,7 @@ public class BoardDao implements IBoardDao {
 	@Override
 	public int insertBoard(boardDto dto) {	//새 글 추가
 		Map<String,Object> mapp = new HashMap<String,Object>();
+		mapp.put("board_nick", dto.getBoard_nick());
 		mapp.put("board_title", dto.getBoard_title());
 		mapp.put("board_conts", dto.getBoard_conts());
 		mapp.put("board_originfile", dto.getBoard_originfile());

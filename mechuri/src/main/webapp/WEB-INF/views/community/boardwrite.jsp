@@ -17,6 +17,12 @@
 <div class="container">
   <form action="insertWrite.do" method="post" enctype="multipart/form-data">
   <div class="row">
+  	<div class="col-25">
+      <label for="title">닉네임</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="title" name="nickname" >
+    </div>
     <div class="col-25">
       <label for="title">제목</label>
     </div>

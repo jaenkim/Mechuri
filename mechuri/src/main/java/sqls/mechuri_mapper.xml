@@ -50,8 +50,8 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 
 	
 <insert id="insertBoard" parameterType='Map'>
-	INSERT INTO BOARD(BOARD_NO,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_FILENO,BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
-	VALUES(BOARD_SEQ.NEXTVAL,#{board_title},#{board_conts},SYSDATE,BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize})
+	INSERT INTO BOARD(BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_FILENO,BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
+	VALUES(BOARD_SEQ.NEXTVAL,#{board_nick},#{board_title},#{board_conts},SYSDATE,BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize})
 </insert>
 
 <insert id="insertFileInfo" parameterType='boardDto'>

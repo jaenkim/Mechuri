@@ -70,6 +70,7 @@ public class BoardService implements IBoardService {
 		
 		String board_title = dto.getBoard_title();
 		String board_conts = dto.getBoard_conts();
+		String board_nick = dto.getBoard_nick();
 		System.out.println("서비스에서 타이틀 파라미터 확인 ["+dto.getBoard_title()+"]");
 		int isS = 0;
 		MultipartHttpServletRequest multi=(MultipartHttpServletRequest)request;
@@ -90,13 +91,14 @@ public class BoardService implements IBoardService {
 			System.out.println("서비스try문 안 위 multi["+multiFile+"]");
 			multiFile.transferTo(f);
 //			boardDao.insertBoard(dto);
+			System.out.println("서비스에서 확인하는 닉네임: ["+board_nick+"]");
 			System.out.println("서비스에서 확인하는 글제목: ["+board_title+"]");
 			System.out.println("서비스에서 확인하는 글내용: ["+board_conts+"]");
 			System.out.println("서비스에서 확인하는 원본파일명: ["+board_originfile+"]");
 			System.out.println("서비스에서 확인하는 파일저장명: ["+board_storedfile+"]");
 			System.out.println("서비스에서 확인하는 파일크기(숫자): ["+board_filesize+"]");
 			
-			isS=boardDao.insertBoard(new boardDto(board_title,board_conts,board_originfile,board_storedfile,board_filesize));	
+			isS=boardDao.insertBoard(new boardDto(board_nick,board_title,board_conts,board_originfile,board_storedfile,board_filesize));	
 			System.out.println("서비스try문 안 아래 multi["+multiFile+"]");
 		} catch (IllegalStateException e) {
 			e.printStackTrace();

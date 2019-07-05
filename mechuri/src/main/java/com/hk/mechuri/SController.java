@@ -37,18 +37,6 @@ public class SController {
 
 	
 
-	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String signUp(membersDto dto, Locale locale, Model model) {
-		boolean isS=membersService.singUp(dto);
-		if(isS) {
-			return "ranking/main";
-		}else {
-			model.addAttribute("msg","회원가입 실패");
-			return "error";
-		}
-
-	}
-
 	
 	//여기부터 커뮤니티 기능
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
@@ -73,12 +61,16 @@ public class SController {
 		
 		String title = request.getParameter("titlename");
 		String content = request.getParameter("content");
+		String nick = request.getParameter("nickname");
 		
-		boardDto dto1 = new boardDto(title,content);
-		/*model.addAttribute("titlename",titlename);
-		model.addAttribute("content",content); 얘는 화면에 보여줄 때만 필요한애 지금필요x
-		System.out.println( "title:["+request.getParameter("titlename")+"]");
+		boardDto dto1 = new boardDto(nick,title,content);
+		
+		/*model.addAttribute("nickname",nickname);
+		model.addAttribute("titlename",titlename);
+		model.addAttribute("content",content); 얘는 화면에 보여줄 때만 필요한애 지금필요x*/
+		/*System.out.println( "title:["+request.getParameter("titlename")+"]");
 		System.out.println( "content:["+request.getParameter("content")+"]");*/
+		model.addAttribute("dto1",dto1);
 		
 		//파일업로드
 		boolean isS = boardService.insertFileInfo(request, dto1);
@@ -90,6 +82,7 @@ public class SController {
 			logger.info("파일업로드 실패");
 			return "insertWrite";
 		}
+		
 	}
 	
 	
