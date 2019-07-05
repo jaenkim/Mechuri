@@ -14,6 +14,6 @@ public class MembersService implements IMembersService {
 	
 	@Override
 	public boolean signUpBoard(membersDto dto) {
-		return membersDao.signUpBoard(dto);
+		return membersDao.signUpBoard(dto); 
 	}
 }
