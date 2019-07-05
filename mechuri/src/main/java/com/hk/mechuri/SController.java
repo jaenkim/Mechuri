@@ -31,14 +31,12 @@ public class SController {
 	@Autowired
 	private IBoardService boardService;
 	
-<<<<<<< HEAD
-=======
+
 	@Autowired
 	private IMembersService membersService;
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
+
 	
-<<<<<<< HEAD
-=======
+
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String signUp(membersDto dto, Locale locale, Model model) {
 		boolean isS=membersService.singUp(dto);
@@ -50,7 +48,7 @@ public class SController {
 		}
 
 	}
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
+
 	
 	//여기부터 커뮤니티 기능
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
