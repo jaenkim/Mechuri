@@ -45,24 +45,46 @@ public class HomeController {
 		return "ranking/list";
 		
 		}else if(command.equals("filter")) {
-			
 			String filter_age10 = request.getParameter("filter_age10");
 			String filter_age20 = request.getParameter("filter_age20");
 			String filter_age30 = request.getParameter("filter_age30");
 			String filter_age40 = request.getParameter("filter_age40");
 			String filter_age50 = request.getParameter("filter_age50");
-			String filter_genderW = request.getParameter("filter_genderW");
+			String filter_genderF = request.getParameter("filter_genderF");
 			String filter_genderM = request.getParameter("filter_genderM");
 			String filter_catelname = request.getParameter("filter_catelname");
 			String filter_catesname = request.getParameter("filter_catesname");
-			String filter_price = request.getParameter("filter_price");
-			System.out.println("컨트롤러에서 출력 filter_age10 ["+filter_age10+"]");
-			System.out.println("컨트롤러에서 출력 filter_catelname ["+filter_catelname+"]");
-			System.out.println("컨트롤러에서 출력 filter_catesname ["+filter_catesname+"]");
-			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderW,filter_genderM, filter_catelname, filter_catesname,filter_price);
+			
+//			if(request.getParameter("filter_age10").equals("전체,10대")) {filter_age10 = request.getParameter("filter_age10");}
+//			else {filter_age10 = "전체";}
+//			
+//			if(request.getParameter("filter_age20").equals("전체,20대")) {	filter_age20 = request.getParameter("filter_age20");}
+//			else {filter_age20 = "전체";}
+//			
+//			if(request.getParameter("filter_age30").equals("전체,30대")) {	filter_age30 = request.getParameter("filter_age30");}
+//			else {filter_age30 = "전체";}
+//			
+//			if(request.getParameter("filter_age40").equals("전체,40대")) {	filter_age40 = request.getParameter("filter_age40");}
+//			else {filter_age40 = "전체";}
+//			
+//			if(request.getParameter("filter_age50").equals("전체,50대 이상")) {filter_age50 = request.getParameter("filter_age50");}
+//			else {filter_age50 = "전체";}
+//			
+//			if(request.getParameter("filter_genderF").equals("전체,여성")) {filter_genderF = request.getParameter("filter_genderF");}
+//			else {filter_genderF = "전체";}
+//			
+//			if(request.getParameter("filter_genderM").equals("전체,남성")) {filter_genderM = request.getParameter("filter_genderM");}
+//			else {filter_genderM = "전체";}
+//			
+//			if(!(request.getParameter("filter_catelname").equals("전체"))) {filter_catelname = request.getParameter("filter_catelname");}
+//			else {filter_catelname = "전체";}
+//			
+//			if(!(request.getParameter("filter_catesname").equals("전체"))) {filter_catesname = request.getParameter("filter_catesname");}
+//			else {filter_catesname = "전체";}
+				
+			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderF,filter_genderM, filter_catelname, filter_catesname);
 			List<productDto>list2 = rankService.getFilterProductList(dto);
 			model.addAttribute("list",list2);
-			
 			
 			return "ranking/list";
 		}
