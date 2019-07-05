@@ -63,7 +63,7 @@ public class AController {
 	}
 	@RequestMapping(value = "/groupbuyingContents8.do", method = RequestMethod.GET)
 	public String groupbuyingContents8(Locale locale, Model model) {
-	
+		System.out.println("test");
 		return "groupbuyingContents8";
 	}
 }	
