@@ -25,7 +25,9 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 	 		PRODUCT_AGE = #{filter_age40} OR
 	 		PRODUCT_AGE = #{filter_age50} OR
 	 		PRODUCT_GENDER = #{filter_genderW} OR
-	 		PRODUCT_GENDER = #{filter_genderM}
+	 		PRODUCT_GENDER = #{filter_genderM} OR
+	 		PRODUCT_CATELNAME = #{filter_catelname} OR
+	 		PRODUCT_CATESNAME = #{filter_catesname}
  ORDER BY PRODUCT_POINT DESC NULLS LAST,PRODUCT_NAME ASC
 </select>
 

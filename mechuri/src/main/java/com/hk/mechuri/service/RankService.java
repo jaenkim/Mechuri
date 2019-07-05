@@ -23,7 +23,9 @@ public class RankService implements iRankService {
 	
 	@Override
 	public List<productDto> getFilterProductList(filterDto dto){
-		System.out.println("service에서 출력한 10대의 값: ["+dto.getFilter_age10());
+		System.out.println("service에서 출력한 10대의 값: ["+dto.getFilter_age10()+"]");
+		System.out.println("service에서 출력한 카테고리 대분류대의 값: ["+dto.getFilter_catelname()+"]");
+		System.out.println("service에서 출력한 카테고리 소분류대의 값: ["+dto.getFilter_catesname()+"]");
 		return rankDao.getFilterProductList(dto);
 	}
 	

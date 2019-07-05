@@ -55,8 +55,11 @@ public class HomeController {
 			String filter_genderM = request.getParameter("filter_genderM");
 			String filter_catelname = request.getParameter("filter_catelname");
 			String filter_catesname = request.getParameter("filter_catesname");
+			String filter_price = request.getParameter("filter_price");
 			System.out.println("컨트롤러에서 출력 filter_age10 ["+filter_age10+"]");
-			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderW,filter_genderM, filter_catelname, filter_catesname);
+			System.out.println("컨트롤러에서 출력 filter_catelname ["+filter_catelname+"]");
+			System.out.println("컨트롤러에서 출력 filter_catesname ["+filter_catesname+"]");
+			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderW,filter_genderM, filter_catelname, filter_catesname,filter_price);
 			List<productDto>list2 = rankService.getFilterProductList(dto);
 			model.addAttribute("list",list2);
 			
