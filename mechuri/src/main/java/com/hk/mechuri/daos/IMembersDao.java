@@ -1,5 +1,8 @@
 package com.hk.mechuri.daos;
 
-public interface IMembersDao {
+import com.hk.mechuri.dtos.membersDto;
 
+public interface IMembersDao {
+	
+	public boolean singUp(membersDto dto);
 }
