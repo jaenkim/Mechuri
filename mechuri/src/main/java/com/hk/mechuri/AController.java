@@ -26,15 +26,15 @@ public class AController {
 	private IMembersService membersService;
 	
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String signUp(Locale locale, Model model) {
-		logger.info("회원 추가폼으로 이동 {}.", locale);
+	public String signUp(Model model) {
+		logger.info("회원 추가폼으로 이동 {}.");
 		return "signUp";
 		}
 
 	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public String signUpBoard(Locale locale, Model model, membersDto dto) {
+	public String signUpBoard(Model model, membersDto dto) {
 					
-		logger.info("회원 추가합니다. {}.", locale);
+		logger.info("회원 추가합니다. {}.");
 		
 		boolean isS=membersService.signUpBoard(dto);
 		if(isS) {
@@ -46,62 +46,62 @@ public class AController {
 	}
 	
 	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
-	public String memLogin(Locale locale, Model model) {
+	public String memLogin( Model model) {
 	
 		return "memLogin";
 	}
 	
 	@RequestMapping(value = "/compSignUp.do")
-	public String compSignUp(Locale locale, Model model) {
+	public String compSignUp(Model model) {
 	
 		return "compSignUp";
 	}
 	
 	
 	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
-	public String groupbuying(Locale locale, Model model) {
+	public String groupbuying(Model model) {
 	
 		return "groupbuying";
 	}
 	
 	@RequestMapping(value = "/groupbuyingContents.do", method = RequestMethod.GET)
-	public String groupbuyingContents(Locale locale, Model model) {
+	public String groupbuyingContents(Model model) {
 	
 		return "groupbuyingContents";
 	}
 	@RequestMapping(value = "/groupbuyingContents2.do", method = RequestMethod.GET)
-	public String groupbuyingContents2(Locale locale, Model model) {
+	public String groupbuyingContents2(Model model) {
 	
 		return "groupbuyingContents2";
 	}
 	@RequestMapping(value = "/groupbuyingContents3.do", method = RequestMethod.GET)
-	public String groupbuyingContents3(Locale locale, Model model) {
+	public String groupbuyingContents3(Model model) {
 	
 		return "groupbuyingContents3";
 	}
 	
 	@RequestMapping(value = "/groupbuyingContents4.do", method = RequestMethod.GET)
-	public String groupbuyingContents4(Locale locale, Model model) {
+	public String groupbuyingContents4(Model model) {
 	
 		return "groupbuyingContents4";
 	}
 	@RequestMapping(value = "/groupbuyingContents5.do", method = RequestMethod.GET)
-	public String groupbuyingContents5(Locale locale, Model model) {
+	public String groupbuyingContents5(Model model) {
 	
 		return "groupbuyingContents5";
 	}
 	@RequestMapping(value = "/groupbuyingContents6.do", method = RequestMethod.GET)
-	public String groupbuyingContents6(Locale locale, Model model) {
+	public String groupbuyingContents6(Model model) {
 	
 		return "groupbuyingContents6";
 	}
 	@RequestMapping(value = "/groupbuyingContents7.do", method = RequestMethod.GET)
-	public String groupbuyingContents7(Locale locale, Model model) {
+	public String groupbuyingContents7(Model model) {
 	
 		return "groupbuyingContents7";
 	}
 	@RequestMapping(value = "/groupbuyingContents8.do", method = RequestMethod.GET)
-	public String groupbuyingContents8(Locale locale, Model model) {
+	public String groupbuyingContents8(Model model) {
 		System.out.println("test");
 		return "groupbuyingContents8";
 	}
