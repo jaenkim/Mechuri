@@ -4,7 +4,7 @@
 <mapper namespace="com.hk.mechuri">
 
 <!-- 김재원 -->
-<select id='productlist' resultType='productDto'>
+<!-- <select id='productlist' resultType='productDto'> -->
 
 <select id='productlist' resultType='productDto' parameterType="Map">
 >>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
@@ -79,8 +79,5 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 
 
 
-
-
-
-
 </mapper>
+
