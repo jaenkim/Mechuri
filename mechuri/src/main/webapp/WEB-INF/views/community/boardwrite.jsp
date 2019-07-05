@@ -17,6 +17,12 @@
 <div class="container">
   <form action="insertWrite.do" method="post" enctype="multipart/form-data">
   <div class="row">
+  	<div class="col-25">
+      <label for="title">닉네임</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="title" name="nickname" >
+    </div>
     <div class="col-25">
       <label for="title">제목</label>
     </div>
@@ -30,17 +36,17 @@
       <label for="content">내용</label>
     </div>
     <div class="col-75">
-      <textarea id="content" name="content" style="height:200px"></textarea>
+      <input type="text" id="content" name="content" style="height:200px" >
     </div>
   </div>
   <br>
   <br>
 	<div class="file_input">
-    <label>
-        	파일첨부
-        <input type="file" onchange="javascript:document.getElementById('file_route').value=this.value">
+    <label>파일첨부
+   	 <input type="file" name="filename" required="required" onchange="javascript:document.getElementById('file_route').value=this.value"/>
     </label>
     <input type="text" readonly="readonly" title="File Route" id="file_route">
+    
 	</div>
 
   <br>

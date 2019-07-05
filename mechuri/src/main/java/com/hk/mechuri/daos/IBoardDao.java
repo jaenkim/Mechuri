@@ -10,9 +10,9 @@ public interface IBoardDao {
 	//커뮤니티 리스트 출력
 	
 	
-	public boolean insertBoard(boardDto dto);
+	public int insertBoard(boardDto dto);
 	//새 글 추가: insert문, 결과값 반환x, 파라미터: id,title,content
-	
+
 	
 	public boardDto getBoard(int no);
 	//글 상세보기: select문, 결과: DTO, 파라미터: seq

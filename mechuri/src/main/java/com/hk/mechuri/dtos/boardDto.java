@@ -62,16 +62,21 @@ public class boardDto {
 	}
 
 
-	public boardDto(String board_originfile, String board_storedfile, int board_filesize) {
-		// TODO Auto-generated constructor stub
+	public boardDto(String board_nick,String board_title, String board_conts, String board_originfile, String board_storedfile, int board_filesize) {
+		super();
+		this.board_nick = board_nick;
+		this.board_title = board_title;
+		this.board_conts = board_conts;
+		this.board_originfile = board_originfile;
+		this.board_storedfile = board_storedfile;
+		this.board_filesize = board_filesize;
 	}
 
-
-
-
-
-	public boardDto(String title, String content) {
-		// TODO Auto-generated constructor stub
+	public boardDto(String nick,String title, String content) {
+		super();
+		this.board_nick = nick;
+		this.board_title = title;
+		this.board_conts = content;
 	}
 
 

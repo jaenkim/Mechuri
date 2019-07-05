@@ -252,7 +252,7 @@ input {
 </head>
 <body>
 <jsp:include page="Header.jsp" />
-<form action='signUp.do' method='post'>
+<form action='signUpBoard.do' method='post'>
 <br><br><br>
  
 			<!-- <div class="inner"> -->

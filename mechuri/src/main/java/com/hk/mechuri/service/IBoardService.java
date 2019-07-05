@@ -11,7 +11,8 @@ public interface IBoardService {
 	
 	public List<boardDto> getAllList();
 	
-	public boolean insertBoard(boardDto dto);
+	/*public int insertBoard(boardDto dto);*/
+	public boolean insertFileInfo(HttpServletRequest request,boardDto dto);
 	
 	public boardDto getBoard(int no);
 	
@@ -25,8 +26,6 @@ public interface IBoardService {
 	
 	
 	//여기부터 파일 업로드
-	public boolean insertFileInfo(HttpServletRequest request);
-		
 	public List<boardDto> getFileList();
 		
 	public boardDto getFileInfo (int board_fileno);

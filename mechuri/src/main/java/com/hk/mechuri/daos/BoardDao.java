@@ -1,6 +1,8 @@
 package com.hk.mechuri.daos;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,24 @@ public class BoardDao implements IBoardDao {
 	
 
 	@Override
-	public boolean insertBoard(boardDto dto) {	//새 글 추가
-		int count=sqlSession.insert(namespace+"boardwrite",dto);
+	public int insertBoard(boardDto dto) {	//새 글 추가
+		Map<String,Object> mapp = new HashMap<String,Object>();
+		mapp.put("board_nick", dto.getBoard_nick());
+		mapp.put("board_title", dto.getBoard_title());
+		mapp.put("board_conts", dto.getBoard_conts());
+		mapp.put("board_originfile", dto.getBoard_originfile());
+		mapp.put("board_storedfile", dto.getBoard_storedfile());
+		mapp.put("board_filesize", dto.getBoard_filesize());
+		System.out.println("다오에서 확인하는 글제목: ["+dto.getBoard_title()+"]");
+		System.out.println("다오에서 확인하는 글내용: ["+mapp.get("board_conts")+"]");
+		System.out.println("다오에서 확인하는 원본파일명: ["+dto.getBoard_originfile()+"]");
+		System.out.println("다오에서 확인하는 파일저장명(mapp에 저장된 이름): ["+mapp.get("board_storedfile")+"]");
+		System.out.println("다오에서 확인하는 파일크기(숫자): ["+dto.getBoard_filesize()+"]");
+		return sqlSession.insert(namespace+"insertBoard",mapp);
+	}	
+	@Override
+	public boolean insertFileInfo(boardDto dto) {
+		int count=sqlSession.insert(namespace+"insertBoard",dto);
 		return count>0?true:false;
 	}
 
@@ -66,11 +84,6 @@ public class BoardDao implements IBoardDao {
 	}
 
 //여기부터는 첨부파일
-	@Override
-	public boolean insertFileInfo(boardDto dto) {
-		int count=sqlSession.insert(namespace+"insertfile",dto);
-		return false;
-	}
 
 
 	@Override
