@@ -15,17 +15,18 @@
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-
-	<div>
-	<img class="aromatic_Picture" src="images/aromatic1.jpg" alt="" style = "padding: 0px 0px 30px 20px;">
-	</div>
+	<h2>공동구매</h2>
+	
+	<img class="onthe_Picture" src="images/onthebody2.jpg" alt="">
+	
+	
+	
 	
 	
 	<jsp:include page="Footer.jsp" />
-	<script src="assets/js/groupbuying.js"></script>
+	<script src="hera/js/groupbuying.js"></script>
 </body>
 </html>

@@ -18,8 +18,8 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<h2>공동구매</h2>
 	<section class="MOD_FEATURE">
+	<h2 style="text-align:center">공동구매</h2>
 	<div data-layout="_r">
 		<div data-layout="ch8 ec4">
 			<a href="#" class="MOD_FEATURE_Container"> 

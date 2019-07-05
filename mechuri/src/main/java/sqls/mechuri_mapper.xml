@@ -25,7 +25,9 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 	 		PRODUCT_AGE = #{filter_age40} OR
 	 		PRODUCT_AGE = #{filter_age50} OR
 	 		PRODUCT_GENDER = #{filter_genderW} OR
-	 		PRODUCT_GENDER = #{filter_genderM}
+	 		PRODUCT_GENDER = #{filter_genderM} OR
+	 		PRODUCT_CATELNAME = #{filter_catelname} OR
+	 		PRODUCT_CATESNAME = #{filter_catesname}
  ORDER BY PRODUCT_POINT DESC NULLS LAST,PRODUCT_NAME ASC
 </select>
 
@@ -63,7 +65,9 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 	 
 </insert>
 
-
+<insert id="singUp" parameterType='membersDto'>
+	INSERT INTO MEMBERS VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_status},#{mem_brand},#{mem_name},#{mem_nick},#{mem_phone},#{mem_email},#{mem_post},#{mem_addr1},#{mem_addr2},SYSDATE,SYSDATE,#{mem_delflag},#{mem_apprflag},#{mem_homepage})
+</insert>
 
 
 
