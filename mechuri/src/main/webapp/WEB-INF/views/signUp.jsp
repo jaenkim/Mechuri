@@ -256,7 +256,7 @@ input {
 <br><br><br>
  
 			<!-- <div class="inner"> -->
-				<form action="">
+				
 					<h3>일반회원 가입</h3>
 					<div class="form-holder">
 						<input type="text" placeholder="아이디" class="form-control">

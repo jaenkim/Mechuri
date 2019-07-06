@@ -28,7 +28,7 @@ public class AController {
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String signUp(Model model) {
 		logger.info("회원 추가폼으로 이동 {}.");
-		return "signUp";
+		return "signUp"; 
 		}
 
 	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
