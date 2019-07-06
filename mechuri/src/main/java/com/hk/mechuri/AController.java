@@ -25,18 +25,18 @@ public class AController {
 	@Autowired
 	private IMembersService membersService;
 	
-	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
+	/*@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String signUp(Model model) {
 		logger.info("회원 추가폼으로 이동 {}.");
 		return "signUp";
-		}
+		}*/
 
-	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String signUpBoard(Model model, membersDto dto) {
 					
 		logger.info("회원 추가합니다. {}.");
 		
-		boolean isS=membersService.signUpBoard(dto);
+		boolean isS=membersService.signUp(dto);
 		if(isS) {
 			return "redirect:main.do";
 		}else {
