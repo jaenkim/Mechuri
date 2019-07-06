@@ -40,8 +40,8 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE FROM BOARD
 
-	<!-- SELECT BOARD_NO,BOARD_TITLE,BOARD_NICK,BOARD_REGDATE,BOARD_COUNT FROM BOARD  -->
-	<if test="seq != null"> <!-- if문 같은 다이나믹쿼리를 쓸 때는 파라미터타입을 꼭 Map으로 해야함 그래야 seq가 인식가능 -->
+	
+	<if test="board_no != null"> <!-- if문 같은 다이나믹쿼리를 쓸 때는 파라미터타입을 꼭 Map으로 해야함 그래야 seq가 인식가능 -->
 			<where>
 			 	<include refid="param" />
 			</where>
@@ -49,25 +49,42 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 		ORDER BY BOARD_NO
 	</select>
 	<sql id="param">
-		SEQ=#{seq}
+		BOARD_NO=#{board_no}
 	</sql>
 
-	
+	<!-- 커뮤니티 글추가 -->
 <insert id="insertBoard" parameterType='Map'>
 	INSERT INTO BOARD(BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_FILENO,BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
 	VALUES(BOARD_SEQ.NEXTVAL,#{board_nick},#{board_title},#{board_conts},SYSDATE,BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize})
 </insert>
 
-<insert id="insertFileInfo" parameterType='boardDto'>
-	<!-- INSERT INTO BOARD(BOARD_SEQ.NEXTVAL,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
-	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE) -->
+	<!-- 커뮤니티 디테일 -->
+<select id="getboard" resultType='BoardDto' parameterType="int">
+	 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
+	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE FROM BOARD WHERE BOARD_NO=#{board_no}
+</select>
+	<!-- 커뮤니티 상세글 수정 -->
+<select id="updateboard" resultType="BoardDto">
+	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE WHERE BOARD_NO=#{board_no}
+</select>
+	
+	
+	
+<select id="delboard" resultType="boardDto" parameterType="int">
+	DELETE FROM BOARD WHERE BOARD_NO=#{board_no}
+</select>
+
+	<!-- 커뮤니티 첨부파일 -->
+<!-- <insert id="insertFileInfo" parameterType='boardDto'>
+	INSERT INTO BOARD(BOARD_SEQ.NEXTVAL,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
+	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
 	 UPDATE BOARD SET BOARD_FILENO=BOARDFILE_SEQ.NEXTVAL,BOARD_ORIGINFILE=#{board_originfile},BOARD_STOREDFILE=#{board_storedfile},
 	 BOARD_FILEREGDATE=SYSDATE, BOARD_FILESIZE=#{board_filesize} WHERE BOARD_NO=#{board_no}
 	 
 	 (BOARD_FILENO,BOARD_ORIIGINFILE, BOARD_STOREDFILE, BOARD_FILEREGDATE,BOARD_FILESIZE) 
 	 VALUES(BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize}) WHERE 
 	 
-</insert>
+</insert> -->
 
 <insert id="singUpBoard" parameterType='membersDto'>
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,

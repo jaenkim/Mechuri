@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html;charset=utf-8"); %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -55,11 +55,125 @@
 
 </head>
 <!-- End Head -->
+<body class="default">
+	<jsp:include page="../Header.jsp"/>
+<!--
+START MODULE AREA 1: header1
+-->
+<br><br><br><br>
+<header class="MOD_HEADER1">
+  <div data-layout="_r">
+    <div data-layout="al16 de10" class="MOD_HEADER1_Title">
+      <h1 class="MOD_HEADER1_TextLogo">메추리톡</h1>
+      <p class="MOD_HEADER1_Slogan">메추리 회원들의 커뮤니티 공간입니다</p>
+      <br>
+      <button id= "postbutton" class="button" onclick="location.href='boardwrite.do'">글 쓰기</button>
+    </div>
+  </div>
+</header>
+<!--
+END MODULE AREA 1: Header 1
+-->
 
-<body>
+<!--
+START MODULE AREA 2: Article Block 1
+-->
+<section data-theme="_bgp">
 
 
-<table border="1">
+
+  <div data-layout="_r" class="MOD_ARTICLEBLOCKS1" a href="boardDetail.do?seq=${dto.board_no}">
+  
+  
+
+    <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
+
+        <div class="MOD_ARTICLEBLOCKS1_Txt">
+          <h3 class="MOD_ARTICLEBLOCKS1_Title">트러블 자국 케어법</h3>
+          <p class="MOD_ARTICLEBLOCKS1_Category">혜0</p>
+        </div>
+      </a>
+    </div>
+    
+    
+        <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
+
+        <div class="MOD_ARTICLEBLOCKS1_Txt">
+          <h3 class="MOD_ARTICLEBLOCKS1_Title">헤어스프레이 추천할게요ㅋㅋ</h3>
+          <p class="MOD_ARTICLEBLOCKS1_Category">상희상희</p>
+        </div>
+      </a>
+    </div>
+    
+        <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
+
+        <div class="MOD_ARTICLEBLOCKS1_Txt">
+          <h3 class="MOD_ARTICLEBLOCKS1_Title">올리브영 세일 언제해요?</h3>
+          <p class="MOD_ARTICLEBLOCKS1_Category">강쌤</p>
+        </div>
+      </a>
+    </div>
+    
+    
+      <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
+      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
+
+        <div class="MOD_ARTICLEBLOCKS1_Txt">
+          <h3 class="MOD_ARTICLEBLOCKS1_Title">랄라블라 세일 언제해요?</h3>
+          <p class="MOD_ARTICLEBLOCKS1_Category">곽쌤</p>
+        </div>
+      </a>
+    </div>
+  
+  <c:forEach items="${list}" var="dto">
+    <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont" >
+      <a href="boardDetail.do?board_no=${dto.board_no}" class="MOD_ARTICLEBLOCKS1_BlockSmall">
+      
+      	
+        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text" >${dto.board_fileno}</div> 
+		
+        <div class="MOD_ARTICLEBLOCKS1_Txt">
+          <h3 class="MOD_ARTICLEBLOCKS1_Title">${dto.board_title}</h3>
+          <p class="MOD_ARTICLEBLOCKS1_Category">${dto.board_nick}</p>
+        </div>
+        
+      </a>
+    </div>
+
+
+    </c:forEach> 
+    </div>
+   
+ 
+
+</section>
+
+
+
+
+
+
+
+<jsp:include page="../Footer.jsp"/>
+</body>
+
+
+
+
+
+
+
+
+
+
+<%-- <table border="1">
 	<tr>	
 		<th colspan='3'>이미지</th>
 	</tr>
@@ -83,10 +197,10 @@
 			<input type="submit" value="글삭제" />
 		</td>
 	</tr>
-</table>
+</table> --%>
 
 	
-</body>
+
 
 </html>
 			

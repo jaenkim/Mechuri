@@ -48,25 +48,24 @@ public class BoardDao implements IBoardDao {
 	}
 
 	@Override
-	public boardDto getBoard(int no) {
-		// TODO Auto-generated method stub
-		return null;
+	public boardDto getBoard(int board_no) {
+		return sqlSession.selectOne(namespace+"getboard",board_no);
 	}
 
 	@Override
 	public boolean updateBoard(boardDto dto) {
-		// TODO Auto-generated method stub
+		int count=sqlSession.update(namespace+"updateboard",dto);
 		return false;
 	}
 
 	@Override
-	public boolean muldel(String[] seqs) {
-		// TODO Auto-generated method stub
+	public boolean delBoard(int board_no) {
+		int count=sqlSession.delete(namespace+"delboard",board_no);
 		return false;
 	}
 
 	@Override
-	public int replyUpdate(int no) {
+	public int replyUpdate(int board_no) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -78,7 +77,7 @@ public class BoardDao implements IBoardDao {
 	}
 
 	@Override
-	public boolean readCount(int seq) {
+	public boolean readCount(int board_no) {
 		// TODO Auto-generated method stub
 		return false;
 	}

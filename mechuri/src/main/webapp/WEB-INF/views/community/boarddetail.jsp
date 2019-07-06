@@ -6,47 +6,49 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판 상세보기</title>
+<title>게시판 상세보기 폼</title>
 <link rel="stylesheet" href="commAssets/css/boarddetail.css">
-
 </head>
 <body>
 <jsp:include page="../Header.jsp"/>
-
 <br><br><br>
+
 <div class="container">
   <form action="#">
   <div class="row">
-    <div id="writerDate">2019-07-03, 17:00</div><br>
+    <div id="writerDate">${dto.board_regdate}</div><br>
     <div class="col-25">
       <label for="title">제목</label>
     </div>
     <div class="col-75">
-      <input type="text" id="title" name="titlename" value="이니스프리 1+1 행사 한대요" readonly="readonly">
+      <input type="text" id="title" name="titlename" value="${dto.board_title}" readonly="readonly">
     </div>
   </div>
   
-    <div class="row">
+  <div class="row">
     <div class="col-25">
       <label for="writernick">작성자</label>
     </div>
     <div class="col-75">
-      <input type="text" id="writernick" name="writernick" value="승승" readonly="readonly">
+      <input type="text" id="writernick" name="writernick" value="${dto.board_nick}" readonly="readonly">
     </div>
   </div>
   
   
-  
-  
-  
- 
   <div class="row">
     <div class="col-25">
       <label for="content">내용</label>
     </div>
     <div class="col-75">
-      <textarea id="content" name="content" style="height:200px" readonly="readonly">전품목 1+1 행사 한대요~뭐살까~</textarea>
+      <textarea id="content" name="content" style="height:200px" readonly="readonly">${dto.board_conts}</textarea>
     </div>
+  </div>
+  
+  <br>
+  <div>
+	<input type="button" value="수정" onclick="updateBoard()" />
+	<input type="button" value="삭제" onclick="delBoard('${dto.board_no}')"/>
+	<input type="button" value="글목록" onclick="location.href='boardlist2.do'" />
   </div>
   
 <!--   <br> -->
@@ -105,6 +107,20 @@
 </div>
 <br><br><br>
 <jsp:include page="../Footer.jsp"/>
+
+
+<script type="text/javascript">
+	//글 삭제하기 
+	function delBoard(board_no) {
+		location.href="boardDelete.do?board_no=${dto.board_no}"; 
+	}
+	//수정폼으로 이동
+	function updateBoard() {
+		location.href="updateForm.do?board_no=${dto.board_no}";
+	}
+	
+</script>
+
 
 </body>
 </html>
