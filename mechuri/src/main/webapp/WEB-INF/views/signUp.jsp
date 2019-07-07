@@ -280,7 +280,7 @@ input {
 						
 					</div>
 					
-						<button type="submit">회원가입하기</button>
+						<input type="submit" value="회원가입하기">
 					
 				</form>
 		<!-- 	</div>  -->
