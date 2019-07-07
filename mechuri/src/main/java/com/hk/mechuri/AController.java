@@ -71,7 +71,12 @@ public class AController {
 		}
 	}
 
+	@RequestMapping(value = "/Callback.do", method = RequestMethod.GET)
+	public String Callback(Model model) {
 
+		return "Callback";
+	}
+	
 	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
 	public String groupbuying(Model model) {
 
