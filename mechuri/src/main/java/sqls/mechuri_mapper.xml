@@ -93,7 +93,8 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	,#{mem_addr1},#{mem_addr2},#{mem_addr2},SYSDATE,#{mem_delflag},#{mem_apprflag})
 </insert>
 
-
+<!-- INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_NAME,MEM_NICK,MEM_PHONE) 
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nick},#{mem_phone}) -->
 
 
 
