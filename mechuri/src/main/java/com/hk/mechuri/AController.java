@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hk.mechuri.dtos.membersDto;
 import com.hk.mechuri.service.IMembersService;
@@ -21,6 +22,8 @@ import com.hk.mechuri.service.IMembersService;
  * Handles requests for the application home page.
  */
 @Controller
+
+
 public class AController {
 	private static final Logger logger = LoggerFactory.getLogger(AController.class);
 
@@ -46,6 +49,9 @@ public class AController {
 			return "error";
 		}
 	}
+	
+
+	
 
 	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin( Model model) {
