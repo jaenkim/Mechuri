@@ -259,22 +259,22 @@ input {
 				
 					<h3>일반회원 가입</h3>
 					<div class="form-holder">
-						<input type="text" placeholder="아이디" class="form-control">
+						<input type="text" placeholder="아이디" name="mem_id" class="form-control">
 					</div>
 					<div class="form-holder">
-						<input type="text" placeholder="비밀번호" class="form-control">
+						<input type="text" placeholder="비밀번호" name="mem_pw" class="form-control">
 					</div>
 					<div class="form-holder">
 						<input type="password" placeholder="비밀번호 확인" class="form-control" style="font-size: 15px;">
 					</div>
 					<div class="form-holder">
-						<input type="password" placeholder="이름" class="form-control" style="font-size: 15px;">
+						<input type="text" placeholder="이름" name="mem_name" class="form-control" style="font-size: 15px;">
 					</div>
 					<div class="form-holder">
-						<input type="password" placeholder="별명" class="form-control" style="font-size: 15px;">
+						<input type="text" placeholder="별명" name="mem_nick" class="form-control" style="font-size: 15px;">
 					</div>
 					<div class="form-holder">
-						<input type="password" placeholder="핸드폰" class="form-control" style="font-size: 15px;">
+						<input type="text" placeholder="핸드폰" name="mem_phone" class="form-control" style="font-size: 15px;">
 					</div>
 					<div class="checkbox">
 						
@@ -288,6 +288,6 @@ input {
 
 
 <jsp:include page="Footer.jsp" />
-</form>
+
 </body>
 </html>
