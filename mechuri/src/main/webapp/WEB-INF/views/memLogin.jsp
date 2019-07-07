@@ -1867,7 +1867,18 @@ body>#login form .idpw {
       </div>
     </div>
     
-	
+	<div id="naver_id_login"></div>  <!-- '네이버 아이디로 로그인하기' 버튼 -->
+ <script type="text/javascript">
+ 		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
+											// 단 'localhost'가 포함된 CallBack URL
+ 		var state = naver_id_login.getUniqState();
+		
+ 		naver_id_login.setButton("white", 2, 40);
+ 		naver_id_login.setDomain("http://127.0.0.1:8888/mechuri/memLogin.do");	//  URL
+ 		naver_id_login.setState(state);
+ 		naver_id_login.setPopup();
+ 		naver_id_login.init_naver_id_login();
+	</script>
 	
     <div id="sign_in_options" class="field_container">
         <div id="sign_in_alternatives_container">
