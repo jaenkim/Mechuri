@@ -22,7 +22,7 @@ import com.hk.mechuri.service.IMembersService;
  * Handles requests for the application home page.
  */
 @Controller
-
+@SessionAttributes({"mem_no", "mem_id", "mem_name", "mem_status", "mem_brand", "mem_nick"})
 
 public class AController {
 	private static final Logger logger = LoggerFactory.getLogger(AController.class);
