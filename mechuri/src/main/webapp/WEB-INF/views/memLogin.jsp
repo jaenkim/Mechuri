@@ -1821,8 +1821,15 @@ body>#login form .idpw {
 }
 
 </style>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>일반회원 로그인 화면</title>
+
+<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+ <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	
+	
  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 
     <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
@@ -1842,14 +1849,12 @@ body>#login form .idpw {
  -->
 
 
-  
-  
   <div id="login">
   <form id="login_form">
     <div class="field_container">
       <input type="text" placeholder="아이디">
     </div>
-
+ 
     <div class="field_container">
       <input type="Password" placeholder="비밀번호">
       <button id="sign_in_button">
@@ -1861,7 +1866,9 @@ body>#login form .idpw {
       <a href="#" class="login_link">회원가입</a>
       </div>
     </div>
-
+    
+	
+	
     <div id="sign_in_options" class="field_container">
         <div id="sign_in_alternatives_container">
           <span id="google_sign_in_option">or you can <a href="#" id="google_sign_in" class="login_link">sign in with Google</a></span>

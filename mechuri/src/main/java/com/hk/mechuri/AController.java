@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +52,12 @@ public class AController {
 		return "memLogin";
 	}
 
-
+	@RequestMapping(value="callback.do", method=RequestMethod.GET)
+	public String callback(HttpSession session) {
+		
+		return "callback";
+	}
+	
 	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String compSignUp(Model model) {
 		logger.info("회원 추가폼으로 이동 {}.");
@@ -69,12 +76,6 @@ public class AController {
 			model.addAttribute("msg","회원가입 실패");
 			return "error";
 		}
-	}
-
-	@RequestMapping(value = "/callback.do", method = RequestMethod.GET)
-	public String Callback(Model model) {
-
-		return "callback";
 	}
 	
 	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
