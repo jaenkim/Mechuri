@@ -97,12 +97,12 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nick},#{mem_phone}) -->
 
 
-<insert id="compSignUpBoard" parameterType="membersDto"></insert>
+<insert id="compSignUpBoard" parameterType="membersDto">
 	INSERT INTO MEMBERS(MEM_BRAND,MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_HOMEPAGE,MEM_ID,
 	MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE,)
 	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_brand},#{mem_post},#{mem_addr1},#{mem_addr2},)#{mem_homepage},
 	#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone)
-
+</insert>
 
 
 
