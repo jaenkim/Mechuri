@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action='Callback.do' method='post'>
+<form action='callback.do' method='post'>
 </form>
 </body>
 </html>
