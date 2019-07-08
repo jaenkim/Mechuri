@@ -6,4 +6,6 @@ public interface IMembersService {
 	public boolean signUpBoard(membersDto dto);
 	
 	public boolean compSignUpBoard(membersDto dto);
+	
+	public boolean memLogin(membersDto dto);
 }

@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,8 +15,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hk.mechuri.daos.IMembersDao;
+import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
 import com.hk.mechuri.service.IMembersService;
+import com.hk.mechuri.service.MembersService;
+
+import sun.print.resources.serviceui;
 
 /**
  * Handles requests for the application home page.
@@ -26,6 +32,9 @@ public class AController {
 	
 	@Autowired
 	private IMembersService membersService;
+	
+	@Autowired
+	private IMembersDao membersDao;
 	
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
@@ -47,11 +56,17 @@ public class AController {
 		}
 	}
 	
-	@RequestMapping(value = "/memLogin.do", method = RequestMethod.GET)
-	public String memLogin( Model model) {
-	
-		return "memLogin";
-	}
+	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.POST})
+	public String memLogin(membersDto dto, HttpServletRequest req) throws Exception {
+		 logger.info("post login");
+		 
+		 HttpSession session = req.getSession();
+		 
+		 boolean isS = membersService.memLogin(dto);
+		 
+		   
+		 return "redirect:main.do";
+		}
 	
 	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
 	public String compSignUp(Model model) {

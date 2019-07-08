@@ -24,4 +24,10 @@ public class MembersDao implements IMembersDao {
 		int count=sqlSession.insert(namespace+"compSignUpBoard",dto);
 		return count>0?true:false;
 		}
-}
+	@Override
+	public boolean memLogin(membersDto dto) {
+		int count=sqlSession.insert(namespace+"memLogin",dto);
+		return count>0?true:false;
+		}
+	}
+
