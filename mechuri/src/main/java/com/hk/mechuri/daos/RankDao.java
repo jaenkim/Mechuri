@@ -7,11 +7,17 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.mechuri.dtos.filterDto;
 import com.hk.mechuri.dtos.productDto;
+import com.hk.mechuri.dtos.reviewDto;
 
 
+/**
+ * @author 82108
+ *
+ */
 @Repository
 public class RankDao implements iRankDao {
 	
@@ -45,7 +51,6 @@ public class RankDao implements iRankDao {
 		return sqlSession.selectList(namepace+"filterdlist",maap);
 	}
 
-	
 //	maap.put("filter_age10",dto.getFilter_age10());
 //	maap.put("filter_age20",dto.getFilter_age20());
 //	maap.put("filter_age30",dto.getFilter_age30());
@@ -63,6 +68,21 @@ public class RankDao implements iRankDao {
 //	System.out.println("다오에서 출력 30대의 값이 들어왔는지? ["+dto.getFilter_age30()+"]");
 //	System.out.println("다오에서 출력 카테고리 대분류의 값이 들어왔는지? ["+dto.getFilter_catelname()+"]");
 //	System.out.println("다오에서 출력 카테고리 소분류 값이 들어왔는지? ["+dto.getFilter_catesname()+"]");
+	
+	@Transactional
+	@Override
+	public List<productDto> getDetailProductList(int product_no) {
+		System.out.println("다오의 제품상세보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
+		return sqlSession.selectOne(namepace+"productDetail");
+	}
+
+	@Override
+	public List<reviewDto> getProductReview(int product_no) {
+		System.out.println("다오의 리뷰 전체보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
+		return sqlSession.selectList(namepace+"productReview");
+	}
+
+	
 	
 	
 	

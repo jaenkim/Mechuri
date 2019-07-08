@@ -13,6 +13,7 @@
 </head>
 <jsp:include page="../Header.jsp"/>
 <body>
+
 <br><br><br>
 <div class="container">
   <form action="insertWrite.do" method="post" enctype="multipart/form-data">

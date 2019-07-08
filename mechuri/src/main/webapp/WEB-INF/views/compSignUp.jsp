@@ -316,48 +316,49 @@ button {
 </head>
 <body>
 <jsp:include page="Header.jsp" />
+<form action='compSignUpBoard.do' method='post'>
 <br><br><br>
  
 			<!-- <div class="inner"> -->
-				<form action="">
+				
 					<h3>기업회원 가입</h3>
 					<div class="form-holder">
-						<input type="text" placeholder="브랜드명" class="form-control" style="font-size: 16px;">
+						<input type="text" placeholder="브랜드명" name="mem_brand" class="form-control" style="font-size: 16px;">
 					</div>
 					
 					
 					
 					<div class="form-holder">
 					  <div class="well">
-					    <input type="text" id="sample4_postcode" placeholder="우편번호"><br>
+					    <input type="text" id="sample4_postcode" name="post" placeholder="우편번호"><br>
 						<input type="button" id="sample4_button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample4_roadAddress" placeholder="도로명주소"><br>
-						<input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
+						<input type="text" id="sample4_roadAddress" name="addr1" placeholder="도로명주소"><br>
+						<input type="text" id="sample4_jibunAddress" name="addr2" placeholder="지번주소"><br>
 						<input type="text" id="sample4_detailAddress" placeholder="상세주소">
 					  </div>
 					</div><br>
 					<div class="form-holder">
-						<input type="text" placeholder="홈페이지" class="form-control" style="font-size: 16px;">
+						<input type="text" placeholder="홈페이지" name="mem_homepage" class="form-control" style="font-size: 16px;">
 					</div>
 					<br>
 					<h3>담당자 정보</h3>
 					<div class="form-holder">
-						<input type="text" placeholder="아이디" class="form-control" style="font-size: 16px;">
+						<input type="text" placeholder="아이디" name="mem_id" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="password" placeholder="비밀번호" class="form-control" style="font-size: 16px;">
+						<input type="password" placeholder="비밀번호" name="mem_pw" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
 						<input type="password" placeholder="비밀번호확인" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="text" placeholder="담당자명" class="form-control" style="font-size: 16px;">
+						<input type="text" placeholder="담당자명" name="mem_name" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="email" placeholder="이메일" class="form-control" style="font-size: 16px;">
+						<input type="email" placeholder="이메일" name="mem_email" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
-						<input type="text" placeholder="연락처" class="form-control" style="font-size: 16px;">
+						<input type="text" placeholder="연락처" name="mem_phone" class="form-control" style="font-size: 16px;">
 					</div>
 						<button style="background-color: #f6755e;">회원가입하기</button>
 					

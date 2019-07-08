@@ -14,15 +14,15 @@ public interface IBoardService {
 	/*public int insertBoard(boardDto dto);*/
 	public boolean insertFileInfo(HttpServletRequest request,boardDto dto);
 	
-	public boardDto getBoard(int no);
+	public boardDto getBoard(int board_no);
 	
 	public boolean updateBoard(boardDto dto);
 
-	public boolean muldel(String[] seqs);
+	public boolean delBoard(int board_no);
 	
 	public int replyBoard(boardDto dto);
 	
-	public boolean readCount(int seq);
+	public boolean readCount(int board_no);
 	
 	
 	//여기부터 파일 업로드

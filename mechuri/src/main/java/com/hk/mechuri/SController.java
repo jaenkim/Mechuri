@@ -32,11 +32,6 @@ public class SController {
 	private IBoardService boardService;
 	
 
-	@RequestMapping(value = "/testLogin.do")
-	public String testLogin(Locale locale, Model model) {
-	
-		return "testLogin";
-	}
 
 	//여기부터 커뮤니티 기능
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
@@ -45,7 +40,7 @@ public class SController {
 		List<boardDto> list=boardService.getAllList();
 		model.addAttribute("list",list);
 		
-		return "boardlist2";
+		return "community/boardlist2";
 	}
 	
 	@RequestMapping(value = "/boardwrite.do") /*글작성 폼으로 이동*/
@@ -59,25 +54,21 @@ public class SController {
 	public String insertWrite(Locale locale, Model model, HttpServletRequest request, boardDto dto) {	
 		logger.info("글 추가하기 {}.", locale);
 		
+		String nick = request.getParameter("nickname");
 		String title = request.getParameter("titlename");
 		String content = request.getParameter("content");
-		String nick = request.getParameter("nickname");
+		
 		
 		boardDto dto1 = new boardDto(nick,title,content);
 		
-		/*model.addAttribute("nickname",nickname);
-		model.addAttribute("titlename",titlename);
-		model.addAttribute("content",content); 얘는 화면에 보여줄 때만 필요한애 지금필요x*/
-		/*System.out.println( "title:["+request.getParameter("titlename")+"]");
-		System.out.println( "content:["+request.getParameter("content")+"]");*/
-		model.addAttribute("dto1",dto1);
+	
 		
 		//파일업로드
 		boolean isS = boardService.insertFileInfo(request, dto1);
 		
 		
 		if(isS) {
-			return "community/boardlist2";
+			return "redirect:boardlist2.do";
 		} else {
 			logger.info("파일업로드 실패");
 			return "insertWrite";
@@ -86,22 +77,57 @@ public class SController {
 	}
 	
 	
+	@RequestMapping(value = "/boardDetail.do") /*글 상세보기 폼으로 이동*/
+	public String boardDetail(Locale locale, Model model, int board_no) {	
+		logger.info("게시글 상세보기 {}.", locale);
+		
+		boardDto dto=boardService.getBoard(board_no);
+		model.addAttribute("dto",dto);
+		
+		return "community/boarddetail";
+	}
 	
 	
 	
+	@RequestMapping(value = "/boardDelete.do") /*글작성 폼으로 이동*/
+	public String boardDelete(Locale locale, Model model, int board_no) {	
+		logger.info("상세보기 글 삭제 {}.", locale);	
+		
+		boolean isS=boardService.delBoard(board_no);
+		if(isS) {
+			return "redirect:boardlist2.do";
+		} else {
+			model.addAttribute("msg","글삭제실패");
+			return "community/boarddetail";
+		}	
+	}
 	
 	
 	
+	@RequestMapping(value = "/updateForm.do") /*상세글 업데이트폼으로 가기*/
+	public String updateForm(Locale locale, Model model,int board_no) {	
+		logger.info("게시글 수정하기 폼 이동 {}.", locale);
+		
+		boardDto dto=boardService.getBoard(board_no);
+		model.addAttribute("dto",dto);
+		
+		return "community/boardupdate";
+	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value = "/updateBoard.do") /*커뮤니티 상세글 업데이트*/
+	public String updateBoard(Locale locale, Model model,boardDto dto) {	
+		logger.info("게시글 수정하기 {}.", locale);
+		
+		boolean isS = boardService.updateBoard(dto);
+		if(isS) {
+			return "redirect:boardDetail.do?board_no="+dto.getBoard_no();
+		} else {
+			model.addAttribute("msg","글 수정 실패");
+			return "community/boardupdate";
+		}
+	}
 	
 	
 	

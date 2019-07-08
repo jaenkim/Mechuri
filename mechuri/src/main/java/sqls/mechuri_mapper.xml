@@ -4,11 +4,18 @@
 <mapper namespace="com.hk.mechuri">
 
 <!-- 김재원 -->
+<<<<<<< HEAD
 <select id='productlist' resultType='productDto'>
 
 <select id='productlist' resultType='productDto' parameterType="Map">
+=======
+<!-- <select id='productlist' resultType='productDto'> -->
+
+
+<select id='productlist' resultType='productDto' parameterType="Map">
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
-ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
+(SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINT,
 (SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
 DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
 FROM PRODUCT
@@ -34,47 +41,113 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
+
+<!-- 제품 상세페이지 보기 -->
+<select id="productDetail" resultType="productDto" parameterType="int">
+SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_CONTS,PRODUCT_BRAND,PRODUCT_COMPNO,PRODUCT_CATELNAME,PRODUCT_CATESNAME,
+PRODUCT_SKINTYPE,PRODUCT_AGE,PRODUCT_GENDER,PRODUCT_INGRE,PRODUCT_FLAG,
+ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT_NO),2) AS PRODUCT_POINT,
+(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
+DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
+FROM PRODUCT
+WHERE PRODUCT_NO = #{product_no}
+</select>
+<!-- 상세페이지 제품의 리뷰보기 -->
+<select id="productReview" resultType="reviewDto" parameterType="int">
+SELECT REVIEW_NO, REVIEW_CONTS, review_memberid, (SELECT MEMBERS.MEM_NICK FROM MEMBERS WHERE MEMBERS.MEM_ID=REVIEW.REVIEW_MEMBERID) AS REVIEW_NICK,
+REVIEW_POINT,REVIEW_REGDATE,REVIEW_STOREDFILE 
+FROM REVIEW
+WHERE REVIEW_PRODUCTNO = #{product_no}
+</select>
+
+
+
 <!-- 커뮤니티 리스트 출력 쿼리 -->
 <select id='boardlist2' resultType='boardDto' parameterType='Map'>
 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE FROM BOARD
 
-	<!-- SELECT BOARD_NO,BOARD_TITLE,BOARD_NICK,BOARD_REGDATE,BOARD_COUNT FROM BOARD  -->
-	<if test="seq != null"> <!-- if문 같은 다이나믹쿼리를 쓸 때는 파라미터타입을 꼭 Map으로 해야함 그래야 seq가 인식가능 -->
+	
+	<if test="board_no != null"> <!-- if문 같은 다이나믹쿼리를 쓸 때는 파라미터타입을 꼭 Map으로 해야함 그래야 seq가 인식가능 -->
 			<where>
 			 	<include refid="param" />
 			</where>
 		</if>
 		ORDER BY BOARD_NO
+<<<<<<< HEAD
 
 	<sql id="param">
 		SEQ=#{seq}
+=======
+	</select>
+	<sql id="param">    
+		BOARD_NO = #{board_no}
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 	</sql>
+<<<<<<< HEAD
 	</select>
 	
+=======
+
+	<!-- 커뮤니티 글추가 -->
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 <insert id="insertBoard" parameterType='Map'>
 	INSERT INTO BOARD(BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_FILENO,BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
 	VALUES(BOARD_SEQ.NEXTVAL,#{board_nick},#{board_title},#{board_conts},SYSDATE,BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize})
 </insert>
 
-<insert id="insertFileInfo" parameterType='boardDto'>
-	<!-- INSERT INTO BOARD(BOARD_SEQ.NEXTVAL,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
-	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE) -->
+	<!-- 커뮤니티 디테일 -->
+<select id="getboard" resultType='BoardDto' parameterType="int">
+	 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
+	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE FROM BOARD WHERE BOARD_NO=#{board_no}
+</select>
+	<!-- 커뮤니티 상세글 수정 -->
+<select id="updateboard" resultType="BoardDto">
+	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE WHERE BOARD_NO=#{board_no}
+</select>
+	
+	
+	
+<select id="delboard" resultType="boardDto" parameterType="int">
+	DELETE FROM BOARD WHERE BOARD_NO=#{board_no}
+</select>
+
+	<!-- 커뮤니티 첨부파일 -->
+<!-- <insert id="insertFileInfo" parameterType='boardDto'>
+	INSERT INTO BOARD(BOARD_SEQ.NEXTVAL,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
+	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
 	 UPDATE BOARD SET BOARD_FILENO=BOARDFILE_SEQ.NEXTVAL,BOARD_ORIGINFILE=#{board_originfile},BOARD_STOREDFILE=#{board_storedfile},
 	 BOARD_FILEREGDATE=SYSDATE, BOARD_FILESIZE=#{board_filesize} WHERE BOARD_NO=#{board_no}
 	 
 	 (BOARD_FILENO,BOARD_ORIIGINFILE, BOARD_STOREDFILE, BOARD_FILEREGDATE,BOARD_FILESIZE) 
 	 VALUES(BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize}) WHERE 
 	 
-</insert>
+</insert> -->
 
-<insert id="singUpBoard" parameterType='membersDto'>
+<insert id="signUpBoard" parameterType='membersDto'>
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
 MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE) 
-	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nick},#{mem_phone})
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_status},#{mem_name},#{mem_nick},#{mem_phone},#{mem_post}
+	,#{mem_addr1},#{mem_addr2},#{mem_addr2},SYSDATE,#{mem_delflag},#{mem_apprflag})
+</insert>
+
+<!-- INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_NAME,MEM_NICK,MEM_PHONE) 
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nick},#{mem_phone}) -->
+
+
+<insert id="compSignUpBoard" parameterType="membersDto">
+	INSERT INTO MEMBERS(MEM_BRAND,MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_HOMEPAGE,MEM_ID,
+	MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE,)
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_brand},#{mem_post},#{mem_addr1},#{mem_addr2},)#{mem_homepage},
+	#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone)
 </insert>
 
 
 
 </mapper>
 
+<<<<<<< HEAD
+=======
+</mapper>
+
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
