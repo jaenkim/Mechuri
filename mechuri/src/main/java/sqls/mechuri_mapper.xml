@@ -67,7 +67,8 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 <select id="updateboard" resultType="BoardDto">
 	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE WHERE BOARD_NO=#{board_no}
 </select>
-	
+
+
 	
 	
 <select id="delboard" resultType="boardDto" parameterType="int">

@@ -131,6 +131,17 @@ public class SController {
 	
 	
 	
+	@RequestMapping(value = "/replyboard.do") /*글작성 폼으로 이동*/
+	public String replyboard(Locale locale, Model model, boardDto dto,int board_no) {	
+		logger.info("답글 추가하기 {}.", locale);
+		boolean isS = boardService.replyBoard(dto);
+		
+		if(isS) {
+			return "redirect:boardlist2.do";
+		} else {
+			return "community/boarddetail";
+		}
+	}
 	
 	
 	
