@@ -4,18 +4,12 @@
 <mapper namespace="com.hk.mechuri">
 
 <!-- 김재원 -->
-<<<<<<< HEAD
-<select id='productlist' resultType='productDto'>
-
-<select id='productlist' resultType='productDto' parameterType="Map">
-=======
 <!-- <select id='productlist' resultType='productDto'> -->
-
 
 <select id='productlist' resultType='productDto' parameterType="Map">
 >>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
-(SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINT,
+ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
 (SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
 DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
 FROM PRODUCT
@@ -41,27 +35,6 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
-
-<!-- 제품 상세페이지 보기 -->
-<select id="productDetail" resultType="productDto" parameterType="int">
-SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_CONTS,PRODUCT_BRAND,PRODUCT_COMPNO,PRODUCT_CATELNAME,PRODUCT_CATESNAME,
-PRODUCT_SKINTYPE,PRODUCT_AGE,PRODUCT_GENDER,PRODUCT_INGRE,PRODUCT_FLAG,
-ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT_NO),2) AS PRODUCT_POINT,
-(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
-DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
-FROM PRODUCT
-WHERE PRODUCT_NO = #{product_no}
-</select>
-<!-- 상세페이지 제품의 리뷰보기 -->
-<select id="productReview" resultType="reviewDto" parameterType="int">
-SELECT REVIEW_NO, REVIEW_CONTS, review_memberid, (SELECT MEMBERS.MEM_NICK FROM MEMBERS WHERE MEMBERS.MEM_ID=REVIEW.REVIEW_MEMBERID) AS REVIEW_NICK,
-REVIEW_POINT,REVIEW_REGDATE,REVIEW_STOREDFILE 
-FROM REVIEW
-WHERE REVIEW_PRODUCTNO = #{product_no}
-</select>
-
-
-
 <!-- 커뮤니티 리스트 출력 쿼리 -->
 <select id='boardlist2' resultType='boardDto' parameterType='Map'>
 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
@@ -74,23 +47,12 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 			</where>
 		</if>
 		ORDER BY BOARD_NO
-<<<<<<< HEAD
-
+	</select>
 	<sql id="param">
-		SEQ=#{seq}
-=======
-	</select>
-	<sql id="param">    
-		BOARD_NO = #{board_no}
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
+		BOARD_NO=#{board_no}
 	</sql>
-<<<<<<< HEAD
-	</select>
-	
-=======
 
 	<!-- 커뮤니티 글추가 -->
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 <insert id="insertBoard" parameterType='Map'>
 	INSERT INTO BOARD(BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_FILENO,BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
 	VALUES(BOARD_SEQ.NEXTVAL,#{board_nick},#{board_title},#{board_conts},SYSDATE,BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize})
@@ -144,10 +106,7 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 
 
 
+
+
 </mapper>
 
-<<<<<<< HEAD
-=======
-</mapper>
-
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
