@@ -15,7 +15,7 @@ public class reviewDto {
 	private String review_storedfile;
 	private Date review_fileregdate;
 	private int review_filesize;
-	private String review_others01;
+	private String review_nick;
 	private String review_others02;
 	
 	//생성자
@@ -114,12 +114,12 @@ public class reviewDto {
 		this.review_filesize = review_filesize;
 	}
 
-	public String getReview_others01() {
-		return review_others01;
+	public String getReview_nick() {
+		return review_nick;
 	}
 
-	public void setReview_others01(String review_others01) {
-		this.review_others01 = review_others01;
+	public void setReview_nick(String review_nick) {
+		this.review_nick = review_nick;
 	}
 
 	public String getReview_others02() {
@@ -137,7 +137,7 @@ public class reviewDto {
 				+ review_productno + ", review_conts=" + review_conts + ", review_point=" + review_point
 				+ ", review_regdate=" + review_regdate + ", review_fileno=" + review_fileno + ", review_originfile="
 				+ review_originfile + ", review_storedfile=" + review_storedfile + ", review_fileregdate="
-				+ review_fileregdate + ", review_filesize=" + review_filesize + ", review_others01=" + review_others01
+				+ review_fileregdate + ", review_filesize=" + review_filesize + ", review_nick=" + review_nick
 				+ ", review_others02=" + review_others02 + "]";
 	}
 	

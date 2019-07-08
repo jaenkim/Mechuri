@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hk.mechuri.dtos.filterDto;
 import com.hk.mechuri.dtos.productDto;
+import com.hk.mechuri.dtos.reviewDto;
 
 public interface iRankDao {
 
@@ -11,5 +12,8 @@ public interface iRankDao {
 	List<productDto> getAllProductList();
 
 	List<productDto> getFilterProductList(filterDto dto);
+	
+	List<productDto> getDetailProductList(int product_no);
 
+	List<reviewDto> getProductReview(int product_no);
 }
