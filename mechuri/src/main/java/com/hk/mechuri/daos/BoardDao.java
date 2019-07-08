@@ -66,14 +66,12 @@ public class BoardDao implements IBoardDao {
 
 	@Override
 	public int replyUpdate(int board_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace+"replyupdate",board_no);
 	}
 
 	@Override
 	public int replyInsert(boardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(namespace+"replyinsert",dto);
 	}
 
 	@Override

@@ -48,10 +48,12 @@ public class BoardService implements IBoardService {
 		return boardDao.delBoard(board_no);
 	}
 
+	@Transactional
 	@Override
-	public int replyBoard(boardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean replyBoard(boardDto dto) {
+		boardDao.replyUpdate(dto.getBoard_no());
+		int count=boardDao.replyInsert(dto);
+		return count>0?true:false;
 	}
 
 	@Override
