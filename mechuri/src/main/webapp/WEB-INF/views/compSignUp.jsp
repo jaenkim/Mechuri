@@ -360,7 +360,7 @@ button {
 					<div class="form-holder">
 						<input type="text" placeholder="연락처" name="mem_phone" class="form-control" style="font-size: 16px;">
 					</div>
-						<button style="background-color: #f6755e;">회원가입하기</button>
+						<button input type="submit" style="background-color: #f6755e;">회원가입하기</button>
 					
 				</form>
 		<!-- 	</div>  -->

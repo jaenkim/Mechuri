@@ -53,14 +53,14 @@ public class AController {
 		return "memLogin";
 	}
 	
-	@RequestMapping(value = "/compSignUp.do")
+	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
 	public String compSignUp(Model model) {
 	
 		return "compSignUp";
 	}
 	
 	@RequestMapping(value = "/compSignUpBoard.do", method = {RequestMethod.POST})
-	public String compSignUp(Model model, membersDto dto) {
+	public String compSignUpBoard(Model model, membersDto dto) {
 					
 		logger.info("회원 추가합니다. {}.");
 		
