@@ -1,5 +1,8 @@
 package com.hk.mechuri.daos;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,12 +19,22 @@ public class MembersDao implements IMembersDao {
 	
 	@Override
 	public boolean signUpBoard(membersDto dto) {
-		int count=sqlSession.insert(namespace+"signupboard",dto);
+		int count=sqlSession.insert(namespace+"signUpBoard",dto);
 		return count>0?true:false;
 		}
 	@Override
 	public boolean compSignUpBoard(membersDto dto) {
-		int count=sqlSession.insert(namespace+"compsignupboard",dto);
+		int count=sqlSession.insert(namespace+"compSignUpBoard",dto);
 		return count>0?true:false;
 		}
+	@Override
+	public membersDto memLoginBoard(String mem_id,String mem_pw) {
+		 Map<String,Object> map=new HashMap<String, Object>();
+	        map.put("id", mem_id);
+	        map.put("password", mem_pw);
+	     
+	        return sqlSession.selectOne("member.password", map);
+	       
+
+	}
 }

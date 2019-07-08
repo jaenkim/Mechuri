@@ -21,4 +21,14 @@ public class MembersService implements IMembersService {
 	public boolean compSignUpBoard(membersDto dto) {
 		return membersDao.compSignUpBoard(dto); 
 	}
+	@Override
+	public
+	membersDto memLoginBoard(String mem_id, String mem_pw) {
+		return membersDao.memLoginBoard(mem_id,mem_pw);
+	}
+
+	public static boolean login(String mem_id, String mem_pw) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

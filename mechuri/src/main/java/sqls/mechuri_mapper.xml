@@ -6,10 +6,10 @@
 <!-- 김재원 -->
 <!-- <select id='productlist' resultType='productDto'> -->
 
-
 <select id='productlist' resultType='productDto' parameterType="Map">
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
-(SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINT,
+ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
 (SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
 DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
 FROM PRODUCT
@@ -35,6 +35,7 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
+<<<<<<< HEAD
 
 <!-- 제품 상세페이지 보기 -->
 <select id="productDetail" resultType="productDto" parameterType="int">
@@ -65,6 +66,8 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 <!-- 커뮤니티 리스트 출력 쿼리 -->
 <select id='boardlist2' resultType='boardDto' parameterType='Map'>
 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
@@ -78,8 +81,8 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 		</if>
 		ORDER BY BOARD_NO
 	</select>
-	<sql id="param">    
-		BOARD_NO = #{board_no}
+	<sql id="param">
+		BOARD_NO=#{board_no}
 	</sql>
 
 	<!-- 커뮤니티 글추가 -->
@@ -93,11 +96,27 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 	 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE FROM BOARD WHERE BOARD_NO=#{board_no}
 </select>
+
 	<!-- 커뮤니티 상세글 수정 -->
 <select id="updateboard" resultType="BoardDto">
 	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE WHERE BOARD_NO=#{board_no}
 </select>
-	
+
+
+<update id="replyupdate" parameterType="BoardDto">
+		<![CDATA[
+		UPDATE BOARD SET STEP=STEP+1
+		WHERE REFER=(SELECT REFER FROM BOARD WHERE BOARD_CONTS=#{board_conts}) 
+		AND STEP > (SELECT STEP FROM BOARD WHERE BOARD_CONTS=#{board_conts})
+		]]>
+	</update>
+	<insert id="replyinsert" parameterType="BoardDto">
+		INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,
+		#{id},#{title},#{content},SYSDATE,
+		(SELECT REFER FROM BOARD WHERE BOARD_CONTS=#{board_conts}),
+		(SELECT STEP FROM BOARD WHERE BOARD_CONTS=#{board_conts})+1,
+		(SELECT DEPTH FROM BOARD WHERE BOARD_CONTS=#{board_conts})+1,0)
+	</insert>
 	
 	
 <select id="delboard" resultType="boardDto" parameterType="int">
@@ -105,7 +124,7 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 </select>
 
 	<!-- 커뮤니티 첨부파일 -->
-<!-- <insert id="insertFileInfo" parameterType='boardDto'>
+ <insert id="insertFileInfo" parameterType='boardDto'>
 	INSERT INTO BOARD(BOARD_SEQ.NEXTVAL,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
 	 UPDATE BOARD SET BOARD_FILENO=BOARDFILE_SEQ.NEXTVAL,BOARD_ORIGINFILE=#{board_originfile},BOARD_STOREDFILE=#{board_storedfile},
@@ -114,13 +133,13 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 	 (BOARD_FILENO,BOARD_ORIIGINFILE, BOARD_STOREDFILE, BOARD_FILEREGDATE,BOARD_FILESIZE) 
 	 VALUES(BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize}) WHERE 
 	 
-</insert> -->
+</insert> 
 
 <insert id="signUpBoard" parameterType='membersDto'>
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
 MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE) 
-	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_status},#{mem_name},#{mem_nick},#{mem_phone},#{mem_post}
-	,#{mem_addr1},#{mem_addr2},#{mem_addr2},SYSDATE,#{mem_delflag},#{mem_apprflag})
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'C','브랜드명',#{mem_name},#{mem_nick},#{mem_phone},'이메일1','포스트'
+	,'주소1','주소2',SYSDATE,SYSDATE,'N','N','홈페이지')
 </insert>
 
 <!-- INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_NAME,MEM_NICK,MEM_PHONE) 
@@ -128,12 +147,17 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 
 
 <insert id="compSignUpBoard" parameterType="membersDto">
-	INSERT INTO MEMBERS(MEM_BRAND,MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_HOMEPAGE,MEM_ID,
-	MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE,)
-	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_brand},#{mem_post},#{mem_addr1},#{mem_addr2},)#{mem_homepage},
-	#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone)
+	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
+MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE,MEM_OTHERS01)
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'C',#{mem_brand},#{mem_name},'닉',#{mem_phone},#{mem_email},#{mem_post},#{mem_addr1},#{mem_addr2},
+	SYSDATE,SYSDATE,'N','N',#{mem_homepage},#{mem_others01})
 </insert>
 
+<select id="memLogin" parameterType="membersDto">
+	SELECT MEM_ID, MEM_NAME FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
+
+
+</select>
 
 
 

@@ -330,11 +330,11 @@ button {
 					
 					<div class="form-holder">
 					  <div class="well">
-					    <input type="text" id="sample4_postcode" name="post" placeholder="우편번호"><br>
+					    <input type="text" id="sample4_postcode" name="mem_post" placeholder="우편번호"><br>
 						<input type="button" id="sample4_button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample4_roadAddress" name="addr1" placeholder="도로명주소"><br>
-						<input type="text" id="sample4_jibunAddress" name="addr2" placeholder="지번주소"><br>
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소">
+						<input type="text" id="sample4_roadAddress" name="mem_addr1" placeholder="도로명주소"><br>
+						<input type="text" id="sample4_jibunAddress" name="mem_addr2" placeholder="지번주소"><br>
+						<input type="text" id="sample4_detailAddress" name="mem_others01" placeholder="상세주소">
 					  </div>
 					</div><br>
 					<div class="form-holder">
@@ -360,7 +360,7 @@ button {
 					<div class="form-holder">
 						<input type="text" placeholder="연락처" name="mem_phone" class="form-control" style="font-size: 16px;">
 					</div>
-						<button style="background-color: #f6755e;">회원가입하기</button>
+						<button input type="submit" style="background-color: #f6755e;">회원가입하기</button>
 					
 				</form>
 		<!-- 	</div>  -->
