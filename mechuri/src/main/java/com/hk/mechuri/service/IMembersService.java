@@ -7,5 +7,5 @@ public interface IMembersService {
 	
 	public boolean compSignUpBoard(membersDto dto);
 	
-	public boolean memLogin(membersDto dto);
+	membersDto memLoginBoard(String mem_id, String mem_pw);
 }

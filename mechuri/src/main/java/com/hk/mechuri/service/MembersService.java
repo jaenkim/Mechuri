@@ -22,7 +22,8 @@ public class MembersService implements IMembersService {
 		return membersDao.compSignUpBoard(dto); 
 	}
 	@Override
-	public boolean memLogin(membersDto dto) {
-		return membersDao.memLogin(dto);
+	public
+	membersDto memLoginBoard(String mem_id, String mem_pw) {
+		return membersDao.memLoginBoard(mem_id,mem_pw);
 	}
 }

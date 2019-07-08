@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,6 @@ public class AController {
 	@Autowired
 	private IMembersService membersService;
 	
-	@Autowired
-	private IMembersDao membersDao;
-	
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
 		logger.info("회원 추가폼으로 이동 {}.");
@@ -55,19 +53,36 @@ public class AController {
 			return "error";
 		}
 	}
+	@Autowired
+	private SqlSession sqlSession;
 	
-	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.POST})
-	public String memLogin(membersDto dto, HttpServletRequest req) throws Exception {
-		 logger.info("post login");
-		 
-		 HttpSession session = req.getSession();
-		 
-		 boolean isS = membersService.memLogin(dto);
-		 
-		   
-		 return "redirect:main.do";
+	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String memLogin() {
+		 logger.info("login폼 이동");
+		
+		 return "memLogin";
 		}
 	
+	/*@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String memLoginBoard(membersDto dto, HttpServletRequest request, HttpSession session, Model model){
+		 logger.info("login 한다!");
+		
+		 String url = "";
+		 MembersDao dao = sqlSession.getMapper(MembersDao.class);
+		 
+		 if (dao.memLoginBoard(dto)==null){
+			 //로그인 실패 시 다시 로그인 화면으로
+			 url = "memLogin";
+			 String msg = "로그인 실패하였습니다";
+			 model.addAttribute("msg", msg);
+			 return url;
+		 }
+		 else if (dao.memLoginBoard(dto)!=null){
+			 //로그인 성공시 로그인 메인화면으로
+			 dto = dao.memLoginBoard
+		 }
+	}*/
+		 
 	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
 	public String compSignUp(Model model) {
 	
