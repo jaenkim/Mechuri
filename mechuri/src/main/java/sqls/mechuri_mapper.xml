@@ -121,7 +121,8 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 </insert>
 
 <select id="memLogin" parameterType="membersDto">
-	SELECT MEM_ID, MEM_NAME FROM MEMVERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
+	SELECT MEM_ID, MEM_NAME FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
+
 
 </select>
 

@@ -34,5 +34,7 @@ public class MembersDao implements IMembersDao {
 	        map.put("password", mem_pw);
 	     
 	        return sqlSession.selectOne("member.password", map);
+	       
+
 	}
 }

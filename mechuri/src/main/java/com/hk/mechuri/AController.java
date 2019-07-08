@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.hk.mechuri.daos.IMembersDao;
 import com.hk.mechuri.daos.MembersDao;
@@ -63,26 +64,35 @@ public class AController {
 		 return "memLogin";
 		}
 	
-	/*@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public String memLoginBoard(membersDto dto, HttpServletRequest request, HttpSession session, Model model){
+	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView memLoginBoard(HttpSession session,String mem_id, String mem_pw){
 		 logger.info("login 한다!");
 		
-		 String url = "";
-		 MembersDao dao = sqlSession.getMapper(MembersDao.class);
-		 
-		 if (dao.memLoginBoard(dto)==null){
-			 //로그인 실패 시 다시 로그인 화면으로
-			 url = "memLogin";
-			 String msg = "로그인 실패하였습니다";
-			 model.addAttribute("msg", msg);
-			 return url;
-		 }
-		 else if (dao.memLoginBoard(dto)!=null){
-			 //로그인 성공시 로그인 메인화면으로
-			 dto = dao.memLoginBoard
-		 }
-	}*/
-		 
+//		    성공 실패에 따라 리다이렉트 방향 결정
+		        //session사용은 매개변수에 session참조변수를 두면 자동으로 들어옵니다 
+		        //login.do처리를 완성하세요 
+		        //로그인 성공이면 main.do 리다이렉트
+//		        //로그인 실패이면 loginForm.do 리다이렉트
+		        ModelAndView mav = new ModelAndView();
+		        if(MembersService.login(mem_id, mem_pw)){
+		            session.setAttribute("id", mem_id);
+		            mav.setViewName("redirect:main.do");
+		        }
+		        else{
+		            //return "redirect:loginForm.do";
+		            mav.setViewName("redirect:loginForm.do");
+		        }
+		        return mav;
+	}
+	
+	 @RequestMapping("logout.do")
+	    public String logout(HttpSession session){
+//	        session.invalidate();
+	        session.removeAttribute("userid");
+	        return "redirect:memLogin.do";
+
+	 }
+	 
 	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
 	public String compSignUp(Model model) {
 	

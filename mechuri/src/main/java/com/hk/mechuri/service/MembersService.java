@@ -26,4 +26,9 @@ public class MembersService implements IMembersService {
 	membersDto memLoginBoard(String mem_id, String mem_pw) {
 		return membersDao.memLoginBoard(mem_id,mem_pw);
 	}
+
+	public static boolean login(String mem_id, String mem_pw) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
