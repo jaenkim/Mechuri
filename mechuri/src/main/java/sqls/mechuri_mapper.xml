@@ -5,8 +5,14 @@
 
 <!-- 김재원 -->
 <!-- <select id='productlist' resultType='productDto'> -->
+<<<<<<< HEAD
 
 <select id='productlist' resultType='productDto' parameterType="Map">
+=======
+
+<select id='productlist' resultType='productDto' parameterType="Map">
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
 (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINT,
 (SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
@@ -111,6 +117,17 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE) 
 	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_status},#{mem_name},#{mem_nick},#{mem_phone},#{mem_post}
 	,#{mem_addr1},#{mem_addr2},#{mem_addr2},SYSDATE,#{mem_delflag},#{mem_apprflag})
+</insert>
+
+<!-- INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_NAME,MEM_NICK,MEM_PHONE) 
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nick},#{mem_phone}) -->
+
+
+<insert id="compSignUpBoard" parameterType="membersDto">
+	INSERT INTO MEMBERS(MEM_BRAND,MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_HOMEPAGE,MEM_ID,
+	MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE,)
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_brand},#{mem_post},#{mem_addr1},#{mem_addr2},)#{mem_homepage},
+	#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone)
 </insert>
 
 

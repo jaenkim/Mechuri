@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +27,13 @@ public class AController {
 	@Autowired
 	private IMembersService membersService;
 	
-	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
 		logger.info("회원 추가폼으로 이동 {}.");
-		return "signUp"; 
+		return "signUp";
 		}
 
-	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.POST})
 	public String signUpBoard(Model model, membersDto dto) {
 					
 		logger.info("회원 추가합니다. {}.");

@@ -16,4 +16,9 @@ public class MembersService implements IMembersService {
 	public boolean signUpBoard(membersDto dto) {
 		return membersDao.signUpBoard(dto); 
 	}
+
+	@Override
+	public boolean compSignUpBoard(membersDto dto) {
+		return membersDao.compSignUpBoard(dto); 
+	}
 }
