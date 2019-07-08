@@ -64,21 +64,28 @@
 			<th>평점</th>
 		</tr>
 		<c:forEach items="${list}" var="dto">
+			<tbody onclick="productdetail(${dto.product_no})">
 			<tr>
 <%--  				<td><img src="images/'${dto.product_storedname }'.png" alt="이미지">  --%>
 				<td>${dto.product_rank}</td>
 				<td>${dto.product_brand}</td>
 				<td><a href="productdetail.do?product_no=${dto.product_no}">${dto.product_name}</a></td>
-				<td><fmt:formatNumber type="number"  pattern="0.000" value="${((dto.product_point *1000) - ((dto.product_point *1000)%1)) * (1/1000)   } " /></td>
+				<td><fmt:formatNumber value="${dto.product_point }" pattern=".##"  /></td>
 			</tr>
+			</tbody>
 		</c:forEach>
 	</table>
 
-
+	
 	<jsp:include page="../Footer.jsp" />
 	<script src="assets/js/index.js"></script>
 	<script src="assets/js/cate_filter.js"></script>
-
+	<script type="text/javascript">
+/* 		function productdetail(${list.product_no}){
+			location.href = "productdetail.do?product_no=${dto.product_no}";
+		} */
+	
+	</script>
 </body>
 
 </html>

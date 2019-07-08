@@ -13,7 +13,9 @@ public interface iRankDao {
 
 	List<productDto> getFilterProductList(filterDto dto);
 	
-	List<productDto> getDetailProductList(int product_no);
-
+	productDto getDetailProductList(int product_no);
+	
+	reviewDto getDetailPoint(int product_no);
+	
 	List<reviewDto> getProductReview(int product_no);
 }

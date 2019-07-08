@@ -22,8 +22,10 @@ public interface iRankService {
 	public List<productDto> getFilterProductList(filterDto dto);
 
 	//
-	public List<productDto> getDetailProductList(int product_no);
+	public productDto getDetailProductList(int product_no);
 
+	public reviewDto getDetailPoint(int product_no);
+	
 	public List<reviewDto> getProductReview(int product_no);
 
 

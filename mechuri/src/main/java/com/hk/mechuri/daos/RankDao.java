@@ -69,17 +69,23 @@ public class RankDao implements iRankDao {
 //	System.out.println("다오에서 출력 카테고리 대분류의 값이 들어왔는지? ["+dto.getFilter_catelname()+"]");
 //	System.out.println("다오에서 출력 카테고리 소분류 값이 들어왔는지? ["+dto.getFilter_catesname()+"]");
 	
-	@Transactional
+	
 	@Override
-	public List<productDto> getDetailProductList(int product_no) {
-		System.out.println("다오의 제품상세보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
-		return sqlSession.selectOne(namepace+"productDetail");
-	}
+	public productDto getDetailProductList(int product_no) {
 
+		System.out.println("다오의 제품상세보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
+		return sqlSession.selectOne(namepace+"productDetail", product_no);
+	}
+	@Override
+	public reviewDto getDetailPoint(int product_no) {
+
+		System.out.println("다오의 제품상세보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
+		return sqlSession.selectOne(namepace+"reviewDetailPoint", product_no);
+	}
 	@Override
 	public List<reviewDto> getProductReview(int product_no) {
 		System.out.println("다오의 리뷰 전체보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
-		return sqlSession.selectList(namepace+"productReview");
+		return sqlSession.selectList(namepace+"productReview", product_no);
 	}
 
 	
