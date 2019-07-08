@@ -16,12 +16,12 @@ public class MembersDao implements IMembersDao {
 	
 	@Override
 	public boolean signUpBoard(membersDto dto) {
-		int count=sqlSession.insert(namespace+"signupboard",dto);
+		int count=sqlSession.insert(namespace+"signUpBoard",dto);
 		return count>0?true:false;
 		}
 	@Override
 	public boolean compSignUpBoard(membersDto dto) {
-		int count=sqlSession.insert(namespace+"compsignupboard",dto);
+		int count=sqlSession.insert(namespace+"compSignUpBoard",dto);
 		return count>0?true:false;
 		}
 }

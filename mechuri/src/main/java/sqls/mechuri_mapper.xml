@@ -89,8 +89,8 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 <insert id="signUpBoard" parameterType='membersDto'>
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
 MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE) 
-	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_status},#{mem_name},#{mem_nick},#{mem_phone},#{mem_post}
-	,#{mem_addr1},#{mem_addr2},#{mem_addr2},SYSDATE,#{mem_delflag},#{mem_apprflag})
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'C','브랜드명',#{mem_name},#{mem_nick},#{mem_phone},'이메일1','포스트'
+	,'주소1','주소2',SYSDATE,SYSDATE,'N','N','홈페이지')
 </insert>
 
 <!-- INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_NAME,MEM_NICK,MEM_PHONE) 
