@@ -6,30 +6,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판 상세보기</title>
+<title>게시판  업데이트 폼</title>
 <link rel="stylesheet" href="commAssets/css/boarddetail.css">
-
 </head>
 <body>
-	<jsp:include page="../Header.jsp"/>
+<jsp:include page="../Header.jsp"/>
 <br><br><br>
+
 <div class="container">
-  <form action="/action_page.php">
+  <form action="updateBoard.do" method="post">
+  <input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
     <div class="col-25">
       <label for="title">제목</label>
     </div>
     <div class="col-75">
-      <input type="text" id="title" name="titlename" value="이니스프리 1+1 행사 한대요">
+      <input type="text" id="title" name="titlename" value="${dto.board_title}">
     </div>
   </div>
+  
+    <div class="row">
+    <div class="col-25">
+      <label for="writernick">작성자</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="writernick" name="writernick" value="${dto.board_nick}" readonly="readonly">
+    </div>
+  </div>
+  
  
   <div class="row">
     <div class="col-25">
       <label for="content">내용</label>
     </div>
     <div class="col-75">
-      <textarea id="content" name="content" style="height:200px">전품목 1+1 행사 한대요~뭐살까~</textarea>
+    	<textarea id="content" name="content" style="height:200px">${dto.board_conts}</textarea>
     </div>
   </div>
    <br>
@@ -44,9 +55,8 @@
 
   <br>
   <div>
-    <input type="button" value="취소" id="cancel1">
-    <input type="button" value="삭제" id="delete1">
-    <input type="button" value="수정" id="update1">
+    <input type="submit" value="수정완료" />
+	<input type="button" value="글목록" onclick="location.href='boardlist2.do'" />
    </div>
   </form>
 </div> 

@@ -14,9 +14,14 @@ public class MembersDao implements IMembersDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	@Override
 	public boolean signUpBoard(membersDto dto) {
 		int count=sqlSession.insert(namespace+"signupboard",dto);
 		return count>0?true:false;
 		}
-
+	@Override
+	public boolean compSignUpBoard(membersDto dto) {
+		int count=sqlSession.insert(namespace+"compsignupboard",dto);
+		return count>0?true:false;
+		}
 }

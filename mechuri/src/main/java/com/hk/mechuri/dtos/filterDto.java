@@ -18,7 +18,7 @@ public class filterDto {
 
 	public filterDto(String filter_age10, String filter_age20, String filter_age30, String filter_age40,
 		String filter_age50, String filter_genderF, String filter_genderM, String filter_catelname,
-		String filter_catesname, String filter_price) {
+		String filter_catesname) {
 	super();
 	this.filter_age10 = filter_age10;
 	this.filter_age20 = filter_age20;
@@ -29,7 +29,6 @@ public class filterDto {
 	this.filter_genderM = filter_genderM;
 	this.filter_catelname = filter_catelname;
 	this.filter_catesname = filter_catesname;
-	this.filter_price = filter_price;
 }
 
 	

@@ -29,19 +29,19 @@
 	<div>
 		<form action="list.do" method="post">
 			<input type="hidden" name="command" value="filter" /> <input
-				type="checkbox" name="filter_age10" value="10대" /> 10대 <input
-				type="checkbox" name="filter_age20" value="20대" /> 20대 <input
-				type="checkbox" name="filter_age30" value="30대" /> 30대 <br /> <input
-				type="checkbox" name="filter_age40" value="40대" /> 40대 <input
-				type="checkbox" name="filter_age50" value="50대" /> 50대 이상 <br /> <input
-				type="checkbox" name="filter_genderW" value="여성" /> 여성 <input
-				type="checkbox" name="filter_genderM" value="남성" /> 남성 <br />
+				type="checkbox" name="filter_age10" value="전체,10대" /> 10대 <input
+				type="checkbox" name="filter_age20" value="전체,20대" /> 20대 <input
+				type="checkbox" name="filter_age30" value="전체,30대" /> 30대 <br /> <input
+				type="checkbox" name="filter_age40" value="전체,40대" /> 40대 <input
+				type="checkbox" name="filter_age50" value="전체,50대" /> 50대 이상 <br /> 
+				<input type="checkbox" name="filter_genderF" value="여성" /> 여성 
+				<input type="checkbox" name="filter_genderM" value="남성" /> 남성 <br />
 			<p>카테고리</p>
 			<select name="filter_catelname" style="width: 200px">
-				<option value="NULL">전체</option>
+				<option value="null">전체</option>
 			</select> 
 			<select name="filter_catesname" style="width: 200px">
-				<option value="NULL">전체</option>
+				<option value="null">전체</option>
 			</select> 
 			<input type="submit" value="선택 조건으로 검색" />
 		</form>
