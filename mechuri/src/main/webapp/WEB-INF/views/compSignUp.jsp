@@ -334,7 +334,7 @@ button {
 						<input type="button" id="sample4_button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" id="sample4_roadAddress" name="addr1" placeholder="도로명주소"><br>
 						<input type="text" id="sample4_jibunAddress" name="addr2" placeholder="지번주소"><br>
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소">
+						<input type="text" id="sample4_detailAddress" name="mem_others01" placeholder="상세주소">
 					  </div>
 					</div><br>
 					<div class="form-holder">
