@@ -63,12 +63,27 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 	 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE FROM BOARD WHERE BOARD_NO=#{board_no}
 </select>
+
 	<!-- 커뮤니티 상세글 수정 -->
 <select id="updateboard" resultType="BoardDto">
 	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE WHERE BOARD_NO=#{board_no}
 </select>
 
 
+<update id="replyupdate" parameterType="BoardDto">
+		<![CDATA[
+		UPDATE BOARD SET STEP=STEP+1
+		WHERE REFER=(SELECT REFER FROM BOARD WHERE BOARD_CONTS=#{board_conts}) 
+		AND STEP > (SELECT STEP FROM BOARD WHERE BOARD_CONTS=#{board_conts})
+		]]>
+	</update>
+	<insert id="replyinsert" parameterType="BoardDto">
+		INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,
+		#{id},#{title},#{content},SYSDATE,
+		(SELECT REFER FROM BOARD WHERE BOARD_CONTS=#{board_conts}),
+		(SELECT STEP FROM BOARD WHERE BOARD_CONTS=#{board_conts})+1,
+		(SELECT DEPTH FROM BOARD WHERE BOARD_CONTS=#{board_conts})+1,0)
+	</insert>
 	
 	
 <select id="delboard" resultType="boardDto" parameterType="int">
@@ -76,7 +91,7 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
 	<!-- 커뮤니티 첨부파일 -->
-<!-- <insert id="insertFileInfo" parameterType='boardDto'>
+ <insert id="insertFileInfo" parameterType='boardDto'>
 	INSERT INTO BOARD(BOARD_SEQ.NEXTVAL,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
 	 UPDATE BOARD SET BOARD_FILENO=BOARDFILE_SEQ.NEXTVAL,BOARD_ORIGINFILE=#{board_originfile},BOARD_STOREDFILE=#{board_storedfile},
@@ -85,7 +100,7 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 	 (BOARD_FILENO,BOARD_ORIIGINFILE, BOARD_STOREDFILE, BOARD_FILEREGDATE,BOARD_FILESIZE) 
 	 VALUES(BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize}) WHERE 
 	 
-</insert> -->
+</insert> 
 
 <insert id="signUpBoard" parameterType='membersDto'>
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,

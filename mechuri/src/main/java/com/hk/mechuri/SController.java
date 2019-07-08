@@ -35,23 +35,22 @@ public class SController {
 
 	//여기부터 커뮤니티 기능
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
-	public String boardlist2(Locale locale, Model model) {
-		
+	public String boardlist2(Locale locale, Model model,HttpServletRequest request) {
 		List<boardDto> list=boardService.getAllList();
 		model.addAttribute("list",list);
-		
+	//	System.out.println("그림2:["+dto.getBoard_storedfile()+"]");
 		return "community/boardlist2";
+		
 	}
 	
 	@RequestMapping(value = "/boardwrite.do") /*글작성 폼으로 이동*/
 	public String boardwrite(Locale locale, Model model) {	
-		
 		return "insertWrite";
 	}
 	
 	
 	@RequestMapping(value = "/insertWrite.do") /*커뮤니티 글 작성*/
-	public String insertWrite(Locale locale, Model model, HttpServletRequest request, boardDto dto) {	
+	public String insertWrite(Locale locale, Model model, HttpServletRequest request) {	
 		logger.info("글 추가하기 {}.", locale);
 		
 		String nick = request.getParameter("nickname");
@@ -62,10 +61,8 @@ public class SController {
 		boardDto dto1 = new boardDto(nick,title,content);
 		
 	
-		
 		//파일업로드
 		boolean isS = boardService.insertFileInfo(request, dto1);
-		
 		
 		if(isS) {
 			return "redirect:boardlist2.do";
