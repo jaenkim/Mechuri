@@ -5,14 +5,9 @@
 
 <!-- 김재원 -->
 <!-- <select id='productlist' resultType='productDto'> -->
-<<<<<<< HEAD
+
 
 <select id='productlist' resultType='productDto' parameterType="Map">
-=======
-
-<select id='productlist' resultType='productDto' parameterType="Map">
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
 (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINT,
 (SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
@@ -74,8 +69,8 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 		</if>
 		ORDER BY BOARD_NO
 	</select>
-	<sql id="param">
-		BOARD_NO=#{board_no}
+	<sql id="param">    
+		BOARD_NO = #{board_no}
 	</sql>
 
 	<!-- 커뮤니티 글추가 -->
