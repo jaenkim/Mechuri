@@ -3,13 +3,10 @@
 
 <mapper namespace="com.hk.mechuri">
 
-<<<<<<< HEAD
-
 <!-- 김재원 -->
 <select id='productlist' resultType='productDto'>
-=======
+
 <select id='productlist' resultType='productDto' parameterType="Map">
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
 ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
 (SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
@@ -49,11 +46,11 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 			</where>
 		</if>
 		ORDER BY BOARD_NO
-	</select>
+
 	<sql id="param">
 		SEQ=#{seq}
 	</sql>
-
+	</select>
 	
 <insert id="insertBoard" parameterType='Map'>
 	INSERT INTO BOARD(BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_FILENO,BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
@@ -79,10 +76,5 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 
 
 
-
-
-
-
-
-
 </mapper>
+
