@@ -59,6 +59,10 @@ public class AController {
 		return "compSignUp";
 	}
 	
+	/*@RequestMapping(value = "/callback.do")
+	public String callback(Model model) {
+		return "callback";
+	}*/
 	
 	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
 	public String groupbuying(Model model) {
