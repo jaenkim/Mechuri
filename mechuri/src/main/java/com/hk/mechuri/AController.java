@@ -59,6 +59,20 @@ public class AController {
 		return "compSignUp";
 	}
 	
+	@RequestMapping(value = "/compSignUpBoard.do", method = {RequestMethod.POST})
+	public String compSignUp(Model model, membersDto dto) {
+					
+		logger.info("회원 추가합니다. {}.");
+		
+		boolean isS=membersService.compSignUpBoard(dto);
+		if(isS) {
+			return "redirect:main.do";
+		}else {
+			model.addAttribute("msg","회원가입 실패");
+			return "error";
+		}
+	}
+	
 	/*@RequestMapping(value = "/callback.do")
 	public String callback(Model model) {
 		return "callback";
