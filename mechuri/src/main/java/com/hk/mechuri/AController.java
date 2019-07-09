@@ -59,13 +59,13 @@ public class AController {
 		}
 	}
 	
-	/*@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String memLogin(membersDto dto,Model model) {
 		 logger.info("login폼 이동");
 		
 		 return "memLogin";
 		}
-	
+	/*
 	//로그인 안되어있을때
 	
 		@RequestMapping(value="/memLoginBoard.do",method= {RequestMethod.POST, RequestMethod.GET})
@@ -75,9 +75,9 @@ public class AController {
 			model.addAttribute("mem_id",mem_id);
 			System.out.println("mem_id"+mem_id);
 			return "main";
-		}*/
+		}
 	
-		/*//로그인하고난 후 메인페이지
+		//로그인하고난 후 메인페이지
 				@RequestMapping(value="/main.do",method= {RequestMethod.POST, RequestMethod.GET})
 				public String index(membersDto dto,HttpSession session, Model model) 
 				{
@@ -87,9 +87,9 @@ public class AController {
 					model.addAttribute("mem_id",membersDto.getMem_id());
 					System.out.println("membersDto.getMem_id()"+membersDto.getMem_id());
 						return "main";
-				}*/
+				}
 				//로그인시 아이디 체크	
-				/*@RequestMapping(value="/loginChk.do",method= {RequestMethod.POST, RequestMethod.GET})
+				@RequestMapping(value="/loginChk.do",method= {RequestMethod.POST, RequestMethod.GET})
 				@ResponseBody
 				public String loginChk(String mem_id,String mem_pw,Model model) 
 				{	

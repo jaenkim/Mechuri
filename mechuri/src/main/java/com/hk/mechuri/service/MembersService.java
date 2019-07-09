@@ -10,7 +10,7 @@ import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
 
 @Service
-public abstract class MembersService implements IMembersService {
+public class MembersService implements IMembersService {
 	
 	@Autowired
 	private IMembersDao membersDao;
