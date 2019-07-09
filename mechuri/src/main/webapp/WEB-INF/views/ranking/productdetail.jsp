@@ -18,22 +18,26 @@
 <title>Title insert here</title>
 
 </head>
+
+
 <body>
+
 <h1>제품 상세페이지</h1>
+<!-- 제품상세 -->
 <table border='1'>
 	<tr>
-		<td>${proInfo.product_rank}</td>
-		<td>${proInfo.product_brand}</td>
+		<td>${proInfo.product_rank}</td> <!-- 제품 순위 -->
+		<td>${proInfo.product_brand}</td> <!-- 제품 브랜드 -->
 	</tr>
 	<tr>
-		<td rowspan="5">사진</td>
-		<td>${proInfo.product_name} <input type="button" value="${proInfo.product_catelname} &#47; ${proInfo.product_catesname}" class="btn btn-light" /></td>
+		<td rowspan="5">사진</td> <!-- 제품 이미지 -->
+		<td>${proInfo.product_name} <input type="button" value="${proInfo.product_catelname} &#47; ${proInfo.product_catesname}" class="btn btn-light" /></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
 	</tr>
 	<tr>
 		<td>용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a></td>
 	</tr>
 	<tr>
-		<td><img src="images/point_${proInfo.product_point }.png" alt="이미지"> &#47; ${proInfo.product_point } &#47; ${proInfo.product_pointcount } </td>
+		<td><img src="images/productPoint/point_${proInfo.product_point }.png" alt="이미지"> &#47; ${proInfo.product_point } &#47; ${proInfo.product_pointcount } </td>
 	</tr>
 	<tr> 
 		<td><input type="button" value="성분정보 보기" onclick="ingre.do?product_no=${proInfo.product_no}&product_ingre=${proInfo.product_ingre }" /></td>
@@ -45,30 +49,67 @@
 	<td>
 	<div>
 		<span class="heading">별점</span> 
-		<img 	src="images/point_${proInfo.product_point }.png" alt="이미지">
+		<img 	src="images/productPoint/point_${proInfo.product_point }.png" alt="이미지">
 		<p>별점 평균: ${proInfo.product_point } 별점 준 사람 수: ${proInfo.product_pointcount }</p>
 	</div>
 	</td>
 	<td>
 	<div>
+		
+			<div class="progress">
+			<c:choose>
+				<c:when test="${ detailReview.rev1count == null}">
+					<div class="progress-bar" style="width: 0%">0%</div>
+				</c:when>
+				<c:otherwise>
+					<div class="progress-bar" style="width: ${(detailReview.rev1count/proInfo.product_pointcount)*100}%">${(detailReview.rev1count/proInfo.product_pointcount)*100}%</div>
+				</c:otherwise>
+			</c:choose>
+			</div>
+			<p>1점(${detailReview.rev1count}명)</p>
+		
 		<div class="progress">
-			<div class="progress-bar" style="width: ${(detailReview.rev1count/proInfo.product_pointcount)*100}%">${(detailReview.rev1count/proInfo.product_pointcount)*100}%</div>
-		</div>
-		<p>1점(${detailReview.rev1count}명)</p>
-		<div class="progress">
-			<div class="progress-bar" style="width: ${(detailReview.rev2count/proInfo.product_pointcount)*100}%">${(detailReview.rev2count/proInfo.product_pointcount)*100}%</div>
+			<c:choose>
+				<c:when test="${ detailReview.rev2count == null}">
+					<div class="progress-bar" style="width: 0%">0%</div>
+				</c:when>
+				<c:otherwise>
+					<div class="progress-bar" style="width: ${(detailReview.rev2count/proInfo.product_pointcount)*100}%">${(detailReview.rev2count/proInfo.product_pointcount)*100}%</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<p>2점(${detailReview.rev2count}명)</p>
 		<div class="progress">
-			<div class="progress-bar" style="width: ${(detailReview.rev3count/proInfo.product_pointcount)*100}%">${(detailReview.rev3count/proInfo.product_pointcount)*100}%</div>
+			<c:choose>
+				<c:when test="${ detailReview.rev3count == null}">
+					<div class="progress-bar" style="width: 0%">0%</div>
+				</c:when>
+				<c:otherwise>
+					<div class="progress-bar" style="width: ${(detailReview.rev3count/proInfo.product_pointcount)*100}%">${(detailReview.rev3count/proInfo.product_pointcount)*100}%</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<p>3점(${detailReview.rev3count}명)</p>
-			<div class="progress">
-			<div class="progress-bar" style="width: ${(detailReview.rev4count/proInfo.product_pointcount)*100}%">${(detailReview.rev4count/proInfo.product_pointcount)*100}%</div>
+		<div class="progress">
+			<c:choose>
+				<c:when test="${ detailReview.rev4count == null}">
+					<div class="progress-bar" style="width: 0%">0%</div>
+				</c:when>
+				<c:otherwise>
+					<div class="progress-bar" style="width: ${(detailReview.rev4count/proInfo.product_pointcount)*100}%">${(detailReview.rev4count/proInfo.product_pointcount)*100}%</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<p>4점(${detailReview.rev4count}명)</p>
-			<div class="progress">
-			<div class="progress-bar" style="width: ${(detailReview.rev5count/proInfo.product_pointcount)*100}%">${(detailReview.rev5count/proInfo.product_pointcount)*100}%</div>
+		<div class="progress">
+			<c:choose>
+				<c:when test="${ detailReview.rev5count == null}">
+					<div class="progress-bar" style="width: 0%">0%</div>
+				</c:when>
+				<c:otherwise>
+					<div class="progress-bar" style="width: ${(detailReview.rev5count/proInfo.product_pointcount)*100}%">${(detailReview.rev5count/proInfo.product_pointcount)*100}%</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<p>5점(${detailReview.rev5count}명)</p>
 	</div>
