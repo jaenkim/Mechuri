@@ -42,13 +42,13 @@ public class AController {
 	@Autowired
 	private IMembersService MembersService;
 	
-	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
+	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
 	public String signUp(Model model) {
 		logger.info("회원 추가폼으로 이동 {}.");
 		return "signUp";
 		}
 
-	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.POST})
+	@RequestMapping(value = "/signUpBoard.do", method = RequestMethod.POST)
 	public String signUpBoard(Model model, membersDto dto) {
 					
 		logger.info("회원 추가합니다. {}.");
@@ -62,12 +62,12 @@ public class AController {
 		}
 	}
 	//로그인폼
-	@RequestMapping(value = "/login.do", method = {RequestMethod.GET})
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginForm() {
 		return "login";
 	}
 	//로그인 처리하는 부분
-	/*@RequestMapping(value="/loginCheck.do", method = {RequestMethod.POST})
+	/*@RequestMapping(value="/loginCheck.do", method = RequestMethod.POST)
 	public String loginCheck(HttpSession session,membersDto dto){
         String returnURL = "";
         if ( session.getAttribute("login") != null ){
