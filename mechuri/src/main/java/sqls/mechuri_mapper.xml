@@ -4,16 +4,7 @@
 <mapper namespace="com.hk.mechuri">
 
 <!-- 김재원 -->
-<<<<<<< HEAD
-<select id='productlist' resultType='productDto'>
-
 <select id='productlist' resultType='productDto' parameterType="Map">
-=======
-<!-- <select id='productlist' resultType='productDto'> -->
-
-
-<select id='productlist' resultType='productDto' parameterType="Map">
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
 (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINT,
 (SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
@@ -72,25 +63,19 @@ WHERE REVIEW_PRODUCTNO = #{product_no}
 			<where>
 			 	<include refid="param" />
 			</where>
-		</if>
-		ORDER BY BOARD_NO
-<<<<<<< HEAD
-
+	</if>
+	ORDER BY BOARD_NO
 	<sql id="param">
 		SEQ=#{seq}
-=======
-	</select>
+	</sql>
 	<sql id="param">    
 		BOARD_NO = #{board_no}
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 	</sql>
-<<<<<<< HEAD
-	</select>
+</select>
 	
-=======
 
 	<!-- 커뮤니티 글추가 -->
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
+
 <insert id="insertBoard" parameterType='Map'>
 	INSERT INTO BOARD(BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_FILENO,BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
 	VALUES(BOARD_SEQ.NEXTVAL,#{board_nick},#{board_title},#{board_conts},SYSDATE,BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize})
@@ -146,8 +131,4 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 
 </mapper>
 
-<<<<<<< HEAD
-=======
-</mapper>
 
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
