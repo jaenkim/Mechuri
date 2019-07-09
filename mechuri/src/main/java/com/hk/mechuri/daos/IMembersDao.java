@@ -12,5 +12,5 @@ public interface IMembersDao {
 	
 	public boolean compSignUpBoard(membersDto dto);
 
-	public membersDto get(membersDto dto);
+	public membersDto get(membersDto dto) throws Exception;
 }
