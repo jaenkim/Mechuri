@@ -61,6 +61,66 @@ public class AController {
 			return "error";
 		}
 	}
+		
+		//로그인 창으로 이동
+		@RequestMapping(value="/memLogin.do",method= RequestMethod.GET)
+		public String loginForm(membersDto dto,Model model) {
+				
+				return "memLogin";
+		}	
+		
+		//로그인 안되어있을때
+		
+		@RequestMapping(value="/mainpage.do",method= {RequestMethod.POST, RequestMethod.GET})
+		public String mainpage(Model model, String lo,String mem_id, String wd) {
+			model.addAttribute("lo",lo);
+			model.addAttribute("wd",wd);
+			model.addAttribute("mem_id",mem_id);
+			System.out.println("mem_id"+mem_id);
+			return "loginmain";
+		}
+		
+		//로그인하고난 후 메인페이지
+			@RequestMapping(value="/main.do",method= {RequestMethod.POST, RequestMethod.GET})
+			public String index(membersDto dto,HttpSession session,String r, Model model) 
+			{
+				System.out.println("로그인 값"+dto);
+				System.out.println("1"+dto.getMem_id());
+				System.out.println("2"+dto.getMem_pw());
+//				Map<String, String> map=new HashMap<String,String>();
+				
+				membersDto ldto=MembersService.loginBoard(dto);
+//				System.out.println("jhjhjhj"+ldto);
+				model.addAttribute("r", r);
+				
+				session.setAttribute("ldto",ldto);
+				System.out.println("로그인 된후ldto :"+ldto);
+				model.addAttribute("mem_id",dto.getMem_id());
+				System.out.println("loginDto.getMem_id()"+dto.getMem_id());
+					return "main";
+			}
+			
+			//로그인시 아이디 체크	
+			@RequestMapping(value="/loginChk.do",method= {RequestMethod.POST, RequestMethod.GET})
+			@ResponseBody
+			public String loginChk(String mem_id,String mem_pw,Model model) 
+			{	
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("id", mem_id);
+				map.put("pw", mem_pw);
+				return MembersService.loginChk(map)?"EXIST":"NOPE";
+			}	
+		/*//로그아웃
+		@RequestMapping(value="/logout.do",method= {RequestMethod.POST, RequestMethod.GET})
+			public String logout(HttpSession session) {
+			MembersService.logout(session);
+			return "redirect:/mainpage.do?lo=LO";
+		}
+	*/
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
     public String RegisterPost(membersDto dto,Model model,RedirectAttributes rttr) throws Exception{
@@ -87,15 +147,7 @@ public class AController {
         return "/user/emailConfirm";
     }
 	
-	
-	
-	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public String memLogin(membersDto dto,Model model) {
-		 logger.info("login폼 이동");
-		
-		 return "memLogin";
-		}
-	
+
 	
 	/*
 	//로그인 안되어있을때
