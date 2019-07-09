@@ -136,10 +136,8 @@ public class HomeController {
 		
 		int product_no = Integer.parseInt(request.getParameter("no"));
 		String product_ingre = request.getParameter("ingre");
-		
-
-		
 		productDto pDto = new productDto(product_no,product_ingre);
+		
 		
 		productDto productInfo = rankService.getDetailProductList(product_no);
 		model.addAttribute("proInfo",productInfo);
@@ -149,30 +147,12 @@ public class HomeController {
 		
 		List<reviewDto> reviewInfo = rankService.getProductReview(product_no);
 		model.addAttribute("reviewInfo",reviewInfo);
-		
+
 		List<ingreDto> ingreInfo = rankService.getProductIngre(pDto);
 		model.addAttribute("ingreInfo",ingreInfo);
 		
 		return "ranking/productdetail";
 	}
-
-	
-//	@RequestMapping(value = "/ingre.do", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String productIngre(HttpServletRequest request, Locale locale, Model model, productDto pDto, ingreDto iDto) {
-//		
-//		int product_no = Integer.parseInt(request.getParameter("no"));
-//		String ingre = request.getParameter("ingre");
-//		
-//		String[] ingreArray = ingre.split(",");
-//		
-//		Map<String,String[]> product_ingre = new HashMap<String,String[]>();
-//		product_ingre.put("product_ingre", ingreArray);
-//			
-//		List<reviewDto> reviewInfo = rankService.getProductReview(product_no);
-//		model.addAttribute("reviewInfo",reviewInfo);
-//		
-//		return "ranking/productdetail";
-//	}
 
 
 
