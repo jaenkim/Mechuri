@@ -24,6 +24,18 @@ public class MembersService implements IMembersService {
 	public boolean compSignUpBoard(membersDto dto) {
 		return membersDao.compSignUpBoard(dto); 
 	}
+
+	@Override
+	public void create(membersDto dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateAuthstatus(membersDto dto) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 /*//	<!-- 로그인 -->
 	@Override

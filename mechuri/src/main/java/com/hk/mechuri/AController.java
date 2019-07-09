@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import javax.activation.CommandMap;
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +18,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hk.mechuri.daos.IMembersDao;
 import com.hk.mechuri.daos.MembersDao;
@@ -59,12 +62,29 @@ public class AController {
 		}
 	}
 	
+	@Autowired
+//	private JaavaMailSender MailSender;
+	
+	//이메일 아이디 중복확인
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String RegisterPost(membersDto dto, Model model, RedirectAttributes rttr, HttpServletRequest request, HttpSession session) throws Exception {
+		logger.info("회원가입...");
+		logger.info(dto.toString());
+		MembersService.create(dto);
+		rttr.addFlashAttribute("authmsg" , "가입시 사용한 이메일로 인증해주 3");
+		return "redirect:/";
+	}
+	
+
+	
 	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String memLogin(membersDto dto,Model model) {
 		 logger.info("login폼 이동");
 		
 		 return "memLogin";
 		}
+	
+	
 	/*
 	//로그인 안되어있을때
 	

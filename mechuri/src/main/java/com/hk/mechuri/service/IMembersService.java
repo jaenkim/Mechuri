@@ -8,6 +8,10 @@ public interface IMembersService {
 	public boolean signUpBoard(membersDto dto);
 	
 	public boolean compSignUpBoard(membersDto dto);
+
+	public void create(membersDto dto);
+
+	public void updateAuthstatus(membersDto dto);
 	
 /*	public membersDto memLoginBoard(membersDto dto);
 	

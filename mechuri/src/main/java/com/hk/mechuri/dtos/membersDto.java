@@ -98,5 +98,21 @@ public class membersDto {
 				+ mem_deldate + ", mem_delflag=" + mem_delflag + ", mem_apprflag=" + mem_apprflag + ", mem_homepage="
 				+ mem_homepage + ", mem_others01=" + mem_others01 + ", mem_others02=" + mem_others02 + "]";
 	}
+
+
+
+
+	public void setAuthstatus(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	public static void setAuthkey(String authkey) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

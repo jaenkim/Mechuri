@@ -24,7 +24,7 @@
 <a href="memLogin.do">로그인 페이지'3'</a><br>
 <a href="compSignUp.do">기업 회원가입'3'</a><br>
 <a href="testLogin.do">부트스트랩 테스트 로그인'3'</a><br>
-
+<a href="mail.do">기업회원 이메일 인증'3'</a><br>
 <!-- <a href="callback.do">네.아.로 callback 페이지'3'</a><br> -->
 
 <a href="groupbuyingContents.do">공동구매 제품상세(아로마틱)'3'</a><br>

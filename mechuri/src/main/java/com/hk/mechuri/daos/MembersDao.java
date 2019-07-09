@@ -46,6 +46,14 @@ public class MembersDao implements IMembersDao {
 	public int loginChk(String mem_id) 
 	{
 		return sqlSession.selectOne(namespace+"loginChk",mem_id);*/
+	public static void create(membersDto dto) {
+		// TODO Auto-generated method stub
+		
+	}
+	public static void updateAuthkey(membersDto dto) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 	
 
