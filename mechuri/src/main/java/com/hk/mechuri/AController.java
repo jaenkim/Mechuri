@@ -2,18 +2,28 @@ package com.hk.mechuri;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Random;
 
+import javax.activation.CommandMap;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hk.mechuri.daos.IMembersDao;
 import com.hk.mechuri.daos.MembersDao;
@@ -21,7 +31,6 @@ import com.hk.mechuri.dtos.membersDto;
 import com.hk.mechuri.service.IMembersService;
 import com.hk.mechuri.service.MembersService;
 
-import sun.print.resources.serviceui;
 
 /**
  * Handles requests for the application home page.
@@ -31,10 +40,7 @@ public class AController {
 	private static final Logger logger = LoggerFactory.getLogger(AController.class);
 	
 	@Autowired
-	private IMembersService membersService;
-	
-	@Autowired
-	private IMembersDao membersDao;
+	private IMembersService MembersService;
 	
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
@@ -47,7 +53,7 @@ public class AController {
 					
 		logger.info("회원 추가합니다. {}.");
 		
-		boolean isS=membersService.signUpBoard(dto);
+		boolean isS=MembersService.signUpBoard(dto);
 		if(isS) {
 			return "redirect:main.do";
 		}else {
@@ -55,19 +61,170 @@ public class AController {
 			return "error";
 		}
 	}
-	
-	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.POST})
-	public String memLogin(membersDto dto, HttpServletRequest req) throws Exception {
-		 logger.info("post login");
-		 
-		 HttpSession session = req.getSession();
-		 
-		 boolean isS = membersService.memLogin(dto);
-		 
-		   
-		 return "redirect:main.do";
+	//로그인폼
+	@RequestMapping(value = "/login.do", method = {RequestMethod.GET})
+	public String loginForm() {
+		return "login";
+	}
+	//로그인 처리하는 부분
+	/*@RequestMapping(value="/loginCheck.do", method = {RequestMethod.POST})
+	public String loginCheck(HttpSession session,membersDto dto){
+        String returnURL = "";
+        if ( session.getAttribute("login") != null ){
+            // 기존에 login이란 세션 값이 존재한다면
+            session.removeAttribute("login"); // 기존값을 제거해 준다.
+        }
+          
+        // 로그인이 성공하면 UsersVO 객체를 반환함.
+        membersDto vo = MembersService.getUser(membersDto);
+          
+        if ( vo != null ){ // 로그인 성공
+            session.setAttribute("login", vo); // 세션에 login인이란 이름으로 UsersVO 객체를 저장해 놈.
+            returnURL = "redirect:/main"; // 로그인 성공시 메인페이지로 이동하고
+        }else { // 로그인에 실패한 경우
+            returnURL = "redirect:/login"; // 로그인 폼으로 다시 가도록 함
+        }
+          
+        return returnURL; // 위에서 설정한 returnURL 을 반환해서 이동시킴
+    }*/
+  
+    // 로그아웃 하는 부분
+    /*@RequestMapping(value="/logout.do")
+    public String logout(HttpSession session) {
+        session.invalidate(); // 세션 초기화
+        return "redirect:/login.do"; // 로그아웃 후 로그인화면으로 이동
+    }*/
+		/*//로그인 창으로 이동
+		@RequestMapping(value="/memLogin.do",method= RequestMethod.GET)
+		public String loginForm(membersDto dto,Model model) {
+				
+				return "memLogin";
+		}	
+		
+		//로그인 안되어있을때
+		
+		@RequestMapping(value="/mainpage.do",method= {RequestMethod.POST, RequestMethod.GET})
+		public String mainpage(Model model, String lo,String mem_id, String wd) {
+			model.addAttribute("lo",lo);
+			model.addAttribute("wd",wd);
+			model.addAttribute("mem_id",mem_id);
+			System.out.println("mem_id"+mem_id);
+			return "loginmain";
+		}
+		
+		//로그인하고난 후 메인페이지
+			@RequestMapping(value="/main.do",method= {RequestMethod.POST, RequestMethod.GET})
+			public String index(membersDto dto,HttpSession session,String r, Model model) 
+			{
+				System.out.println("로그인 값"+dto);
+				System.out.println("1"+dto.getMem_id());
+				System.out.println("2"+dto.getMem_pw());
+//				Map<String, String> map=new HashMap<String,String>();
+				
+				membersDto ldto=MembersService.loginBoard(dto);
+//				System.out.println("jhjhjhj"+ldto);
+				model.addAttribute("r", r);
+				
+				session.setAttribute("ldto",ldto);
+				System.out.println("로그인 된후ldto :"+ldto);
+				model.addAttribute("mem_id",dto.getMem_id());
+				System.out.println("loginDto.getMem_id()"+dto.getMem_id());
+					return "main";
+			}
+			
+			//로그인시 아이디 체크	
+			@RequestMapping(value="/loginChk.do",method= {RequestMethod.POST, RequestMethod.GET})
+			@ResponseBody
+			public String loginChk(String mem_id,String mem_pw,Model model) 
+			{	
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("id", mem_id);
+				map.put("pw", mem_pw);
+				return MembersService.loginChk(map)?"EXIST":"NOPE";
+			}	
+		//로그아웃
+		@RequestMapping(value="/logout.do",method= {RequestMethod.POST, RequestMethod.GET})
+			public String logout(HttpSession session) {
+			MembersService.logout(session);
+			return "redirect:/mainpage.do?lo=LO";
 		}
 	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String RegisterPost(membersDto dto,Model model,RedirectAttributes rttr) throws Exception{
+    
+        System.out.println("regesterPost 진입 ");
+        MembersService.regist(dto);
+        rttr.addFlashAttribute("msg" , "가입시 사용한 이메일로 인증해주세요");
+        return "redirect:/";
+    }
+
+    //이메일 인증 코드 검증
+    @RequestMapping(value = "/emailConfirm", method = RequestMethod.GET)
+    public String emailConfirm(membersDto dto,Model model,RedirectAttributes rttr) throws Exception { 
+        
+        System.out.println("cont get user"+dto);
+        membersDto vo = new membersDto();
+        vo=MembersService.userAuth(dto);
+        if(vo == null) {
+            rttr.addFlashAttribute("msg" , "비정상적인 접근 입니다. 다시 인증해 주세요");
+            return "redirect:/";
+        }
+        //System.out.println("usercontroller vo =" +vo);
+        model.addAttribute("login",vo);
+        return "/user/emailConfirm";
+    }*/
+	
+
+	
+	/*
+	//로그인 안되어있을때
+	
+		@RequestMapping(value="/memLoginBoard.do",method= {RequestMethod.POST, RequestMethod.GET})
+		public String memLoginBoard(Model model, String lo,String mem_id, String mem_pw) {
+			model.addAttribute("lo",lo);
+			model.addAttribute("pw",mem_pw);
+			model.addAttribute("mem_id",mem_id);
+			System.out.println("mem_id"+mem_id);
+			return "main";
+		}
+	
+		//로그인하고난 후 메인페이지
+				@RequestMapping(value="/main.do",method= {RequestMethod.POST, RequestMethod.GET})
+				public String index(membersDto dto,HttpSession session, Model model) 
+				{
+
+					session.setAttribute("ldto",ldto);
+					System.out.println("로그인 된후ldto :"+ldto);
+					model.addAttribute("mem_id",membersDto.getMem_id());
+					System.out.println("membersDto.getMem_id()"+membersDto.getMem_id());
+						return "main";
+				}
+				//로그인시 아이디 체크	
+				@RequestMapping(value="/loginChk.do",method= {RequestMethod.POST, RequestMethod.GET})
+				@ResponseBody
+				public String loginChk(String mem_id,String mem_pw,Model model) 
+				{	
+					Map<String, String> map = new HashMap<String, String>();
+					map.put("id", mem_id);
+					map.put("pw", mem_pw);
+					return MembersService.loginChk(map)?"EXIST":"NOPE";
+				}	*/
+						
+	
+
+	 @RequestMapping("logout.do")
+	    public String logout(HttpSession session){
+//	        session.invalidate();
+	        session.removeAttribute("userid");
+	        return "redirect:memLogin.do";
+
+	 }
+	 
 	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
 	public String compSignUp(Model model) {
 	
@@ -79,7 +236,7 @@ public class AController {
 					
 		logger.info("회원 추가합니다. {}.");
 		
-		boolean isS=membersService.compSignUpBoard(dto);
+		boolean isS=MembersService.compSignUpBoard(dto);
 		if(isS) {
 			return "redirect:main.do";
 		}else {

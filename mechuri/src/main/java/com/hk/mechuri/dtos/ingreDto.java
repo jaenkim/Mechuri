@@ -2,7 +2,7 @@ package com.hk.mechuri.dtos;
 
 public class ingreDto {
 
-	private int ingre_no;
+	private String ingre_no;
 	private String ingre_korname;
 	private String ingre_engname;
 	private String ingre_conts;
@@ -24,12 +24,12 @@ public class ingreDto {
 
 	
 	//Getter and Setter
-	public int getIngre_no() {
+	public String getIngre_no() {
 		return ingre_no;
 	}
 
 
-	public void setIngre_no(int ingre_no) {
+	public void setIngre_no(String ingre_no) {
 		this.ingre_no = ingre_no;
 	}
 

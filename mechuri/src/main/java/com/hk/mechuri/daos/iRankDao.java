@@ -1,8 +1,10 @@
 package com.hk.mechuri.daos;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hk.mechuri.dtos.filterDto;
+import com.hk.mechuri.dtos.ingreDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
 
@@ -13,7 +15,11 @@ public interface iRankDao {
 
 	List<productDto> getFilterProductList(filterDto dto);
 	
-	List<productDto> getDetailProductList(int product_no);
-
+	productDto getDetailProductList(int product_no);
+	
+	reviewDto getDetailPoint(int product_no);
+	
 	List<reviewDto> getProductReview(int product_no);
+
+	List<ingreDto> getProductIngre(productDto pDto);
 }

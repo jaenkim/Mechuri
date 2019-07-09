@@ -1,5 +1,9 @@
 package com.hk.mechuri.daos;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import com.hk.mechuri.dtos.membersDto;
 
 public interface IMembersDao {
@@ -8,5 +12,5 @@ public interface IMembersDao {
 	
 	public boolean compSignUpBoard(membersDto dto);
 
-	public boolean memLogin(membersDto dto);
+	public membersDto get(membersDto dto);
 }

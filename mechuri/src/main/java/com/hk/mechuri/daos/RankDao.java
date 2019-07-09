@@ -10,14 +10,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.mechuri.dtos.filterDto;
+import com.hk.mechuri.dtos.ingreDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
 
 
-/**
- * @author 82108
- *
- */
 @Repository
 public class RankDao implements iRankDao {
 	
@@ -69,17 +66,38 @@ public class RankDao implements iRankDao {
 //	System.out.println("다오에서 출력 카테고리 대분류의 값이 들어왔는지? ["+dto.getFilter_catelname()+"]");
 //	System.out.println("다오에서 출력 카테고리 소분류 값이 들어왔는지? ["+dto.getFilter_catesname()+"]");
 	
-	@Transactional
+	
 	@Override
-	public List<productDto> getDetailProductList(int product_no) {
+	public productDto getDetailProductList(int product_no) {
+
 		System.out.println("다오의 제품상세보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
-		return sqlSession.selectOne(namepace+"productDetail");
+		return sqlSession.selectOne(namepace+"productDetail", product_no);
+	}
+	@Override
+	public reviewDto getDetailPoint(int product_no) {
+
+		System.out.println("다오의 제품상세보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
+		return sqlSession.selectOne(namepace+"reviewDetailPoint", product_no);
+	}
+	@Override
+	public List<reviewDto> getProductReview(int product_no) {
+		System.out.println("다오의 리뷰보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
+		return sqlSession.selectList(namepace+"productReview", product_no);
 	}
 
 	@Override
-	public List<reviewDto> getProductReview(int product_no) {
-		System.out.println("다오의 리뷰 전체보기 메서드에서 출력해보는 제품번호 매개변수 ["+product_no+"]");
-		return sqlSession.selectList(namepace+"productReview");
+	public List<ingreDto> getProductIngre(productDto pDto) {
+		int product_no = pDto.getProduct_no();
+		String ingre = pDto.getProduct_ingre();
+		
+		String[] ingreArray = ingre.split(",");
+		
+		Map<String,String[]> mapp = new HashMap<String,String[]>();
+		
+		mapp.put("product_ingre", ingreArray);
+//		mapp.put("product_no", product_no);
+		
+		return sqlSession.selectList(namepace+"productIngre",mapp);
 	}
 
 	

@@ -4,11 +4,8 @@
 <mapper namespace="com.hk.mechuri">
 
 <!-- 김재원 -->
-<!-- <select id='productlist' resultType='productDto'> -->
-
 <select id='productlist' resultType='productDto' parameterType="Map">
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
-SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,
+SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
 ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
 (SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
 DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
@@ -35,28 +32,80 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
+
+
+<!-- 제품 상세페이지 보기 -->
+<select id="productDetail" resultType="productDto" parameterType="int">
+SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_CONTS,PRODUCT_BRAND,PRODUCT_COMPNO,PRODUCT_CATELNAME,PRODUCT_CATESNAME,
+PRODUCT_SKINTYPE,PRODUCT_AGE,PRODUCT_GENDER,PRODUCT_INGRE,PRODUCT_FLAG,
+ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),2) AS PRODUCT_POINT,
+(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
+DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
+FROM PRODUCT
+WHERE PRODUCT_NO = #{product_no}
+</select>
+<!-- 별점 점수별 인원수 세기 -->
+<select id="reviewDetailPoint" resultType="reviewDto" parameterType="int">
+SELECT (SELECT COUNT(*) FROM REVIEW WHERE (REVIEW_POINT=1 OR REVIEW_POINT=1.5) AND REVIEW_PRODUCTNO=#{product_no}) AS REV1COUNT,
+ (SELECT COUNT(*) FROM REVIEW WHERE (REVIEW_POINT=2 OR REVIEW_POINT=2.5) AND REVIEW_PRODUCTNO=#{product_no}) AS REV2COUNT,
+(SELECT COUNT(*) FROM REVIEW WHERE (REVIEW_POINT=3 OR REVIEW_POINT=3.5) AND REVIEW_PRODUCTNO=#{product_no}) AS REV3COUNT,
+(SELECT COUNT(*) FROM REVIEW WHERE (REVIEW_POINT=4 OR REVIEW_POINT=4.5) AND REVIEW_PRODUCTNO=#{product_no}) AS REV4COUNT,
+(SELECT COUNT(*) FROM REVIEW WHERE (REVIEW_POINT=5 OR REVIEW_POINT=5.5) AND REVIEW_PRODUCTNO=#{product_no}) AS REV5COUNT
+FROM REVIEW
+WHERE REVIEW_PRODUCTNO = #{product_no} AND ROWNUM=1
+</select>
+<!-- 상세페이지 제품의 리뷰보기 -->
+<select id="productReview" resultType="reviewDto" parameterType="int">
+SELECT REVIEW_NO, REVIEW_CONTS, review_memberid, (SELECT MEMBERS.MEM_NICK FROM MEMBERS WHERE MEMBERS.MEM_ID=REVIEW.REVIEW_MEMBERID) AS REVIEW_NICK,
+REVIEW_POINT,REVIEW_REGDATE,REVIEW_STOREDFILE 
+FROM REVIEW
+WHERE REVIEW_PRODUCTNO = #{product_no}
+</select>
+<!-- 상세페이지 제품의 성분보기 -->
+<select id="productIngre" resultType="ingreDto" parameterType="Map">
+SELECT INGRE_KORNAME,INGRE_ENGNAME,INGRE_CONTS,INGRE_DANGER,INGRE_GRADE,INGRE_SKINTYPE,INGRE_20,INGRE_20CONTS,INGRE_ALLERGY 
+FROM INGRE
+WHERE INGRE_NO IN 
+	<foreach collection="product_ingre" item="ingre" open="(" close=")" separator=",">
+		#{ingre}
+	</foreach>
+</select>
+
+
 <!-- 커뮤니티 리스트 출력 쿼리 -->
-<select id='boardlist2' resultType='boardDto' parameterType='Map'>
+<!-- <select id='boardlist2' resultType='boardDto' parameterType='Map'>
 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE,
 	DECODE(ROUND(SYSDATE-BOARD_REGDATE),0,'true','false') AS BOARD_NEW
 	FROM BOARD
 
 	
-	<if test="board_no != null"> <!-- if문 같은 다이나믹쿼리를 쓸 때는 파라미터타입을 꼭 Map으로 해야함 그래야 seq가 인식가능 -->
+	<if test="board_no != null"> if문 같은 다이나믹쿼리를 쓸 때는 파라미터타입을 꼭 Map으로 해야함 그래야 seq가 인식가능
 			<where>
 			 	<include refid="param" />
 			</where>
+	</if>
+	ORDER BY BOARD_NO
+
 		</if>
 		ORDER BY BOARD_NO DESC
 </select>
 	<sql id="param">
+		SEQ=#{seq}
+	</sql>
+	<sql id="param">    
+		BOARD_NO = #{board_no}
 		BOARD_NO=#{board_no}
 	</sql>
+<<<<<<< HEAD
 <!-- 새글new추가 -->
 <select id='boardlist' resultType='boardDto' parameterType='Map'>
 	SELECT DECODE(ROUND(SYSDATE-BOARD_REGDATE),0,'true','false') AS board_new FROM BOARD
 </select>
+=======
+</select> -->
+	
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 
 	<!-- 커뮤니티 글추가 -->
 <insert id="insertBoard" parameterType='Map'>
@@ -134,8 +183,13 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 </insert>
 
 <select id="memLogin" parameterType="membersDto">
-	SELECT MEM_ID, MEM_NAME FROM MEMVERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
-
+	SELECT MEM_ID, MEM_NAME FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
+	
+    <!--[CDATA[
+        select *  from users
+        where Id = #{id} and Pw = #{pw}
+    ]]-->
+   
 </select>
 
 

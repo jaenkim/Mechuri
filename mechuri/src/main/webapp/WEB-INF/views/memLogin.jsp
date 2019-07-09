@@ -3212,30 +3212,28 @@ body>#login form .idpw {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>일반회원 로그인 화면</title>
 
-<script>
-	$(document).ready(function() {
-		$("#textid").ubind("click").click(function(e) {
-			e.preventDefault();
-			fn_login();
-		});
-	});
+<script type="text/javascript">
 
-	function fn_login() {
-		if ($("#textid").val().length < 1) {
-
-			alert("아이디를 입력해주세요.");
-		} else if ($("#textpw").val().length < 1) {
-			alert("비밀번호를 입력해주세요.");
-		} else {
-			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='.do' />");
-			comSubmit.submit();
+unction loginChk() {
+	var id = $("#id").val();
+	var pw = $("#pw").val();
+	$.ajax(
+				{
+					type: "POST",
+					url: "./loginChk.do",
+					data:"id="+id+"&pw="+pw,
+					async: true,
+					success: function(msg){
+						if(msg=="NOPE"){
+							alert("아이디 혹은 비밀번호를 확인해주세요.")
+						}else{
+							location.href="./loginmain.do?mem_id="+id+"&mem_pw="+pw;
+						}
+					}
+				}
+			);
 		}
-	}
 </script>
-
-
-
 
 
 
@@ -3256,6 +3254,7 @@ body>#login form .idpw {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
+	<form action='memLogin.do' method='post'>
 	<!-- <로그인 화면><br>
 <input type="text" name="id" maxlength="20" placeholder="아이디"
 			onchange='checkIdAjax(this.value)'
@@ -3270,15 +3269,15 @@ body>#login form .idpw {
 
 
 	<div id="login">
-		<form id="login_form">
-			<div class="field_container">
-				<input type="text" id="textid" placeholder="아이디">
+		
+			<div class="board_list">
+				<input type="text" id="id" name="ID" class="wdp_90" placeholder="아이디">
 			</div>
 
 			<div class="field_container">
-				<input type="Password" placeholder="비밀번호">
+				<input type="Password" id="pw" name="PASSWORD" class="wdp_90" placeholder="비밀번호">
 				<button id="sign_in_button">
-					<span class="button_text">Sign In</span>
+					<span class="btn" id="login_btn" input type="submit">Sign In</span>
 				</button>
 				<br>
 				<div class="idpw">

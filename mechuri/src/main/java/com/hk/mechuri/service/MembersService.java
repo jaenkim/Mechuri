@@ -1,13 +1,16 @@
 package com.hk.mechuri.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.mechuri.daos.IMembersDao;
+import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
 
 @Service
-public class MembersService implements IMembersService {
+public abstract class MembersService implements IMembersService {
 	
 	@Autowired
 	private IMembersDao membersDao;
@@ -22,7 +25,21 @@ public class MembersService implements IMembersService {
 		return membersDao.compSignUpBoard(dto); 
 	}
 	@Override
-	public boolean memLogin(membersDto dto) {
-		return membersDao.memLogin(dto);
+	public membersDto getUser(membersDto dto) throws Exception {
+        return membersDao.get(dto);
+    }
+/*//	<!-- 로그인 -->
+	@Override
+	public membersDto memLoginBoard(membersDto dto) {
+		System.out.println("memLoginBoard Service");
+		return membersDao.memLoginBoard(dto);
 	}
+	
+
+	public static boolean loginChk(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return false;
+	}*/
+
+
 }
