@@ -4,17 +4,18 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/5stars.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<html>
-<head>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 <title>Title insert here</title>
 
 </head>
@@ -40,7 +41,7 @@
 		<td><img src="images/productPoint/point_${proInfo.product_point }.png" alt="이미지"> &#47; ${proInfo.product_point } &#47; ${proInfo.product_pointcount } </td>
 	</tr>
 	<tr> 
-		<td><input type="button" value="성분정보 보기" onclick="ingre.do?product_no=${proInfo.product_no}&product_ingre=${proInfo.product_ingre }" /></td>
+		<td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">성분 상세보기 ></button></td>
 	</tr>
 	<tr> 
 		<td>${proInfo.product_conts}</td>
@@ -58,7 +59,7 @@
 		
 			<div class="progress">
 			<c:choose>
-				<c:when test="${ detailReview.rev1count == null}">
+				<c:when test="${detailReview.rev1count == null}">
 					<div class="progress-bar" style="width: 0%">0%</div>
 				</c:when>
 				<c:otherwise>
@@ -136,5 +137,66 @@
 		</tr>
 		</c:forEach>
 	</table>
+
+ <!-- 성분 Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- 성분 Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">성분정보</h4>
+        </div>
+        <div class="modal-body">
+          <p>${proInfo.product_name } </p>
+          <p>${proInfo.product_ml},${proInfo.product_price}</p>
+          <p>해당 제품의 전성분에 대한 EWG 안전도 등급입니다.</p>
+          <div>
+	        <img src="images/ingre/ingre_dangernone.png" alt="등급미정">등급미정
+	        <img src="images/ingre/ingre_dangerlow.png" alt="낮은 위험도">낮은 위험도
+	        <img src="images/ingre/ingre_dangermiddle.png" alt="중간 위험도">중간 위험도
+	      	<img src="images/ingre/ingre_dangerhigh.png" alt="높은 위험도">높은 위험도
+          </div>
+          <div>
+          	<table border = '1'>
+          	<c:forEach items="${ingreInfo}" var="ingreInfo">
+          		<tr>
+          			<td>
+          				<img src="images/ingre/ingre_${ingreInfo.ingre_grade}.png" alt="위험도">
+          			</td>
+          			<td>
+          				<p>${ingreInfo.ingre_korname}</p>	
+          				<p>${ingreInfo.ingre_engname}</p>
+          				<p>${ingreInfo.ingre_conts}</p>
+          				<c:choose>
+	          				<c:when test="${ingreInfo.ingre_20conts != null}">
+	          					<img src="images/ingre/ingre_20.png" alt="20가지 주의성분"> 20가지 주의성분 포함 | ${ingreInfo.ingre_20conts}</p>
+	          				</c:when>
+	          				<c:otherwise>
+	          				</c:otherwise>
+          				</c:choose>
+          				<c:choose>
+	          				<c:when test="${ingreInfo.ingre_skintype != null}">
+	          					<img src="images/ingre/ingre_skin.png" alt="도움되는 피부타입"> ${ingreInfo.ingre_skintype}에 도움
+	          				</c:when>
+	          				<c:otherwise>
+	          				</c:otherwise>
+          				</c:choose>
+          			</td>	
+           		</tr>
+          	</c:forEach>
+          	</table>
+          </div>
+          
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+     
+    </div>
+  </div>
 </body>
 </html>
