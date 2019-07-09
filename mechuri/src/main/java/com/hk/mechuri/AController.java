@@ -62,7 +62,7 @@ public class AController {
 		}
 	}
 		
-		//로그인 창으로 이동
+		/*//로그인 창으로 이동
 		@RequestMapping(value="/memLogin.do",method= RequestMethod.GET)
 		public String loginForm(membersDto dto,Model model) {
 				
@@ -110,13 +110,13 @@ public class AController {
 				map.put("pw", mem_pw);
 				return MembersService.loginChk(map)?"EXIST":"NOPE";
 			}	
-		/*//로그아웃
+		//로그아웃
 		@RequestMapping(value="/logout.do",method= {RequestMethod.POST, RequestMethod.GET})
 			public String logout(HttpSession session) {
 			MembersService.logout(session);
 			return "redirect:/mainpage.do?lo=LO";
 		}
-	*/
+	
 	
 	
 	
@@ -145,7 +145,7 @@ public class AController {
         //System.out.println("usercontroller vo =" +vo);
         model.addAttribute("login",vo);
         return "/user/emailConfirm";
-    }
+    }*/
 	
 
 	

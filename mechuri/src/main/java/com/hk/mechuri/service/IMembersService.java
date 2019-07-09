@@ -11,7 +11,7 @@ public interface IMembersService {
 	
 	public boolean compSignUpBoard(membersDto dto);
 
-	public void regist(membersDto dto);
+	/*public void regist(membersDto dto);
 
 	public membersDto userAuth(membersDto dto);
 	
@@ -23,7 +23,7 @@ public interface IMembersService {
 
 	boolean loginChk(Map<String, String> map);
 
-	public Integer countmessage(membersDto dto);
+	public Integer countmessage(membersDto dto);*/
 	
 /*	public membersDto memLoginBoard(membersDto dto);
 	
