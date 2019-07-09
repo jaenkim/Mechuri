@@ -11,7 +11,7 @@ public interface IMembersService {
 	
 	public boolean compSignUpBoard(membersDto dto);
 
-	public membersDto getUser(membersDto dto) throws Exception;
+	Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception;
 	
 	/*public void regist(membersDto dto);
 
