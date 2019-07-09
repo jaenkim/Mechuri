@@ -24,7 +24,10 @@ public abstract class MembersService implements IMembersService {
 	public boolean compSignUpBoard(membersDto dto) {
 		return membersDao.compSignUpBoard(dto); 
 	}
-	
+	@Override
+	public membersDto getUser(membersDto dto) throws Exception {
+        return membersDao.get(dto);
+    }
 /*//	<!-- 로그인 -->
 	@Override
 	public membersDto memLoginBoard(membersDto dto) {
