@@ -20,7 +20,7 @@ public interface IBoardService {
 
 	public boolean delBoard(int board_no);
 	
-	public int replyBoard(boardDto dto);
+	public boolean replyBoard(boardDto dto);
 	
 	public boolean readCount(int board_no);
 	

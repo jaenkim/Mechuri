@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hk.mechuri.dtos.filterDto;
+import com.hk.mechuri.dtos.ingreDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
 import com.hk.mechuri.service.RankService;
@@ -129,13 +130,16 @@ public class HomeController {
 
 	
 	@RequestMapping(value = "/productdetail.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String detail(HttpServletRequest request, Locale locale, Model model, productDto dto) {
-		
+	public String productDetail(HttpServletRequest request, Locale locale, Model model, productDto dto) {
 		
 		int product_no = Integer.parseInt(request.getParameter("product_no"));
 		System.out.println("컨트롤러에서 출력해보는 값! product_no ["+product_no+"]");
-		List<productDto> productInfo = rankService.getDetailProductList(product_no);
+		
+		productDto productInfo = rankService.getDetailProductList(product_no);
 		model.addAttribute("proInfo",productInfo);
+		
+		reviewDto reviewDetail = rankService.getDetailPoint(product_no);
+		model.addAttribute("detailReview",reviewDetail);
 		
 		List<reviewDto> reviewInfo = rankService.getProductReview(product_no);
 		model.addAttribute("reviewInfo",reviewInfo);
@@ -143,6 +147,24 @@ public class HomeController {
 		return "ranking/productdetail";
 	}
 
+	
+	@RequestMapping(value = "/ingre.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String productIngre(HttpServletRequest request, Locale locale, Model model, productDto pDto, ingreDto iDto) {
+		
+		int product_no = Integer.parseInt(request.getParameter("product_no"));
+		String ingre = request.getParameter("product_ingre");
+		
+		String[] ingreArray = ingre.split(",");
+		
+		for(int i=0;i<ingreArray.length;i++) {
+			
+		}
+		
+		List<reviewDto> reviewInfo = rankService.getProductReview(product_no);
+		model.addAttribute("reviewInfo",reviewInfo);
+		
+		return "ranking/productdetail";
+	}
 
 
 

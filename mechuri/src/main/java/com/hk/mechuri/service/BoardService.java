@@ -48,10 +48,12 @@ public class BoardService implements IBoardService {
 		return boardDao.delBoard(board_no);
 	}
 
+	@Transactional
 	@Override
-	public int replyBoard(boardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean replyBoard(boardDto dto) {
+		boardDao.replyUpdate(dto.getBoard_no());
+		int count=boardDao.replyInsert(dto);
+		return count>0?true:false;
 	}
 
 	@Override
@@ -83,7 +85,7 @@ public class BoardService implements IBoardService {
 		//상대경로 : 내가 지정하는게 아닌 톰캣이 알아서 경로정해서 저장해줌
 		String realPath=request.getSession().getServletContext().getRealPath("upload");
 				//절대경로 : 경로를 내가 직접 지정해서 저장해줘야함
-		File f=new File("C:/Users/서은영/git/Mechuri/mechuri/src/main/webapp/upload/"+board_storedfile);
+		File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile);
 		try {
 			System.out.println("서비스try문 안 위 multi["+multiFile+"]");
 			multiFile.transferTo(f);
@@ -97,6 +99,7 @@ public class BoardService implements IBoardService {
 			
 			isS=boardDao.insertBoard(new boardDto(board_nick,board_title,board_conts,board_originfile,board_storedfile,board_filesize));	
 			System.out.println("서비스try문 안 아래 multi["+multiFile+"]");
+			System.out.println("서비스 try아래2=["+board_storedfile+"]");
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
