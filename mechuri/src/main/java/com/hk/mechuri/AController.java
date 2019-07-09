@@ -62,20 +62,32 @@ public class AController {
 		}
 	}
 	
-	@Autowired
-//	private JaavaMailSender MailSender;
-	
-	//이메일 아이디 중복확인
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String RegisterPost(membersDto dto, Model model, RedirectAttributes rttr, HttpServletRequest request, HttpSession session) throws Exception {
-		logger.info("회원가입...");
-		logger.info(dto.toString());
-		MembersService.create(dto);
-		rttr.addFlashAttribute("authmsg" , "가입시 사용한 이메일로 인증해주 3");
-		return "redirect:/";
-	}
-	
+    public String RegisterPost(membersDto dto,Model model,RedirectAttributes rttr) throws Exception{
+    
+        System.out.println("regesterPost 진입 ");
+        MembersService.regist(dto);
+        rttr.addFlashAttribute("msg" , "가입시 사용한 이메일로 인증해주세요");
+        return "redirect:/";
+    }
 
+    //이메일 인증 코드 검증
+    @RequestMapping(value = "/emailConfirm", method = RequestMethod.GET)
+    public String emailConfirm(membersDto dto,Model model,RedirectAttributes rttr) throws Exception { 
+        
+        System.out.println("cont get user"+dto);
+        membersDto vo = new membersDto();
+        vo=MembersService.userAuth(dto);
+        if(vo == null) {
+            rttr.addFlashAttribute("msg" , "비정상적인 접근 입니다. 다시 인증해 주세요");
+            return "redirect:/";
+        }
+        //System.out.println("usercontroller vo =" +vo);
+        model.addAttribute("login",vo);
+        return "/user/emailConfirm";
+    }
+	
+	
 	
 	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String memLogin(membersDto dto,Model model) {

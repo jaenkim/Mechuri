@@ -356,7 +356,6 @@ button {
 					</div>
 					<div class="form-holder">
 						<input type="email" placeholder="이메일" name="mem_email" class="form-control" style="font-size: 16px;">
-						<button input type="submit" a href="joinPost" value="이메일인증" name="mem_emailcheck" class="form-control" style="font-size: 16px;">
 					</div>
 					<div class="form-holder">
 						<input type="text" placeholder="연락처" name="mem_phone" class="form-control" style="font-size: 16px;">

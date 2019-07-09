@@ -46,14 +46,56 @@ public class MembersDao implements IMembersDao {
 	public int loginChk(String mem_id) 
 	{
 		return sqlSession.selectOne(namespace+"loginChk",mem_id);*/
-	public static void create(membersDto dto) {
+	//회원 정보 입력
+    @Override
+    public void insertUser(membersDto dto) throws Exception {
+        System.out.println("회원등록완료 !!!");
+        sqlSession.insert(namespace+".insertUser",dto);
+        System.out.println("//////////////////////////////////");
+        System.out.println("회원등록완료 !!!");
+    }
+    //email 중복 확인
+    @Override
+    public membersDto authenticate(String str) throws Exception {
+        return sqlSession.selectOne(namespace+".checkdupl", str);
+    }
+ 
+    //해당 email에 인증 키 업데이트
+    @Override
+    public void createAuthKey(String memberEmail, String memberAuthKey, membersDto dto) throws Exception {
+    	membersDto vo = new membersDto();
+        vo.setMemberAuthKey(memberAuthKey);
+        vo.setMemberEmail(memberEmail);
+        sqlSession.update(namespace + ".createAuthKey", dto);
+    }
+    //이메일 인증 코드 확인
+    @Override
+    public membersDto chkAuth(membersDto dto) throws Exception {
+        return sqlSession.selectOne(namespace + ".chkAuth", dto);
+    }
+    //인증 후 계정 활성화
+    @Override
+    public void userAuth(membersDto dto) throws Exception {
+        System.out.println("인증하나요??");
+        
+        sqlSession.update(namespace + ".userAuth", dto);
+        System.out.println(dto.getUserState());
+    }
+	public static void successAuth(membersDto dto) {
 		// TODO Auto-generated method stub
 		
 	}
-	public static void updateAuthkey(membersDto dto) {
+	@Override
+	public void userAuth(String mem_email) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
-}
+	@Override
+	public void createAuthKey(String mem_email, String User_authCode) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	}
+
 	
 

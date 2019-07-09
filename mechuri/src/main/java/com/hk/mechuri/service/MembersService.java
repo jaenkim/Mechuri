@@ -26,17 +26,18 @@ public class MembersService implements IMembersService {
 	}
 
 	@Override
-	public void create(membersDto dto) {
+	public void regist(membersDto dto) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateAuthstatus(membersDto dto) {
+	public membersDto userAuth(membersDto dto) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
-	
+
+
 /*//	<!-- 로그인 -->
 	@Override
 	public membersDto memLoginBoard(membersDto dto) {
@@ -50,7 +51,7 @@ public class MembersService implements IMembersService {
 			return membersDao.loginChk(mem_id)>0?true:false;
 		}*/
 
-	}
+}
 
 	
 

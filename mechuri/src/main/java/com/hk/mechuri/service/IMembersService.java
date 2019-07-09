@@ -9,9 +9,9 @@ public interface IMembersService {
 	
 	public boolean compSignUpBoard(membersDto dto);
 
-	public void create(membersDto dto);
+	public void regist(membersDto dto);
 
-	public void updateAuthstatus(membersDto dto);
+	public membersDto userAuth(membersDto dto);
 	
 /*	public membersDto memLoginBoard(membersDto dto);
 	

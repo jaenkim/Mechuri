@@ -14,7 +14,7 @@ public class TempKey {
     }
 
     private String init() {
-        Random ran = new Random();
+        Random  ran = new Random();
         StringBuffer sb = new StringBuffer();
         int num = 0;
         do {
@@ -30,5 +30,4 @@ public class TempKey {
         }
         return sb.toString();
     }
-
 }
