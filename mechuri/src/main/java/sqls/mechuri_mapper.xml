@@ -38,7 +38,9 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 <!-- 커뮤니티 리스트 출력 쿼리 -->
 <select id='boardlist2' resultType='boardDto' parameterType='Map'>
 	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
-	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE FROM BOARD
+	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE,
+	DECODE(ROUND(SYSDATE-BOARD_REGDATE),0,'true','false') AS BOARD_NEW
+	FROM BOARD
 
 	
 	<if test="board_no != null"> <!-- if문 같은 다이나믹쿼리를 쓸 때는 파라미터타입을 꼭 Map으로 해야함 그래야 seq가 인식가능 -->
@@ -46,11 +48,15 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 			 	<include refid="param" />
 			</where>
 		</if>
-		ORDER BY BOARD_NO
-	</select>
+		ORDER BY BOARD_NO DESC
+</select>
 	<sql id="param">
 		BOARD_NO=#{board_no}
 	</sql>
+<!-- 새글new추가 -->
+<select id='boardlist' resultType='boardDto' parameterType='Map'>
+	SELECT DECODE(ROUND(SYSDATE-BOARD_REGDATE),0,'true','false') AS board_new FROM BOARD
+</select>
 
 	<!-- 커뮤니티 글추가 -->
 <insert id="insertBoard" parameterType='Map'>
@@ -65,25 +71,32 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
 	<!-- 커뮤니티 상세글 수정 -->
-<select id="updateboard" resultType="BoardDto">
+<select id="updateboard" resultType="BoardDto" parameterType="BoardDto">
 	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE WHERE BOARD_NO=#{board_no}
 </select>
 
-
-<update id="replyupdate" parameterType="BoardDto">
+	<!-- 댓글 업데이트, 추가, 상세페이지 내 댓글출력 -->
+<!-- <update id="replyupdate" parameterType="replyDto">
 		<![CDATA[
-		UPDATE BOARD SET STEP=STEP+1
-		WHERE REFER=(SELECT REFER FROM BOARD WHERE BOARD_CONTS=#{board_conts}) 
-		AND STEP > (SELECT STEP FROM BOARD WHERE BOARD_CONTS=#{board_conts})
+		UPDATE REPLY SET REPLY_STEP=REPLY_STEP+1
+		WHERE REPLY_REFER=(SELECT REPLY_REFER FROM REPLY WHERE REPLY_CONTS=#{reply_conts}) 
+		AND REPLY_STEP > (SELECT REPLY_STEP FROM REPLY WHERE REPLY_CONTS=#{reply_conts})
 		]]>
-	</update>
-	<insert id="replyinsert" parameterType="BoardDto">
-		INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,
-		#{id},#{title},#{content},SYSDATE,
-		(SELECT REFER FROM BOARD WHERE BOARD_CONTS=#{board_conts}),
-		(SELECT STEP FROM BOARD WHERE BOARD_CONTS=#{board_conts})+1,
-		(SELECT DEPTH FROM BOARD WHERE BOARD_CONTS=#{board_conts})+1,0)
-	</insert>
+</update> -->
+<insert id="replyinsert" parameterType="replyDto">
+<!-- 		INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, -->
+<!-- 		#{reply_nick},#{reply_conts},SYSDATE, -->
+<!-- 		(SELECT REPLY_REFER FROM REPLY WHERE REPLY_CONTS=#{reply_conts}), -->
+<!-- 		(SELECT REPLY_STEP FROM REPLY WHERE REPLY_CONTS=#{reply_conts})+1, -->
+<!-- 		(SELECT REPLY_DEPTH FROM REPLY WHERE REPLY_CONTS=#{reply_conts})+1,0) -->
+
+INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, '1', SYSDATE, #{reply_nick},#{reply_conts}, 0, NULL, NULL, NULL, NULL )
+</insert>
+<select id="replylist" resultType="replyDto">
+	SELECT REPLY_NICK, REPLY_CONTS,REPLY_REGDATE FROM REPLY
+</select>
+
+
 	
 	
 <select id="delboard" resultType="boardDto" parameterType="int">

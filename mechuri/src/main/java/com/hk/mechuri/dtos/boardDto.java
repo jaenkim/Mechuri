@@ -16,8 +16,10 @@ public class boardDto {
 	private Date board_fileregdate;
 	private int board_filesize;
 	private String board_filedelflag;
-	private String board_others01;
-	private String board_others02;
+	private String board_refer;
+	private String board_step;
+	private String board_depth;
+	private String board_new;
 	
 	
 	
@@ -43,7 +45,7 @@ public class boardDto {
 	//using field
 	public boardDto(int board_no, String board_nick, String board_title, String board_conts, Date board_regdate,
 			int board_count, int board_fileno, String board_originfile, String board_storedfile, Date board_fileregdate,
-			int board_filesize, String board_filedelflag, String board_others01, String board_others02) {
+			int board_filesize, String board_filedelflag, String board_refer, String board_step, String board_depth) {
 		super();
 		this.board_no = board_no;
 		this.board_nick = board_nick;
@@ -57,8 +59,11 @@ public class boardDto {
 		this.board_fileregdate = board_fileregdate;
 		this.board_filesize = board_filesize;
 		this.board_filedelflag = board_filedelflag;
-		this.board_others01 = board_others01;
-		this.board_others02 = board_others02;
+		this.board_refer = board_refer;
+		this.board_step = board_step;
+		this.board_depth = board_depth;
+		
+	
 	}
 
 
@@ -201,26 +206,56 @@ public class boardDto {
 	public void setBoard_filedelflag(String board_filedelflag) {
 		this.board_filedelflag = board_filedelflag;
 	}
+	
+	
 
+	
 
-	public String getBoard_others01() {
-		return board_others01;
+	public String getBoard_new() {
+		return board_new;
 	}
 
 
-	public void setBoard_others01(String board_others01) {
-		this.board_others01 = board_others01;
+
+
+
+	public void setBoard_new(String board_new) {
+		this.board_new = board_new;
 	}
 
 
-	public String getBoard_others02() {
-		return board_others02;
+
+
+
+	public String board_refer() {
+		return board_refer;
 	}
 
 
-	public void setBoard_others02(String board_others02) {
-		this.board_others02 = board_others02;
+	public void board_refer(String board_refer) {
+		this.board_refer = board_refer;
 	}
+
+
+	public String board_step() {
+		return board_step;
+	}
+
+
+	public void board_step(String board_step) {
+		this.board_step = board_step;
+	}
+	
+	
+	public String board_depth() {
+		return board_depth;
+	}
+
+
+	public void board_depth(String board_depth) {
+		this.board_depth = board_depth;
+	}
+	
 
 
 	@Override
@@ -230,7 +265,7 @@ public class boardDto {
 				+ ", board_fileno=" + board_fileno + ", board_originfile="
 				+ board_originfile + ", board_storedfile=" + board_storedfile + ", board_fileregdate="
 				+ board_fileregdate + ", board_filesize=" + board_filesize + ", board_filedelflag=" + board_filedelflag
-				+ ", board_others01=" + board_others01 + ", board_others02=" + board_others02 + "]";
+				+ ", board_refer=" + board_refer + ", board_step=" + board_step + ", board_depth=" + board_depth + "]";
 	}
 	
 }

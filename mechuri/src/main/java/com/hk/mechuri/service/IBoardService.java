@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.hk.mechuri.dtos.boardDto;
+import com.hk.mechuri.dtos.replyDto;
 
 
 public interface IBoardService {
@@ -20,7 +21,8 @@ public interface IBoardService {
 
 	public boolean delBoard(int board_no);
 	
-	public boolean replyBoard(boardDto dto);
+	public boolean replyBoard(replyDto dto);
+	public List<replyDto> replyDetail();
 	
 	public boolean readCount(int board_no);
 	

@@ -113,6 +113,9 @@ public class replyDto {
 	public void setReply_others02(String reply_others02) {
 		this.reply_others02 = reply_others02;
 	}
+	
+	
+
 
 	@Override
 	public String toString() {

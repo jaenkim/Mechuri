@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.mechuri.dtos.boardDto;
+import com.hk.mechuri.dtos.replyDto;
 
 @Repository
 public class BoardDao implements IBoardDao {
@@ -55,23 +56,27 @@ public class BoardDao implements IBoardDao {
 	@Override
 	public boolean updateBoard(boardDto dto) {
 		int count=sqlSession.update(namespace+"updateboard",dto);
-		return false;
+		return count>0?true:false;
 	}
 
 	@Override
 	public boolean delBoard(int board_no) {
 		int count=sqlSession.delete(namespace+"delboard",board_no);
-		return false;
+		return count>0?true:false;
 	}
 
 	@Override
 	public int replyUpdate(int board_no) {
 		return sqlSession.update(namespace+"replyupdate",board_no);
 	}
-
 	@Override
-	public int replyInsert(boardDto dto) {
+	public int replyInsert(replyDto dto) {
 		return sqlSession.insert(namespace+"replyinsert",dto);
+	}
+	
+	@Override
+	public List<replyDto> getReplyList() {
+		return sqlSession.selectList(namespace+"replylist");
 	}
 
 	@Override
@@ -95,5 +100,6 @@ public class BoardDao implements IBoardDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hk.mechuri.dtos.boardDto;
 import com.hk.mechuri.dtos.membersDto;
+import com.hk.mechuri.dtos.replyDto;
 import com.hk.mechuri.service.IBoardService;
 import com.hk.mechuri.service.IMembersService;
 
@@ -37,6 +38,8 @@ public class SController {
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
 	public String boardlist2(Locale locale, Model model,HttpServletRequest request) {
 		List<boardDto> list=boardService.getAllList();
+		System.out.println("["+list.get(0).getBoard_new()+"]");
+		
 		model.addAttribute("list",list);
 	//	System.out.println("그림2:["+dto.getBoard_storedfile()+"]");
 		return "community/boardlist2";
@@ -75,11 +78,16 @@ public class SController {
 	
 	
 	@RequestMapping(value = "/boardDetail.do") /*글 상세보기 폼으로 이동*/
-	public String boardDetail(Locale locale, Model model, int board_no) {	
+	public String boardDetail(Locale locale, Model model, Integer board_no) {	
 		logger.info("게시글 상세보기 {}.", locale);
+		System.out.println("board_no["+board_no+"]");
+		boardDto dto=boardService.getBoard(board_no); //게시글
+		List<replyDto> replylist = boardService.replyDetail(); //해당 게시글의 댓글
+	
 		
-		boardDto dto=boardService.getBoard(board_no);
-		model.addAttribute("dto",dto);
+		model.addAttribute("dto",dto); //게시글 화면출력
+		model.addAttribute("replylist",replylist); //댓글화면출력
+		
 		
 		return "community/boarddetail";
 	}
@@ -114,8 +122,13 @@ public class SController {
 	
 	
 	@RequestMapping(value = "/updateBoard.do") /*커뮤니티 상세글 업데이트*/
-	public String updateBoard(Locale locale, Model model,boardDto dto) {	
+	public String updateBoard(HttpServletRequest request, Locale locale, Model model,boardDto dto) {	
 		logger.info("게시글 수정하기 {}.", locale);
+		
+		dto.setBoard_title(request.getParameter("titlename"));
+		dto.setBoard_nick(request.getParameter("writernick"));
+		dto.setBoard_conts(request.getParameter("content"));
+
 		
 		boolean isS = boardService.updateBoard(dto);
 		if(isS) {
@@ -128,22 +141,26 @@ public class SController {
 	
 	
 	
-	@RequestMapping(value = "/replyboard.do") /*글작성 폼으로 이동*/
-	public String replyboard(Locale locale, Model model, boardDto dto,int board_no) {	
+	@RequestMapping(value = "/replyboard.do") /*댓글 추가작업 컨트롤러*/
+	public String replyboard(HttpServletRequest request,Locale locale, Model model, replyDto dto,Integer reply_no,Integer board_no) {	
 		logger.info("답글 추가하기 {}.", locale);
+		
+		
+		dto.setReply_conts(request.getParameter("reply_nick"));
+		dto.setReply_nick(request.getParameter("reply_contents"));
+
+		
 		boolean isS = boardService.replyBoard(dto);
 		
 		if(isS) {
-			return "redirect:boardlist2.do";
+			return "redirect:boardDetail.do?board_no="+board_no;
 		} else {
 			return "community/boarddetail";
 		}
 	}
 	
 	
-	
-	
-	
+
 	
 	
 	
