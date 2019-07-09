@@ -3214,28 +3214,25 @@ body>#login form .idpw {
 
 <script>
 	$(document).ready(function() {
-		$("#textid").ubind("click").click(function(e) {
+		$("#login_btn").ubind("click").click(function(e) {
 			e.preventDefault();
 			fn_login();
 		});
 	});
 
 	function fn_login() {
-		if ($("#textid").val().length < 1) {
+		if ($("#user_id").val().length < 1) {
 
 			alert("아이디를 입력해주세요.");
-		} else if ($("#textpw").val().length < 1) {
+		} else if ($("#user_pwd").val().length < 1) {
 			alert("비밀번호를 입력해주세요.");
 		} else {
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='.do' />");
+			comSubmit.setUrl("<c:url value='main.do' />");
 			comSubmit.submit();
 		}
 	}
 </script>
-
-
-
 
 
 
@@ -3270,15 +3267,15 @@ body>#login form .idpw {
 
 
 	<div id="login">
-		<form id="login_form">
-			<div class="field_container">
-				<input type="text" id="textid" placeholder="아이디">
+		<form id="frm">
+			<div class="board_list">
+				<input type="text" id="user_id" name="ID" class="wdp_90" placeholder="아이디">
 			</div>
 
 			<div class="field_container">
-				<input type="Password" placeholder="비밀번호">
+				<input type="Password" id="user_pwd" name="PASSWORD" class="wdp_90" placeholder="비밀번호">
 				<button id="sign_in_button">
-					<span class="button_text">Sign In</span>
+					<span class="btn" id="login_btn">Sign In</span>
 				</button>
 				<br>
 				<div class="idpw">

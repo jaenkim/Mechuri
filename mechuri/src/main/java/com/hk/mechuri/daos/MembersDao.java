@@ -27,14 +27,19 @@ public class MembersDao implements IMembersDao {
 		int count=sqlSession.insert(namespace+"compSignUpBoard",dto);
 		return count>0?true:false;
 		}
-	@Override
+	/*@Override
 	public membersDto memLoginBoard(String mem_id,String mem_pw) {
 		 Map<String,Object> map=new HashMap<String, Object>();
 	        map.put("id", mem_id);
 	        map.put("password", mem_pw);
 	     
 	        return sqlSession.selectOne("member.password", map);
-	       
+	       */
+	@Override
+	public membersDto memLogin(membersDto dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	}
-}
+

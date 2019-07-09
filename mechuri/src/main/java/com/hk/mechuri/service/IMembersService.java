@@ -1,5 +1,7 @@
 package com.hk.mechuri.service;
 
+import java.util.Map;
+
 import com.hk.mechuri.dtos.membersDto;
 
 public interface IMembersService {
@@ -7,5 +9,6 @@ public interface IMembersService {
 	
 	public boolean compSignUpBoard(membersDto dto);
 	
-	membersDto memLoginBoard(String mem_id, String mem_pw);
+	Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception;
+	
 }

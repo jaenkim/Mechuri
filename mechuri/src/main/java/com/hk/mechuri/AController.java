@@ -4,7 +4,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.activation.CommandMap;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -65,26 +67,27 @@ public class AController {
 		}
 	
 	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView memLoginBoard(HttpSession session,String mem_id, String mem_pw){
+	public ModelAndView memLoginBoard(HttpServletRequest request, HttpServletResponse response, CommandMap commandMap){
 		 logger.info("login 한다!");
-		
-//		    성공 실패에 따라 리다이렉트 방향 결정
-		        //session사용은 매개변수에 session참조변수를 두면 자동으로 들어옵니다 
-		        //login.do처리를 완성하세요 
-		        //로그인 성공이면 main.do 리다이렉트
-//		        //로그인 실패이면 loginForm.do 리다이렉트
-		        ModelAndView mav = new ModelAndView();
-		        if(MembersService.login(mem_id, mem_pw)){
-		            session.setAttribute("id", mem_id);
-		            mav.setViewName("redirect:main.do");
+		 ModelAndView mav = new ModelAndView();
+		 
+//		 세션정보가 null이 아닐 때
+		        if(request.getSession().getAttribute("loginInfo") !=null){
+		            String msg = "이미 로그인된 상태입니다.";
+		            mav.addObject("msg", msg);
+		            mav.setViewName("memLoginSuccess");
 		        }
 		        else{
 		            //return "redirect:loginForm.do";
-		            mav.setViewName("redirect:loginForm.do");
+		            mav.setViewName("loginForm.do");
 		        }
 		        return mav;
 	}
 	
+		
+	
+	
+
 	 @RequestMapping("logout.do")
 	    public String logout(HttpSession session){
 //	        session.invalidate();
