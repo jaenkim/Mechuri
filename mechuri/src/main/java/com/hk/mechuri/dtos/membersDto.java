@@ -21,7 +21,7 @@ public class membersDto {
 	private String mem_delflag;
 	private String mem_apprflag;
 	private String mem_homepage;
-	private String User_authCode;
+	private String mem_others01;
 	private String mem_others02;
 
 	//생성자
@@ -82,8 +82,8 @@ public class membersDto {
 	public String getMem_homepage() {	return mem_homepage;}
 	public void setMem_homepage(String mem_homepage) {	this.mem_homepage = mem_homepage;}
 
-	public String getUser_authCode() {return User_authCode;}
-	public void setUser_authCode(String User_authCode) {this.User_authCode = User_authCode;}
+	public String getMem_others01() {return mem_others01;}
+	public void setMem_others01(String mem_others01) {this.mem_others01 = mem_others01;}
 
 	public String getMem_others02() {return mem_others02;}
 	public void setMem_others02(String mem_others02) {this.mem_others02 = mem_others02;}
@@ -96,31 +96,7 @@ public class membersDto {
 				+ ", mem_phone=" + mem_phone + ", mem_email=" + mem_email + ", mem_post=" + mem_post + ", mem_addr1="
 				+ mem_addr1 + ", mem_addr2=" + mem_addr2 + ", mem_regdate=" + mem_regdate + ", mem_deldate="
 				+ mem_deldate + ", mem_delflag=" + mem_delflag + ", mem_apprflag=" + mem_apprflag + ", mem_homepage="
-				+ mem_homepage + ", mem_others01=" + User_authCode + ", mem_others02=" + mem_others02 + "]";
-	}
-
-
-
-
-	public void setMemberAuthKey(String memberAuthKey) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-	public void setMemberEmail(String memberEmail) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-	public char[] getUserState() {
-		// TODO Auto-generated method stub
-		return null;
+				+ mem_homepage + ", mem_others01=" + mem_others01 + ", mem_others02=" + mem_others02 + "]";
 	}
 	
 }

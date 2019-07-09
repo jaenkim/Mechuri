@@ -10,7 +10,7 @@ import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
 
 @Service
-public class MembersService implements IMembersService {
+public abstract class MembersService implements IMembersService {
 	
 	@Autowired
 	private IMembersDao membersDao;
@@ -24,20 +24,10 @@ public class MembersService implements IMembersService {
 	public boolean compSignUpBoard(membersDto dto) {
 		return membersDao.compSignUpBoard(dto); 
 	}
-
 	@Override
-	public void regist(membersDto dto) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public membersDto userAuth(membersDto dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+	public membersDto getUser(membersDto dto) throws Exception {
+        return membersDao.get(dto);
+    }
 /*//	<!-- 로그인 -->
 	@Override
 	public membersDto memLoginBoard(membersDto dto) {
@@ -45,13 +35,11 @@ public class MembersService implements IMembersService {
 		return membersDao.memLoginBoard(dto);
 	}
 	
-	@Override
-		public boolean loginChk(String mem_id) 
-		{
-			return membersDao.loginChk(mem_id)>0?true:false;
-		}*/
+
+	public static boolean loginChk(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return false;
+	}*/
+
 
 }
-
-	
-

@@ -2,6 +2,8 @@ package com.hk.mechuri.service;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.hk.mechuri.dtos.membersDto;
 
 public interface IMembersService {
@@ -9,9 +11,21 @@ public interface IMembersService {
 	
 	public boolean compSignUpBoard(membersDto dto);
 
-	public void regist(membersDto dto);
+	public membersDto getUser(membersDto dto) throws Exception;
+	
+	/*public void regist(membersDto dto);
 
 	public membersDto userAuth(membersDto dto);
+	
+	public membersDto loginBoard(membersDto dto); 
+
+	public void logout(HttpSession session);
+
+	boolean idChk(String id);
+
+	boolean loginChk(Map<String, String> map);
+
+	public Integer countmessage(membersDto dto);*/
 	
 /*	public membersDto memLoginBoard(membersDto dto);
 	
