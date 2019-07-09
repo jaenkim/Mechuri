@@ -1,8 +1,10 @@
 package com.hk.mechuri.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hk.mechuri.dtos.filterDto;
+import com.hk.mechuri.dtos.ingreDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
 
@@ -27,6 +29,8 @@ public interface iRankService {
 	public reviewDto getDetailPoint(int product_no);
 	
 	public List<reviewDto> getProductReview(int product_no);
+
+	public List<ingreDto> getProductIngre(productDto pDto);
 
 
 }

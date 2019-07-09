@@ -23,7 +23,7 @@ public class productDto implements Serializable {
 	private String product_ingre;
 	private String product_like;
 	private String product_review;
-	private int product_point;
+	private double product_point;
 	private int product_pointcount;
 	private int product_rank;
 	private int product_fileno;
@@ -42,7 +42,11 @@ public class productDto implements Serializable {
 	//생성자
 	public productDto() {super();}
 
-	
+	public productDto(int product_no, String product_ingre) {
+		super();
+		 this.product_no = product_no;
+		 this.product_ingre = product_ingre;
+	}
 	
 	
 	
@@ -97,8 +101,8 @@ public class productDto implements Serializable {
 	public String getProduct_review() {return product_review;	}
 	public void setProduct_review(String product_review) {	this.product_review = product_review;}
 
-	public int getProduct_point() {	return product_point;	}
-	public void setProduct_point(int product_point) {		this.product_point = product_point;	}
+	public double getProduct_point() {	return product_point;	}
+	public void setProduct_point(double product_point) {		this.product_point = product_point;	}
 
 	public int getProduct_fileno() {	return product_fileno;	}
 	public void setProduct_fileno(int product_fileno) {	this.product_fileno = product_fileno;}

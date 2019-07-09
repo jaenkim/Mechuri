@@ -2,8 +2,10 @@ package com.hk.mechuri;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -132,8 +134,12 @@ public class HomeController {
 	@RequestMapping(value = "/productdetail.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String productDetail(HttpServletRequest request, Locale locale, Model model, productDto dto) {
 		
-		int product_no = Integer.parseInt(request.getParameter("product_no"));
-		System.out.println("컨트롤러에서 출력해보는 값! product_no ["+product_no+"]");
+		int product_no = Integer.parseInt(request.getParameter("no"));
+		String product_ingre = request.getParameter("ingre");
+		
+
+		
+		productDto pDto = new productDto(product_no,product_ingre);
 		
 		productDto productInfo = rankService.getDetailProductList(product_no);
 		model.addAttribute("proInfo",productInfo);
@@ -144,30 +150,30 @@ public class HomeController {
 		List<reviewDto> reviewInfo = rankService.getProductReview(product_no);
 		model.addAttribute("reviewInfo",reviewInfo);
 		
+		List<ingreDto> ingreInfo = rankService.getProductIngre(pDto);
+		model.addAttribute("ingreInfo",ingreInfo);
+		
 		return "ranking/productdetail";
 	}
 
 	
-	@RequestMapping(value = "/ingre.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String productIngre(HttpServletRequest request, Locale locale, Model model, productDto pDto, ingreDto iDto) {
-		
-		int product_no = Integer.parseInt(request.getParameter("product_no"));
-		String ingre = request.getParameter("product_ingre");
-		
-		String[] ingreArray = ingre.split(",");
-		
-		for(int i=0;i<ingreArray.length;i++) {
-			
-		}
-		
-		List<reviewDto> reviewInfo = rankService.getProductReview(product_no);
-		model.addAttribute("reviewInfo",reviewInfo);
-		
-		return "ranking/productdetail";
-	}
+//	@RequestMapping(value = "/ingre.do", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String productIngre(HttpServletRequest request, Locale locale, Model model, productDto pDto, ingreDto iDto) {
+//		
+//		int product_no = Integer.parseInt(request.getParameter("no"));
+//		String ingre = request.getParameter("ingre");
+//		
+//		String[] ingreArray = ingre.split(",");
+//		
+//		Map<String,String[]> product_ingre = new HashMap<String,String[]>();
+//		product_ingre.put("product_ingre", ingreArray);
+//			
+//		List<reviewDto> reviewInfo = rankService.getProductReview(product_no);
+//		model.addAttribute("reviewInfo",reviewInfo);
+//		
+//		return "ranking/productdetail";
+//	}
 
 
 
 }
-
-
