@@ -35,7 +35,7 @@ WHERE	PRODUCT_AGE = #{filter_age10} OR
 ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
-<<<<<<< HEAD
+
 
 <!-- 제품 상세페이지 보기 -->
 <select id="productDetail" resultType="productDto" parameterType="int">
