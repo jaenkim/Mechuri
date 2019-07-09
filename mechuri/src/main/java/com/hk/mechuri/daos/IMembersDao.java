@@ -10,5 +10,7 @@ public interface IMembersDao {
 	
 	public boolean compSignUpBoard(membersDto dto);
 
-	public membersDto memLogin(membersDto dto); 
+	/*public membersDto memLoginBoard(membersDto dto);
+	
+	public int loginChk(String mem_id); */
 }

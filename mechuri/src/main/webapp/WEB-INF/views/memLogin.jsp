@@ -3253,6 +3253,7 @@ body>#login form .idpw {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
+	<form action='memLogin.do' method='post'>
 	<!-- <로그인 화면><br>
 <input type="text" name="id" maxlength="20" placeholder="아이디"
 			onchange='checkIdAjax(this.value)'
@@ -3267,7 +3268,7 @@ body>#login form .idpw {
 
 
 	<div id="login">
-		<form id="frm">
+		
 			<div class="board_list">
 				<input type="text" id="user_id" name="ID" class="wdp_90" placeholder="아이디">
 			</div>
@@ -3275,7 +3276,7 @@ body>#login form .idpw {
 			<div class="field_container">
 				<input type="Password" id="user_pwd" name="PASSWORD" class="wdp_90" placeholder="비밀번호">
 				<button id="sign_in_button">
-					<span class="btn" id="login_btn">Sign In</span>
+					<span class="btn" id="login_btn" input type="submit">Sign In</span>
 				</button>
 				<br>
 				<div class="idpw">

@@ -24,6 +24,21 @@ public abstract class MembersService implements IMembersService {
 	public boolean compSignUpBoard(membersDto dto) {
 		return membersDao.compSignUpBoard(dto); 
 	}
+	
+/*//	<!-- 로그인 -->
+	@Override
+	public membersDto memLoginBoard(membersDto dto) {
+		System.out.println("memLoginBoard Service");
+		return membersDao.memLoginBoard(dto);
+	}
+	
+	@Override
+		public boolean loginChk(String mem_id) 
+		{
+			return membersDao.loginChk(mem_id)>0?true:false;
+		}*/
 
+	}
 
-}
+	
+

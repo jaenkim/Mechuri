@@ -35,11 +35,17 @@ public class MembersDao implements IMembersDao {
 	     
 	        return sqlSession.selectOne("member.password", map);
 	       */
+	//로그인
+	/*@Override
+	public membersDto memLoginBoard(membersDto dto) {
+		System.out.println(dto +"전달");
+		return sqlSession.selectOne(namespace+"memLoginBoard", dto);
+	}
+	
 	@Override
-	public membersDto memLogin(membersDto dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	}
+	public int loginChk(String mem_id) 
+	{
+		return sqlSession.selectOne(namespace+"loginChk",mem_id);*/
+}
+	
 

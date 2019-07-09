@@ -2,7 +2,9 @@ package com.hk.mechuri;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.activation.CommandMap;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hk.mechuri.daos.IMembersDao;
@@ -25,7 +28,6 @@ import com.hk.mechuri.dtos.membersDto;
 import com.hk.mechuri.service.IMembersService;
 import com.hk.mechuri.service.MembersService;
 
-import sun.print.resources.serviceui;
 
 /**
  * Handles requests for the application home page.
@@ -35,7 +37,7 @@ public class AController {
 	private static final Logger logger = LoggerFactory.getLogger(AController.class);
 	
 	@Autowired
-	private IMembersService membersService;
+	private IMembersService MembersService;
 	
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
@@ -48,7 +50,7 @@ public class AController {
 					
 		logger.info("회원 추가합니다. {}.");
 		
-		boolean isS=membersService.signUpBoard(dto);
+		boolean isS=MembersService.signUpBoard(dto);
 		if(isS) {
 			return "redirect:main.do";
 		}else {
@@ -56,36 +58,47 @@ public class AController {
 			return "error";
 		}
 	}
-	@Autowired
-	private SqlSession sqlSession;
 	
-	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public String memLogin() {
+	/*@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String memLogin(membersDto dto,Model model) {
 		 logger.info("login폼 이동");
 		
 		 return "memLogin";
 		}
 	
-	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView memLoginBoard(HttpServletRequest request, HttpServletResponse response, CommandMap commandMap){
-		 logger.info("login 한다!");
-		 ModelAndView mav = new ModelAndView();
-		 
-//		 세션정보가 null이 아닐 때
-		        if(request.getSession().getAttribute("loginInfo") !=null){
-		            String msg = "이미 로그인된 상태입니다.";
-		            mav.addObject("msg", msg);
-		            mav.setViewName("memLoginSuccess");
-		        }
-		        else{
-		            //return "redirect:loginForm.do";
-		            mav.setViewName("loginForm.do");
-		        }
-		        return mav;
-	}
+	//로그인 안되어있을때
 	
-		
+		@RequestMapping(value="/memLoginBoard.do",method= {RequestMethod.POST, RequestMethod.GET})
+		public String memLoginBoard(Model model, String lo,String mem_id, String mem_pw) {
+			model.addAttribute("lo",lo);
+			model.addAttribute("pw",mem_pw);
+			model.addAttribute("mem_id",mem_id);
+			System.out.println("mem_id"+mem_id);
+			return "main";
+		}*/
 	
+		/*//로그인하고난 후 메인페이지
+				@RequestMapping(value="/main.do",method= {RequestMethod.POST, RequestMethod.GET})
+				public String index(membersDto dto,HttpSession session, Model model) 
+				{
+
+					session.setAttribute("ldto",ldto);
+					System.out.println("로그인 된후ldto :"+ldto);
+					model.addAttribute("mem_id",membersDto.getMem_id());
+					System.out.println("membersDto.getMem_id()"+membersDto.getMem_id());
+						return "main";
+				}*/
+				//로그인시 아이디 체크	
+				/*@RequestMapping(value="/loginChk.do",method= {RequestMethod.POST, RequestMethod.GET})
+				@ResponseBody
+				public String loginChk(String mem_id,String mem_pw,Model model) 
+				{	
+					Map<String, String> map = new HashMap<String, String>();
+					map.put("id", mem_id);
+					map.put("pw", mem_pw);
+					return MembersService.loginChk(map)?"EXIST":"NOPE";
+				}	*/
+						
 	
 
 	 @RequestMapping("logout.do")
@@ -107,7 +120,7 @@ public class AController {
 					
 		logger.info("회원 추가합니다. {}.");
 		
-		boolean isS=membersService.compSignUpBoard(dto);
+		boolean isS=MembersService.compSignUpBoard(dto);
 		if(isS) {
 			return "redirect:main.do";
 		}else {
