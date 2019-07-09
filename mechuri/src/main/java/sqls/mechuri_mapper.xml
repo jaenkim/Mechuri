@@ -97,15 +97,12 @@ WHERE INGRE_NO IN
 		BOARD_NO = #{board_no}
 		BOARD_NO=#{board_no}
 	</sql>
-<<<<<<< HEAD
-<!-- 새글new추가 -->
-<select id='boardlist' resultType='boardDto' parameterType='Map'>
+-->
+  
+<!-- <select id='boardlist' resultType='boardDto' parameterType='Map'>
 	SELECT DECODE(ROUND(SYSDATE-BOARD_REGDATE),0,'true','false') AS board_new FROM BOARD
-</select>
-=======
 </select> -->
-	
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
+
 
 	<!-- 커뮤니티 글추가 -->
 <insert id="insertBoard" parameterType='Map'>
