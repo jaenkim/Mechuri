@@ -90,8 +90,25 @@ public class AController {
 		return mav;
 	}
 	
-
-/*	@RequestMapping(value = "/memLoginBoard.do", method = RequestMethod.POST)
+	@RequestMapping(value= "/logout.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView logout(HttpSession session, ModelAndView mav) {
+		MembersService.logout(session);
+		mav.setViewName("memLogin");
+		mav.addObject("message", "logout");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*	@RequestMapping(value = "/memLoginBoard.do", method = RequestMethod.POST)
 	public ModelAndView memLoginBoard(HttpSession session) {
 		
 		ModelAndView mav= new ModelAndView();

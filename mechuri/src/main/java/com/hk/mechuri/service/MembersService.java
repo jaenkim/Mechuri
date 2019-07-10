@@ -35,13 +35,14 @@ public class MembersService implements IMembersService {
 			membersDto dto2 = viewMember(dto.getMem_id());
 			session.setAttribute("mem_id", dto2.getMem_id());
 			session.setAttribute("mem_name", dto2.getMem_name());
+			System.out.println(dto2);
 		}
 		return result;
 	}
 
 	@Override
 	public void logout(HttpSession session) {
-		// TODO Auto-generated method stub
+		session.invalidate();
 		
 	}
 
