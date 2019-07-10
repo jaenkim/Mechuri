@@ -30,7 +30,6 @@
 			="${path}/login_check.do";
 			document.form1.submit(); //서버에 자료 전송
 		});
-	});
 
 </script>
 
