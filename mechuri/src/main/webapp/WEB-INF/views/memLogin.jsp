@@ -4335,7 +4335,7 @@ body>#login form .idpw {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<form name="form1" id="form1" method="post" action="login_Check.do">
+	<form name="form1" id="form1" method="post" action="login_check.do">
 
 
 		<!-- <로그인 화면><br>

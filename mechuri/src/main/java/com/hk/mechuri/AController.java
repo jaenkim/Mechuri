@@ -66,12 +66,12 @@ public class AController {
 		}
 	}
 	
-	@RequestMapping("/memLogin.do")
+	@RequestMapping(value= "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin() {
 		return "memLogin"; //memLogin.jsp로
 	}
 	
-	@RequestMapping("login_check.do")
+	@RequestMapping(value= "/login_check.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView login_check(							//spring에선 선언하면 session 객체 만들어줘
 	@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
 		boolean result 
@@ -86,14 +86,9 @@ public class AController {
 		}
 		return mav;
 	}
-	/*@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET})
-	public String memLogin(HttpServletRequest request){
-		String returnURL = "";
-		
-	}
-
 	
-	@RequestMapping(value = "/memLoginBoard.do", method = RequestMethod.POST)
+
+/*	@RequestMapping(value = "/memLoginBoard.do", method = RequestMethod.POST)
 	public ModelAndView memLoginBoard(HttpSession session) {
 		
 		ModelAndView mav= new ModelAndView();
