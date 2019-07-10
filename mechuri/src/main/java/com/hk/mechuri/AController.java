@@ -64,13 +64,13 @@ public class AController {
 	//로그인
 	
 	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET})
-	public String memlogin(Model model) {
+	public String memLogin(Model model) {
 		logger.info("로그인폼으로 이동 {}.");
 		return "signUp";
 	}
 	
 	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.POST})
-	public ModelAndView memloginBoard(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public ModelAndView memLoginBoard(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 
 		//세션정보가 null이 아닐 때
@@ -88,7 +88,7 @@ return mav;
 }
 
 @RequestMapping(value="/loginTry.do")
-public ModelAndView login(HttpServletRequest request,Map<String, Object> map1 ) throws Exception {
+public ModelAndView loginTry(HttpServletRequest request,Map<String, Object> map1 ) throws Exception {
 	ModelAndView mav = new ModelAndView("/views/loginSuccess");
 
 	Map<String, Object> map = MembersService.selectUserInfo(map1);
