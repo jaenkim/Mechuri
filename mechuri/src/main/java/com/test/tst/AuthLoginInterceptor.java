@@ -1,4 +1,4 @@
-package com.test.sts;
+package com.test.tst;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

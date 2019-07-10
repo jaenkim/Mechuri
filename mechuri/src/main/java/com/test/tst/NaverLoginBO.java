@@ -1,4 +1,4 @@
-package com.test.sts;
+package com.test.tst;
 
 public class NaverLoginBO {
 

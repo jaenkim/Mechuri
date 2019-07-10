@@ -6,17 +6,14 @@
 <%
 	response.setContentType("text/html;charset=UTF-8");
 %>
-<%@ page import="java.net.URLEncoder" %>
-<%@ page import="java.security.SecureRandom" %>
-<%@ page import="java.math.BigInteger" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="../js/botstrap.js">
 
+	
+<script type="text/javascript" src="../js/botstrap.js">
 	$(function(){ //페이지 로딩이 완료된 후 자동 실행
 		$("#btnLogin").click(fucntion(){
 			var mem_id=$("#mem_id").val(); //태그에 입력된 값
@@ -37,20 +34,17 @@
 		});
 	});
 </script>
-
-<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-	<script type="text/javascript">                       
+<script type="text/javascript">
  		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
 											// 단 'localhost'가 포함된 CallBack URL
  		var state = naver_id_login.getUniqState();
 		
  		naver_id_login.setButton("white", 2, 40);
- 		naver_id_login.setDomain("서비스 URL");	//  URL
+ 		naver_id_login.setDomain("http://127.0.0.1:8888/mechuri/memLogin.do");	//  URL
  		naver_id_login.setState(state);
  		naver_id_login.setPopup();
  		naver_id_login.init_naver_id_login();
 	</script>
-	
 <style>
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
@@ -4378,7 +4372,11 @@ body>#login form .idpw {
 				placeholder="비밀번호">
 			<button id="btn_area">
 				<span class="btn" id="btnLogin">로그인</span>
-				<div id="naver_id_login"></div>
+					<!-- 네이버 로그인 창으로 이동 -->
+<div id="naver_id_login" style="text-align:center"><a href="${url}">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+<br>
+
 				<c:if test="${message == 'error' }">
 					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
 				</c:if>
@@ -4394,18 +4392,8 @@ body>#login form .idpw {
 			</div>
 		</div>
 
-		<!-- <div id="naver_id_login"></div>  '네이버 아이디로 로그인하기' 버튼
- <script type="text/javascript">
- 		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
-											// 단 'localhost'가 포함된 CallBack URL
- 		var state = naver_id_login.getUniqState();
-		
- 		naver_id_login.setButton("white", 2, 40);
- 		naver_id_login.setDomain("http://127.0.0.1:8888/mechuri/memLogin.do");	//  URL
- 		naver_id_login.setState(state);
- 		naver_id_login.setPopup();
- 		naver_id_login.init_naver_id_login();
-	</script> -->
+	
+ 
 
 		<div id="sign_in_options" class="field_container">
 			<div id="sign_in_alternatives_container">
