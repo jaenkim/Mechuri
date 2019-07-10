@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../js/botstrap.js">
 	$(function(){ //페이지 로딩이 완료된 후 자동 실행
-		$("#btnLogin").click(fucntion({
+		$("#btnLogin").click(fucntion){
 			var userid=$("#userid").val(); //태그에 입력된 값
 			var passwd=$("#passwd").val();
 			if(userid=="") {
@@ -4335,7 +4335,7 @@ body>#login form .idpw {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<form name="form1" method="post" action="memLogin">
+	<form name="form1" id="form1" method="post" action="login_Check.do">
 
 
 		<!-- <로그인 화면><br>

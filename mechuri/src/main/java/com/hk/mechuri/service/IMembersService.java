@@ -12,7 +12,7 @@ public interface IMembersService {
 	
 	public boolean compSignUpBoard(membersDto dto);
 	
-	public boolean loginCheck(membersDto dto, HttpSession session);
+	public boolean login_Check(membersDto dto, HttpSession session);
 	
 	public membersDto viewMember(String mem_id);
 	

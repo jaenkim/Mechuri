@@ -30,15 +30,15 @@ public class MembersDao implements IMembersDao {
 		return count>0?true:false;		
 	}
 	@Override
-	public boolean loginCheck(membersDto dto) {
-		String name=sqlSession.selectOne("sqls.login_check", dto);
+	public boolean login_Check(membersDto dto) {
+		String name=sqlSession.selectOne(namespace+"login_Check", dto);
 										//mapper.xml이름, mapper의 select id!! 
 		return (name==null)? true:false;
 	}
 	@Override
 	public membersDto viewMember(String mem_id) {
 	
-		return sqlSession.selectOne("sqls.viewMember", mem_id);
+		return sqlSession.selectOne(namespace+"viewMember", mem_id);
 	}
 
 

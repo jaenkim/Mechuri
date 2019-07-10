@@ -59,7 +59,7 @@ public class AController {
 
 		boolean isS=MembersService.signUpBoard(dto);
 		if(isS) {
-			return "redirect:Header.do";
+			return "redirect:main.do";
 		}else {
 			model.addAttribute("msg","회원가입 실패");
 			return "error";
@@ -71,11 +71,11 @@ public class AController {
 		return "memLogin"; //memLogin.jsp로
 	}
 	
-	@RequestMapping("login_check.do")
-	public ModelAndView login_check(							//spring에선 선언하면 session 객체 만들어줘
+	@RequestMapping("login_Check.do")
+	public ModelAndView login_Check(							//spring에선 선언하면 session 객체 만들어줘
 	@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
 		boolean result 
-			=MembersService.loginCheck(dto, session);
+			=MembersService.login_Check(dto, session);
 		ModelAndView mav=new ModelAndView();
 		if(result) { //로그인 성공
 			mav.setViewName("Header"); //Header.jsp
