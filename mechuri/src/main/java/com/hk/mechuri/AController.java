@@ -74,8 +74,11 @@ public class AController {
 	@RequestMapping(value= "/login_check.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView login_check(							//spring에선 선언하면 session 객체 만들어줘
 	@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
+		System.out.println(dto);
+		System.out.println(session);
 		boolean result 
 			=MembersService.loginCheck(dto, session);
+		
 		ModelAndView mav=new ModelAndView();
 		if(result) { //로그인 성공
 			mav.setViewName("Header"); //Header.jsp

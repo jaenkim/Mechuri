@@ -14,16 +14,16 @@
 <script type="text/javascript" src="../js/botstrap.js">
 	$(function(){ //페이지 로딩이 완료된 후 자동 실행
 		$("#btnLogin").click(fucntion){
-			var userid=$("#userid").val(); //태그에 입력된 값
-			var passwd=$("#passwd").val();
+			var userid=$("#mem_id").val(); //태그에 입력된 값
+			var passwd=$("#mem_pw").val();
 			if(userid=="") {
 				alert("아이디를 입력하세요.");
-				$("#userid").focus(); //태그에 입력포커스이동
+				$("#mem_id").focus(); //태그에 입력포커스이동
 				return;
 			}
 			if(passwd=="") {
 				alert("비밀번호를 입력하세요.");
-				$("#passwd").focus();
+				$("#mem_pw").focus();
 				return;
 			}
 			document.form1.action
@@ -4352,12 +4352,12 @@ body>#login form .idpw {
 
 
 		<div class="board_list">
-			<input type="text" id="userid" name="userid" class="wdp_90"
+			<input type="text" id="mem_id" name="mem_id" class="wdp_90"
 				placeholder="아이디">
 		</div>
 
 		<div class="field_container">
-			<input type="Password" id="passwd" name="passwd" class="wdp_90"
+			<input type="Password" id="mem_pw" name="mem_pw" class="wdp_90"
 				placeholder="비밀번호">
 			<button id="btn_area">
 				<span class="btn" id="btnLogin">로그인</span>
