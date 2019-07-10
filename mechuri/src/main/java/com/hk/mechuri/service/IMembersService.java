@@ -12,9 +12,9 @@ public interface IMembersService {
 	
 	public boolean compSignUpBoard(membersDto dto);
 	
-	public boolean loginCheck(membersDto dto);
-	
 	public boolean loginCheck(membersDto dto, HttpSession session);
+	
+	public membersDto viewMember(String mem_id);
 	
 	public void logout(HttpSession session);
 	

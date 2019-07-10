@@ -35,7 +35,6 @@ import com.hk.mechuri.service.IMembersService;
 import com.hk.mechuri.service.MembersService;
 
 
-
 /**
  * Handles requests for the application home page.
  */
@@ -60,13 +59,33 @@ public class AController {
 
 		boolean isS=MembersService.signUpBoard(dto);
 		if(isS) {
-			return "redirect:main.do";
+			return "redirect:Header.do";
 		}else {
 			model.addAttribute("msg","회원가입 실패");
 			return "error";
 		}
 	}
 	
+	@RequestMapping("/memLogin.do")
+	public String memLogin() {
+		return "memLogin"; //memLogin.jsp로
+	}
+	
+	@RequestMapping("login_check.do")
+	public ModelAndView login_check(							//spring에선 선언하면 session 객체 만들어줘
+	@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
+		boolean result 
+			=MembersService.loginCheck(dto, session);
+		ModelAndView mav=new ModelAndView();
+		if(result) { //로그인 성공
+			mav.setViewName("Header"); //Header.jsp
+			mav.addObject("message", "success"); 
+		}else { //로그인 실패 
+			mav.setViewName("memLogin");
+			mav.addObject("message", "error");
+		}
+		return mav;
+	}
 	/*@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET})
 	public String memLogin(HttpServletRequest request){
 		String returnURL = "";

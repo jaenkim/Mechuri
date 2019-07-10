@@ -30,20 +30,24 @@ public class MembersService implements IMembersService {
 
 	@Override
 	public boolean loginCheck(membersDto dto, HttpSession session) {
-	
-		return false;
-	}
-
-	@Override
-	public boolean loginCheck(membersDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result=membersDao.loginCheck(dto);
+		if(result) { // 세션 변수 저장, 세션 관리 기능->controller에서 할 것을 service에 넘겨서 한거...
+			membersDto dto2 = viewMember(dto.getMem_id());
+			session.setAttribute("mem_id", dto2.getMem_id());
+			session.setAttribute("mem_name", dto2.getMem_name());
+		}
+		return result;
 	}
 
 	@Override
 	public void logout(HttpSession session) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public membersDto viewMember(String mem_id) {
+		return membersDao.viewMember(mem_id);
 	}
 
 	

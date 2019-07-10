@@ -1,31 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%  request.setCharacterEncoding("UTF-8"); %>
-<%  response.setContentType("text/html;charset=UTF-8"); %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%
+	response.setContentType("text/html;charset=UTF-8");
+%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <script type="text/javascript" src="../js/botstrap.js">
-	$(document).ready(function() {
-		$("#login_btn").unbind("click").click(function(e) {
-			e.preventDefault();
-			fn_login();
+<script type="text/javascript" src="../js/botstrap.js">
+	$(function(){ //페이지 로딩이 완료된 후 자동 실행
+		$("#btnLogin").click(fucntion({
+			var userid=$("#userid").val(); //태그에 입력된 값
+			var passwd=$("#passwd").val();
+			if(userid=="") {
+				alert("아이디를 입력하세요.");
+				$("#userid").focus(); //태그에 입력포커스이동
+				return;
+			}
+			if(passwd=="") {
+				alert("비밀번호를 입력하세요.");
+				$("#passwd").focus();
+				return;
+			}
+			document.form1.action
+			="${path}/login_check.do";
+			document.form1.submit(); //서버에 자료 전송
 		});
 	});
 
-	function fn_login() {
-		if ($("#user_id").val().length < 1) {
-			alert("아이디를 입력해주세요.");
-		} else if ($("#user_pwd").val().length < 1) {
-			alert("비밀번호를 입력해주세요.");
-		} else {
-			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/loginTry.do' />");
-			comSubmit.submit();
-		}
-	}
 </script>
 
 <style>
@@ -123,6 +129,8 @@ body {
 input
 
 
+
+
 [
 type
 =
@@ -130,17 +138,25 @@ text
 ]
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -150,17 +166,25 @@ tel
 ]
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -170,18 +194,26 @@ email
 ]
 
 
+
+
 :not
+
 
 
 	
 
+
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -191,153 +223,227 @@ password
 ]
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 select
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 textarea
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 )
 {
 border-radius
 
 
+
+
 :
+
 
  
 
+
 3
 px
+
+
 
 
 ;
 -moz-border-radius
 
 
+
+
 :
+
 
  
 
+
 3
 px
+
+
 
 
 ;
 -webkit-border-radius
 
 
+
+
 :
+
 
  
 
+
 3
 px
+
+
 
 
 ;
 border
 
 
+
+
 :
 
+
  
+
 
 1
 px
 
+
  
+
 
 solid
 
+
  
 
+
 #ccc
+
+
 
 
 ;
 display
 
 
+
+
 :
+
 
  
 
+
 inline-block
+
+
 
 
 ;
 font-size
 
 
+
+
 :
+
 
  
 
+
 17
 px
+
+
 
 
 ;
 padding
 
 
+
+
 :
 
+
  
+
 
 12
 px
 
+
  
+
 
 16
 px
+
+
 
 
 ;
 width
 
 
+
+
 :
 
+
  
+
 
 210
 px
 
 
+
+
 ;
 }
 input
+
+
 
 
 [
@@ -347,20 +453,30 @@ text
 ]
 
 
+
+
 :focus
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -370,21 +486,31 @@ tel
 ]
 
 
+
+
 :focus
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
 
+
 	
+
 
 ),
 input
+
+
 
 
 [
@@ -394,20 +520,30 @@ email
 ]
 
 
+
+
 :focus
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -417,76 +553,112 @@ password
 ]
 
 
+
+
 :focus
+
+
 
 
 :not
 
 
+
 	
+
 
 (
 .basic
 
+
  
+
 
 ),
 select
 
 
+
+
 :focus
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 textarea
 
 
+
+
 :focus
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 )
 {
 box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -497,6 +669,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -505,9 +679,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (89
@@ -516,32 +694,46 @@ rgba
 44,
 0
 .4
+
+
 
 
 );
 -moz-box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -552,6 +744,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -560,9 +754,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (89
@@ -571,32 +769,46 @@ rgba
 44,
 0
 .4
+
+
 
 
 );
 -webkit-box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -607,6 +819,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -615,9 +829,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (89
@@ -628,31 +846,47 @@ rgba
 .4
 
 
+
+
 );
 border-color
 
 
+
+
 :
+
 
  
 
+
 #59de2c
+
+
 
 
 ;
 outline
 
 
+
+
 :
+
 
  
 
+
 none
+
+
 
 
 ;
 }
 input
+
+
 
 
 [
@@ -662,20 +896,30 @@ text
 ]
 
 
+
+
 .error
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -685,21 +929,31 @@ tel
 ]
 
 
+
+
 .error
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
 
+
 	
+
 
 ),
 input
+
+
 
 
 [
@@ -709,20 +963,30 @@ email
 ]
 
 
+
+
 .error
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -732,63 +996,93 @@ password
 ]
 
 
+
+
 .error
+
+
 
 
 :not
 
 
+
 	
+
 
 (
 .basic
 
+
  
+
 
 ),
 select
 
 
+
+
 .error
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 textarea
 
 
+
+
 .error
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 )
 {
 border-color
 
 
+
+
 :
 
+
  
+
 
 #f90
 
+
  
+
 
 !
 important
@@ -796,8 +1090,12 @@ important
 
 
 
+
+
 }
 input
+
+
 
 
 [
@@ -807,23 +1105,35 @@ text
 ]
 
 
+
+
 .error
+
+
 
 
 :focus
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -833,24 +1143,36 @@ tel
 ]
 
 
+
+
 .error
+
+
 
 
 :focus
 
 
+
+
 :not
+
 
 
 	
 
+
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -860,23 +1182,35 @@ email
 ]
 
 
+
+
 .error
+
+
 
 
 :focus
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 input
+
+
 
 
 [
@@ -886,86 +1220,128 @@ password
 ]
 
 
+
+
 .error
+
+
 
 
 :focus
 
 
+
+
 :not
+
 
 
 	
 
+
 (
 .basic
 
+
  
+
 
 ),
 select
 
 
+
+
 .error
+
+
 
 
 :focus
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 textarea
 
 
+
+
 .error
+
+
 
 
 :focus
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
 
+
 	
+
 
 )
 {
 box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -976,6 +1352,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -984,9 +1362,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (255
@@ -995,32 +1377,46 @@ rgba
 0,
 0
 .4
+
+
 
 
 );
 -moz-box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -1031,6 +1427,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -1039,9 +1437,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (255
@@ -1050,32 +1452,46 @@ rgba
 0,
 0
 .4
+
+
 
 
 );
 -webkit-box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -1086,6 +1502,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -1094,9 +1512,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (255
@@ -1107,15 +1529,23 @@ rgba
 .4
 
 
+
+
 );
 border-color
 
 
+
+
 :
+
 
  
 
+
 #f90
+
+
 
 
 ;
@@ -2614,13 +3044,19 @@ body
 >
 #survey
 
+
  
+
 
 form
 
+
  
 
+
 input
+
+
 
 
 [
@@ -2630,30 +3066,44 @@ text
 ]
 
 
+
+
 :focus
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 body
 >
 #survey
 
+
  
+
 
 form
 
+
  
 
+
 input
+
+
 
 
 [
@@ -2663,31 +3113,45 @@ tel
 ]
 
 
+
+
 :focus
+
+
 
 
 :not
 
 
+
 	
+
 
 (
 .basic
 
+
  
+
 
 ),
 body
 >
 #survey
 
+
  
+
 
 form
 
+
  
 
+
 input
+
+
 
 
 [
@@ -2697,30 +3161,44 @@ email
 ]
 
 
+
+
 :focus
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 body
 >
 #survey
 
+
  
+
 
 form
 
+
  
 
+
 input
+
+
 
 
 [
@@ -2730,96 +3208,140 @@ password
 ]
 
 
+
+
 :focus
+
+
 
 
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 ),
 body
 >
 #survey
 
+
  
+
 
 form
 
+
  
+
 
 select
 
 
+
+
 :focus
+
+
 
 
 :not
 
 
+
 	
+
 
 (
 .basic
 
+
  
+
 
 ),
 body
 >
 #survey
 
+
  
+
 
 form
 
+
  
 
+
 textarea
+
+
 
 
 :focus
 
 
+
+
 :not
 
+
  
+
 
 (
 .basic
 
+
  
+
 
 )
 {
 box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -2830,6 +3352,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -2838,9 +3362,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (255
@@ -2849,32 +3377,46 @@ rgba
 0,
 0
 .4
+
+
 
 
 );
 -moz-box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -2885,6 +3427,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -2893,9 +3437,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (255
@@ -2904,32 +3452,46 @@ rgba
 0,
 0
 .4
+
+
 
 
 );
 -webkit-box-shadow
 
 
+
+
 :
 
+
  
+
 
 inset
 
+
  
+
 
 0
 1
 px
 
+
  
+
 
 3
 px
 
+
  
 
+
 rgba
+
+
 
 
 (0
@@ -2940,6 +3502,8 @@ rgba
 .1
 
 
+
+
 )
 ,
 0
@@ -2948,9 +3512,13 @@ rgba
 px
 
 
+
 		
 
+
 rgba
+
+
 
 
 (255
@@ -2961,15 +3529,23 @@ rgba
 .4
 
 
+
+
 );
 border-color
 
 
+
+
 :
+
 
  
 
+
 #f90
+
+
 
 
 ;
@@ -3758,11 +4334,11 @@ body>#login form .idpw {
 <title>일반회원 로그인 화면</title>
 </head>
 <body>
-<jsp:include page="Header.jsp" />
-<form method="post" action="memLogin">
-	
+	<jsp:include page="Header.jsp" />
+	<form name="form1" method="post" action="memLogin">
 
-			<!-- <로그인 화면><br>
+
+		<!-- <로그인 화면><br>
 <input type="text" name="id" maxlength="20" placeholder="아이디"
 			onchange='checkIdAjax(this.value)'
 			style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;"><br>
@@ -3775,26 +4351,29 @@ body>#login form .idpw {
  -->
 
 
-			<div class="board_list">
-				<input type="text" id="user_id" name="user_id" class="wdp_90"
-					placeholder="아이디">
-			</div>
+		<div class="board_list">
+			<input type="text" id="userid" name="userid" class="wdp_90"
+				placeholder="아이디">
+		</div>
 
-			<div class="field_container">
-				<input type="Password" id="user_pwd" name="user_pwd" class="wdp_90"
-					placeholder="비밀번호">
-				<button id="btn_area">
-					<span class="btn" id="login_btn">Sign In</span>
-				</button>
-				<br>
-				<div class="idpw">
-					<a href="#" class="login_link">아이디찾기|</a> <a href="#"
-						class="login_link">비밀번호찾기|</a> <a href="signUp.do"
-						class="login_link">회원가입</a>
-				</div>
+		<div class="field_container">
+			<input type="Password" id="passwd" name="passwd" class="wdp_90"
+				placeholder="비밀번호">
+			<button id="btn_area">
+				<span class="btn" id="btnLogin">로그인</span>
+				<c:if test="${message == 'error' }">
+					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+				</c:if>
+			</button>
+			<br>
+			<div class="idpw">
+				<a href="#" class="login_link">아이디찾기|</a> <a href="#"
+					class="login_link">비밀번호찾기|</a> <a href="signUp.do"
+					class="login_link">회원가입</a>
 			</div>
+		</div>
 
-			<!-- <div id="naver_id_login"></div>  '네이버 아이디로 로그인하기' 버튼
+		<!-- <div id="naver_id_login"></div>  '네이버 아이디로 로그인하기' 버튼
  <script type="text/javascript">
  		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
 											// 단 'localhost'가 포함된 CallBack URL
@@ -3807,25 +4386,24 @@ body>#login form .idpw {
  		naver_id_login.init_naver_id_login();
 	</script> -->
 
-			<div id="sign_in_options" class="field_container">
-				<div id="sign_in_alternatives_container">
-					<span id="google_sign_in_option">or you can <a href="#"
-						id="google_sign_in" class="login_link">sign in with Google</a></span> <span
-						id="password_sign_in_option">or you can <a href="#"
-						id="password_sign_in" class="login_link">sign in using a
-							password</a></span>
-				</div>
-				<div id="remember_me_container">
-
-					<input name="user[remember_me]" type="hidden" value="0"><input
-						id="user_remember_me" name="user[remember_me]" type="checkbox"
-						value="1"> <label class="login_link"
-						for="user_remember_me" id="remember_me_label">stay signed
-						in</label>
-
-				</div>
-				<div class="clearfix"></div>
+		<div id="sign_in_options" class="field_container">
+			<div id="sign_in_alternatives_container">
+				<span id="google_sign_in_option">or you can <a href="#"
+					id="google_sign_in" class="login_link">sign in with Google</a></span> <span
+					id="password_sign_in_option">or you can <a href="#"
+					id="password_sign_in" class="login_link">sign in using a
+						password</a></span>
 			</div>
+			<div id="remember_me_container">
+
+				<input name="user[remember_me]" type="hidden" value="0"><input
+					id="user_remember_me" name="user[remember_me]" type="checkbox"
+					value="1"> <label class="login_link" for="user_remember_me"
+					id="remember_me_label">stay signed in</label>
+
+			</div>
+			<div class="clearfix"></div>
+		</div>
 	</form>
 
 
