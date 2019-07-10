@@ -15,5 +15,5 @@ public interface IMembersDao {
 	
 	public boolean loginCheck(membersDto dto);
 	
-	
+	public membersDto viewMember(String userid);
 }

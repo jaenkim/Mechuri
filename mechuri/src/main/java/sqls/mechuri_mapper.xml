@@ -175,12 +175,13 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 </insert>
 
 <select id="login_check" parameterType="HashMap" resultType="HashMap">
-	SELECT MEM_ID FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
+	SELECT NAME FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
 	
-   
 </select>
 
-
+<select id="viewMMember" resultType="com.hk.mechuri.dtos.membersDto">
+	SELECT * FROM MEMBERS WHERE MEM_ID=#{mem_id}
+</select>
 
 </mapper>
 

@@ -35,6 +35,11 @@ public class MembersDao implements IMembersDao {
 										//mapper.xml이름, mapper의 select id!! 
 		return (name==null)? true:false;
 	}
+	@Override
+	public membersDto viewMember(String mem_id) {
+	
+		return sqlSession.selectOne("sqls.viewMember", mem_id);
+	}
 
 
 	/*@Override

@@ -3,6 +3,8 @@ package com.hk.mechuri.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +29,21 @@ public class MembersService implements IMembersService {
 	}
 
 	@Override
+	public boolean loginCheck(membersDto dto, HttpSession session) {
+	
+		return false;
+	}
+
+	@Override
 	public boolean loginCheck(membersDto dto) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void logout(HttpSession session) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
