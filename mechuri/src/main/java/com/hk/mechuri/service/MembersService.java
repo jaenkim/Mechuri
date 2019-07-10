@@ -10,7 +10,7 @@ import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
 
 @Service
-public abstract class MembersService implements IMembersService {
+public class MembersService implements IMembersService {
 	
 	@Autowired
 	private IMembersDao membersDao;
@@ -26,7 +26,7 @@ public abstract class MembersService implements IMembersService {
 	}
 	@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception {
-		return null/*MembersDao.selectUserInfo(map)*/;
+		return membersDao.selectUserInfo(map);
     }
 	
 /*//	<!-- 로그인 -->

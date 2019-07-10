@@ -11,8 +11,8 @@ public interface IMembersDao {
 	public boolean signUpBoard(membersDto dto);
 	
 	public boolean compSignUpBoard(membersDto dto);
-
-	public membersDto get(membersDto dto) throws Exception;
 	
 	public Map<String, Object> selectUserInfo(Map<String, Object>map) throws Exception;
+
+	membersDto get(membersDto dto);
 }

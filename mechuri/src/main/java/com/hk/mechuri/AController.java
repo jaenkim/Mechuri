@@ -63,7 +63,7 @@ public class AController {
 	}
 	//로그인
 	@RequestMapping(value = "/memlogin.do", method = {RequestMethod.GET})
-	public ModelAndView memlogin(HttpServletRequest request, HttpServletResponse response, CommandMap commandMap) {
+	public ModelAndView memlogin(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 
 		//세션정보가 null이 아닐 때
@@ -80,26 +80,26 @@ else
 return mav;
 }
 
-/*@RequestMapping(value="/views/loginTry.do")
-public ModelAndView login(HttpServletRequest request, CommandMap commandMap) throws Exception {
+@RequestMapping(value="/views/loginTry.do")
+public ModelAndView login(HttpServletRequest request,Map<String, Object> map1 ) throws Exception {
 	ModelAndView mav = new ModelAndView("/views/loginSuccess");
 
-	Map<String, Object> map = MembersService.selectUserInfo(commandMap.getMap());
+	Map<String, Object> map = MembersService.selectUserInfo(map1);
 
 	//로그인 정보가 있다면 로그인
-	if (map == null)
+	if (map1 == null)
 	{
 		mav.addObject("msg", "로그인에 실패하였습니다.");
 	}
 	else
 	{
-		request.getSession().setAttribute("loginInfo", map);
+		request.getSession().setAttribute("loginInfo", map1);
 		request.getSession().setMaxInactiveInterval(60*30);
 
 		mav.addObject("msg","로그인에 성공하였습니다.");
 	}
 	return mav;
-}*/
+}
 
 @RequestMapping("logout.do")
 public String logout(HttpSession session){
