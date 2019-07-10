@@ -30,7 +30,7 @@
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com" />
-		<beans:property name="port" value="587" /><!-- 465 or 25 -->
+		<beans:property name="port" value="587" />
 		<beans:property name="username"
 			value="alfk9393@gmail.com" />
 		<beans:property name="password" value="anmira9303!" />
@@ -46,9 +46,9 @@
 	</beans:bean>
 
 	<!-- 인터셉터 객체 생성 -->
-	<beans:bean id="AuthLoginInterceptor"
+	<!-- <beans:bean id="AuthLoginInterceptor"
 		class="com.test.sts.AuthLoginInterceptor">
-	</beans:bean>
+	</beans:bean> -->
 	<!-- Interceptor 설정 -->
 	<!-- <interceptors>
 		<interceptor>
