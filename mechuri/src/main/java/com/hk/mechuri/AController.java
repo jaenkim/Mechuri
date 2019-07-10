@@ -69,7 +69,7 @@ public class AController {
 		return "memLogin";
 	}
 	
-	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.POST})
+	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView memLoginBoard(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 

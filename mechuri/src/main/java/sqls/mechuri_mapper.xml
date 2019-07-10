@@ -174,13 +174,9 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	SYSDATE,SYSDATE,'N','N',#{mem_homepage},#{mem_others01})
 </insert>
 
-<select id="memLoginBoard" parameterType="membersDto">
+<select id="selectUserInfo" parameterType="HashMap" resultType="HashMap">
 	SELECT MEM_ID FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
 	
-    <!--[CDATA[
-        select *  from users
-        where Id = #{id} and Pw = #{pw}
-    ]]-->
    
 </select>
 

@@ -21,7 +21,7 @@
 			alert("비밀번호를 입력해주세요.");
 		} else {
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/views/loginTry.do' />");
+			comSubmit.setUrl("<c:url value='/loginTry.do' />");
 			comSubmit.submit();
 		}
 	}
