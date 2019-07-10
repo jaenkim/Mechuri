@@ -62,8 +62,15 @@ public class AController {
 		}
 	}
 	//로그인
-	@RequestMapping(value = "/memlogin.do", method = {RequestMethod.GET})
-	public ModelAndView memlogin(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	
+	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET})
+	public String memlogin(Model model) {
+		logger.info("로그인폼으로 이동 {}.");
+		return "signUp";
+	}
+	
+	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.POST})
+	public ModelAndView memloginBoard(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 
 		//세션정보가 null이 아닐 때
@@ -71,16 +78,16 @@ public class AController {
 		{
 	String msg = "이미 로그인된 상태입닌다.";
 	mav.addObject("msg", msg);
-	mav.setViewName("/views/loginSuccess");
+	mav.setViewName("loginSuccess");
 }
 else
 {
-	mav.setViewName("/views/memlogin");
+	mav.setViewName("memloginBoard");
 }
 return mav;
 }
 
-@RequestMapping(value="/views/loginTry.do")
+@RequestMapping(value="/loginTry.do")
 public ModelAndView login(HttpServletRequest request,Map<String, Object> map1 ) throws Exception {
 	ModelAndView mav = new ModelAndView("/views/loginSuccess");
 

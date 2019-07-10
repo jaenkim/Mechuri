@@ -3258,7 +3258,7 @@ function fn_login(){
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<form action='memLogin.do' id="frm" method='post'>
+	<form action='memLoginBoard.do' id="frm" method='post'>
 	<!-- <로그인 화면><br>
 <input type="text" name="id" maxlength="20" placeholder="아이디"
 			onchange='checkIdAjax(this.value)'
