@@ -1,5 +1,6 @@
 package com.hk.mechuri.daos;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,8 +13,7 @@ public interface IMembersDao {
 	
 	public boolean compSignUpBoard(membersDto dto);
 	
+	public boolean loginCheck(membersDto dto);
 	
-	public Map<String, Object> selectUserInfo(Map<String, Object>map) throws Exception;
-
-	membersDto get(membersDto dto);
+	
 }

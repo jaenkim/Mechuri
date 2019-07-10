@@ -1,5 +1,6 @@
 package com.hk.mechuri.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,33 @@ public class MembersService implements IMembersService {
 	public boolean compSignUpBoard(membersDto dto) {
 		return membersDao.compSignUpBoard(dto); 
 	}
-	
-	
+
 	@Override
+	public boolean loginCheck(membersDto dto) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+	/*@Override
+	public Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int loginCheck(HashMap<String, String> hstParam) {
+		// TODO Auto-generated method stub
+		return 0;
+	}*/
+	
+	
+	/*@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception {
 		return membersDao.selectUserInfo(map);
-    }
+    }*/
 	
+
 /*//	<!-- 로그인 -->
 	@Override
 	public membersDto memLoginBoard(membersDto dto) {

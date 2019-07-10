@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%  request.setCharacterEncoding("UTF-8"); %>
 <%  response.setContentType("text/html;charset=UTF-8"); %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -3758,7 +3759,7 @@ body>#login form .idpw {
 </head>
 <body>
 <jsp:include page="Header.jsp" />
-<form action='memLoginBoard.do' method='post'>
+<form method="post" action="memLogin">
 	
 
 			<!-- <로그인 화면><br>
@@ -3775,12 +3776,12 @@ body>#login form .idpw {
 
 
 			<div class="board_list">
-				<input type="text" id="user_id" name="ID" class="wdp_90"
+				<input type="text" id="user_id" name="user_id" class="wdp_90"
 					placeholder="아이디">
 			</div>
 
 			<div class="field_container">
-				<input type="Password" id="user_pw" name="PASSWORD" class="wdp_90"
+				<input type="Password" id="user_pwd" name="user_pwd" class="wdp_90"
 					placeholder="비밀번호">
 				<button id="btn_area">
 					<span class="btn" id="login_btn">Sign In</span>
