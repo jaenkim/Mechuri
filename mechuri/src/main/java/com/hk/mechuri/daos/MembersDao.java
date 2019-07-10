@@ -29,11 +29,7 @@ public class MembersDao implements IMembersDao {
 		return count>0?true:false;
 			
 	}
-	@Override
-	public boolean memLoginBoard(membersDto dto) {
-		int count=sqlSession.insert(namespace+"memLoginBoard",dto);
-		return count>0?true:false;
-	}
+	
 	
 	@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object>map) throws Exception {

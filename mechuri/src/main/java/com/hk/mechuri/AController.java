@@ -66,7 +66,7 @@ public class AController {
 	@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET})
 	public String memLogin(Model model) {
 		logger.info("로그인폼으로 이동 {}.");
-		return "signUp";
+		return "memLogin";
 	}
 	
 	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.POST})
@@ -82,14 +82,14 @@ public class AController {
 }
 else
 {
-	mav.setViewName("memloginBoard");
+	mav.setViewName("memLoginBoard");
 }
 return mav;
 }
 
 @RequestMapping(value="/loginTry.do")
 public ModelAndView loginTry(HttpServletRequest request,Map<String, Object> map1 ) throws Exception {
-	ModelAndView mav = new ModelAndView("/views/loginSuccess");
+	ModelAndView mav = new ModelAndView("/loginSuccess");
 
 	Map<String, Object> map = MembersService.selectUserInfo(map1);
 

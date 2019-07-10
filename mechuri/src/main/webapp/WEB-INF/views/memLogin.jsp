@@ -1,18 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html;charset=UTF-8");
-%>
+<%  request.setCharacterEncoding("UTF-8"); %>
+<%  response.setContentType("text/html;charset=UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="../js/botstrap.js"></script>
-<script type="text/javascript">
+ <script type="text/javascript" src="../js/botstrap.js">
 	$(document).ready(function() {
 		$("#login_btn").unbind("click").click(function(e) {
 			e.preventDefault();
@@ -33,12 +27,6 @@
 	}
 </script>
 
-
-
-<title>일반회원 로그인 화면</title>
-</head>
-<body>
-<jsp:include page="Header.jsp" />
 <style>
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
@@ -3765,7 +3753,11 @@ body>#login form .idpw {
 	left: 115px;
 }
 </style>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>일반회원 로그인 화면</title>
+</head>
+<body>
+<jsp:include page="Header.jsp" />
 <form action='memLoginBoard.do' method='post'>
 	
 

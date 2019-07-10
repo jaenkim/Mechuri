@@ -25,11 +25,6 @@ public class MembersService implements IMembersService {
 		return membersDao.compSignUpBoard(dto); 
 	}
 	
-	@Override
-	public boolean memLoginBoard(membersDto dto) {
-	
-		return membersDao.memLoginBoard(dto);
-	}
 	
 	@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception {
