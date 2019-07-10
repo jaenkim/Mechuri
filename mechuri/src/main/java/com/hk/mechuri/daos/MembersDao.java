@@ -30,8 +30,8 @@ public class MembersDao implements IMembersDao {
 		return count>0?true:false;		
 	}
 	@Override
-	public boolean login_Check(membersDto dto) {
-		String name=sqlSession.selectOne(namespace+"login_Check", dto);
+	public boolean loginCheck(membersDto dto) {
+		String name=sqlSession.selectOne(namespace+"login_check", dto);
 										//mapper.xml이름, mapper의 select id!! 
 		return (name==null)? true:false;
 	}

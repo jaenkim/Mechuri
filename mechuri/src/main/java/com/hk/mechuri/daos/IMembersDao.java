@@ -13,7 +13,7 @@ public interface IMembersDao {
 	
 	public boolean compSignUpBoard(membersDto dto);
 	
-	public boolean login_Check(membersDto dto);
+	public boolean loginCheck(membersDto dto);
 	
 	public membersDto viewMember(String userid);
 }

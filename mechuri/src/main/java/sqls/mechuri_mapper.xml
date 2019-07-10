@@ -174,7 +174,7 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	SYSDATE,SYSDATE,'N','N',#{mem_homepage},#{mem_others01})
 </insert>
 
-<select id="login_Check" parameterType="HashMap" resultType="HashMap">
+<select id="login_check" parameterType="HashMap" resultType="HashMap">
 	SELECT NAME FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_PW=#{mem_pw}
 	
 </select>
