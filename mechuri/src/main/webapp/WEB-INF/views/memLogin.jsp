@@ -61,7 +61,7 @@ $(function(){
  		naver_id_login.setPopup();
  		naver_id_login.init_naver_id_login();
 	</script>
-<style>
+<!-- <style>
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
@@ -6635,8 +6635,8 @@ body>#login #dont_have_an_account a:hover {
 body>#login form .idpw {
 	position: relative;
 	left: 115px;
-}
-</style>
+} -->
+<!-- </style> -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>일반회원 로그인 화면</title>
 </head>
@@ -6668,15 +6668,16 @@ body>#login form .idpw {
 				placeholder="비밀번호">
 			<button id="btn_area">
 				<span class="btn" id="btnLogin">로그인</span>
-
+				<br>
+				<br>
 				<!-- 네이버 로그인 추가 -->
-				<div id="naverIdLogin" align="center">
+				<div id="naverIdLogin" >
 					<a id="naver-login-btn" href="#" role="button"> <img
 						src="https://static.nid.naver.com/oauth/big_g.PNG" width="40%"
 						height="30" />
 					</a>
 				</div>
-
+				
 				<c:if test="${message == 'error' }">
 					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
 				</c:if>

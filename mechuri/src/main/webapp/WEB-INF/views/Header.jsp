@@ -85,7 +85,7 @@
 		</nav>
 			<a href="index.jsp" class="logo">Mechuri</a>
 		<nav class="right">
-			<a href="#" class="button alt">Log in</a>
+			<a href="/mechuri/memLogin.do" class="button alt">Log in</a>
 		</nav>
 	</header>
 
