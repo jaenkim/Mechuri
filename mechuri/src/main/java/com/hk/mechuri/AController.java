@@ -100,7 +100,17 @@ public class AController {
 	}
 	
 	
+	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+	public String loginGET() {
+		
+		return "login";
+	}
 	
+	@RequestMapping(value="/loginPostNaver.do", method=RequestMethod.GET)
+	public String loginPOSTNaver(HttpSession session) {
+		
+		return "loginPostNaver";
+	}
 	
 	
 	/*	@RequestMapping(value = "/memLoginBoard.do", method = RequestMethod.POST)
