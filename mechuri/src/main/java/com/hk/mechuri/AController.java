@@ -78,8 +78,9 @@ public class AController {
 		System.out.println(session);
 		boolean result 
 			=MembersService.loginCheck(dto, session);
-		
+		System.out.println(MembersService);
 		ModelAndView mav=new ModelAndView();
+		System.out.println(mav);
 		if(result) { //로그인 성공
 			mav.setViewName("Header"); //Header.jsp
 			mav.addObject("message", "success"); 
