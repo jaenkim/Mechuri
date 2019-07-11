@@ -1,5 +1,6 @@
 package com.hk.mechuri.daos;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,8 @@ public interface IMembersDao {
 	public boolean signUpBoard(membersDto dto);
 	
 	public boolean compSignUpBoard(membersDto dto);
-
-	public membersDto get(membersDto dto);
+	
+	public boolean loginCheck(membersDto dto);
+	
+	public membersDto viewMember(String userid);
 }

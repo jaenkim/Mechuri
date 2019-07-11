@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.mechuri.daos.IBoardDao;
 import com.hk.mechuri.dtos.boardDto;
+import com.hk.mechuri.dtos.replyDto;
 
 @Service
 public class BoardService implements IBoardService {
@@ -50,10 +51,15 @@ public class BoardService implements IBoardService {
 
 	@Transactional
 	@Override
-	public boolean replyBoard(boardDto dto) {
-		boardDao.replyUpdate(dto.getBoard_no());
+	public boolean replyBoard(replyDto dto) {
+		//boardDao.replyUpdate(dto.getReply_no());
 		int count=boardDao.replyInsert(dto);
 		return count>0?true:false;
+	}
+	
+	@Override
+	public List<replyDto> replyDetail() {
+		return boardDao.getReplyList();
 	}
 
 	@Override
@@ -117,5 +123,8 @@ public class BoardService implements IBoardService {
 	public boardDto getFileInfo(int board_fileno) {
 		return boardDao.getFileInfo(board_fileno);
 	}
+
+
+	
 	
 }

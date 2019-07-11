@@ -2,6 +2,7 @@
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html;charset=utf-8"); %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"%>
 <!DOCTYPE html>
 <html lang="en">
 <!-- Start Head -->
@@ -54,6 +55,11 @@
 	
 
 </head>
+<script>
+
+</script>
+
+
 <!-- End Head -->
 <body class="default">
 	<jsp:include page="../Header.jsp"/>
@@ -85,62 +91,24 @@ START MODULE AREA 2: Article Block 1
   <div data-layout="_r" class="MOD_ARTICLEBLOCKS1" a href="boardDetail.do?seq=${dto.board_no}">
   
   
-
-     <!-- <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
-      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
-        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
-
-        <div class="MOD_ARTICLEBLOCKS1_Txt">
-          <h3 class="MOD_ARTICLEBLOCKS1_Title">트러블 자국 케어법</h3>
-          <p class="MOD_ARTICLEBLOCKS1_Category">혜0</p>
-        </div>
-      </a>
-    </div>
-    
-    
-        <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
-      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
-        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
-
-        <div class="MOD_ARTICLEBLOCKS1_Txt">
-          <h3 class="MOD_ARTICLEBLOCKS1_Title">헤어스프레이 추천할게요ㅋㅋ</h3>
-          <p class="MOD_ARTICLEBLOCKS1_Category">상희상희</p>
-        </div>
-      </a>
-    </div>
-    
-        <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
-      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
-        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
-
-        <div class="MOD_ARTICLEBLOCKS1_Txt">
-          <h3 class="MOD_ARTICLEBLOCKS1_Title">올리브영 세일 언제해요?</h3>
-          <p class="MOD_ARTICLEBLOCKS1_Category">강쌤</p>
-        </div>
-      </a>
-    </div>
-    
-    
-      <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont">
-      <a href="#" class="MOD_ARTICLEBLOCKS1_BlockSmall">
-        <div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text"></div>
-
-        <div class="MOD_ARTICLEBLOCKS1_Txt">
-          <h3 class="MOD_ARTICLEBLOCKS1_Title">랄라블라 세일 언제해요?</h3>
-          <p class="MOD_ARTICLEBLOCKS1_Category">곽쌤</p>
-        </div>
-      </a>
-    </div>  -->
-  
   <c:forEach items="${list}" var="dto">
     <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont" >
       <a href="boardDetail.do?board_no=${dto.board_no}" class="MOD_ARTICLEBLOCKS1_BlockSmall">
-      
+     
       	
         <div style="background-image:url('upload/${dto.board_storedfile}')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text" >${dto.board_fileno}</div> 
 		
         <div class="MOD_ARTICLEBLOCKS1_Txt">
-          <h3 class="MOD_ARTICLEBLOCKS1_Title">${dto.board_title}</h3>
+        <c:choose>
+        	<c:when test="${dto.board_new eq 'true' }"> 
+         		<h3 class="MOD_ARTICLEBLOCKS1_Title">${dto.board_title}</h3> 
+           	<img src="${pageContext.request.contextPath}/images/new.png" />  
+             </c:when> 
+             <c:otherwise> 
+             	<h3 class="MOD_ARTICLEBLOCKS1_Title">${dto.board_title}</h3> 
+            </c:otherwise> 
+        </c:choose>
+         	
           <p class="MOD_ARTICLEBLOCKS1_Category">${dto.board_nick}</p>
         </div>
         

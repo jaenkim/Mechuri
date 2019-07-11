@@ -1,5 +1,6 @@
 package com.hk.mechuri.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -10,8 +11,12 @@ public interface IMembersService {
 	public boolean signUpBoard(membersDto dto);
 	
 	public boolean compSignUpBoard(membersDto dto);
-
-	public membersDto getUser(membersDto dto) throws Exception;
+	
+	public boolean loginCheck(membersDto dto, HttpSession session);
+	
+	public membersDto viewMember(String mem_id);
+	
+	public void logout(HttpSession session);
 	
 	/*public void regist(membersDto dto);
 

@@ -6,9 +6,45 @@
 <%
 	response.setContentType("text/html;charset=UTF-8");
 %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	
+<script type="text/javascript" src="../js/botstrap.js">
+	$(function(){ //페이지 로딩이 완료된 후 자동 실행
+		$("#btnLogin").click(fucntion(){
+			var mem_id=$("#mem_id").val(); //태그에 입력된 값
+			var mem_pw=$("#mem_pw").val();
+			if(mem_id=="") {
+				alert("아이디를 입력하세요.");
+				$("#mem_id").focus(); //태그에 입력포커스이동
+				return;
+			}
+			if(mem_pw=="") {
+				alert("비밀번호를 입력하세요.");
+				$("#mem_pw").focus();
+				return;
+			}
+			document.form1.action
+			="${path}/login_check.do";
+			document.form1.submit(); //서버에 자료 전송
+		});
+	});
+</script>
+<script type="text/javascript">
+ 		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
+											// 단 'localhost'가 포함된 CallBack URL
+ 		var state = naver_id_login.getUniqState();
+		
+ 		naver_id_login.setButton("white", 2, 40);
+ 		naver_id_login.setDomain("http://127.0.0.1:8888/mechuri/memLogin.do");	//  URL
+ 		naver_id_login.setState(state);
+ 		naver_id_login.setPopup();
+ 		naver_id_login.init_naver_id_login();
+	</script>
 <style>
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
@@ -51,8 +87,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0
 }
-</style>
-<style>
+
 /* h1 {
   background-color: pink;
   color: white;
@@ -103,230 +138,550 @@ body {
 }
 
 input
+
+
+
+
 [
 type
 =
 text
 ]
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 tel
 ]
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 email
 ]
+
+
+
+
 :not
 
+
+
 	
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 password
 ]
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 select
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 textarea
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 )
 {
 border-radius
+
+
+
+
 :
+
+
  
+
+
 3
 px
-;
 
-	
+
+
+
+;
 -moz-border-radius
+
+
+
+
 :
+
+
  
+
+
 3
 px
-;
 
-	
+
+
+
+;
 -webkit-border-radius
+
+
+
+
 :
+
+
  
+
+
 3
 px
-;
 
-	
+
+
+
+;
 border
+
+
+
+
 :
+
+
  
+
+
 1
 px
+
+
  
+
+
 solid
+
+
  
+
+
 #ccc
-;
 
-	
+
+
+
+;
 display
-:
- 
-inline-block
-;
 
-	
-font-size
+
+
+
 :
+
+
  
+
+
+inline-block
+
+
+
+
+;
+font-size
+
+
+
+
+:
+
+
+ 
+
+
 17
 px
-;
 
-	
+
+
+
+;
 padding
+
+
+
+
 :
+
+
  
+
+
 12
 px
+
+
  
+
+
 16
 px
-;
 
-	
+
+
+
+;
 width
+
+
+
+
 :
+
+
  
+
+
 210
 px
+
+
+
+
 ;
-
-
 }
 input
+
+
+
+
 [
 type
 =
 text
 ]
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 tel
 ]
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
 
+
+
 	
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 email
 ]
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 password
 ]
+
+
+
+
 :focus
+
+
+
+
 :not
 
+
+
 	
+
+
 (
 .basic
+
+
  
+
+
 ),
 select
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 textarea
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 )
 {
 box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -334,36 +689,74 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (89
 ,
 222,
 44,
 0
 .4
-);
 
-	
+
+
+
+);
 -moz-box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -371,36 +764,74 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (89
 ,
 222,
 44,
 0
 .4
-);
 
-	
+
+
+
+);
 -webkit-box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -408,210 +839,532 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (89
 ,
 222,
 44,
 0
 .4
+
+
+
+
 );
-
-	
 border-color
+
+
+
+
 :
+
+
  
+
+
 #59de2c
-;
 
-	
+
+
+
+;
 outline
+
+
+
+
 :
+
+
  
+
+
 none
+
+
+
+
 ;
-
-
 }
 input
+
+
+
+
 [
 type
 =
 text
 ]
+
+
+
+
 .error
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 tel
 ]
+
+
+
+
 .error
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
 
+
+
 	
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 email
 ]
+
+
+
+
 .error
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 password
 ]
+
+
+
+
 .error
+
+
+
+
 :not
 
+
+
 	
+
+
 (
 .basic
+
+
  
+
+
 ),
 select
+
+
+
+
 .error
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 textarea
+
+
+
+
 .error
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 )
 {
 border-color
+
+
+
+
 :
+
+
  
+
+
 #f90
+
+
  
+
+
 !
 important
 
 
+
+
+
+
 }
 input
+
+
+
+
 [
 type
 =
 text
 ]
+
+
+
+
 .error
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 tel
 ]
+
+
+
+
 .error
+
+
+
+
 :focus
+
+
+
+
 :not
 
+
+
 	
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 email
 ]
+
+
+
+
 .error
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 input
+
+
+
+
 [
 type
 =
 password
 ]
+
+
+
+
 .error
+
+
+
+
 :focus
+
+
+
+
 :not
 
+
+
 	
+
+
 (
 .basic
+
+
  
+
+
 ),
 select
+
+
+
+
 .error
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
-(
-.basic
- 
-),
-textarea
-.error
-:focus
-:not
- 
+
+
 (
 .basic
 
+
+ 
+
+
+),
+textarea
+
+
+
+
+.error
+
+
+
+
+:focus
+
+
+
+
+:not
+
+
+ 
+
+
+(
+.basic
+
+
+
 	
+
+
 )
 {
 box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -619,36 +1372,74 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (255
 ,
 153,
 0,
 0
 .4
-);
 
-	
+
+
+
+);
 -moz-box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -656,36 +1447,74 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (255
 ,
 153,
 0,
 0
 .4
-);
 
-	
+
+
+
+);
 -webkit-box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -693,24 +1522,44 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (255
 ,
 153,
 0,
 0
 .4
+
+
+
+
 );
-
-	
 border-color
+
+
+
+
 :
+
+
  
+
+
 #f90
+
+
+
+
 ;
-
-
 }
 body>#home section .section_title {
 	color: #f90;
@@ -2205,129 +3054,317 @@ body>#survey form input[type=text].explanation, body>#survey form input[type=tel
 body
 >
 #survey
+
+
  
+
+
 form
+
+
  
+
+
 input
+
+
+
+
 [
 type
 =
 text
 ]
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 body
 >
 #survey
+
+
  
+
+
 form
+
+
  
+
+
 input
+
+
+
+
 [
 type
 =
 tel
 ]
+
+
+
+
 :focus
+
+
+
+
 :not
 
+
+
 	
+
+
 (
 .basic
+
+
  
+
+
 ),
 body
 >
 #survey
+
+
  
+
+
 form
+
+
  
+
+
 input
+
+
+
+
 [
 type
 =
 email
 ]
+
+
+
+
 :focus
+
+
+
+
 :not
+
+
  
+
+
 (
 .basic
+
+
  
+
+
 ),
 body
 >
 #survey
+
+
  
+
+
 form
+
+
  
+
+
 input
+
+
+
+
 [
 type
 =
 password
 ]
+
+
+
+
 :focus
-:not
- 
-(
-.basic
- 
-),
-body
->
-#survey
- 
-form
- 
-select
-:focus
+
+
+
+
 :not
 
-	
+
+ 
+
+
 (
 .basic
+
+
  
+
+
 ),
 body
 >
 #survey
+
+
  
+
+
 form
+
+
  
-textarea
+
+
+select
+
+
+
+
 :focus
+
+
+
+
 :not
- 
+
+
+
+	
+
+
 (
 .basic
+
+
  
+
+
+),
+body
+>
+#survey
+
+
+ 
+
+
+form
+
+
+ 
+
+
+textarea
+
+
+
+
+:focus
+
+
+
+
+:not
+
+
+ 
+
+
+(
+.basic
+
+
+ 
+
+
 )
 {
 box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -2335,36 +3372,74 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (255
 ,
 153,
 0,
 0
 .4
-);
 
-	
+
+
+
+);
 -moz-box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -2372,36 +3447,74 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (255
 ,
 153,
 0,
 0
 .4
-);
 
-	
+
+
+
+);
 -webkit-box-shadow
+
+
+
+
 :
+
+
  
+
+
 inset
+
+
  
+
+
 0
 1
 px
+
+
  
+
+
 3
 px
+
+
  
+
+
 rgba
+
+
+
+
 (0
 ,
 0,
 0,
 0
 .1
+
+
+
+
 )
 ,
 0
@@ -2409,24 +3522,44 @@ rgba
 8
 px
 
+
+
 		
+
+
 rgba
+
+
+
+
 (255
 ,
 153,
 0,
 0
 .4
+
+
+
+
 );
-
-	
 border-color
+
+
+
+
 :
+
+
  
+
+
 #f90
+
+
+
+
 ;
-
-
 }
 body>#survey form button {
 	border-radius: 4px;
@@ -3208,54 +4341,15 @@ body>#login form .idpw {
 	left: 115px;
 }
 </style>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>일반회원 로그인 화면</title>
-
-<script type="text/javascript">
-
-unction loginChk() {
-	var id = $("#id").val();
-	var pw = $("#pw").val();
-	$.ajax(
-				{
-					type: "POST",
-					url: "./loginChk.do",
-					data:"id="+id+"&pw="+pw,
-					async: true,
-					success: function(msg){
-						if(msg=="NOPE"){
-							alert("아이디 혹은 비밀번호를 확인해주세요.")
-						}else{
-							location.href="./loginmain.do?mem_id="+id+"&mem_pw="+pw;
-						}
-					}
-				}
-			);
-		}
-</script>
-
-
-
-
-<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-
-<link rel='stylesheet'
-	href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
-
-<link rel="stylesheet" href="css/style.css" media="screen"
-	type="text/css" />
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<form action='memLogin.do' method='post'>
-	<!-- <로그인 화면><br>
+	<form name="form1" id="form1" method="post" action="login_check.do">
+
+
+		<!-- <로그인 화면><br>
 <input type="text" name="id" maxlength="20" placeholder="아이디"
 			onchange='checkIdAjax(this.value)'
 			style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;"><br>
@@ -3268,59 +4362,60 @@ unction loginChk() {
  -->
 
 
-	<div id="login">
-		
-			<div class="board_list">
-				<input type="text" id="id" name="ID" class="wdp_90" placeholder="아이디">
+		<div class="board_list">
+			<input type="text" id="mem_id" name="mem_id" class="wdp_90"
+				placeholder="아이디">
+		</div>
+
+		<div class="field_container">
+			<input type="Password" id="mem_pw" name="mem_pw" class="wdp_90"
+				placeholder="비밀번호">
+			<button id="btn_area">
+				<span class="btn" id="btnLogin">로그인</span>
+					<!-- 네이버 로그인 창으로 이동 -->
+<div id="naver_id_login" style="text-align:center"><a href="${url}">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+<br>
+
+				<c:if test="${message == 'error' }">
+					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+				</c:if>
+				<c:if test="${message == 'logout' }">
+					<div style="color: red;">로그아웃 되었습니다.</div>
+				</c:if>	
+			</button>
+			<br>
+			<div class="idpw">
+				<a href="#" class="login_link">아이디찾기|</a> <a href="#"
+					class="login_link">비밀번호찾기|</a> <a href="signUp.do"
+					class="login_link">회원가입</a>
 			</div>
+		</div>
 
-			<div class="field_container">
-				<input type="Password" id="pw" name="PASSWORD" class="wdp_90" placeholder="비밀번호">
-				<button id="sign_in_button">
-					<span class="btn" id="login_btn" input type="submit">Sign In</span>
-				</button>
-				<br>
-				<div class="idpw">
-					<a href="#" class="login_link">아이디찾기|</a> <a href="#"
-						class="login_link">비밀번호찾기|</a> <a href="signUp.do"
-						class="login_link">회원가입</a>
-				</div>
+	
+ 
+
+		<div id="sign_in_options" class="field_container">
+			<div id="sign_in_alternatives_container">
+				<span id="google_sign_in_option">or you can <a href="#"
+					id="google_sign_in" class="login_link">sign in with Google</a></span> <span
+					id="password_sign_in_option">or you can <a href="#"
+					id="password_sign_in" class="login_link">sign in using a
+						password</a></span>
 			</div>
+			<div id="remember_me_container">
 
-			<!-- <div id="naver_id_login"></div>  '네이버 아이디로 로그인하기' 버튼
- <script type="text/javascript">
- 		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
-											// 단 'localhost'가 포함된 CallBack URL
- 		var state = naver_id_login.getUniqState();
-		
- 		naver_id_login.setButton("white", 2, 40);
- 		naver_id_login.setDomain("http://127.0.0.1:8888/mechuri/memLogin.do");	//  URL
- 		naver_id_login.setState(state);
- 		naver_id_login.setPopup();
- 		naver_id_login.init_naver_id_login();
-	</script> -->
+				<input name="user[remember_me]" type="hidden" value="0"><input
+					id="user_remember_me" name="user[remember_me]" type="checkbox"
+					value="1"> <label class="login_link" for="user_remember_me"
+					id="remember_me_label">stay signed in</label>
 
-			<div id="sign_in_options" class="field_container">
-				<div id="sign_in_alternatives_container">
-					<span id="google_sign_in_option">or you can <a href="#"
-						id="google_sign_in" class="login_link">sign in with Google</a></span> <span
-						id="password_sign_in_option">or you can <a href="#"
-						id="password_sign_in" class="login_link">sign in using a
-							password</a></span>
-				</div>
-				<div id="remember_me_container">
-
-					<input name="user[remember_me]" type="hidden" value="0"><input
-						id="user_remember_me" name="user[remember_me]" type="checkbox"
-						value="1"> <label class="login_link"
-						for="user_remember_me" id="remember_me_label">stay signed
-						in</label>
-
-				</div>
-				<div class="clearfix"></div>
 			</div>
-		</form>
-	</div>
+			<div class="clearfix"></div>
+		</div>
+	</form>
+
+
 	<jsp:include page="Footer.jsp" />
 </body>
 </html>

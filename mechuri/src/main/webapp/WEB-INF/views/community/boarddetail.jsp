@@ -14,7 +14,6 @@
 <br><br><br>
 
 <div class="container">
-  <form action="#">
   <div class="row">
     <div id="writerDate">${dto.board_regdate}</div><br>
     <div class="col-25">
@@ -56,33 +55,39 @@
 <!--     <input type="button" value="취소" id="delete1"> -->
 <!--     <input type="button" value="수정" id="update1"> -->
 <!--    </div> -->
-  </form>
+
 </div>
 
+<!-- 여기부터 댓글 -->
+ <form action="replyboard.do" method="post">
 <div class="container">
-  <form action="#">
+<input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
     <div class="col-25">
-      <label for="reply">댓글</label>
+      <label for="reply"><input type="text" name="reply_nick" required="required" /></label>
     </div>
     <div class="col-75">
     	<div id="reply1">
-      <input type="text" id="reply" name="reply" placeholder="로그인 하면 댓글을 작성할 수 있어요!">
+      <input type="text" id="reply" name="reply_contents" required="required" />
       </div>
       <div id="replybtn1">
-      <input type="button" id="replybtn" value="작성"/>
+      <input type="submit" id="replybtn" value="작성"  />
     	</div>
     </div>
   </div>
   <br><br>
+  
+  
   <div>
+  <c:forEach items="${replylist}" var="replylist">
     <div id="replyconts">
-    	<div id="replynick">승승</div>
-    	<div id="replycon">선크림 좋아요 선크림 사세요!</div>
-    	<div id="replyregdate">2019-07-03</div>
+    	<div id="replynick">${replylist.reply_nick}</div>
+    	<div id="replycon">${replylist.reply_conts}</div>
+    	<div id="replyregdate">${replylist.reply_regdate}</div>
     </div>
+    </c:forEach>
     
-     <div id="replyconts">
+ <!--      <div id="replyconts">
     	<div id="replynick">미라</div>
     	<div id="replycon">립스틱 사야겠다...</div>
     	<div id="replyregdate">2019-07-03</div>
@@ -99,12 +104,13 @@
     	<div id="replynick">으뇽</div>
     	<div id="replycon">갔더니 거의 품절이네요ㅠ</div>
     	<div id="replyregdate">2019-07-03</div>
-    </div>
+    </div>  -->
     
   </div>
   
-  </form>
+  
 </div>
+</form>
 <br><br><br>
 <jsp:include page="../Footer.jsp"/>
 

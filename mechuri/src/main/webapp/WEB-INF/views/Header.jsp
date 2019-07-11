@@ -2,9 +2,11 @@
 	pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html;charset=UTF-8"); %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Title insert here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -46,6 +48,12 @@
 </style>
 </head>
 <body>
+<c:if test="${sessionScope.mem_id != null }">
+	<h2>
+	${sessionScope.mem_name} (${sessionScope.mem_id})
+	님의 방문을 환영합니다.
+	</h2>
+</c:if>
 <!-- Header -->
 	<header id="header"> 
 		<nav class="left">
