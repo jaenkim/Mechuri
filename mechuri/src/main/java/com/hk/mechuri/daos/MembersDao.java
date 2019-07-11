@@ -33,7 +33,7 @@ public class MembersDao implements IMembersDao {
 	public boolean loginCheck(membersDto dto) {
 		String name=sqlSession.selectOne(namespace+"login_check", dto);
 										//mapper.xml이름, mapper의 select id!! 
-		return (name==null)? true:false;
+		return (name!=null)? true:false;
 	}
 	@Override
 	public membersDto viewMember(String mem_id) {

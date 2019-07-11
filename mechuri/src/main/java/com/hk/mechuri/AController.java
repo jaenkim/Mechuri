@@ -82,10 +82,10 @@ public class AController {
 		ModelAndView mav=new ModelAndView();
 		System.out.println(mav);
 		if(result) { //로그인 성공
-			mav.setViewName("Header"); //Header.jsp
+			mav.setViewName("loginresult"); //loginresult.jsp
 			mav.addObject("message", "success"); 
 		}else { //로그인 실패 
-			mav.setViewName("memLogin");
+			mav.setViewName("loginresult");
 			mav.addObject("message", "error");
 		}
 		return mav;
@@ -98,12 +98,6 @@ public class AController {
 		mav.addObject("message", "logout");
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

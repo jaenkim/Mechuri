@@ -4342,76 +4342,42 @@ body>#login form .idpw {
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>일반회원 로그인 화면</title>
+<title>로그인 결과화면</title>
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/style.min.css" />
+<link rel="stylesheet" href="assets/css/modules.css" />
+
 </head>
 <body>
-	<jsp:include page="Header.jsp" />
+	<header id="header"> 
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a>
+		</nav>
+			<a href="index.jsp" class="logo">Mechuri</a>
+		<nav class="right">
+			<a href="#" class="button alt">Log in</a>
+		</nav>
+	</header>
 	<form name="form1" id="form1" method="post" action="login_check.do">
 
-
-		<!-- <로그인 화면><br>
-<input type="text" name="id" maxlength="20" placeholder="아이디"
-			onchange='checkIdAjax(this.value)'
-			style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;"><br>
-            
-<input type='password' name='pw' id='pwid'
-			onchange='isSame()' maxlength="20" placeholder="비밀번호"
-			style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;"><br>
-			
-<input type='button' value='가입하기'id='newbtn' style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;">
- -->
+<c:if test="${sessionScope.mem_id != null }">
+	<h2>
+	${sessionScope.mem_name} (${sessionScope.mem_id})
+	님의 방문을 환영합니다.
+	</h2>
+</c:if>
 
 
-		<div class="board_list">
-			<input type="text" id="mem_id" name="mem_id" class="wdp_90"
-				placeholder="아이디">
-		</div>
-
-		<div class="field_container">
-			<input type="Password" id="mem_pw" name="mem_pw" class="wdp_90"
-				placeholder="비밀번호">
-			<button id="btn_area">
-				<span class="btn" id="btnLogin">로그인</span>
-		
-				<%-- <c:if test="${message == 'error' }">
+				<c:if test="${message == 'error' }">
 					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-				</c:if> --%>
+				</c:if>
 				<c:if test="${message == 'logout' }">
 					<div style="color: red;">로그아웃 되었습니다.</div>
 				</c:if>	
-			</button>
-			<br>
-			<div class="idpw">
-				<a href="#" class="login_link">아이디찾기|</a> <a href="#"
-					class="login_link">비밀번호찾기|</a> <a href="signUp.do"
-					class="login_link">회원가입</a>
-			</div>
-		</div>
-
-	
- 
-
-		<div id="sign_in_options" class="field_container">
-			<div id="sign_in_alternatives_container">
-				<span id="google_sign_in_option">or you can <a href="#"
-					id="google_sign_in" class="login_link">sign in with Google</a></span> <span
-					id="password_sign_in_option">or you can <a href="#"
-					id="password_sign_in" class="login_link">sign in using a
-						password</a></span>
-			</div>
-			<div id="remember_me_container">
-
-				<input name="user[remember_me]" type="hidden" value="0"><input
-					id="user_remember_me" name="user[remember_me]" type="checkbox"
-					value="1"> <label class="login_link" for="user_remember_me"
-					id="remember_me_label">stay signed in</label>
-
-			</div>
-			<div class="clearfix"></div>
-		</div>
 	</form>
 
 
 	<jsp:include page="Footer.jsp" />
+	<script src="assets/js/HeaderMenu.js"></script> 
 </body>
 </html>

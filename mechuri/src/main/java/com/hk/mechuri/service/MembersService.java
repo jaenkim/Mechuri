@@ -39,7 +39,7 @@ public class MembersService implements IMembersService {
 			session.setAttribute("mem_status", dto2.getMem_status());
 			session.setAttribute("mem_brand", dto2.getMem_brand());
 			session.setAttribute("mem_nick", dto2.getMem_nick());
-			System.out.println(dto2);
+			System.out.println(dto2.getMem_id());
 		}
 		return result;
 	}

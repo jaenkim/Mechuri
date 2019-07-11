@@ -48,12 +48,12 @@
 </style>
 </head>
 <body>
-<c:if test="${sessionScope.mem_id != null }">
+<%-- <c:if test="${sessionScope.mem_id != null }">
 	<h2>
 	${sessionScope.mem_name} (${sessionScope.mem_id})
 	님의 방문을 환영합니다.
 	</h2>
-</c:if>
+</c:if> --%>
 <!-- Header -->
 	<header id="header"> 
 		<nav class="left">
