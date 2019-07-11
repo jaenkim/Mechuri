@@ -24,7 +24,7 @@ public class MailController {
 //	private JavaMailSender MailSender;
 	
 	//이메일 아이디 중복확인
-	@RequestMapping(value = "/mail.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/mail.do", method = {RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
 	public Integer mail(Model model, String email) 
 	{

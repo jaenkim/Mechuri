@@ -57,7 +57,7 @@ public class MailSend
 		try 
 		{
 			//보내는 사람 메일
-			InternetAddress from = new InternetAddress("mydictionarykor@gmail.com"); //!@#
+			InternetAddress from = new InternetAddress("alfk9393@gmail.com"); //!@#
 			//보내는사람 : mydictionarykor@gmail.com
 			message.setFrom(from); 
 			
