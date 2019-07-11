@@ -44,7 +44,7 @@ public class AController {
 
 	@Autowired
 	private IMembersService MembersService;
-	private IMembersDao membersDao;
+	private IMembersDao MembersDao;
 
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
