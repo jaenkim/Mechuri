@@ -1,6 +1,7 @@
 package com.hk.mechuri;
 
 import java.text.DateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,7 @@ public class HomeController {
 		return "ranking/main";
 	}
 
+	
 	@RequestMapping(value = "/list.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list(HttpServletRequest request, Locale locale, Model model) {
 		String command = request.getParameter("command");
@@ -61,75 +63,98 @@ public class HomeController {
 			String filter_catelname = request.getParameter("filter_catelname");
 			String filter_catesname = request.getParameter("filter_catesname");
 
-			//			if(request.getParameter("filter_age10").equals("전체,10대")) {filter_age10 = request.getParameter("filter_age10");}
-			//			else {filter_age10 = "전체";}
-			//			
-			//			if(request.getParameter("filter_age20").equals("전체,20대")) {	filter_age20 = request.getParameter("filter_age20");}
-			//			else {filter_age20 = "전체";}
-			//			
-			//			if(request.getParameter("filter_age30").equals("전체,30대")) {	filter_age30 = request.getParameter("filter_age30");}
-			//			else {filter_age30 = "전체";}
-			//			
-			//			if(request.getParameter("filter_age40").equals("전체,40대")) {	filter_age40 = request.getParameter("filter_age40");}
-			//			else {filter_age40 = "전체";}
-			//			
-			//			if(request.getParameter("filter_age50").equals("전체,50대 이상")) {filter_age50 = request.getParameter("filter_age50");}
-			//			else {filter_age50 = "전체";}
-			//			
-			//			if(request.getParameter("filter_genderF").equals("전체,여성")) {filter_genderF = request.getParameter("filter_genderF");}
-			//			else {filter_genderF = "전체";}
-			//			
-			//			if(request.getParameter("filter_genderM").equals("전체,남성")) {filter_genderM = request.getParameter("filter_genderM");}
-			//			else {filter_genderM = "전체";}
-			//			
-			//			if(!(request.getParameter("filter_catelname").equals("전체"))) {filter_catelname = request.getParameter("filter_catelname");}
-			//			else {filter_catelname = "전체";}
-			//			
-			//			if(!(request.getParameter("filter_catesname").equals("전체"))) {filter_catesname = request.getParameter("filter_catesname");}
-			//			else {filter_catesname = "전체";}
+			String[] ageArray = new String[5];
 
-			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderF,filter_genderM, filter_catelname, filter_catesname);
-			List<productDto>list2 = rankService.getFilterProductList(dto);
+			for(int i=0;i<ageArray.length;i++) {
+				if(filter_age10 != null) {
+					if(ageArray[i]==null) {
+						ageArray[i]=filter_age10;	
+						break;
+					}
+				}
+				if(filter_age20 != null) {
+					if(ageArray[i]==null) {
+						ageArray[i]=filter_age20;	
+						break;
+					}
+				}
+				if(filter_age30 != null) {
+					if(ageArray[i]==null) {
+						ageArray[i]=filter_age30;	
+						break;
+					}
+				}
+				if(filter_age40 != null) {
+					if(ageArray[i]==null) {
+						ageArray[i]=filter_age40;	
+						break;
+					}
+				}
+				if(filter_age50 != null) {
+					if(ageArray[i]==null) {
+						ageArray[i]=filter_age50;	
+						break;
+					}
+				}
+			}
+			
+			System.out.println("ageArray ["+Arrays.toString(ageArray)+"]");
+//			String ageFilter = Arrays.toString(ageArray);
+//			rankService.ageFilter(ageArray);
+			
+			String[] genderArray = new String[2];
+			for(int i=0;i<genderArray.length;i++) {
+				if(filter_genderF != null) {
+					if(genderArray[i]==null) {
+						genderArray[i]=filter_genderF;	
+						break;
+					}
+				}
+				if(filter_genderM != null) {
+					if(genderArray[i]==null) {
+						genderArray[i]=filter_genderM;	
+						break;
+					}
+				}
+			}
+//			String genderFilter = Arrays.toString(genderArray);
+//			rankService.genderFilter(genderArray);
+			
+			String[] cateArray = new String[2];
+			for(int i=0;i<cateArray.length;i++) {
+				if(filter_catelname != null) {
+					if(cateArray[i]==null) {
+						cateArray[i]=filter_catelname;	
+						break;
+					}
+				}
+				if(filter_catesname != null) {
+					if(cateArray[i]==null) {
+						cateArray[i]=filter_catesname;	
+						break;
+					}
+				}
+			}
+			System.out.println("컨트롤러(ageArray) ["+ageArray[0]+"]");
+			System.out.println("컨트롤러(genderArray) ["+genderArray[0]+"]");
+			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
+			
 			model.addAttribute("list",list2);
-
 			return "ranking/list";
-			
-			
-		}else if(command.equals("sortbyhighprice")) {
-			//높은 가격 순 정렬
-			List<productDto> list = rankService.getAllProductListbyHighprice();
-			model.addAttribute("list",list);
 
-			return "ranking/list";
-		}else if(command.equals("sortbylowprice")) {
-			//낮은 가격순 정렬
-			List<productDto> list = rankService.getAllProductListbyLowprice();
-			model.addAttribute("list",list);
-
-			return "ranking/list";
-		}else if(command.equals("sortbyascname")) {
-			//이름순 정렬
-			List<productDto> list = rankService.getAllProductListbyASCname();
-			model.addAttribute("list",list);
-
-			return "ranking/list";
-		}else if(command.equals("sortbymaxreview")) {
-			//리뷰 많은순
-			List<productDto> list = rankService.getAllProductListbyMaxReview();
-			model.addAttribute("list",list);
-
-			return "ranking/list";
-		}else if(command.equals("sortbyminreview")) {
-			//리뷰 적은순
-			List<productDto> list = rankService.getAllProductListbyMinReview();
-			model.addAttribute("list",list);
-
-			return "ranking/list";
+//			String cateFilter = Arrays.toString(cateArray);
+//			rankService.categoryFilter(cateArray);
+//			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderF,filter_genderM, filter_catelname, filter_catesname);
+//			List<productDto>list2 = rankService.getFilterProductList(dto);
 		}
-
 		return "error";
 	}//list END
 
+	@RequestMapping(value = "/refilter.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String refilter(HttpServletRequest request, Locale locale, Model model, productDto dto) {
+		return null;
+		
+	}
 	
 	@RequestMapping(value = "/productdetail.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String productDetail(HttpServletRequest request, Locale locale, Model model, productDto dto) {
@@ -153,7 +178,35 @@ public class HomeController {
 		
 		return "ranking/productdetail";
 	}
-
-
+	
 
 }
+
+
+//쓰지 않는 것 모아두기
+//			if(request.getParameter("filter_age10").equals("전체,10대")) {filter_age10 = request.getParameter("filter_age10");}
+//			else {filter_age10 = "전체";}
+//			
+//			if(request.getParameter("filter_age20").equals("전체,20대")) {	filter_age20 = request.getParameter("filter_age20");}
+//			else {filter_age20 = "전체";}
+//			
+//			if(request.getParameter("filter_age30").equals("전체,30대")) {	filter_age30 = request.getParameter("filter_age30");}
+//			else {filter_age30 = "전체";}
+//			
+//			if(request.getParameter("filter_age40").equals("전체,40대")) {	filter_age40 = request.getParameter("filter_age40");}
+//			else {filter_age40 = "전체";}
+//			
+//			if(request.getParameter("filter_age50").equals("전체,50대 이상")) {filter_age50 = request.getParameter("filter_age50");}
+//			else {filter_age50 = "전체";}
+//			
+//			if(request.getParameter("filter_genderF").equals("전체,여성")) {filter_genderF = request.getParameter("filter_genderF");}
+//			else {filter_genderF = "전체";}
+//			
+//			if(request.getParameter("filter_genderM").equals("전체,남성")) {filter_genderM = request.getParameter("filter_genderM");}
+//			else {filter_genderM = "전체";}
+//			
+//			if(!(request.getParameter("filter_catelname").equals("전체"))) {filter_catelname = request.getParameter("filter_catelname");}
+//			else {filter_catelname = "전체";}
+//			
+//			if(!(request.getParameter("filter_catesname").equals("전체"))) {filter_catesname = request.getParameter("filter_catesname");}
+//			else {filter_catesname = "전체";}

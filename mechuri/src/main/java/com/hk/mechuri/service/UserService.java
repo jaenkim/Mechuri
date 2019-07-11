@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
-import com.hk.mechuri.utils.MailHandler;
+//import com.hk.mechuri.utils.MailHandler;
 import com.hk.mechuri.utils.TempKey;
 
 public class UserService {
