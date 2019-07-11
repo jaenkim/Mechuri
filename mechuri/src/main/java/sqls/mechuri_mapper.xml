@@ -193,11 +193,11 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 </insert>
 
 <select id="login_check" resultType="String" parameterType="membersDto">
-	<![CDATA[SELECT MEM_NAME FROM MEMBERS WHERE MEM_ID LIKE #{mem_id}]]>
+	SELECT MEM_NAME FROM MEMBERS WHERE MEM_ID LIKE #{mem_id}
 	
 </select>
 
-<select id="viewMember" resultType="com.hk.mechuri.dtos.membersDto">
+<select id="viewMember" resultType="membersDto">
 	SELECT * FROM MEMBERS WHERE MEM_ID=#{mem_id}
 </select>
 

@@ -1,8 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<%-- <% 
+	membersDto dto;
+
+	try { 
+		dto = (membersDto) session.getAttribute("dto");
+		if (dto == null) { 
+			dto = new membersDto().setName("");	
+		}
+	} catch (Exception e) { 
+		throw new ServletException(e);
+	}
+
+%> --%>
+
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html;charset=UTF-8"); %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%-- <span style="float:right;">
+<% if (!membersDto.getMem_name().equals("")) { 
+   out.print(membersDto.getMem_name()); %>
+<a style="color:black;" href="logout.do">로그아웃</a>
+<% } else { %>
+   
+<% } %> --%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -48,12 +72,12 @@
 </style>
 </head>
 <body>
-<c:if test="${sessionScope.mem_id != null }">
+<%-- <c:if test="${sessionScope.mem_id != null }">
 	<h2>
 	${sessionScope.mem_name} (${sessionScope.mem_id})
 	님의 방문을 환영합니다.
 	</h2>
-</c:if>
+</c:if> --%>
 <!-- Header -->
 	<header id="header"> 
 		<nav class="left">
@@ -61,7 +85,7 @@
 		</nav>
 			<a href="index.jsp" class="logo">Mechuri</a>
 		<nav class="right">
-			<a href="#" class="button alt">Log in</a>
+			<a href="/mechuri/memLogin.do" class="button alt">Log in</a>
 		</nav>
 	</header>
 

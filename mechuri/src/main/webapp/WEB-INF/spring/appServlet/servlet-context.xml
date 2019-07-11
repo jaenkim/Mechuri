@@ -27,8 +27,13 @@
 	</beans:bean>
 
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
+<<<<<<< HEAD
 <!-- 	<beans:bean id="naverLoginBO" -->
 <!-- 		class="com.test.sts.NaverLoginBO" /> -->
+=======
+	<beans:bean id="naverLoginBO"
+		class="com.hk.mechuri.naver.NaverLoginBO" />
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 
 	<!-- 회원가입 메일 인증 -->
 	<!-- <beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 

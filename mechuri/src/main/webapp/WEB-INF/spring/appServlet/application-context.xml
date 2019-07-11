@@ -26,7 +26,7 @@
 		<property name="password" value="${password}" />
 		<property name="defaultAutoCommit" value="true" />
 	</bean>
-	
+
 	<!-- 3. dataSource객체를 sqlSessionFactoryBean 객체에 주입 -->
 	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -47,6 +47,24 @@
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<!-- 메일보내기 -->
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl"
+		id="mailSender">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="alalfk9393@gmail.com" />
+		<property name="password" value="anmira9303!" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
 	</bean>
 
 	<!-- Transaction을 처리하는 방법 -->

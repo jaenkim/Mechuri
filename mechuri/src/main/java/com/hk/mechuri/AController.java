@@ -78,10 +78,11 @@ public class AController {
 		System.out.println(session);
 		boolean result 
 			=MembersService.loginCheck(dto, session);
-		
+		System.out.println(MembersService);
 		ModelAndView mav=new ModelAndView();
+		System.out.println(mav);
 		if(result) { //로그인 성공
-			mav.setViewName("Header"); //Header.jsp
+			mav.setViewName("loginresult"); //Header.jsp
 			mav.addObject("message", "success"); 
 		}else { //로그인 실패 
 			mav.setViewName("memLogin");
@@ -99,13 +100,17 @@ public class AController {
 	}
 	
 	
+	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+	public String loginGET() {
+		
+		return "login";
+	}
 	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value="/loginPostNaver.do", method=RequestMethod.GET)
+	public String loginPOSTNaver(HttpSession session) {
+		
+		return "loginPostNaver";
+	}
 	
 	
 	/*	@RequestMapping(value = "/memLoginBoard.do", method = RequestMethod.POST)
