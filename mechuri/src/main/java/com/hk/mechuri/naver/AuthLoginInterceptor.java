@@ -1,4 +1,4 @@
-package com.test.tst;
+package com.hk.mechuri.naver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
