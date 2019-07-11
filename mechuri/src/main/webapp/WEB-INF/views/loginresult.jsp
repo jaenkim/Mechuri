@@ -12,39 +12,6 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-	
-<script type="text/javascript" src="../js/botstrap.js">
-	$(function(){ //페이지 로딩이 완료된 후 자동 실행
-		$("#btnLogin").click(fucntion(){
-			var mem_id=$("#mem_id").val(); //태그에 입력된 값
-			var mem_pw=$("#mem_pw").val();
-			if(mem_id=="") {
-				alert("아이디를 입력하세요.");
-				$("#mem_id").focus(); //태그에 입력포커스이동
-				return;
-			}
-			if(mem_pw=="") {
-				alert("비밀번호를 입력하세요.");
-				$("#mem_pw").focus();
-				return;
-			}
-			document.form1.action
-			="${path}/login_check.do";
-			document.form1.submit(); //서버에 자료 전송
-		};
-	});
-</script>
-<script type="text/javascript">
- 		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
-											// 단 'localhost'가 포함된 CallBack URL
- 		var state = naver_id_login.getUniqState();
-		
- 		naver_id_login.setButton("white", 2, 40);
- 		naver_id_login.setDomain("http://127.0.0.1:8888/mechuri/memLogin.do");	//  URL
- 		naver_id_login.setState(state);
- 		naver_id_login.setPopup();
- 		naver_id_login.init_naver_id_login();
-	</script>
 <style>
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
@@ -4347,6 +4314,7 @@ body>#login form .idpw {
 <link rel="stylesheet" href="assets/css/style.min.css" />
 <link rel="stylesheet" href="assets/css/modules.css" />
 
+
 </head>
 <body>
 	<header id="header"> 
@@ -4360,13 +4328,18 @@ body>#login form .idpw {
 	</header>
 	<form name="form1" id="form1" method="post" action="login_check.do">
 
-<c:if test="${sessionScope.mem_id != null }">
-	<h2>
-	${sessionScope.mem_name} (${sessionScope.mem_id})
-	님의 방문을 환영합니다.
-	</h2>
-</c:if>
 
+		<!-- <로그인 화면><br>
+<input type="text" name="id" maxlength="20" placeholder="아이디"
+			onchange='checkIdAjax(this.value)'
+			style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;"><br>
+            
+<input type='password' name='pw' id='pwid'
+			onchange='isSame()' maxlength="20" placeholder="비밀번호"
+			style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;"><br>
+			
+<input type='button' value='가입하기'id='newbtn' style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;">
+ -->
 
 				<c:if test="${message == 'error' }">
 					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
@@ -4378,6 +4351,5 @@ body>#login form .idpw {
 
 
 	<jsp:include page="Footer.jsp" />
-	<script src="assets/js/HeaderMenu.js"></script> 
 </body>
 </html>
