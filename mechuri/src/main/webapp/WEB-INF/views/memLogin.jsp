@@ -4372,11 +4372,7 @@ body>#login form .idpw {
 				placeholder="비밀번호">
 			<button id="btn_area">
 				<span class="btn" id="btnLogin">로그인</span>
-					<!-- 네이버 로그인 창으로 이동 -->
-<div id="naver_id_login" style="text-align:center"><a href="${url}">
-<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
-<br>
-
+		
 				<c:if test="${message == 'error' }">
 					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
 				</c:if>
