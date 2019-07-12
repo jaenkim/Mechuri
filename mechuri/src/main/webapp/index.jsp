@@ -18,7 +18,6 @@
 <a href="list.do">제품 랭킹 '3'</a><br>
 <a href="signUp.do">일반 회원가입 '3'</a><br>
 <a href="login.do">네아로 회원가입 '3'</a><br>
-<a href="mail.do">메일보내기!~ '3'</a><br>
 
 <a href="list.do">제품 리스트 '3'</a> <br /><br>
 <a href="groupbuying.do">공동구매 리스트 '3'</a><br>
