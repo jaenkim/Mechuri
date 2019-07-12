@@ -29,6 +29,12 @@
 
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
 
+<<<<<<< HEAD
+<!-- 	<beans:bean id="naverLoginBO" -->
+<!-- 		class="com.test.sts.NaverLoginBO" /> -->
+
+=======
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 	<beans:bean id="naverLoginBO"
 		class="com.hk.mechuri.naver.NaverLoginBO" />
 
