@@ -11,7 +11,7 @@ public class replyDto {
 	private int reply_refer;
 	private int reply_step;
 	private int reply_depth;
-	private String reply_others01;
+	private String reply_new;
 	private String reply_others02;
 	
 	public replyDto() {
@@ -20,7 +20,7 @@ public class replyDto {
 	}
 
 	public replyDto(int reply_no, int reply_communo, Date reply_regdate, String reply_nick, String reply_conts,
-			int reply_refer, int reply_step, int reply_depth, String reply_others01, String reply_others02) {
+			int reply_refer, int reply_step, int reply_depth, String reply_new, String reply_others02) {
 		super();
 		this.reply_no = reply_no;
 		this.reply_communo = reply_communo;
@@ -30,7 +30,7 @@ public class replyDto {
 		this.reply_refer = reply_refer;
 		this.reply_step = reply_step;
 		this.reply_depth = reply_depth;
-		this.reply_others01 = reply_others01;
+		this.reply_new = reply_new;
 		this.reply_others02 = reply_others02;
 	}
 
@@ -98,12 +98,12 @@ public class replyDto {
 		this.reply_depth = reply_depth;
 	}
 
-	public String getReply_others01() {
-		return reply_others01;
+	public String getReply_new() {
+		return reply_new;
 	}
 
-	public void setReply_others01(String reply_others01) {
-		this.reply_others01 = reply_others01;
+	public void setReply_new(String reply_new) {
+		this.reply_new = reply_new;
 	}
 
 	public String getReply_others02() {
@@ -121,8 +121,8 @@ public class replyDto {
 	public String toString() {
 		return "ReplyDto [reply_no=" + reply_no + ", reply_communo=" + reply_communo + ", reply_regdate="
 				+ reply_regdate + ", reply_nick=" + reply_nick + ", reply_conts=" + reply_conts + ", reply_refer="
-				+ reply_refer + ", reply_step=" + reply_step + ", reply_depth=" + reply_depth + ", reply_others01="
-				+ reply_others01 + ", reply_others02=" + reply_others02 + "]";
+				+ reply_refer + ", reply_step=" + reply_step + ", reply_depth=" + reply_depth + ", reply_new="
+				+ reply_new + ", reply_others02=" + reply_others02 + "]";
 	}
 	
 }

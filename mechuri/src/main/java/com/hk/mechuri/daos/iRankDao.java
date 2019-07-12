@@ -24,6 +24,7 @@ public interface iRankDao {
 	List<ingreDto> getProductIngre(productDto pDto);
 
 	List<productDto> FilterDao(String[] ageArray, String[] genderArray, String[] cateArray);
+
 }
 
 

@@ -1,6 +1,7 @@
 package com.hk.mechuri;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,84 +63,22 @@ public class HomeController {
 			String filter_genderM = request.getParameter("filter_genderM");
 			String filter_catelname = request.getParameter("filter_catelname");
 			String filter_catesname = request.getParameter("filter_catesname");
-
-			String[] ageArray = new String[5];
-
-			for(int i=0;i<ageArray.length;i++) {
-				if(filter_age10 != null) {
-					if(ageArray[i]==null) {
-						ageArray[i]=filter_age10;	
-						break;
-					}
-				}
-				if(filter_age20 != null) {
-					if(ageArray[i]==null) {
-						ageArray[i]=filter_age20;	
-						break;
-					}
-				}
-				if(filter_age30 != null) {
-					if(ageArray[i]==null) {
-						ageArray[i]=filter_age30;	
-						break;
-					}
-				}
-				if(filter_age40 != null) {
-					if(ageArray[i]==null) {
-						ageArray[i]=filter_age40;	
-						break;
-					}
-				}
-				if(filter_age50 != null) {
-					if(ageArray[i]==null) {
-						ageArray[i]=filter_age50;	
-						break;
-					}
-				}
-			}
+			System.out.println("컨트롤러에서 10대:[ "+filter_age10+"]");
+			System.out.println("컨트롤러에서 20대:[ "+filter_age20+"]");
+			System.out.println("컨트롤러에서 30대:[ "+filter_age30+"]");
+			System.out.println("컨트롤러에서 40대:[ "+filter_age40+"]");
+			System.out.println("컨트롤러에서 50대:[ "+filter_age50+"]");
+			System.out.println("컨트롤러에서 filter_genderM:[ "+filter_genderM+"]");
+			System.out.println("컨트롤러에서 filter_genderF:[ "+filter_genderF+"]");
+			System.out.println("컨트롤러에서 filter_catelname:[ "+filter_catelname+"]");
+			System.out.println("컨트롤러에서 filter_catesname:[ "+filter_catesname+"]");
+			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderF,filter_genderM, filter_catelname, filter_catesname);
 			
-			System.out.println("ageArray ["+Arrays.toString(ageArray)+"]");
-//			String ageFilter = Arrays.toString(ageArray);
-//			rankService.ageFilter(ageArray);
+//			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
 			
-			String[] genderArray = new String[2];
-			for(int i=0;i<genderArray.length;i++) {
-				if(filter_genderF != null) {
-					if(genderArray[i]==null) {
-						genderArray[i]=filter_genderF;	
-						break;
-					}
-				}
-				if(filter_genderM != null) {
-					if(genderArray[i]==null) {
-						genderArray[i]=filter_genderM;	
-						break;
-					}
-				}
-			}
-//			String genderFilter = Arrays.toString(genderArray);
-//			rankService.genderFilter(genderArray);
-			
-			String[] cateArray = new String[2];
-			for(int i=0;i<cateArray.length;i++) {
-				if(filter_catelname != null) {
-					if(cateArray[i]==null) {
-						cateArray[i]=filter_catelname;	
-						break;
-					}
-				}
-				if(filter_catesname != null) {
-					if(cateArray[i]==null) {
-						cateArray[i]=filter_catesname;	
-						break;
-					}
-				}
-			}
-			System.out.println("컨트롤러(ageArray) ["+ageArray[0]+"]");
-			System.out.println("컨트롤러(genderArray) ["+genderArray[0]+"]");
-			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
-			
+			List<productDto>list2 = rankService.getFilterProductList(dto);		
 			model.addAttribute("list",list2);
+//			System.out.println("컨트롤러에서 반환된 값 확인 ["+list2.get(1).getProduct_name());
 			return "ranking/list";
 
 //			String cateFilter = Arrays.toString(cateArray);
