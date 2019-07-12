@@ -1,4 +1,4 @@
-package com.hk.mechuri.utils;
+package com.hk.mechuri.naver;
 
 import java.util.Random;
 

@@ -16,4 +16,8 @@ public interface IMembersDao {
 	public boolean loginCheck(membersDto dto);
 	
 	public membersDto viewMember(String userid);
+	
+	public membersDto NaverLogCheck(String mem_email);//네이버 로그인시 이메일 체크
+
+	public boolean NaverSignUp(String mem_email, String mem_name, String mem_id);//네이버 로그인시 회원가입하기
 }

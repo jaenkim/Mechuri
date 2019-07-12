@@ -41,7 +41,21 @@ public class MembersDao implements IMembersDao {
 		return sqlSession.selectOne(namespace+"viewMember", mem_id);
 	}
 
+	//네이버 로그인시 이메일 체크
+		@Override
+		public membersDto NaverLogCheck(String mem_email) {
+			return sqlSession.selectOne(namespace+"naverEmail", mem_email);
+		}
 
+		@Override
+		public boolean NaverSignUp(String mem_email, String mem_name, String mem_id) {
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("mem_name", mem_name);
+			map.put("mem_id", mem_id);
+			map.put("mem_email", mem_email);
+			int cnt= sqlSession.insert(namespace+"naverSignUp", map);
+			return cnt>0?true:false;
+		}
 	/*@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object>map) throws Exception {
 		return (Map<String, Object>)selectOne("Members.selectUserInfo", map);

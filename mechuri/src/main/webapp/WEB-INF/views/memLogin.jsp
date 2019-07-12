@@ -17,7 +17,7 @@
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script type="text/javascript">
-$(function(){
+/* $(function(){
     var naverLogin = new naver.LoginWithNaverId({
         clientId: "{_1g9pc8r0RyK3g8Zeg9_}",
         callbackUrl: "{http://localhost:8888/mechuri/callback.do}",
@@ -25,7 +25,7 @@ $(function(){
         loginButton: {color: "green", type: 3, height: 45}
     });
     naverLogin.init();
-})//e.o.naver
+})//e.o.naver */
 
 
 <script type="text/javascript" src="../js/botstrap.js">
@@ -51,7 +51,7 @@ $(function(){
 	});
 </script>
 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
-	<script type="text/javascript">
+<script type="text/javascript">
  		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
 											// 단 'localhost'가 포함된 CallBack URL
  		var state = naver_id_login.getUniqState();
@@ -6669,11 +6669,9 @@ body>#login form .idpw {
 				placeholder="비밀번호">
 			<button id="btn_area">
 				<span class="btn" id="btnLogin">로그인</span> <br> <br>
-				
-				<!-- '네이버 아이디로 로그인하기' 버튼 -->
-				<!-- 원하는 곳에 넣습니다. -->
-				<div id="naver_id_login"></div>
 
+				
+					
 				<c:if test="${message == 'error' }">
 					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
 				</c:if>
@@ -6706,8 +6704,11 @@ body>#login form .idpw {
 					id="user_remember_me" name="user[remember_me]" type="checkbox"
 					value="1"> <label class="login_link" for="user_remember_me"
 					id="remember_me_label">stay signed in</label>
-
-			</div>
+			<%-- <!-- '네이버 아이디로 로그인하기' 버튼 -->
+				<div id="naver_id_login" style="align:right"></div>
+				<a href="${naver_url}"><img height="30"
+					src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
+			</div> --%>
 			<div class="clearfix"></div>
 		</div>
 	</form>
