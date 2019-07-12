@@ -1,5 +1,8 @@
 package com.hk.mechuri.daos;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,30 +39,29 @@ public class RankDao implements iRankDao {
 		//dto에 값이 담겨있는 걸 꺼내서
 		Map<String,String> maap = new HashMap<String,String>();
 	
-		maap.put("filter_age10",dto.getFilter_age10()==null?"":dto.getFilter_age10());
-		maap.put("filter_age20",dto.getFilter_age20()==null?"":dto.getFilter_age20());
-		maap.put("filter_age30",dto.getFilter_age30()==null?"":dto.getFilter_age30());
-		maap.put("filter_age40",dto.getFilter_age40()==null?"":dto.getFilter_age40());
-		maap.put("filter_age50",dto.getFilter_age50()==null?"":dto.getFilter_age50());
-		maap.put("filter_genderF",dto.getFilter_genderF()==null?"":dto.getFilter_genderF());
-		maap.put("filter_genderM",dto.getFilter_genderM()==null?"":dto.getFilter_genderM());
-		maap.put("filter_catelname",dto.getFilter_catelname()==null?"":dto.getFilter_catelname());
-		maap.put("filter_catesname",dto.getFilter_catesname()==null?"":dto.getFilter_catesname());
-		return sqlSession.selectList(namepace+"filterdlist",maap);
+		maap.put("filter_age10",dto.getFilter_age10()==null?"empty":dto.getFilter_age10());
+		maap.put("filter_age20",dto.getFilter_age20()==null?"empty":dto.getFilter_age20());
+		maap.put("filter_age30",dto.getFilter_age30()==null?"empty":dto.getFilter_age30());
+		maap.put("filter_age40",dto.getFilter_age40()==null?"empty":dto.getFilter_age40());
+		maap.put("filter_age50",dto.getFilter_age50()==null?"empty":dto.getFilter_age50());
+		maap.put("filter_genderF",dto.getFilter_genderF()==null?"empty":dto.getFilter_genderF());
+		maap.put("filter_genderM",dto.getFilter_genderM()==null?"empty":dto.getFilter_genderM());
+		maap.put("filter_catelname",dto.getFilter_catelname()==null?"empty":dto.getFilter_catelname());
+		maap.put("filter_catesname",dto.getFilter_catesname()==null?"empty":dto.getFilter_catesname());
+
+		return sqlSession.selectList(namepace+"applyFilter",maap);
 	}
 
 	@Override
 	public List<productDto> FilterDao(String[] ageArray, String[] genderArray, String[] cateArray) {
 		Map<String,String[]> mmap = new HashMap<String,String[]>();
-		System.out.println("다오(ageArray) ["+ageArray[0]+"]");
-		System.out.println("다오(genderArray) ["+genderArray[0]+"]");
+//		System.out.println("다오(ageArray) ["+ageArray[0]+"]");
+//		System.out.println("다오(genderArray) ["+genderArray[0]+"]");
 		mmap.put("ages", ageArray);
 		mmap.put("genders", genderArray);
-			
-		return sqlSession.selectList(namepace+"doFilter",mmap);
+		return sqlSession.selectList(namepace+"applyFilter",mmap);
 	}
-	
-	
+		
 	@Override
 	public productDto getDetailProductList(int product_no) {
 
@@ -93,10 +95,6 @@ public class RankDao implements iRankDao {
 		return sqlSession.selectList(namepace+"productIngre",mapp);
 	}
 
-	
-
-	
-	
-	
+		
 	
 }
