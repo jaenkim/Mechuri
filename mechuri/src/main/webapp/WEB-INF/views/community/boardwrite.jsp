@@ -22,13 +22,13 @@
       <label for="title">닉네임</label>
     </div>
     <div class="col-75">
-      <input type="text" id="title" name="nickname" >
+      <input type="text" id="title" name="nickname" required="required">
     </div>
     <div class="col-25">
       <label for="title">제목</label>
     </div>
     <div class="col-75">
-      <input type="text" id="title" name="titlename" >
+      <input type="text" id="title" required="required" name="titlename" >
     </div>
   </div>
  
@@ -37,14 +37,14 @@
       <label for="content">내용</label>
     </div>
     <div class="col-75">
-      <input type="text" id="content" name="content" style="height:200px" >
+      <input type="text" id="content" name="content" required="required" style="height:200px" >
     </div>
   </div>
   <br>
   <br>
 	<div class="file_input">
     <label>파일첨부
-   	 <input type="file" name="filename" required="required" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+   	 <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value"/>
     </label>
     <input type="text" readonly="readonly" title="File Route" id="file_route">
     
@@ -52,7 +52,7 @@
 
   <br>
   <div>
-    <input type="button" value="취소" id="cancel1">
+    <input type="button" value="글목록" id="cancel1" onclick="location.href='boardlist2.do?pnum=1'" />
     <input type="submit" value="작성" id="submit1">
   </div>
   </form>

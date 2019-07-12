@@ -73,31 +73,15 @@ WHERE INGRE_NO IN
 
 
 <!-- 커뮤니티 리스트 출력 쿼리 -->
- <select id='boardlist2' resultType='boardDto' parameterType='Map'>
-	SELECT BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
+ <select id='boardlist2' resultType='boardDto' parameterType='String'>
+ 	SELECT RN,BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE,
-	DECODE(ROUND(SYSDATE-BOARD_REGDATE),0,'true','false') AS BOARD_NEW
-	FROM BOARD
-
-	
-	<if test="board_no != null"> <!-- if문 같은 다이나믹쿼리를 쓸 때는 파라미터타입을 꼭 Map으로 해야함 그래야 seq가 인식가능 -->
-			<where>
-			 	<include refid="param" />
-			</where>
-	</if>
-
-		ORDER BY BOARD_NO DESC
+	DECODE(ROUND(SYSDATE-BOARD_REGDATE),0,'true','false') AS BOARD_NEW FROM
+	(SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO) AS RN,BOARD_NO,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
+	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE,
+	BOARD_NEW FROM BOARD ORDER BY BOARD_NO DESC ) 
+	WHERE CEIL(RN/8)=#{pnum}
 </select>
-	<sql id="param">
-		BOARD_NO=#{board_no}
-	</sql>
-	
-
-  
-<!-- <select id='boardlist' resultType='boardDto' parameterType='Map'>
-	SELECT DECODE(ROUND(SYSDATE-BOARD_REGDATE),0,'true','false') AS board_new FROM BOARD
-</select> -->
-
 
 	<!-- 커뮤니티 글추가 -->
 <insert id="insertBoard" parameterType='Map'>
@@ -112,29 +96,17 @@ WHERE INGRE_NO IN
 </select>
 
 	<!-- 커뮤니티 상세글 수정 -->
-<select id="updateboard" resultType="BoardDto" parameterType="BoardDto">
-	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE WHERE BOARD_NO=#{board_no}
-</select>
+<update id="updateboard" parameterType='Map'>
+	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE,
+	BOARD_ORIGINFILE=#{board_originfile},BOARD_STOREDFILE=#{board_storedfile},BOARD_FILESIZE=#{board_filesize} WHERE BOARD_NO=#{board_no}
+</update>
 
-	<!-- 댓글 업데이트, 추가, 상세페이지 내 댓글출력 -->
-<!-- <update id="replyupdate" parameterType="replyDto">
-		<![CDATA[
-		UPDATE REPLY SET REPLY_STEP=REPLY_STEP+1
-		WHERE REPLY_REFER=(SELECT REPLY_REFER FROM REPLY WHERE REPLY_CONTS=#{reply_conts}) 
-		AND REPLY_STEP > (SELECT REPLY_STEP FROM REPLY WHERE REPLY_CONTS=#{reply_conts})
-		]]>
-</update> -->
 <insert id="replyinsert" parameterType="replyDto">
-<!-- 		INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, -->
-<!-- 		#{reply_nick},#{reply_conts},SYSDATE, -->
-<!-- 		(SELECT REPLY_REFER FROM REPLY WHERE REPLY_CONTS=#{reply_conts}), -->
-<!-- 		(SELECT REPLY_STEP FROM REPLY WHERE REPLY_CONTS=#{reply_conts})+1, -->
-<!-- 		(SELECT REPLY_DEPTH FROM REPLY WHERE REPLY_CONTS=#{reply_conts})+1,0) -->
-
-INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, '1', SYSDATE, #{reply_nick},#{reply_conts}, 0, NULL, NULL, NULL, NULL )
+INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_nick},#{reply_conts}, 0, NULL, NULL, NULL, NULL )
 </insert>
-<select id="replylist" resultType="replyDto">
-	SELECT REPLY_NICK, REPLY_CONTS,REPLY_REGDATE FROM REPLY
+<select id="replylist" resultType="replyDto" parameterType="int">
+	SELECT REPLY_NICK, REPLY_CONTS,REPLY_REGDATE,DECODE(ROUND(SYSDATE-REPLY_REGDATE),0,'true','false') AS REPLY_NEW 
+	FROM REPLY WHERE REPLY_COMMUNO = #{board_no}
 </select>
 
 
@@ -144,7 +116,7 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, '1', SYSDATE, #{reply_nick},#{reply_
 	DELETE FROM BOARD WHERE BOARD_NO=#{board_no}
 </select>
 
-	<!-- 커뮤니티 첨부파일 -->
+	<!-- 커뮤니티 첨부파일
  <insert id="insertFileInfo" parameterType='boardDto'>
 	INSERT INTO BOARD(BOARD_SEQ.NEXTVAL,BOARD_NICK,BOARD_TITLE,BOARD_CONTS,BOARD_REGDATE,BOARD_COUNT,BOARD_FILENO,
 	BOARD_ORIGINFILE,BOARD_STOREDFILE,BOARD_FILEREGDATE,BOARD_FILESIZE)
@@ -154,7 +126,16 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, '1', SYSDATE, #{reply_nick},#{reply_
 	 (BOARD_FILENO,BOARD_ORIIGINFILE, BOARD_STOREDFILE, BOARD_FILEREGDATE,BOARD_FILESIZE) 
 	 VALUES(BOARDFILE_SEQ.NEXTVAL,#{board_originfile},#{board_storedfile},SYSDATE,#{board_filesize}) WHERE 
 	 
-</insert> 
+</insert>  -->
+
+<select id="pcount" resultType="int">    <!-- paging 하는법... -->
+		SELECT CEIL(COUNT(*)/8) FROM BOARD
+</select>
+
+
+
+
+
 
 <insert id="signUpBoard" parameterType='membersDto'>
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
@@ -162,10 +143,6 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'C','브랜드명',#{mem_name},#{mem_nick},#{mem_phone},'이메일1','포스트'
 	,'주소1','주소2',SYSDATE,SYSDATE,'N','N','홈페이지')
 </insert>
-
-<!-- INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_NAME,MEM_NICK,MEM_PHONE) 
-	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nick},#{mem_phone}) -->
-
 
 <insert id="compSignUpBoard" parameterType="membersDto">
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,

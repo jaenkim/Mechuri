@@ -55,9 +55,13 @@
 	
 
 </head>
-<script>
-
-</script>
+<style>
+	src {
+		width:50px;
+		height:50px;
+	}
+	
+</style>
 
 
 <!-- End Head -->
@@ -77,13 +81,9 @@ START MODULE AREA 1: header1
     </div>
   </div>
 </header>
-<!--
-END MODULE AREA 1: Header 1
--->
-
-<!--
-START MODULE AREA 2: Article Block 1
--->
+ 
+ 
+ 
 <section data-theme="_bgp">
 
 
@@ -93,16 +93,24 @@ START MODULE AREA 2: Article Block 1
   
   <c:forEach items="${list}" var="dto">
     <div data-layout="al16 ch8 ec4" class="MOD_ARTICLEBLOCKS1_Cont" >
+    
+    	
+    
       <a href="boardDetail.do?board_no=${dto.board_no}" class="MOD_ARTICLEBLOCKS1_BlockSmall">
-     
-      	
-        <div style="background-image:url('upload/${dto.board_storedfile}')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text" >${dto.board_fileno}</div> 
-		
+  
+     	<c:choose> 
+     		<c:when test="${dto.board_storedfile eq 'empty' }"> <!-- 펭귄 when은 if문 -->
+      	<div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text" ></div> 
+      	</c:when> 	
+      	<c:otherwise> <!-- 펭귄 otherwise는 else -->
+        <div style="background-image:url('upload/${dto.board_storedfile}')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text" ></div> 
+        </c:otherwise> 
+		</c:choose>
         <div class="MOD_ARTICLEBLOCKS1_Txt">
         <c:choose>
         	<c:when test="${dto.board_new eq 'true' }"> 
-         		<h3 class="MOD_ARTICLEBLOCKS1_Title">${dto.board_title}</h3> 
-           	<img src="${pageContext.request.contextPath}/images/new.png" />  
+         		<h3 class="MOD_ARTICLEBLOCKS1_Title">${dto.board_title}&nbsp;<img src="${pageContext.request.contextPath}/images/new2.png" style="max-width:15%; height:auto;" /> </h3> 
+           	 
              </c:when> 
              <c:otherwise> 
              	<h3 class="MOD_ARTICLEBLOCKS1_Title">${dto.board_title}</h3> 
@@ -117,57 +125,26 @@ START MODULE AREA 2: Article Block 1
 
 
     </c:forEach> 
+  
+    
+    	<!-- 페이징 -->
+    <div>
+    <c:forEach begin="1" end="${pcount}" step="1" var="i">
+				<a href="boardlist2.do?pnum=${i}">${i}</a>
+	</c:forEach>
+    </div>
+  
     </div>
    
  
 
 </section>
 
-
-
-
-
-
-
 <jsp:include page="../Footer.jsp"/>
 </body>
 
 
 
-
-
-
-
-
-
-
-<%-- <table border="1">
-	<tr>	
-		<th colspan='3'>이미지</th>
-	</tr>
-	<c:choose>
-		<c:when test="${empty list}">
-			<tr><td colspan="10">---작성된 글이 없습니다.---</td></tr>
-		</c:when>
-		<c:otherwise>
-			<c:forEach items="${list}" var="dto">
-				<tr>
-					<td>${dto.board_originfile}</td>
-					<td>${dto.board_title}</td>
-					<td>${dto.board_nick}</td>
-				</tr>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>
-	<tr>
-		<td colspan="10">
-			<input type="button" value="글 추가" onclick="location.href='insertWrite.do'"/>
-			<input type="submit" value="글삭제" />
-		</td>
-	</tr>
-</table> --%>
-
-	
 
 
 </html>
