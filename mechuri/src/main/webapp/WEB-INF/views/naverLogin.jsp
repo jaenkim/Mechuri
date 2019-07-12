@@ -36,7 +36,7 @@ h3 {
  		var state = naver_id_login.getUniqState();
 		
  		naver_id_login.setButton("white", 2, 40);
- 		naver_id_login.setDomain("http://localhost:8888/mechuri/login.do");	//  URL
+ 		naver_id_login.setDomain("http://localhost:8888/mechuri/naverLogin.do");	//  URL
  		naver_id_login.setState(state);
  		naver_id_login.setPopup();
  		naver_id_login.init_naver_id_login();
