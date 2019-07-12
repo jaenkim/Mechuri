@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,8 +23,10 @@ public class BoardDao implements IBoardDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<boardDto> getAllList() {	//커뮤니티 리스트 출력
-		return sqlSession.selectList(namespace+"boardlist2");
+	public List<boardDto> getAllList(String pnum) {	//커뮤니티 리스트 출력
+//		Map<String,Integer> mmap = new HashMap<String,Integer>();
+//		mmap.put("pnum", pnum);
+		return sqlSession.selectList(namespace+"boardlist2",pnum);
 	}
 	
 
@@ -54,9 +58,27 @@ public class BoardDao implements IBoardDao {
 	}
 
 	@Override
-	public boolean updateBoard(boardDto dto) {
-		int count=sqlSession.update(namespace+"updateboard",dto);
-		return count>0?true:false;
+	public int updateBoard(boardDto dto) {
+		
+		Map<String,Object> mapdetail = new HashMap<String,Object>();
+		System.out.println("오리진if 다오업데이트보드로 들어옴");
+		mapdetail.put("board_no", dto.getBoard_no());
+		mapdetail.put("board_nick", dto.getBoard_nick());
+		mapdetail.put("board_title", dto.getBoard_title());
+		mapdetail.put("board_conts", dto.getBoard_conts());
+		mapdetail.put("board_originfile", dto.getBoard_originfile());
+		mapdetail.put("board_storedfile", dto.getBoard_storedfile());
+		mapdetail.put("board_filesize", dto.getBoard_filesize());
+		
+		System.out.println("다오 업데이트보드 board_no=["+dto.getBoard_no()+"]");
+		System.out.println("다오 업데이트보드 getBoard_nick=["+dto.getBoard_nick()+"]");
+		System.out.println("다오 업데이트보드 board_title=["+dto.getBoard_title()+"]");
+		System.out.println("다오 업데이트보드 getBoard_conts=["+dto.getBoard_conts()+"]");
+		System.out.println("다오 업데이트보드 getBoard_originfile=["+dto.getBoard_originfile()+"]");
+		System.out.println("다오 업데이트보드 getBoard_storedfile=["+dto.getBoard_storedfile()+"]");
+		System.out.println("다오 업데이트보드 getBoard_filesize=["+dto.getBoard_filesize()+"]");
+		return sqlSession.update(namespace+"updateboard",mapdetail);
+		
 	}
 
 	@Override
@@ -75,8 +97,9 @@ public class BoardDao implements IBoardDao {
 	}
 	
 	@Override
-	public List<replyDto> getReplyList() {
-		return sqlSession.selectList(namespace+"replylist");
+	public List<replyDto> getReplyList(int bno) {
+		System.out.println("board_no다오=["+bno);
+		return sqlSession.selectList(namespace+"replylist",bno);
 	}
 
 	@Override
@@ -99,6 +122,13 @@ public class BoardDao implements IBoardDao {
 	public boardDto getFileInfo(int board_fileno) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public int getPagecount() {
+		
+		return sqlSession.selectOne(namespace+"pcount");
 	}
 
 

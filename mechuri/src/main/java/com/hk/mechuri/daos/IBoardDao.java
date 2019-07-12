@@ -2,12 +2,16 @@ package com.hk.mechuri.daos;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.hk.mechuri.dtos.boardDto;
 import com.hk.mechuri.dtos.replyDto;
 
 public interface IBoardDao {
 
-	public List<boardDto> getAllList();
+	
+
+	public List<boardDto> getAllList(String pnum);
 	//커뮤니티 리스트 출력
 	
 	
@@ -19,7 +23,7 @@ public interface IBoardDao {
 	//글 상세보기: select문, 결과: DTO, 파라미터: seq
 	
 	
-	public boolean updateBoard(boardDto dto);
+	public int updateBoard(boardDto dto);
 	//글 수정하기: update문, 결과:x, 파라미터: title,content,seq
 
 	
@@ -33,7 +37,7 @@ public interface IBoardDao {
 	public int replyInsert(replyDto dto);
 	//public boolean replyBoard(AnsDto dto); JSP서블릿 MVC2버전
 	
-	public List<replyDto> getReplyList();
+	public List<replyDto> getReplyList(int board_no);
 	
 	public boolean readCount(int board_no);
 	//조회수 증가하기: update문, 결과:x, 파라미터:해당되는 아이의 seq
@@ -46,7 +50,7 @@ public interface IBoardDao {
 	
 	public boardDto getFileInfo (int board_fileno);
 	
-	
+	public int getPagecount();
 	
 	
 	

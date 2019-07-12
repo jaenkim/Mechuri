@@ -2,6 +2,7 @@
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html;charset=utf-8"); %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
 
 <div class="container">
   <div class="row">
-    <div id="writerDate">${dto.board_regdate}</div><br>
+    <div id="writerDate"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년 MM월 dd일" /></div>
     <div class="col-25">
       <label for="title">제목</label>
     </div>
@@ -47,7 +48,7 @@
   <div>
 	<input type="button" value="수정" onclick="updateBoard()" />
 	<input type="button" value="삭제" onclick="delBoard('${dto.board_no}')"/>
-	<input type="button" value="글목록" onclick="location.href='boardlist2.do'" />
+	<input type="button" value="글목록" onclick="location.href='boardlist2.do?pnum=1'" />
   </div>
   
 <!--   <br> -->
@@ -58,8 +59,10 @@
 
 </div>
 
+
 <!-- 여기부터 댓글 -->
  <form action="replyboard.do" method="post">
+ 
 <div class="container">
 <input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
@@ -78,33 +81,34 @@
   <br><br>
   
   
+  
   <div>
   <c:forEach items="${replylist}" var="replylist">
-    <div id="replyconts">
-    	<div id="replynick">${replylist.reply_nick}</div>
-    	<div id="replycon">${replylist.reply_conts}</div>
-    	<div id="replyregdate">${replylist.reply_regdate}</div>
+   	 <div id="replyconts">
+   	 
+   	 
+   	 
+   	 <c:choose>
+   	 	<c:when test="${replylist.reply_new eq 'true' }"> 
+   	 	
+    		<div id="replynick"><img src="${pageContext.request.contextPath}/images/new2.png" style="max-width:10%; height:auto;" />&nbsp;${replylist.reply_nick}</div>
+    		<div id="replycon">${replylist.reply_conts}</div>
+    		<div id="replyregdate"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년 MM월 dd일" /></div>
+   		 
+    
+    	</c:when>
+    	<c:otherwise> 
+            <div id="replynick">${replylist.reply_nick}</div>
+    		<div id="replycon">${replylist.reply_conts}</div>
+    		<div id="replyregdate">${replylist.reply_regdate}</div>
+        </c:otherwise> 
+    </c:choose>
+    
+    
+    
     </div>
     </c:forEach>
-    
- <!--      <div id="replyconts">
-    	<div id="replynick">미라</div>
-    	<div id="replycon">립스틱 사야겠다...</div>
-    	<div id="replyregdate">2019-07-03</div>
-    </div>
-    
-     <div id="replyconts">
-    	<div id="replynick">재워니</div>
-    	<div id="replycon">헐 원쁠원?</div>
-    	<div id="replyregdate">2019-07-03</div>
-    </div>
-    
-    
-     <div id="replyconts">
-    	<div id="replynick">으뇽</div>
-    	<div id="replycon">갔더니 거의 품절이네요ㅠ</div>
-    	<div id="replyregdate">2019-07-03</div>
-    </div>  -->
+
     
   </div>
   
@@ -121,7 +125,7 @@
 		location.href="boardDelete.do?board_no=${dto.board_no}"; 
 	}
 	//수정폼으로 이동
-	function updateBoard() {
+	function updateBoard(board_no) {
 		location.href="updateForm.do?board_no=${dto.board_no}";
 	}
 	

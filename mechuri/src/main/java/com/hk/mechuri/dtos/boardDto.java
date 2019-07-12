@@ -86,6 +86,30 @@ public class boardDto {
 
 
 
+	public boardDto(int isS, int board_no, String writernick, String titlename, String content,
+			String board_storedfile) {
+		super();
+		this.board_no = board_no;
+	}
+
+
+
+
+
+	public boardDto(int board_no, String board_nick, String board_title, String board_conts, String board_storedfile,
+			String board_originfile, int board_filesize) {
+		super();
+		this.board_no = board_no;
+		this.board_nick = board_nick;
+		this.board_title = board_title;
+		this.board_conts = board_conts;
+		this.board_originfile = board_originfile;
+		this.board_storedfile = board_storedfile;
+		this.board_filesize = board_filesize;
+	}
+
+
+
 
 
 	public int getBoard_no() {

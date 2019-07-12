@@ -14,7 +14,7 @@
 <br><br><br>
 
 <div class="container">
-  <form action="updateBoard.do" method="post">
+  <form action="updateBoard.do" method="post" enctype="multipart/form-data">
   <input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
     <div class="col-25">
@@ -48,15 +48,15 @@
 	<div class="file_input">
     <label>
         	파일첨부
-        <input type="file" onchange="javascript:document.getElementById('file_route').value=this.value">
+        <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value">
     </label>
-    <input type="text" readonly="readonly" title="File Route" id="file_route">
+    <input type="text" readonly="readonly" title="File Route" name="storedfile" value="${dto.board_storedfile}" id="file_route">
 	</div>
 
   <br>
   <div>
     <input type="submit" value="수정완료" />
-	<input type="button" value="글목록" onclick="location.href='boardlist2.do'" />
+	<input type="button" value="해당 글 목록" onclick="location.href='boardlist2.do?pnum=1'" />
    </div>
   </form>
 </div> 
