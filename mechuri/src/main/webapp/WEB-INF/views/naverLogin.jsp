@@ -22,13 +22,20 @@ h3 {
 </style>
 </head>
 <body>
+
+
+
 	<div
 		style="background-color: #15a181; width: 100%; height: 50px; text-align: center; color: white;">
 		<h3>SIST Login</h3>
 	</div>
 	<br>
-	<div id="naver_id_login"></div>
+	<form action="callback.do" method="post">
+		<input type="hidden" value="naver_id_login" />
+		<div id="naver_id_login"></div>
+	</form>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+
 
 	<script type="text/javascript">
  		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
@@ -41,7 +48,6 @@ h3 {
  		naver_id_login.setPopup();
  		naver_id_login.init_naver_id_login();
 	</script>
-
 	<br>
 </body>
 </html>
