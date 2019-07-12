@@ -42,7 +42,6 @@
 					/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
 					var name = naverLogin.user.getName();
 					var id = naverLogin.user.getId();
-					var birthday = naverLogin.user.getBirthday();
 					var email = naverLogin.user.getEmail();
 
 
@@ -55,7 +54,7 @@
 					}
 
 					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) +
-							"/flip/naverLog.do?name="+name+"&email="+email+"&id="+id+"&birthday="+birthday);
+							"/mechuri/naverLog.do?mem_name="+mem_name+"&mem_email="+mem_email+"&mem_id="+mem_id);
 					
 				} else {
 					console.log("callback 처리에 실패하였습니다.");

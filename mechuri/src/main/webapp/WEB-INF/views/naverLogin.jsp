@@ -27,27 +27,21 @@ h3 {
 		<h3>SIST Login</h3>
 	</div>
 	<br>
+	<div id="naver_id_login"></div>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-				
-			<!-- //네이버아이디로로그인 버튼 노출 영역 -->
 
-				<!-- 네이버아디디로로그인 초기화 Script -->
-			<script type="text/javascript">
-				var naverLogin = new naver.LoginWithNaverId(
-				{
-					clientId: "_1g9pc8r0RyK3g8Zeg9_",
-					callbackUrl: "http://localhost:8888/mechuri/callback.do",
-					isPopup: false, /* 팝업을 통한 연동처리 여부 */
-					loginButton: {color: "green", type: 3, height: 50 } /* 로그인 버튼의 타입을 지정 */
-				}
-			);
-	
-			/* 설정정보를 초기화하고 연동을 준비 */
-			naverLogin.init();
-	
-			</script>
-    
-<!-- // 네이버아이디로로그인 초기화 Script -->
+	<script type="text/javascript">
+ 		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
+											// 단 'localhost'가 포함된 CallBack URL
+ 		var state = naver_id_login.getUniqState();
+		
+ 		naver_id_login.setButton("white", 2, 40);
+ 		naver_id_login.setDomain("http://localhost:8888/mechuri/login.do");	//  URL
+ 		naver_id_login.setState(state);
+ 		naver_id_login.setPopup();
+ 		naver_id_login.init_naver_id_login();
+	</script>
+
 	<br>
 </body>
 </html>
