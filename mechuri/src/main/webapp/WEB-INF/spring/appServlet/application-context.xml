@@ -52,21 +52,19 @@
 	
 	<!-- 메일보내기 -->
 	
-	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl"
-		id="mailSender">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="alalfk9393@gmail.com" />
-		<property name="password" value="anmira9303!" />
-		<property name="javaMailProperties">
-			<props>
-				<prop key="mail.transport.protocol">smtp</prop>
-				<prop key="mail.smtp.auth">true</prop>
-				<prop key="mail.smtp.starttls.enable">true</prop>
-				<prop key="mail.debug">true</prop>
-			</props>
-		</property>
-	</bean>
+	 <!-- Gmail -->
+  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host" value="smtp.gmail.com" />
+    <property name="port" value="587" />
+    <property name="username" value="alfk9393@gmail.com" />
+    <property name="password" value="anmira9303!" />
+    <property name="javaMailProperties">
+    <props>
+      <prop key="mail.smtp.auth">true</prop>
+      <prop key="mail.smtp.starttls.enable">true</prop>
+    </props>
+    </property>
+  </bean>
 
 	<!-- Transaction을 처리하는 방법 -->
 	<!-- 1) @transactionional 을 해당 메서드에 선언 -->
