@@ -7,7 +7,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
-import javax.activation.CommandMap;
+import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,9 +19,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -41,6 +44,7 @@ public class AController {
 
 	@Autowired
 	private IMembersService MembersService;
+	private IMembersDao MembersDao;
 
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
@@ -61,124 +65,200 @@ public class AController {
 			return "error";
 		}
 	}
+	
+	@RequestMapping(value= "/memLogin.do", method = RequestMethod.GET)
+	public String memLogin() {
+		return "memLogin"; //memLogin.jsp로
+	}
+	
+	@RequestMapping(value= "/login_check.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView login_check(							//spring에선 선언하면 session 객체 만들어줘
+	@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
+		System.out.println(dto);
+		System.out.println(session);
+		boolean result 
+			=MembersService.loginCheck(dto, session);
+		System.out.println(MembersService);
+		ModelAndView mav=new ModelAndView();
+		System.out.println(mav);
+		if(result) { //로그인 성공
+			mav.setViewName("loginresult"); //Header.jsp
+			mav.addObject("message", "success"); 
+		}else { //로그인 실패 
+			mav.setViewName("memLogin");
+			mav.addObject("message", "error");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value= "/logout.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView logout(HttpSession session, ModelAndView mav) {
+		MembersService.logout(session);
+		mav.setViewName("memLogin");
+		mav.addObject("message", "logout");
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+	public String loginGET() {
+		
+		return "login";
+	}
+	
+	@RequestMapping(value="/loginPostNaver.do", method=RequestMethod.GET)
+	public String loginPOSTNaver(HttpSession session) {
+		
+		return "loginPostNaver";
+	}
+	
+	
+	/*	@RequestMapping(value = "/memLoginBoard.do", method = RequestMethod.POST)
+	public ModelAndView memLoginBoard(HttpSession session) {
+		
+		ModelAndView mav= new ModelAndView();
+		String member_id = (String) session.getAttribute("id");
+		if(member_id!=null) {
+			mav.setViewName("redirect:/main.do");
+			return mav;
+		}
+		mav.setViewName("/memLoginBoard");
+		return mav;
+	}*/
+	
+	
+	
+	
+	
+	
+	
 	//로그인
-	@RequestMapping(value = "/memlogin.do", method = {RequestMethod.GET})
-	public ModelAndView memlogin(HttpServletRequest request, HttpServletResponse response, CommandMap commandMap) {
-		ModelAndView mav = new ModelAndView();
 
+	/*@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET})
+	public String memLogin(Model model) {
+		logger.info("로그인폼으로 이동 {}.");
+		return "memLogin";
+	}
+
+	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView memLoginBoard(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+		ModelAndView mav = new ModelAndView();
+		logger.info("들어온다 {}.");
 		//세션정보가 null이 아닐 때
 		if (request.getSession().getAttribute("loginInfo") != null)
 		{
-	String msg = "이미 로그인된 상태입닌다.";
-	mav.addObject("msg", msg);
-	mav.setViewName("/views/loginSuccess");
-}
-else
-{
-	mav.setViewName("/views/memlogin");
-}
-return mav;
-}
-
-/*@RequestMapping(value="/views/loginTry.do")
-public ModelAndView login(HttpServletRequest request, CommandMap commandMap) throws Exception {
-	ModelAndView mav = new ModelAndView("/views/loginSuccess");
-
-	Map<String, Object> map = MembersService.selectUserInfo(commandMap.getMap());
-
-	//로그인 정보가 있다면 로그인
-	if (map == null)
-	{
-		mav.addObject("msg", "로그인에 실패하였습니다.");
+			String msg = "이미 로그인된 상태입닌다.";
+			mav.addObject("msg", msg);
+			mav.setViewName("loginSuccess");
+			
+		}
+		else
+		{
+			mav.setViewName("memLogin.do");
+			
+		}
+		return mav;
 	}
-	else
-	{
-		request.getSession().setAttribute("loginInfo", map);
-		request.getSession().setMaxInactiveInterval(60*30);
 
-		mav.addObject("msg","로그인에 성공하였습니다.");
+	@RequestMapping(value="/loginTry.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView loginTry(HttpServletRequest request,Map<String, Object> map ) throws Exception {
+		ModelAndView mav = new ModelAndView("loginSuccess");
+
+		Map<String, Object> map = MembersService.selectUserInfo();
+
+		//로그인 정보가 있다면 로그인
+		if (map == null)
+		{
+			mav.addObject("msg", "로그인에 실패하였습니다.");
+		}
+		else
+		{
+			request.getSession().setAttribute("loginInfo", map);
+			request.getSession().setMaxInactiveInterval(60*30);
+
+			mav.addObject("msg","로그인에 성공하였습니다.");
+		}
+		return mav;
+	}*/
+
+	@RequestMapping("logout.do")
+	public String logout(HttpSession session){
+		//	        session.invalidate();
+		session.removeAttribute("userid");
+		return "redirect:memLogin.do";
+
 	}
-	return mav;
-}*/
 
-@RequestMapping("logout.do")
-public String logout(HttpSession session){
-	//	        session.invalidate();
-	session.removeAttribute("userid");
-	return "redirect:memLogin.do";
+	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
+	public String compSignUp(Model model) {
 
-}
-
-@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
-public String compSignUp(Model model) {
-
-	return "compSignUp";
-}
-
-@RequestMapping(value = "/compSignUpBoard.do", method = {RequestMethod.POST})
-public String compSignUpBoard(Model model, membersDto dto) {
-
-	logger.info("회원 추가합니다. {}.");
-
-	boolean isS=MembersService.compSignUpBoard(dto);
-	if(isS) {
-		return "redirect:main.do";
-	}else {
-		model.addAttribute("msg","회원가입 실패");
-		return "error";
+		return "compSignUp";
 	}
-}
 
-/*@RequestMapping(value = "/callback.do")
+	@RequestMapping(value = "/compSignUpBoard.do", method = {RequestMethod.POST})
+	public String compSignUpBoard(Model model, membersDto dto) {
+
+		logger.info("회원 추가합니다. {}.");
+
+		boolean isS=MembersService.compSignUpBoard(dto);
+		if(isS) {
+			return "redirect:main.do";
+		}else {
+			model.addAttribute("msg","회원가입 실패");
+			return "error";
+		}
+	}
+
+	/*@RequestMapping(value = "/callback.do")
 	public String callback(Model model) {
 		return "callback";
 	}*/
 
-@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
-public String groupbuying(Model model) {
+	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
+	public String groupbuying(Model model) {
 
-	return "groupbuying";
-}
+		return "groupbuying";
+	}
 
-@RequestMapping(value = "/groupbuyingContents.do", method = RequestMethod.GET)
-public String groupbuyingContents(Model model) {
+	@RequestMapping(value = "/groupbuyingContents.do", method = RequestMethod.GET)
+	public String groupbuyingContents(Model model) {
 
-	return "groupbuyingContents";
-}
-@RequestMapping(value = "/groupbuyingContents2.do", method = RequestMethod.GET)
-public String groupbuyingContents2(Model model) {
+		return "groupbuyingContents";
+	}
+	@RequestMapping(value = "/groupbuyingContents2.do", method = RequestMethod.GET)
+	public String groupbuyingContents2(Model model) {
 
-	return "groupbuyingContents2";
-}
-@RequestMapping(value = "/groupbuyingContents3.do", method = RequestMethod.GET)
-public String groupbuyingContents3(Model model) {
+		return "groupbuyingContents2";
+	}
+	@RequestMapping(value = "/groupbuyingContents3.do", method = RequestMethod.GET)
+	public String groupbuyingContents3(Model model) {
 
-	return "groupbuyingContents3";
-}
+		return "groupbuyingContents3";
+	}
 
-@RequestMapping(value = "/groupbuyingContents4.do", method = RequestMethod.GET)
-public String groupbuyingContents4(Model model) {
+	@RequestMapping(value = "/groupbuyingContents4.do", method = RequestMethod.GET)
+	public String groupbuyingContents4(Model model) {
 
-	return "groupbuyingContents4";
-}
-@RequestMapping(value = "/groupbuyingContents5.do", method = RequestMethod.GET)
-public String groupbuyingContents5(Model model) {
+		return "groupbuyingContents4";
+	}
+	@RequestMapping(value = "/groupbuyingContents5.do", method = RequestMethod.GET)
+	public String groupbuyingContents5(Model model) {
 
-	return "groupbuyingContents5";
-}
-@RequestMapping(value = "/groupbuyingContents6.do", method = RequestMethod.GET)
-public String groupbuyingContents6(Model model) {
+		return "groupbuyingContents5";
+	}
+	@RequestMapping(value = "/groupbuyingContents6.do", method = RequestMethod.GET)
+	public String groupbuyingContents6(Model model) {
 
-	return "groupbuyingContents6";
-}
-@RequestMapping(value = "/groupbuyingContents7.do", method = RequestMethod.GET)
-public String groupbuyingContents7(Model model) {
+		return "groupbuyingContents6";
+	}
+	@RequestMapping(value = "/groupbuyingContents7.do", method = RequestMethod.GET)
+	public String groupbuyingContents7(Model model) {
 
-	return "groupbuyingContents7";
-}
-@RequestMapping(value = "/groupbuyingContents8.do", method = RequestMethod.GET)
-public String groupbuyingContents8(Model model) {
-	System.out.println("test");
-	return "groupbuyingContents8";
-}
+		return "groupbuyingContents7";
+	}
+	@RequestMapping(value = "/groupbuyingContents8.do", method = RequestMethod.GET)
+	public String groupbuyingContents8(Model model) {
+		System.out.println("test");
+		return "groupbuyingContents8";
+	}
 }	

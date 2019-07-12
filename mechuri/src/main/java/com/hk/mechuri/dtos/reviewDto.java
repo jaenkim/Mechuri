@@ -17,11 +17,11 @@ public class reviewDto {
 	private int review_filesize;
 	private String review_nick;
 	private String review_others02;
-	private int rev1count;
-	private int rev2count;
-	private int rev3count;
-	private int rev4count;
-	private int rev5count;
+	private double rev1count;
+	private double rev2count;
+	private double rev3count;
+	private double rev4count;
+	private double rev5count;
 
 
 	//생성자
@@ -110,34 +110,34 @@ public class reviewDto {
 	public void setReview_others02(String review_others02) {
 		this.review_others02 = review_others02;
 	}
-	public int getRev1count() {
+	public double getRev1count() {
 		return rev1count;
 	}
-	public void setRev1count(int rev1count) {
+	public void setRev1count(double rev1count) {
 		this.rev1count = rev1count;
 	}
-	public int getRev2count() {
+	public double getRev2count() {
 		return rev2count;
 	}
-	public void setRev2count(int rev2count) {
+	public void setRev2count(double rev2count) {
 		this.rev2count = rev2count;
 	}
-	public int getRev3count() {
+	public double getRev3count() {
 		return rev3count;
 	}
-	public void setRev3count(int rev3count) {
+	public void setRev3count(double rev3count) {
 		this.rev3count = rev3count;
 	}
-	public int getRev4count() {
+	public double getRev4count() {
 		return rev4count;
 	}
-	public void setRev4count(int rev4count) {
+	public void setRev4count(double rev4count) {
 		this.rev4count = rev4count;
 	}
-	public int getRev5count() {
+	public double getRev5count() {
 		return rev5count;
 	}
-	public void setRev5count(int rev5count) {
+	public void setRev5count(double rev5count) {
 		this.rev5count = rev5count;
 	}
 

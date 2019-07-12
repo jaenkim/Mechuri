@@ -1,5 +1,6 @@
 package com.hk.mechuri.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -10,8 +11,17 @@ public interface IMembersService {
 	public boolean signUpBoard(membersDto dto);
 	
 	public boolean compSignUpBoard(membersDto dto);
+	
+	public boolean loginCheck(membersDto dto, HttpSession session);
+	
+	public membersDto viewMember(String mem_id);
+	
+	public void logout(HttpSession session);
+	
+	public membersDto NaverLogCheck(String mem_email);//네이버 로그인시 이메일 체크
 
-	Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception;
+	public boolean NaverSignUp(String mem_email, String mem_name, String mem_id);//네이버 로그인시 회원가입하기
+	
 	
 	/*public void regist(membersDto dto);
 

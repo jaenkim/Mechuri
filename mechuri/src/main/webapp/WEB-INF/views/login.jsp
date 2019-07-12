@@ -16,8 +16,8 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<script type="text/javascript">
-/* $(function(){
+<!-- <script type="text/javascript">
+$(function(){
     var naverLogin = new naver.LoginWithNaverId({
         clientId: "{_1g9pc8r0RyK3g8Zeg9_}",
         callbackUrl: "{http://localhost:8888/mechuri/callback.do}",
@@ -25,7 +25,7 @@
         loginButton: {color: "green", type: 3, height: 45}
     });
     naverLogin.init();
-})//e.o.naver */
+})//e.o.naver -->
 
 
 <script type="text/javascript" src="../js/botstrap.js">
@@ -51,7 +51,7 @@
 	});
 </script>
 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
-<script type="text/javascript">
+	<script type="text/javascript">
  		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
 											// 단 'localhost'가 포함된 CallBack URL
  		var state = naver_id_login.getUniqState();
@@ -6642,75 +6642,18 @@ body>#login form .idpw {
 <title>일반회원 로그인 화면</title>
 </head>
 <body>
-	<jsp:include page="Header.jsp" />
-	<form name="form1" id="form1" method="post" action="login_check.do">
+
+	<form name="form1" id="form1" method="post" action="login.do">
 
 
-		<!-- <로그인 화면><br>
-<input type="text" name="id" maxlength="20" placeholder="아이디"
-			onchange='checkIdAjax(this.value)'
-			style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;"><br>
-            
-<input type='password' name='pw' id='pwid'
-			onchange='isSame()' maxlength="20" placeholder="비밀번호"
-			style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;"><br>
-			
-<input type='button' value='가입하기'id='newbtn' style="width: 250px; height: 35px; font-size: 17px; margin-top: 10px;">
- -->
-
-
-		<div class="board_list">
-			<input type="text" id="mem_id" name="mem_id" class="wdp_90"
-				placeholder="아이디">
-		</div>
-
-		<div class="field_container">
-			<input type="Password" id="mem_pw" name="mem_pw" class="wdp_90"
-				placeholder="비밀번호">
-			<button id="btn_area">
-				<span class="btn" id="btnLogin">로그인</span> <br> <br>
+	
 
 				
-					
-				<c:if test="${message == 'error' }">
-					<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-				</c:if>
-				<c:if test="${message == 'logout' }">
-					<div style="color: red;">로그아웃 되었습니다.</div>
-				</c:if>
-			</button>
-			<br>
-			<div class="idpw">
-				<a href="#" class="login_link">아이디찾기|</a> <a href="#"
-					class="login_link">비밀번호찾기|</a> <a href="signUp.do"
-					class="login_link">회원가입</a>
-			</div>
-		</div>
+				<!-- '네이버 아이디로 로그인하기' 버튼 -->
+				<!-- 원하는 곳에 넣습니다. -->
+				<div id="naver_id_login"></div>
 
-
-
-
-		<div id="sign_in_options" class="field_container">
-			<div id="sign_in_alternatives_container">
-				<span id="google_sign_in_option">or you can <a href="#"
-					id="google_sign_in" class="login_link">sign in with Google</a></span> <span
-					id="password_sign_in_option">or you can <a href="#"
-					id="password_sign_in" class="login_link">sign in using a
-						password</a></span>
-			</div>
-			<div id="remember_me_container">
-
-				<input name="user[remember_me]" type="hidden" value="0"><input
-					id="user_remember_me" name="user[remember_me]" type="checkbox"
-					value="1"> <label class="login_link" for="user_remember_me"
-					id="remember_me_label">stay signed in</label>
-			<%-- <!-- '네이버 아이디로 로그인하기' 버튼 -->
-				<div id="naver_id_login" style="align:right"></div>
-				<a href="${naver_url}"><img height="30"
-					src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
-			</div> --%>
-			<div class="clearfix"></div>
-		</div>
+			
 	</form>
 
 
