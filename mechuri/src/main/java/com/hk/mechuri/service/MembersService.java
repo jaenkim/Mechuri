@@ -64,6 +64,8 @@ public class MembersService implements IMembersService {
 	public boolean NaverSignUp(String mem_email, String mem_name, String mem_id) {
 		return MembersDao.NaverSignUp(mem_email,mem_name,mem_id);
 	}
+
+	
 	
 	/*@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception {
