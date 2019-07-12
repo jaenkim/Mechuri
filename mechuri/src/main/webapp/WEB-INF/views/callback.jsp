@@ -21,7 +21,7 @@
 
 
 	<!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
-	<!-- <script>
+	<script>
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "{q6cMTLGnrqZXKiVTkOA3}",
@@ -62,7 +62,7 @@
 			});
 		});
 		
-	</script> -->
+	</script>
 	  <div style="text-align:center">${result}</div>
 </body>
 
