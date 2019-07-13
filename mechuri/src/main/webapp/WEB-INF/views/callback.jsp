@@ -54,7 +54,7 @@
 					}
 
 					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) +
-							"/mechuri/naverLog.do?mem_name="+mem_name+"&mem_email="+mem_email+"&mem_id="+mem_id);
+							"/mechuri/naverLog.do?name="+name+"&email="+email+"&id="+id);
 					
 				} else {
 					console.log("callback 처리에 실패하였습니다.");

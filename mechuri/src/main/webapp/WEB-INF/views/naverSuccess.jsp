@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,7 +26,7 @@ h3 {
 		var mem_name = ${result}.response.mem_name;
 		var mem_email = ${result}.response.mem_email;
 		$("#mem_name").html("환영합니다. "+mem_name+"님");
-		$("#mem_email").html(email);
+		$("#mem_email").html(mem_email);
 	  });
 </script>
 
