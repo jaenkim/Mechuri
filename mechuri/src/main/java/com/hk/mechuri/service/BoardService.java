@@ -24,8 +24,8 @@ public class BoardService implements IBoardService {
 	private IBoardDao boardDao;
 
 	@Override
-	public List<boardDto> getAllList(String pnum) {
-		return boardDao.getAllList(pnum);
+	public List<boardDto> getAllList(String board_pnum) {
+		return boardDao.getAllList(board_pnum);
 	}
 
 	

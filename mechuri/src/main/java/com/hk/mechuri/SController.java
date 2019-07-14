@@ -38,20 +38,19 @@ public class SController {
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
 	public String boardlist2(Locale locale, Model model,HttpServletRequest request) {
 	//	System.out.println("pnum=["+request.getParameter("pnum")+"]");
-		String pnum = request.getParameter("pnum");  //페이징
-		if(pnum==null) {
-			pnum="1";//1페이지로 기본세팅
-			List<boardDto> list=boardService.getAllList(pnum);
-			int pcount = boardService.getPcount(); //페이징
-			
+		String board_pnum = request.getParameter("board_pnum");  //페이징
+		if(board_pnum==null) {
+			board_pnum="1";//1페이지로 기본세팅
+			List<boardDto> list=boardService.getAllList(board_pnum);
+			int pcount = boardService.getPcount(); //총 페이지 수			
 			model.addAttribute("list",list);
 			model.addAttribute("pcount",pcount);
 			
 		} else {
 			
 		//pnum="1";//1페이지로 기본세팅
-		List<boardDto> list=boardService.getAllList(pnum);
-		int pcount = boardService.getPcount(); //페이징
+		List<boardDto> list=boardService.getAllList(board_pnum);
+		int pcount = boardService.getPcount(); //총 페이지 수	
 		
 		System.out.println("최신글 뉴=["+list.get(0).getBoard_new()+"]");
 		
@@ -96,7 +95,7 @@ public class SController {
 	public String boardDetail(HttpServletRequest request,Locale locale, Model model, Integer board_no) {	
 		logger.info("게시글 상세보기 {}.", locale);
 		System.out.println("board_no["+board_no+"]");
-		
+		//String pnum = request.getParameter("pnum");
 		
 		boardDto dto=boardService.getBoard(board_no); //게시글
 		List<replyDto> replylist = boardService.replyDetail(board_no); //해당 게시글의 댓글

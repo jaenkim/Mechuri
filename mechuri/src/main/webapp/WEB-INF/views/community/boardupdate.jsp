@@ -56,7 +56,7 @@
   <br>
   <div>
     <input type="submit" value="수정완료" />
-	<input type="button" value="해당 글 목록" onclick="location.href='boardlist2.do?pnum=1'" />
+	<input type="button" value="글목록" onclick="location.href='boardlist2.do?pnum=1'" />
    </div>
   </form>
 </div> 

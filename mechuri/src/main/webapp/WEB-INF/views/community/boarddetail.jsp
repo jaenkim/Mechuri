@@ -9,12 +9,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 상세보기 폼</title>
 <link rel="stylesheet" href="commAssets/css/boarddetail.css">
+
 </head>
 <body>
 <jsp:include page="../Header.jsp"/>
 <br><br><br>
+<div id="img">
+<div class="images">
+	<c:choose> 
+     		<c:when test="${dto.board_storedfile eq 'empty' }"> <!-- 펭귄 when은 if문 -->
+      	<div style="background-image:url('images/mechu.png')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text" ></div> 
+      		</c:when> 	
+      		<c:otherwise> <!-- 펭귄 otherwise는 else -->
+        <div style="background-image:url('upload/${dto.board_storedfile}')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text" ></div> 
+        	</c:otherwise> 
+	</c:choose>
+
+</div>
+</div>
 
 <div class="container">
+
   <div class="row">
     <div id="writerDate"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년 MM월 dd일" /></div>
     <div class="col-25">
@@ -48,7 +63,7 @@
   <div>
 	<input type="button" value="수정" onclick="updateBoard()" />
 	<input type="button" value="삭제" onclick="delBoard('${dto.board_no}')"/>
-	<input type="button" value="글목록" onclick="location.href='boardlist2.do?pnum=1'" />
+	<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=1'" />
   </div>
   
 <!--   <br> -->
@@ -128,6 +143,10 @@
 	function updateBoard(board_no) {
 		location.href="updateForm.do?board_no=${dto.board_no}";
 	}
+	//리스트폼으로 이동
+	/* function listBoard(pnum) {
+		location.href="boardlist2.do?board_pnum=${board_pnum}";
+	} */
 	
 </script>
 

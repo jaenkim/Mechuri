@@ -23,10 +23,10 @@ public class BoardDao implements IBoardDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<boardDto> getAllList(String pnum) {	//커뮤니티 리스트 출력
+	public List<boardDto> getAllList(String board_pnum) {	//커뮤니티 리스트 출력
 //		Map<String,Integer> mmap = new HashMap<String,Integer>();
 //		mmap.put("pnum", pnum);
-		return sqlSession.selectList(namespace+"boardlist2",pnum);
+		return sqlSession.selectList(namespace+"boardlist2",board_pnum);
 	}
 	
 

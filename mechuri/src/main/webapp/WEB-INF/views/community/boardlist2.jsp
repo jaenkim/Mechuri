@@ -52,7 +52,11 @@
 	"applicationCategory" : "HTML"
 	}
 	</script>
-	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap-theme.css" />
+<link rel="stylesheet" href="../css/bootstrap.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/botstrap.js"></script>	
 
 </head>
 <style>
@@ -60,16 +64,20 @@
 		width:50px;
 		height:50px;
 	}
+	.container-fluid {
+		text-align:center;	
+		font-size:20px;
+		
+	}
 	
 </style>
 
 
 <!-- End Head -->
 <body class="default">
-	<jsp:include page="../Header.jsp"/>
-<!--
-START MODULE AREA 1: header1
--->
+<jsp:include page="../Header.jsp"/>
+
+
 <br><br><br><br>
 <header class="MOD_HEADER1">
   <div data-layout="_r">
@@ -127,13 +135,18 @@ START MODULE AREA 1: header1
     </c:forEach> 
   
     
-    	<!-- 페이징 -->
-    <div>
-    <c:forEach begin="1" end="${pcount}" step="1" var="i">
-				<a href="boardlist2.do?pnum=${i}">${i}</a>
-	</c:forEach>
-    </div>
-  
+   <!-- 페이징 -->
+ 	
+    <div class="container-fluid">
+
+    	<c:forEach begin="1" end="${pcount}" step="1" var="i">
+			<a href="boardlist2.do?board_pnum=${i}">[ ${i} ]</a>
+		</c:forEach>
+
+    </div> 
+
+
+
     </div>
    
  
@@ -141,6 +154,7 @@ START MODULE AREA 1: header1
 </section>
 
 <jsp:include page="../Footer.jsp"/>
+<!-- </form> -->
 </body>
 
 
