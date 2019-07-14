@@ -3,6 +3,9 @@ import java.io.IOException;
                     
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +31,7 @@ public class LoginController {
     }
 
     //로그인 첫 화면 요청 메소드
-    @RequestMapping(value = "/naverLogin.do", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/login.do", method = { RequestMethod.GET, RequestMethod.POST })
     public String naverLogin(Model model, HttpSession session) {
         
         /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
@@ -42,27 +45,30 @@ public class LoginController {
         model.addAttribute("url", naverAuthUrl);
 
         /* 생성한 인증 URL을 View로 전달 */
-        return "naverLogin";
+        return "login";
     }
 
     //네이버 로그인 성공시 callback호출 메소드
-    @RequestMapping(value = "/callback.do", method = { RequestMethod.GET, RequestMethod.POST })
-    public String callback(Model model, @RequestParam (defaultValue="")String code, @RequestParam (defaultValue="")String state, HttpSession session)
-            throws IOException {
-        System.out.println("여기는 callback");
-        OAuth2AccessToken oauthToken;
-      
-        /* 네아로 인증이 성공적으로 완료되면 code 파라미터가 전달되며 이를 통해 access token을 발급 */
+    @RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
+			throws IOException {
+		System.out.println("여기는 callback");
+		OAuth2AccessToken oauthToken;
         oauthToken = naverLoginBO.getAccessToken(session, code, state);
-        System.out.println("oauthToken"+"["+oauthToken+"]");
         //로그인 사용자 정보를 읽어온다.
-        apiResult = naverLoginBO.getUserProfile(oauthToken);
-        System.out.println("apiResult"+"["+apiResult+"]");
-        System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
-        model.addAttribute("result",apiResult);
-        System.out.println("result"+apiResult);
-     
-        
-        return "naverSuccess";
+	    apiResult = naverLoginBO.getUserProfile(oauthToken);
+		model.addAttribute("result", apiResult);
+
+        /* 네이버 로그인 성공 페이지 View 호출 */
+		return "naverSuccess";
+	}
+    
+  //로그아웃
+    @RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
+    public String logout(HttpSession session)throws IOException {
+    System.out.println("여기는 logout");
+    session.invalidate();
+    return "redirect:index.jsp";
     }
+
 }

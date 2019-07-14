@@ -29,7 +29,7 @@
 
 
 <script type="text/javascript" src="../js/botstrap.js">
-
+<script>
 	$(function(){ //페이지 로딩이 완료된 후 자동 실행
 		$("#btnLogin").click(fucntion(){
 			var mem_id=$("#mem_id").val(); //태그에 입력된 값
@@ -47,9 +47,10 @@
 			document.form1.action
 			="${path}/login_check.do";
 			document.form1.submit(); //서버에 자료 전송
-		};
+		});
 	});
 </script>
+
 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
 <script type="text/javascript">
  		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
@@ -6643,6 +6644,12 @@ body>#login form .idpw {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<center>
 	<form name="form1" id="form1" method="post" action="login_check.do">
 
 
@@ -6667,9 +6674,10 @@ body>#login form .idpw {
 		<div class="field_container">
 			<input type="Password" id="mem_pw" name="mem_pw" class="wdp_90"
 				placeholder="비밀번호">
+				<br>
 			<button id="btn_area">
 				<span class="btn" id="btnLogin">로그인</span> <br> <br>
-
+		</center>
 				
 					
 				<c:if test="${message == 'error' }">
