@@ -27,6 +27,13 @@ public class membersDto {
 	//생성자
 	public membersDto() {	super(); }
 
+	public membersDto( String mem_id, String mem_name, String mem_nick, String mem_others01) {	
+		super(); 
+		this.mem_id = mem_id;
+		this.mem_name = mem_name;
+		this.mem_others01 = mem_others01;
+		this.mem_nick = mem_nick;
+	}
 	
 	
 	

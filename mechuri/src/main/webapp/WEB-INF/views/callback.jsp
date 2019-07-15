@@ -14,14 +14,30 @@
 
 <body>
 
-	callback 처리중입니다. 
+
+<script type="text/javascript">
+  var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");
+  // 접근 토큰 값 출력
+  alert(naver_id_login.oauthParams.access_token);
+  // 네이버 사용자 프로필 조회
+  naver_id_login.get_naver_userprofile("naverSignInCallback()");
+  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+  function naverSignInCallback() {
+    alert(naver_id_login.getProfileData('email'));
+    alert(naver_id_login.getProfileData('nickname'));
+    alert(naver_id_login.getProfileData('age'));
+  }
+</script>
+
+
+	<%-- callback 처리중입니다. 
 
 	<!-- (1) LoginWithNaverId Javscript SDK -->
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 
 
 	<!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
-	<!-- <script>
+	<script>
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "{q6cMTLGnrqZXKiVTkOA3}",
@@ -54,7 +70,7 @@
 					}
 
 					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) +
-							"/mechuri/naverLog.do?mem_name="+mem_name+"&mem_email="+mem_email+"&mem_id="+mem_id);
+							"/mechuri/naverLog.do?name="+name+"&email="+email+"&id="+id);
 					
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
@@ -62,8 +78,8 @@
 			});
 		});
 		
-	</script> -->
-	  <div style="text-align:center">${result}</div>
+	</script>
+	  <div style="text-align:center">${result}</div> --%>
 </body>
 
 </html>

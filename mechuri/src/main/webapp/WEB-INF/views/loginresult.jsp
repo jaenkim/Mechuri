@@ -4317,6 +4317,9 @@ body>#login form .idpw {
 
 </head>
 <body>
+<c:if test="${message == 'success'}">
+	<h2>${sessionScope.mem_name} (${sessionScope.mem_id}) 님의 방문을 환영합니다.</h2>
+</c:if>
 	<header id="header"> 
 		<nav class="left">
 			<a href="#menu"><span>Menu</span></a>

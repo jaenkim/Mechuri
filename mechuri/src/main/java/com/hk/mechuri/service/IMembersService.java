@@ -21,6 +21,8 @@ public interface IMembersService {
 	public membersDto NaverLogCheck(String mem_email);//네이버 로그인시 이메일 체크
 
 	public boolean NaverSignUp(String mem_email, String mem_name, String mem_id);//네이버 로그인시 회원가입하기
+
+	public membersDto existNaverId(membersDto mDto);
 	
 	
 	/*public void regist(membersDto dto);

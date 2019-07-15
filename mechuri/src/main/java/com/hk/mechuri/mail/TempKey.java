@@ -1,4 +1,4 @@
-package com.hk.mechuri.naver;
+package com.hk.mechuri.mail;
 
 import java.util.Random;
 

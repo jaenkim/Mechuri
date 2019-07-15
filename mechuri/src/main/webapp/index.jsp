@@ -17,7 +17,7 @@
 <a href="main.do">메인화면 '3'</a> <br /><br>
 <a href="list.do">제품 랭킹 '3'</a><br>
 <a href="signUp.do">일반 회원가입 '3'</a><br>
-<a href="naverLogin.do">네아로 회원가입 '3'</a><br>
+<a href="login.do">네아로 회원가입 '3'</a><br>
 
 <a href="list.do">제품 리스트 '3'</a> <br /><br>
 <a href="groupbuying.do">공동구매 리스트 '3'</a><br>
@@ -41,6 +41,18 @@
 <a href="boardwrite.do">커뮤니티 글 작성'3'</a><br>
 <a href="boardupdate.do">커뮤니티 글 수정'3'</a><br>
 <a href="boarddetail.do">커뮤니티 글 상세보기'3'</a><br>
+
+<!-- 일반 회원 메뉴 -->
+<a href="userInfo.do">*내 정보 보기(일반회원/회원번호가 26번인 회원)- 수정/탈퇴</a><br>
+<!-- 기업 회원 메뉴 -->
+<a href="addProductForm.do"> *기업(회원번호가 34번인 기업) 제품 등록</a><br>
+<a href="ProductList.do"> *자사(회원번호가 34번인 기업) 제품 리스트- 수정신청/단종처리/삭제</a><br>
+<a href="msglist.do"> *내 쪽지함(회원번호가 34번인 기업)</a><br>
+<a href="comInfo.do"> *내 정보 보기(기업회원/(회원번호가 34번인 기업) - 수정/탈퇴</a><br>
+<!-- 관리자 메뉴 -->
+<a href="productadminlist.do"> *제품 등록/수정 승인 (관리자 기능)</a><br>
+<a href="userManage.do"> *일반회원 목록 -삭제(완전 탈퇴)(관리자 기능)</a><br>
+<a href="comUserManage.do">*기업회원 목록 - 가입 승인/삭제(완전탈퇴)(관리자 기능) </a>
 </body>
 
 </html>

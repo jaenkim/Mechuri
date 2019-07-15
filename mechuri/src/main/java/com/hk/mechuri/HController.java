@@ -2,14 +2,26 @@ package com.hk.mechuri;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.hk.mechuri.dtos.membersDto;
+import com.hk.mechuri.dtos.msgDto;
+import com.hk.mechuri.dtos.productDto;
+import com.hk.mechuri.dtos.tempinfoDto;
+import com.hk.mechuri.service.addProductService;
+import com.hk.mechuri.service.msgService;
+import com.hk.mechuri.service.userManageService;
 
 @Controller
 public class HController {
@@ -19,64 +31,288 @@ public class HController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/boardlist.do", method = RequestMethod.GET)
-	public String boardlist(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "community/boardlist2";
-	}
+	@Autowired
+	private msgService MsgSerivce;
 	
+	@Autowired
+	private addProductService addproductService;
 	
-	@RequestMapping(value = "/boardwrite.do", method = RequestMethod.GET)
-	public String boardwrite(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	@Autowired
+	private userManageService usermanageService;
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "community/boardwrite";
-	}
-	
+	@RequestMapping(value = "/msglist.do", method = RequestMethod.GET)
+	public String sendMessage(HttpServletRequest request, Locale locale, Model model) {
+		logger.info("쪽지 보기", locale);
 
-	@RequestMapping(value = "/boardupdate.do", method = RequestMethod.GET)
-	public String boardupdate(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		List<msgDto> list = MsgSerivce.getAllList();
+		model.addAttribute("list", list );
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "community/boardupdate";
+		return "msg2";
 	}
 	
 	
-	@RequestMapping(value = "/boarddetail.do", method = RequestMethod.GET)
-	public String boarddetail(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "community/boarddetail";
-	}
-	
+	@RequestMapping(value = "/addProductForm.do")
+	public String addProductForm(Locale locale, Model model) {
+		logger.info("제품등록 폼", locale);
+			return "addProduct2";
+		}
 
+
+	@RequestMapping(value = "/addProduct.do", method = RequestMethod.POST)
+	public String addProduct(Locale locale, Model model, HttpServletRequest request) {
+		logger.info("제품등록 ing....", locale);
+		
+		String product_catelname = request.getParameter("filter_catelname");
+		String product_catesname = request.getParameter("filter_catesname");
+		String product_name = request.getParameter("product_name");
+		String product_ml = request.getParameter("product_ml");
+		String product_price = request.getParameter("product_price");
+		String	product_conts = request.getParameter("product_conts");
+		String	product_ingre = request.getParameter("product_ingre");
+		String	product_skintype = request.getParameter("product_skintype");
+		String	product_age = request.getParameter("product_age");
+		String	product_gender = request.getParameter("product_gender");
+				
+		productDto dto = new productDto(product_catelname,product_catesname,product_name,product_ml,product_price,product_conts,product_ingre,product_skintype,product_age,product_gender);
+
+		boolean isS = addproductService.addProduct(request, dto);
+		
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	
+}
+	
+	
+	
+	
+	@RequestMapping(value = "/productadminlist.do", method = RequestMethod.GET)
+	public String productadminlist(HttpServletRequest request, Locale locale, Model model) {
+		logger.info("승인해야 할 제품 목록 보기", locale);
+
+		List<productDto> list = addproductService.getAllList();
+		model.addAttribute("list", list );
+		
+
+		List<tempinfoDto> list1 = addproductService.getAllList1();
+		model.addAttribute("list1", list1 );
+		
+		return "productapproveForm";
+	}
+	
+	
+	@RequestMapping(value = "/approveProduct.do", method = RequestMethod.POST)
+	public String approveProduct(productDto pdto, Locale locale, Model model,HttpServletRequest request) {
+		logger.info("제품 등록 승인 ing...", locale);
+		System.out.println("컨트롤러에서 dto.no>>"+pdto.getProduct_no());
+		System.out.println("컨트롤러에서 dto.name>>"+pdto.getProduct_name());
+		System.out.println("컨트롤러에서 dto.compno>>"+pdto.getProduct_compno());
+		
+		
+		boolean isS= addproductService.approveProduct(pdto.getProduct_no());
+		if(isS) {
+			boolean msgisS = MsgSerivce.sendMessage2(pdto);
+			if(msgisS) {
+				return "sendDone";
+		}else {return "error";}
+	}return "error";
+}
+	
+	
+	
+	@RequestMapping(value = "/approveProduct1.do", method = RequestMethod.POST)
+	public String approveProduct1(Integer tempinfo_no, tempinfoDto dto, Locale locale, Model model) {
+		logger.info("제품 수정 승인 ing...", locale);
+		
+		System.out.println("tempinfo 이름은?>>>"+tempinfo_no);
+
+		dto  = addproductService.geTempinfo(tempinfo_no);
+		
+		boolean isS= addproductService.approveProduct1(dto);
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	}
+	
+	
+	@RequestMapping(value = "/ProductList.do", method = RequestMethod.GET)
+	public String productList(HttpServletRequest request, Locale locale, Model model) {
+		logger.info("자사 제품 목록 보기", locale);
+
+		List<productDto> list = addproductService.getProductList();
+		model.addAttribute("list", list );
+		
+		
+		
+		return "productList";
+	}
+	
+	@RequestMapping(value = "/productUpdateForm.do")
+	public String productUpdateForm(Integer product_no, Locale locale, Model model,HttpServletRequest request) {
+		logger.info("수정 할 제품 폼 보기", locale);
+		
+		productDto dto = addproductService.getUpdateProductInfo(product_no);
+		model.addAttribute("dto", dto );
+
+		return "productUpdateForm";
+		
+		
+	}
+	
+	@RequestMapping(value = "/tempinfoInsert.do", method = RequestMethod.POST)
+	public String tempinfoInsert(Locale locale, Model model, HttpServletRequest request,tempinfoDto dto,Integer pno) {
+		logger.info("제품 수정(승인 아직 안된 거..tempinfo에 담는 과정) ing....", locale);
+	
+		dto.setTempinfo_no(pno);
+		boolean isS = addproductService.tempinfoInsert(request, dto);
+		
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	
+}
+
+	
+	
+	@RequestMapping(value = "/productdj.do")
+	public String productdj(Integer product_no, Locale locale, Model model,HttpServletRequest request) {
+		logger.info("제품 단종 처리 ing...", locale);
+		
+		boolean isS= addproductService.productdj(product_no);
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	}
+	
+	
+	
+	@RequestMapping(value = "/productdel.do")
+	public String productdel(Integer product_no, Locale locale, Model model,HttpServletRequest request) {
+		logger.info("제품 삭제 ing...", locale);
+		
+		boolean isS= addproductService.productdel(product_no);
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	}
+	
+	
+	
+	@RequestMapping(value = "/userManage.do", method = RequestMethod.GET)
+	public String userManage(HttpServletRequest request, Locale locale, Model model) {
+		logger.info("일반회원 목록 보기", locale);
+
+		List<membersDto> members = usermanageService.getUserList();
+		model.addAttribute("members", members );
+
+		
+		return "memList";
+	}
+	
+	
+	@RequestMapping(value = "/comUserManage.do", method = RequestMethod.GET)
+	public String commUserManage(HttpServletRequest request, Locale locale, Model model) {
+		logger.info("기업회원 목록 보기", locale);
+
+		List<membersDto> members = usermanageService.getComUserList();
+		model.addAttribute("commembers", members );
+
+		
+		return "comList";
+	}
+	
+	
+	@RequestMapping(value = "/userDelete.do")
+	public String userDelete(Integer mem_no, Locale locale, Model model) {
+		logger.info("회원 삭제(탈퇴) ing...", locale);
+		
+		boolean isS= usermanageService.userdel(mem_no);
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	}
+	
+	
+	@RequestMapping(value = "/compAppr.do")
+	public String compAppr(Integer mem_no, Locale locale, Model model) {
+		logger.info("기업 가입 승인 처리 ing...", locale);
+		
+		boolean isS= usermanageService.compAppr(mem_no);
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	}
+	
+	
+	@RequestMapping(value = "/comInfo.do", method = RequestMethod.GET)
+	public String comInfo(HttpServletRequest request, Locale locale, Model model) {
+		logger.info("내 정보(기업회원) 보기", locale);
+
+		List<membersDto> cominfo = usermanageService.comInfo();
+		model.addAttribute("cominfo", cominfo );
+
+		
+		return "comInfo";
+	}
+	
+	@RequestMapping(value = "/comtal.do")
+	public String comtal(Integer mem_no, Locale locale, Model model) {
+		logger.info("기업 탈퇴 처리(실제로 탈퇴X, 탈퇴플래그만 바꿈) ing...", locale);
+		
+		boolean isS= usermanageService.comtal(mem_no);
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	}
+	
+	@RequestMapping(value = "/infoUpdate.do")
+	public String infoUpdate(membersDto dto, Locale locale, Model model) {
+		logger.info("기업 정보 수정 ing...", locale);
+		
+		boolean isS= usermanageService.infoUpdate(dto);
+		if(isS) {
+			return "sendDone";
+		}else {
+			return "error";
+		}
+		
+	}
+	
+	
+	@RequestMapping(value = "/userInfo.do", method = RequestMethod.GET)
+	public String userInfo(HttpServletRequest request, Locale locale, Model model) {
+		logger.info("내 정보(일반회원) 보기", locale);
+
+		List<membersDto> userInfo = usermanageService.userInfo();
+		model.addAttribute("userInfo", userInfo );
+
+		
+		return "userInfo";
+	}
+	
+	
 }

@@ -24,4 +24,6 @@ public interface IMembersDao {
 	public boolean GetKey(String mem_id, String mem_key);//메일인증키 난수설정
 	
 	public boolean alter_userkey(String mem_id, String mem_key);
+
+	public membersDto existNaverId(membersDto mDto);
 }

@@ -74,8 +74,16 @@ public class MembersDao implements IMembersDao {
 			int cnt = sqlSession.update(namespace+"alter_userkey",map);
 			return cnt>0?true:false;
 		}
+		
+		@Override
+		public membersDto existNaverId(membersDto mDto) {
+			membersDto temp = sqlSession.selectOne(namespace+"existNaver",mDto);
+						
+			return temp;
+		}
 
 
+		
 	/*@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object>map) throws Exception {
 		return (Map<String, Object>)selectOne("Members.selectUserInfo", map);
