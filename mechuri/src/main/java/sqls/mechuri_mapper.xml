@@ -232,7 +232,7 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 		WHERE MSG_RECEIVENO = 9
 </select>
 
-
+ 
 <!-- 제품 등록 신청,   PRODUCT_COMPNO= '34'로 임의 설정 해놓음 나중에 고치기 -->
 
 <insert id="insertProduct" parameterType='productDto'>
