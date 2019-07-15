@@ -56,7 +56,7 @@ public class AController {
 	public String signUpBoard(Model model, membersDto dto) {
 
 		logger.info("회원 추가합니다. {}.");
-
+		
 		boolean isS=MembersService.signUpBoard(dto);
 		if(isS) {
 			return "redirect:main.do";
@@ -82,7 +82,7 @@ public class AController {
 		ModelAndView mav=new ModelAndView();
 		System.out.println(mav);
 		if(result) { //로그인 성공
-			mav.setViewName("loginresult"); //Header.jsp
+			mav.setViewName("loginresult"); //main.jsp
 			mav.addObject("message", "success"); 
 		}else { //로그인 실패 
 			mav.setViewName("memLogin");
@@ -100,94 +100,6 @@ public class AController {
 	}
 	
 	
-	@RequestMapping(value="/login.do", method=RequestMethod.GET)
-	public String loginGET() {
-		
-		return "login";
-	}
-	
-	@RequestMapping(value="/loginPostNaver.do", method=RequestMethod.GET)
-	public String loginPOSTNaver(HttpSession session) {
-		
-		return "loginPostNaver";
-	}
-	
-	
-	/*	@RequestMapping(value = "/memLoginBoard.do", method = RequestMethod.POST)
-	public ModelAndView memLoginBoard(HttpSession session) {
-		
-		ModelAndView mav= new ModelAndView();
-		String member_id = (String) session.getAttribute("id");
-		if(member_id!=null) {
-			mav.setViewName("redirect:/main.do");
-			return mav;
-		}
-		mav.setViewName("/memLoginBoard");
-		return mav;
-	}*/
-	
-	
-	
-	
-	
-	
-	
-	//로그인
-
-	/*@RequestMapping(value = "/memLogin.do", method = {RequestMethod.GET})
-	public String memLogin(Model model) {
-		logger.info("로그인폼으로 이동 {}.");
-		return "memLogin";
-	}
-
-	@RequestMapping(value = "/memLoginBoard.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView memLoginBoard(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
-		ModelAndView mav = new ModelAndView();
-		logger.info("들어온다 {}.");
-		//세션정보가 null이 아닐 때
-		if (request.getSession().getAttribute("loginInfo") != null)
-		{
-			String msg = "이미 로그인된 상태입닌다.";
-			mav.addObject("msg", msg);
-			mav.setViewName("loginSuccess");
-			
-		}
-		else
-		{
-			mav.setViewName("memLogin.do");
-			
-		}
-		return mav;
-	}
-
-	@RequestMapping(value="/loginTry.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView loginTry(HttpServletRequest request,Map<String, Object> map ) throws Exception {
-		ModelAndView mav = new ModelAndView("loginSuccess");
-
-		Map<String, Object> map = MembersService.selectUserInfo();
-
-		//로그인 정보가 있다면 로그인
-		if (map == null)
-		{
-			mav.addObject("msg", "로그인에 실패하였습니다.");
-		}
-		else
-		{
-			request.getSession().setAttribute("loginInfo", map);
-			request.getSession().setMaxInactiveInterval(60*30);
-
-			mav.addObject("msg","로그인에 성공하였습니다.");
-		}
-		return mav;
-	}*/
-
-	@RequestMapping("logout.do")
-	public String logout(HttpSession session){
-		//	        session.invalidate();
-		session.removeAttribute("userid");
-		return "redirect:memLogin.do";
-
-	}
 
 	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
 	public String compSignUp(Model model) {
@@ -209,10 +121,6 @@ public class AController {
 		}
 	}
 
-	/*@RequestMapping(value = "/callback.do")
-	public String callback(Model model) {
-		return "callback";
-	}*/
 
 	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
 	public String groupbuying(Model model) {
