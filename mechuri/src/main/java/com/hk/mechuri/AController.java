@@ -85,11 +85,9 @@ public class AController {
 	}
 	
 	@RequestMapping(value= "/logout.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView logout(HttpSession session, ModelAndView mav) {
-		MembersService.logout(session);
-		mav.setViewName("memLogin");
-		mav.addObject("message", "logout");
-		return mav;
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:main.do";
 	}
 	
 	
