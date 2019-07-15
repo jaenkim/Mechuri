@@ -1,22 +1,34 @@
 package com.hk.mechuri.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.mechuri.daos.IMembersDao;
 import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
+import com.hk.mechuri.mail.MailHandler;
+import com.hk.mechuri.mail.TempKey;
 
 @Service
 public class MembersService implements IMembersService {
 	
 	@Autowired
+	    private JavaMailSender mailSender;
+	    
+	
+	@Autowired
 	private IMembersDao MembersDao;
+	
 	
 	@Override
 	public boolean signUpBoard(membersDto dto) {
@@ -66,7 +78,7 @@ public class MembersService implements IMembersService {
 	}
 
 	
-	
+
 	/*@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub

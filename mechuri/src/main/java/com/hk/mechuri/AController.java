@@ -1,38 +1,26 @@
 package com.hk.mechuri;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 
-import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hk.mechuri.daos.IMembersDao;
-import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
+import com.hk.mechuri.mail.MailSend;
 import com.hk.mechuri.service.IMembersService;
-import com.hk.mechuri.service.MembersService;
 
 
 /**
@@ -44,8 +32,13 @@ public class AController {
 
 	@Autowired
 	private IMembersService MembersService;
+	
+	@Autowired
 	private IMembersDao MembersDao;
 
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
 		logger.info("회원 추가폼으로 이동 {}.");
@@ -121,6 +114,33 @@ public class AController {
 		}
 	}
 
+
+	
+		
+	
+	@RequestMapping(value = "/mail.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Integer mail(Model model, String mem_id) 
+	{
+		MailSend ms = new MailSend();
+		
+		String title = "회원가입 인증코드 발급안내 입니다.";
+		
+		Random random = new Random();
+		int result = random.nextInt(10000)+1000;
+		if(result>10000) {
+			result = result - 1000;
+		}
+		String content = "회원님의 인증 코드는 " + result +" 입니다.";
+		ms.mailSend(mem_id, title, content);
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 
 	@RequestMapping(value = "/groupbuying.do", method = RequestMethod.GET)
 	public String groupbuying(Model model) {
