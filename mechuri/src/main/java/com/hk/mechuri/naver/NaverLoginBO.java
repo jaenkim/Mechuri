@@ -33,6 +33,7 @@ public class NaverLoginBO {
 
 		/* 세션 유효성 검증을 위하여 난수를 생성 */
 		String state = generateRandomString();
+		System.out.println("naverBo에서 생성한 난수: ["+state+"]");
 		/* 생성한 난수 값을 session에 저장 */
 		setSession(session,state);        
 
@@ -43,7 +44,8 @@ public class NaverLoginBO {
 				.callback(REDIRECT_URI)
 				.state(state) //앞서 생성한 난수값을 인증 URL생성시 사용함
 				.build(NaverLoginApi.instance());
-
+		System.out.println("naverBo에서 생성한 고유한 url같은 oauthService ["+oauthService.getAuthorizationUrl()+"]");
+		System.out.println("naverBo에서 oauthService.getAuthorizationUrl()을 리턴해");
 		return oauthService.getAuthorizationUrl();
 	}
 
@@ -86,7 +88,7 @@ public class NaverLoginBO {
 	/* Access Token을 이용하여 네이버 사용자 프로필 API를 호출 */
 	public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException{
 
-		System.out.println(oauthToken);
+		System.out.println("네이버BO에서 출력하는 오스토큰"+oauthToken);
 
 		OAuth20Service oauthService =new ServiceBuilder()
 				.apiKey(CLIENT_ID)

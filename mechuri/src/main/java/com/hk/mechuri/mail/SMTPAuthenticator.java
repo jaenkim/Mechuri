@@ -10,8 +10,8 @@ public class SMTPAuthenticator extends Authenticator {
 		
 		
 		//사용자에게 메일을 보내야하기 때문에 이메일계정과 비밀번호가 필요하다.
-        String username = "alalfk9303@gmail.com"; // admin mailaddress; //!@#
-        String password = "anmira9303!";  // password ; //!@#
+        String username = "alfk9393@gmail.com"; // admin mailaddress; //!@#
+        String password = "anmira9320";  // password ; //!@#
         return new PasswordAuthentication(username, password);
    }
 }
