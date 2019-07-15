@@ -49,8 +49,44 @@ public class productDto implements Serializable {
 	}
 	
 	
+	//생성자1 승희
+	public productDto(String product_name, String product_ml, String product_price, String product_conts,
+			String product_catelname, String product_catesname, String product_skintype, String product_age,
+			String product_gender, String product_ingre) {
+		this.product_name = product_name;
+		this.product_ml = product_ml;
+		this.product_price = product_price;
+		this.product_conts = product_conts;
+		this.product_catelname = product_catelname;
+		this.product_catesname = product_catesname;
+		this.product_skintype = product_skintype;
+		this.product_age = product_age;
+		this.product_gender = product_gender;
+		this.product_ingre = product_ingre;
+	}
+
 	
+	//생성자2 승희
 	
+
+		public productDto(String product_catelname, String product_catesname, String product_name, String product_ml,
+				String product_price, String product_conts, String product_ingre, String product_skintype,
+				String product_age, String product_gender, String product_originfile, String product_storedfile,
+				int product_filesize) {
+			this.product_catelname=product_catelname;
+			this.product_catesname=product_catesname;
+			this.product_name=product_name;
+			this.product_ml=product_ml;
+			this.product_price=product_price;
+			this.product_conts=product_conts;
+			this.product_ingre=product_ingre;
+			this.product_skintype=product_skintype;
+			this.product_age=product_age;
+			this.product_gender=product_gender;
+			this.product_originfile=product_originfile;
+			this.product_storedfile=product_storedfile;
+			this.product_filesize=product_filesize;
+		}
 
 	//Getter and Setter
 	public int getProduct_no() {	return product_no; }
