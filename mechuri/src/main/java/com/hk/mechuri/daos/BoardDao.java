@@ -104,8 +104,8 @@ public class BoardDao implements IBoardDao {
 
 	@Override
 	public boolean readCount(int board_no) {
-		// TODO Auto-generated method stub
-		return false;
+		int count=sqlSession.update(namespace+"readcount",board_no);
+		return count>0?true:false;
 	}
 
 //여기부터는 첨부파일

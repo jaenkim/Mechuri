@@ -1,7 +1,5 @@
 package com.hk.mechuri;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -13,17 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hk.mechuri.dtos.boardDto;
-import com.hk.mechuri.dtos.membersDto;
 import com.hk.mechuri.dtos.replyDto;
 import com.hk.mechuri.service.IBoardService;
-import com.hk.mechuri.service.IMembersService;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class SController {
 	
@@ -31,14 +23,14 @@ public class SController {
 	
 	@Autowired
 	private IBoardService boardService;
-	
 
-
-	//여기부터 커뮤니티 기능
+	//여기부터 커뮤니티 기능                    
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
 	public String boardlist2(Locale locale, Model model,HttpServletRequest request) {
+		System.out.println("여기도 안들어오나");
 	//	System.out.println("pnum=["+request.getParameter("pnum")+"]");
 		String board_pnum = request.getParameter("board_pnum");  //페이징
+		//request.getSession().removeAttribute("readcount");
 		if(board_pnum==null) {
 			board_pnum="1";//1페이지로 기본세팅
 			List<boardDto> list=boardService.getAllList(board_pnum);
@@ -96,6 +88,13 @@ public class SController {
 		logger.info("게시글 상세보기 {}.", locale);
 		System.out.println("board_no["+board_no+"]");
 		//String pnum = request.getParameter("pnum");
+		String rCount = (String)request.getSession().getAttribute("readcount");
+		if(rCount==null) {
+			boardService.readCount(board_no);
+			request.getSession().setAttribute("readcount", board_no+"");
+		} else {
+			
+		}
 		
 		boardDto dto=boardService.getBoard(board_no); //게시글
 		List<replyDto> replylist = boardService.replyDetail(board_no); //해당 게시글의 댓글

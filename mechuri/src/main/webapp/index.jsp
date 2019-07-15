@@ -37,7 +37,7 @@
 
 <a href="addProduct.do">기업 제품등록'3'</a><br>
 
-<a href="boardlist2.do?pnum=1">커뮤니티 리스트'3'</a><br>
+<a href="boardlist2.do">커뮤니티 리스트'3'</a><br>
 <a href="boardwrite.do">커뮤니티 글 작성'3'</a><br>
 <a href="boardupdate.do">커뮤니티 글 수정'3'</a><br>
 <a href="boarddetail.do">커뮤니티 글 상세보기'3'</a><br>

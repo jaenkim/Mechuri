@@ -125,7 +125,8 @@
             </c:otherwise> 
         </c:choose>
          	
-          <p class="MOD_ARTICLEBLOCKS1_Category">${dto.board_nick}</p>
+          <p class="MOD_ARTICLEBLOCKS1_Category">${dto.board_nick} </p>
+          조회:<div> ${dto.board_count}</div>
         </div>
         
       </a>
