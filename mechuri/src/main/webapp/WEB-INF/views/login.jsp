@@ -28,28 +28,6 @@ $(function(){
 })//e.o.naver -->
 
 
-<script type="text/javascript" src="../js/botstrap.js">
-
-	$(function(){ //페이지 로딩이 완료된 후 자동 실행
-		$("#btnLogin").click(fucntion(){
-			var mem_id=$("#mem_id").val(); //태그에 입력된 값
-			var mem_pw=$("#mem_pw").val();
-			if(mem_id=="") {
-				alert("아이디를 입력하세요.");
-				$("#mem_id").focus(); //태그에 입력포커스이동
-				return;
-			}
-			if(mem_pw=="") {
-				alert("비밀번호를 입력하세요.");
-				$("#mem_pw").focus();
-				return;
-			}
-			document.form1.action
-			="${path}/login_check.do";
-			document.form1.submit(); //서버에 자료 전송
-		};
-	});
-</script>
 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
 	<script type="text/javascript">
  		var naver_id_login = new naver_id_login("_1g9pc8r0RyK3g8Zeg9_", "http://localhost:8888/mechuri/callback.do");	// Client ID, CallBack URL 삽입
@@ -78,9 +56,6 @@ $(function(){
 <c:otherwise>
 <form action="login.do" method="post" name="frm" style="width:470px;">
 <h2>로그인</h2>
-<input type="text" name="id" id="id" class="w3-input w3-border" placeholder="아이디" value="${id}"> <br>
-<input type="password" id="pwd" name="pwd" class="w3-input w3-border" placeholder="비밀번호" >	<br>
-<input type="submit" value="로그인" onclick="#"> <br>
 </form>
 <br>
 <!-- 네이버 로그인 창으로 이동 -->

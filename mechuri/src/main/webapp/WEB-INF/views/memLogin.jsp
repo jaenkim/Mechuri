@@ -16,20 +16,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<script type="text/javascript">
-/* $(function(){
-    var naverLogin = new naver.LoginWithNaverId({
-        clientId: "{_1g9pc8r0RyK3g8Zeg9_}",
-        callbackUrl: "{http://localhost:8888/mechuri/callback.do}",
-        isPopup: true,
-        loginButton: {color: "green", type: 3, height: 45}
-    });
-    naverLogin.init();
-})//e.o.naver */
-
-
 <script type="text/javascript" src="../js/botstrap.js">
-<script>
 	$(function(){ //페이지 로딩이 완료된 후 자동 실행
 		$("#btnLogin").click(fucntion(){
 			var mem_id=$("#mem_id").val(); //태그에 입력된 값
@@ -6677,7 +6664,35 @@ body>#login form .idpw {
 				<br>
 			<button id="btn_area">
 				<span class="btn" id="btnLogin">로그인</span> <br> <br>
+				</button>
+				</div>
+				</form>
 		</center>
+			
+			
+		
+		
+		<center>
+<c:choose>
+<c:when test="${sessionId != null}">
+<h2> 네이버 아이디 로그인 성공하셨습니다!! </h2>
+<h3>'${sessionId}' 님 환영합니다! </h3>
+<h3><a href="logout">로그아웃</a></h3>
+</c:when>
+<c:otherwise>
+<form action="login.do" method="post" name="frm" style="width:470px;">
+<h2>로그인</h2>
+</form>
+<br>
+<!-- 네이버 로그인 창으로 이동 -->
+<div id="naver_id_login" style="text-align:center"><a href="${url}">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+<br>
+</c:otherwise>
+</c:choose>
+</center>
+			
+			
 				
 					
 				<c:if test="${message == 'error' }">
@@ -6686,17 +6701,13 @@ body>#login form .idpw {
 				<c:if test="${message == 'logout' }">
 					<div style="color: red;">로그아웃 되었습니다.</div>
 				</c:if>
-			</button>
 			<br>
 			<div class="idpw">
 				<a href="#" class="login_link">아이디찾기|</a> <a href="#"
 					class="login_link">비밀번호찾기|</a> <a href="signUp.do"
 					class="login_link">회원가입</a>
 			</div>
-		</div>
-
-
-
+		
 
 		<div id="sign_in_options" class="field_container">
 			<div id="sign_in_alternatives_container">
@@ -6705,6 +6716,7 @@ body>#login form .idpw {
 					id="password_sign_in_option">or you can <a href="#"
 					id="password_sign_in" class="login_link">sign in using a
 						password</a></span>
+			</div>
 			</div>
 			<div id="remember_me_container">
 
@@ -6719,8 +6731,7 @@ body>#login form .idpw {
 			</div> --%>
 			<div class="clearfix"></div>
 		</div>
-	</form>
-
+	
 
 	<jsp:include page="Footer.jsp" />
 </body>
