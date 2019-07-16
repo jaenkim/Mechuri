@@ -6631,7 +6631,7 @@ body>#login form .idpw {
 </head>
 
 <body>
-	<jsp:include page="Header.jsp" />
+
 	<br>
 	<br>
 	<br>
