@@ -26,15 +26,6 @@
 <a href="testLogin.do">부트스트랩 테스트 로그인'3'</a><br>
 <a href="mailSending.do">회원 이메일 인증'3'</a><br>
 
-<a href="groupbuyingContents.do">공동구매 제품상세(아로마틱)'3'</a><br>
-<a href="groupbuyingContents2.do">공동구매 제품상세(독도)'3'</a><br>
-<a href="groupbuyingContents3.do">공동구매 제품상세(쿠션)'3'</a><br>
-<a href="groupbuyingContents4.do">공동구매 제품상세(파데)'3'</a><br>
-<a href="groupbuyingContents5.do">공동구매 제품상세(섀도)'3'</a><br>
-<a href="groupbuyingContents6.do">공동구매 제품상세(크림)'3'</a><br>
-<a href="groupbuyingContents7.do">공동구매 제품상세(립)'3'</a><br>
-<a href="groupbuyingContents8.do">공동구매 제품상세(썬크리)'3'</a><br>
-
 <a href="boardlist2.do?pnum=1">커뮤니티 리스트'3'</a><br>
 <a href="boardwrite.do">커뮤니티 글 작성'3'</a><br>
 <a href="boardupdate.do">커뮤니티 글 수정'3'</a><br>
