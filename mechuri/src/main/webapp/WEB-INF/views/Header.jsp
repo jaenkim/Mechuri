@@ -7,9 +7,13 @@
 
 <% 
 	String seUsername="";
+	String seNaverUsername="";
 	try { 
 		seUsername = (String)session.getAttribute("mem_name");
-		if (seUsername==null ) { 
+		seNaverUsername = (String)session.getAttribute("naverName");
+		if (seNaverUsername==null) { 
+			seNaverUsername="";
+		}else if(seUsername == null){
 			seUsername="";
 		}
 	} catch (Exception e) { 
@@ -71,15 +75,16 @@
 		</nav>
 			<a href="index.jsp" class="logo">Mechuri</a>
 		<nav class="right">
-		<% if (!seUsername.equals("")) { 
-   out.print(seUsername); %>
-<a style="color:black;" href="logout.do">로그아웃</a>
-<% } else { %>
-   
-<% } %>
-
+		<% if (!seUsername.equals("")) {  
+    				out.print(seUsername); %> 
+ 		<a style="color:black;" href="logout.do">로그아웃</a>
+		<%} else if(!seNaverUsername.equals("")) { 
+				out.print(seNaverUsername); %>
+		<% } else{ } %>
+		
+		
 <c:choose>
-<c:when test="seUsername eq ''">
+<c:when test="seNaverUsername eq ''">
 <a href="/mechuri/memLogin.do" class="button alt">Log in</a>
 </c:when>
 <c:otherwise>	
@@ -89,117 +94,117 @@
 </c:otherwise>
 </c:choose>
 		
-		</nav>
-	</header>
+</nav>
+</header>
 
 <!-- 우측 마이페이지 메뉴 -->
-<nav id="menu">
-	<div id="accordian">
-		<ul>
-			<li>
-				<p>
-					<span class="icon-dashboard"></span>Dashboard
-				</p>
-				<ul>
-					<li><a href="#">Reports</a></li>
-					<li><a href="#">Search</a></li>
-					<li><a href="#">Graphs</a></li>
-					<li><a href="#">Settings</a></li>
-				</ul>
-			</li>
-			<li class="active">
-				<p>
-					<span class="icon-tasks"></span>Tasks
-				</p>
-				<ul>
-					<li><a href="#">Today's tasks</a></li>
-					<li><a href="#">Urgent</a></li>
-					<li><a href="#">Overdues</a></li>
-					<li><a href="#">Recurring</a></li>
-					<li><a href="#">Settings</a></li>
-				</ul>
-			</li>
-			<li>
-				<p>
-					<span class="icon-calendar"></span>Calendar
-				</p>
-				<ul>
-					<li><a href="#">Team Calendar</a></li>
-					<li><a href="#">Private Calendar</a></li>
-					<li><a href="#">Settings</a></li>
-				</ul>
-			</li>
-			<li>
-				<p>
-					<span class="icon-heart"></span>Favourites
-				</p>
-				<ul>
-					<li><a href="#">Global favs</a></li>
-					<li><a href="#">My favs</a></li>
-					<li><a href="#">Team favs</a></li>
-					<li><a href="#">Settings</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-</nav>
+<!-- <nav id="menu"> -->
+<!-- 	<div id="accordian"> -->
+<!-- 		<ul> -->
+<!-- 			<li> -->
+<!-- 				<p> -->
+<!-- 					<span class="icon-dashboard"></span>Dashboard -->
+<!-- 				</p> -->
+<!-- 				<ul> -->
+<!-- 					<li><a href="#">Reports</a></li> -->
+<!-- 					<li><a href="#">Search</a></li> -->
+<!-- 					<li><a href="#">Graphs</a></li> -->
+<!-- 					<li><a href="#">Settings</a></li> -->
+<!-- 				</ul> -->
+<!-- 			</li> -->
+<!-- 			<li class="active"> -->
+<!-- 				<p> -->
+<!-- 					<span class="icon-tasks"></span>Tasks -->
+<!-- 				</p> -->
+<!-- 				<ul> -->
+<!-- 					<li><a href="#">Today's tasks</a></li> -->
+<!-- 					<li><a href="#">Urgent</a></li> -->
+<!-- 					<li><a href="#">Overdues</a></li> -->
+<!-- 					<li><a href="#">Recurring</a></li> -->
+<!-- 					<li><a href="#">Settings</a></li> -->
+<!-- 				</ul> -->
+<!-- 			</li> -->
+<!-- 			<li> -->
+<!-- 				<p> -->
+<!-- 					<span class="icon-calendar"></span>Calendar -->
+<!-- 				</p> -->
+<!-- 				<ul> -->
+<!-- 					<li><a href="#">Team Calendar</a></li> -->
+<!-- 					<li><a href="#">Private Calendar</a></li> -->
+<!-- 					<li><a href="#">Settings</a></li> -->
+<!-- 				</ul> -->
+<!-- 			</li> -->
+<!-- 			<li> -->
+<!-- 				<p> -->
+<!-- 					<span class="icon-heart"></span>Favourites -->
+<!-- 				</p> -->
+<!-- 				<ul> -->
+<!-- 					<li><a href="#">Global favs</a></li> -->
+<!-- 					<li><a href="#">My favs</a></li> -->
+<!-- 					<li><a href="#">Team favs</a></li> -->
+<!-- 					<li><a href="#">Settings</a></li> -->
+<!-- 				</ul> -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
+<!-- </nav> -->
 	
 	
 <!-- 헤더 네이게이션바 메뉴 -->
-<section class="MOD_MENU" data-theme="_bgp">
-  <div data-layout="_r" class="nopadding">
-    <nav class="MOD_MENU_Nav">
-      <p class="MOD_MENU_Title">Menu</p>
-      <svg class="MOD_MENU_Button" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
-        <rect width="30" height="6"/>
-        <rect y="24" width="30" height="6"/>
-        <rect y="12" width="30" height="6"/>
-      </svg>
-      <ul class="AP_Menu_List">
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-          <ul>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item</a>
-            </li>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item long title</a>
-            </li>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-          <ul>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item</a>
-            </li>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item long title</a>
-            </li>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</section>
+<!-- <section class="MOD_MENU" data-theme="_bgp"> -->
+<!--   <div data-layout="_r" class="nopadding"> -->
+<!--     <nav class="MOD_MENU_Nav"> -->
+<!--       <p class="MOD_MENU_Title">Menu</p> -->
+<!--       <svg class="MOD_MENU_Button" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve"> -->
+<!--         <rect width="30" height="6"/> -->
+<!--         <rect y="24" width="30" height="6"/> -->
+<!--         <rect y="12" width="30" height="6"/> -->
+<!--       </svg> -->
+<!--       <ul class="AP_Menu_List"> -->
+<!--         <li> -->
+<!--           <a href="#" data-theme="_bgp">Menu Item</a> -->
+<!--         </li> -->
+<!--         <li> -->
+<!--           <a href="#" data-theme="_bgp">Menu Item</a> -->
+<!--           <ul> -->
+<!--             <li> -->
+<!--               <a href="#" data-theme="_bgpd">Sub-Menu Item</a> -->
+<!--             </li> -->
+<!--             <li> -->
+<!--               <a href="#" data-theme="_bgpd">Sub-Menu Item long title</a> -->
+<!--             </li> -->
+<!--             <li> -->
+<!--               <a href="#" data-theme="_bgpd">Sub-Menu Item</a> -->
+<!--             </li> -->
+<!--           </ul> -->
+<!--         </li> -->
+<!--         <li> -->
+<!--           <a href="#" data-theme="_bgp">Menu Item</a> -->
+<!--         </li> -->
+<!--         <li> -->
+<!--           <a href="#" data-theme="_bgp">Menu Item</a> -->
+<!--         </li> -->
+<!--         <li> -->
+<!--           <a href="#" data-theme="_bgp">Menu Item</a> -->
+<!--         </li> -->
+<!--         <li> -->
+<!--           <a href="#" data-theme="_bgp">Menu Item</a> -->
+<!--           <ul> -->
+<!--             <li> -->
+<!--               <a href="#" data-theme="_bgpd">Sub-Menu Item</a> -->
+<!--             </li> -->
+<!--             <li> -->
+<!--               <a href="#" data-theme="_bgpd">Sub-Menu Item long title</a> -->
+<!--             </li> -->
+<!--             <li> -->
+<!--               <a href="#" data-theme="_bgpd">Sub-Menu Item</a> -->
+<!--             </li> -->
+<!--           </ul> -->
+<!--         </li> -->
+<!--       </ul> -->
+<!--     </nav> -->
+<!--   </div> -->
+<!-- </section> -->
 <!--END MODULE AREA 2: Menu 1-->
 			
 			
