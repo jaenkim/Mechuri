@@ -23,10 +23,12 @@ public interface IMembersDao {
 
 	public membersDto idcheck(String mem_id);
 
-	membersDto existNaverId(membersDto mDto);
-	
+	public membersDto existNaverId(membersDto mDto);
+
+	public membersDto getNameForNaverMember(String naverId);
+
 
 	
-	
+
 
 }

@@ -49,11 +49,15 @@ public class AController {
 	public String signUpBoard(Model model, membersDto dto) {
 
 		logger.info("회원 추가합니다. {}.");
-		
+		System.out.println("A컨트롤러에서 출력: ["+dto.getMem_id()+"]");
+		System.out.println("에러위치찾기 0");
 		boolean isS=MembersService.signUpBoard(dto);
+		System.out.println("에러위치찾기 1");
 		if(isS) {
+			System.out.println("에러위치찾기 2");
 			return "redirect:main.do";
 		}else {
+			System.out.println("에러위치찾기 3");
 			model.addAttribute("msg","회원가입 실패");
 			return "error";
 		}
@@ -114,9 +118,6 @@ public class AController {
 		}
 	}
 
-
-	
-		
 	
 	@RequestMapping(value = "/mail.do", method = RequestMethod.POST)
 	@ResponseBody

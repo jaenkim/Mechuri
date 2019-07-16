@@ -50,18 +50,24 @@ h3 {
 		<h3>SIST Naver_Login Success</h3>
 	</div>
 	<br>
-	
-	<h2 style="text-align: center" id="mem_name"></h2>
-	<h4 style="text-align: center" id="mem_email"></h4>
-	<h4 style="text-align: center" id="mem_nick"></h4>
-<form action="naverSignUp.do" method="post">
-	<input type="hidden" name="resultid" />
-	<input type="hidden" name="resultname"  />
-	<input type="hidden" name="resultemail"  />
-	<input type="hidden" name="resultnick"  />
-	<input type="submit" value="너 컨트롤러에 가니? 회원가입 좀 하자" />
-</form>
-	
+	<% 
+		String isMyMem = (String)request.getAttribute("isMyMem");
+		if (!isMyMem.equals("")){
+		response.sendRedirect("ranking/main");
+
+		} else { %>
+		<h2 style="text-align: center" id="mem_name"></h2>
+		<h4 style="text-align: center" id="mem_email"></h4>
+		<h4 style="text-align: center" id="mem_nick"></h4>
+		<form action="naverSignUp.do" method="post">
+			<input type="text" name="resultid" />
+			<input type="hidden" name="resultname"  />
+			<input type="hidden" name="resultemail"  />
+			<input type="hidden" name="resultnick"  />
+			<input type="submit" value="너 컨트롤러에 가니? 회원가입 좀 하자" />
+		</form>
+
+	<% } %>	
 
 </body>
 </html>

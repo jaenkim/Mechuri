@@ -402,6 +402,11 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 	WHERE MEM_ID = #{mem_id}
 </select>
 
+<select id="forNaverSession" resultType="membersDto" parameterType="String">
+	SELECT MEM_NO,MEM_NAME,MEM_NICK FROM MEMBERS
+	WHERE MEM_OTHERS01 = #{naverId}
+</select>
+
 <select id = 'idcheck' resultType='membersDto' parameterType='String'>
 		SELECT MEM_ID 
 		FROM MEMBERS 

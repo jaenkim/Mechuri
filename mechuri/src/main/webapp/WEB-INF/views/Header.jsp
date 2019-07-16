@@ -14,7 +14,7 @@
 	String seNaverUsername = "";
 	try {
 		seUsername = (String) session.getAttribute("mem_name");
-		seNaverUsername = (String) session.getAttribute("naverName");
+		seNaverUsername = (String) session.getAttribute("naverId");
 		if (seNaverUsername == null) {
 			seNaverUsername = "";
 		}
@@ -116,27 +116,30 @@
 	<!-- Header -->
 	<header id="header"> <nav class="left"> <a href="#menu"><span>Menu</span></a>
 	</nav> <a href="index.jsp" class="logo">Mechuri</a> <nav class="right">
-	<%
-		if (!seUsername.equals("")) {
-			out.print(seUsername);
-	%> <a style="color: black;"
-		href="logout.do">로그아웃</a> <%
- 	} else if (!seNaverUsername.equals("")) {
- 		out.print(seNaverUsername); %> 
- 	<% } else { %>
+ <%
+      if (!seUsername.equals("")) {
+         out.print(seUsername);
+   %> <a style="color: black;"
+      href="logout.do">로그아웃</a> <%
+    } 
+   if (!seNaverUsername.equals("")) {
+       out.print(seNaverUsername); %> 
+       <a style="color: black;" href="logout.do">로그아웃</a> 
+       <span>네이버에서 완전히 로그아웃해야합니다.</span>
+    <% } else { %>
   <a href="/mechuri/login.do" class="button alt">Log in</a>
 <% } %>
- 	<c:choose>
-		<c:when test="seNaverUsername eq ''">
-			<a href="/mechuri/login.do" class="button alt">Log in</a>
-		</c:when>
+    <c:choose>
+      <c:when test="seNaverUsername eq ''">
+         <a href="/mechuri/login.do" class="button alt">Log in</a>
+      </c:when>
 
-		<c:otherwise>
-			<input type='button' value='Log in' style="display: none">
+      <c:otherwise>
+         <input type='button' value='Log in' style="display: none">
 
-			<!-- <a href="/mechuri/memLogin.do" class="button alt">Log in</a> -->
-		</c:otherwise>
-	</c:choose> </nav> </header>
+         <!-- <a href="/mechuri/memLogin.do" class="button alt">Log in</a> -->
+      </c:otherwise>
+   </c:choose> </nav> </header>
 
 	<!-- 우측 마이페이지 메뉴 -->
 <%  if (seStatus.equals("")) { }%>

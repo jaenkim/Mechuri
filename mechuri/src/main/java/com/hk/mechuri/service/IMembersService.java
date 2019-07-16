@@ -26,31 +26,8 @@ public interface IMembersService {
 
 	public membersDto idcheck(String mem_id);
 
-	membersDto existNaverId(membersDto mDto);
+	public membersDto existNaverId(membersDto mDto);
 
+	public membersDto getNameForNaverMember(String naverId);
 
-
-
-	
-	
-	
-	/*public void regist(membersDto dto);
-
-	public membersDto userAuth(membersDto dto);
-	
-	public membersDto loginBoard(membersDto dto); 
-
-	public void logout(HttpSession session);
-
-	boolean idChk(String id);
-
-	boolean loginChk(Map<String, String> map);
-
-	public Integer countmessage(membersDto dto);*/
-	
-/*	public membersDto memLoginBoard(membersDto dto);
-	
-	public boolean loginChk(Map<String, String> map);
-
-	boolean loginChk(String mem_id); */
 }

@@ -69,19 +69,12 @@ public class MembersDao implements IMembersDao {
 	         return temp;
 	      }
 		
-	
-	/*@Override
-	public Map<String, Object> selectUserInfo(Map<String, Object>map) throws Exception {
-		return (Map<String, Object>)selectOne("Members.selectUserInfo", map);
-	}
+		//네이버 로그인 시 기존 네이버 가입자의 이름과 별명을 가져오는 메서드
+		@Override
+		public membersDto getNameForNaverMember(String naverId) {
+			membersDto mdto = sqlSession.selectOne(namespace+"forNaverSession",naverId);
+			return mdto;
+		}
 
-	private Map<String, Object> selectOne(String string, Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public membersDto get(membersDto dto) {
-		return sqlSession.selectOne(namespace+"memLogin",dto);
-	}*/
 
 }
