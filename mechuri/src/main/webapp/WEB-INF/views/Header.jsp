@@ -87,6 +87,9 @@ out.print(seNaverUsername); %>
 <c:when test="seUsername eq ''">
 <a href="/mechuri/memLogin.do" class="button alt">Log in</a>
 </c:when>
+<c:when test="seNaverUsername eq ''">
+<a href="/mechuri/memLogin.do" class="button alt">Log in</a>
+</c:when>
 <c:otherwise>	
 <input type='button' value='Log in' style="display:none" >
 
