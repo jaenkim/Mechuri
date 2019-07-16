@@ -63,7 +63,7 @@ START MODULE AREA 3: Hero 1
     <div data-layout="de10">
       <h1>당신에게 맞는 화장품을 찾아보세요</h1>
       <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
-      <a href="#" class="btn">Read more</a>
+      <a href="list.do" class="btn">Read more</a>
     </div>
   </div>
 </section>

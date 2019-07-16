@@ -44,6 +44,17 @@
 	} catch (Exception e) {
 		throw new ServletException(e);
 	}
+	
+	String naverStatus = "";
+	try{
+		naverStatus = (String)session.getAttribute("naverStatus");
+		if(naverStatus == null){
+			naverStatus = "";
+		}
+		
+	}catch(Exception e){
+		throw new ServletException(e);
+	}
 
 	String seBrand = "";
 	try {
@@ -119,32 +130,35 @@
  <%
       if (!seUsername.equals("")) {
          out.print(seUsername);
-   %> <a style="color: black;"
-      href="logout.do">로그아웃</a> <%
+   %> <a style="color: black;" href="logout.do">로그아웃</a> 
+   
+   <%
     } 
-   if (!seNaverUsername.equals("")) {
+      else if (!seNaverUsername.equals("")) {
        out.print(seNaverUsername); %> 
        <a style="color: black;" href="logout.do">로그아웃</a> 
-       <span>네이버에서 완전히 로그아웃해야합니다.</span>
+  <!--      <span>네이버에서 완전히 로그아웃해야합니다.</span> -->
     <% } else { %>
   <a href="/mechuri/login.do" class="button alt">Log in</a>
 <% } %>
-    <c:choose>
+  <%--   <c:choose>
       <c:when test="seNaverUsername eq ''">
          <a href="/mechuri/login.do" class="button alt">Log in</a>
       </c:when>
 
       <c:otherwise>
-         <input type='button' value='Log in' style="display: none">
+         <input type='button' value='Log in' style="display : none">
 
-         <!-- <a href="/mechuri/memLogin.do" class="button alt">Log in</a> -->
+         <a href="/mechuri/memLogin.do" class="button alt">Log in</a>
       </c:otherwise>
-   </c:choose> </nav> </header>
+   </c:choose> --%> 
+   </nav> 
+</header>
 
 	<!-- 우측 마이페이지 메뉴 -->
 <%  if (seStatus.equals("")) { }%>
 
-<%  if (seStatus.equals("M")) { %>
+<%  if (seStatus.equals("M")||naverStatus.equals("M")) { %>
 <nav id="menu">
 	<div id="accordian">
 		<ul>

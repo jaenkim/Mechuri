@@ -112,6 +112,7 @@ public class LoginController {
 		session.setAttribute("naverId", naverId);
 //		session.setAttribute("naverNickname", mDDto.getMem_name());
 		session.setAttribute("naverEmail", naverEmail);
+		session.setAttribute("naverStatus", "M");
 //		session.setAttribute("naverName", mDDto.getMem_nick());
 
         /* 네이버 로그인 성공 페이지 View 호출 */
