@@ -230,6 +230,12 @@ label {
   margin-top: 6px;
 }
 
+#img {
+	width: 50%;
+	height: 70%;
+	text-align: center;
+}
+
 
 /* Clear floats after the columns */
 /* .row:after { */

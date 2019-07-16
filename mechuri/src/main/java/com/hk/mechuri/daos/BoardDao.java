@@ -23,10 +23,10 @@ public class BoardDao implements IBoardDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<boardDto> getAllList(String pnum) {	//커뮤니티 리스트 출력
+	public List<boardDto> getAllList(String board_pnum) {	//커뮤니티 리스트 출력
 //		Map<String,Integer> mmap = new HashMap<String,Integer>();
 //		mmap.put("pnum", pnum);
-		return sqlSession.selectList(namespace+"boardlist2",pnum);
+		return sqlSession.selectList(namespace+"boardlist2",board_pnum);
 	}
 	
 
@@ -104,8 +104,8 @@ public class BoardDao implements IBoardDao {
 
 	@Override
 	public boolean readCount(int board_no) {
-		// TODO Auto-generated method stub
-		return false;
+		int count=sqlSession.update(namespace+"readcount",board_no);
+		return count>0?true:false;
 	}
 
 //여기부터는 첨부파일

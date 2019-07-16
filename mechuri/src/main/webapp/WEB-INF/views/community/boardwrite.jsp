@@ -52,7 +52,7 @@
 
   <br>
   <div>
-    <input type="button" value="글목록" id="cancel1" onclick="location.href='boardlist2.do?pnum=1'" />
+    <input type="button" value="글목록" id="cancel1" onclick="location.href='boardlist2.do?board_pnum=1'" />
     <input type="submit" value="작성" id="submit1">
   </div>
   </form>

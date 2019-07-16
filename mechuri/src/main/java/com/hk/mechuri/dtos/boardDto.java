@@ -18,7 +18,7 @@ public class boardDto {
 	private String board_filedelflag;
 	private String board_refer;
 	private String board_step;
-	private String board_depth;
+	private String board_pnum;
 	private String board_new;
 	
 	
@@ -45,7 +45,7 @@ public class boardDto {
 	//using field
 	public boardDto(int board_no, String board_nick, String board_title, String board_conts, Date board_regdate,
 			int board_count, int board_fileno, String board_originfile, String board_storedfile, Date board_fileregdate,
-			int board_filesize, String board_filedelflag, String board_refer, String board_step, String board_depth) {
+			int board_filesize, String board_filedelflag, String board_refer, String board_step, String board_pnum) {
 		super();
 		this.board_no = board_no;
 		this.board_nick = board_nick;
@@ -61,7 +61,7 @@ public class boardDto {
 		this.board_filedelflag = board_filedelflag;
 		this.board_refer = board_refer;
 		this.board_step = board_step;
-		this.board_depth = board_depth;
+		this.board_pnum = board_pnum;
 		
 	
 	}
@@ -271,13 +271,13 @@ public class boardDto {
 	}
 	
 	
-	public String board_depth() {
-		return board_depth;
+	public String board_pnum() {
+		return board_pnum;
 	}
 
 
-	public void board_depth(String board_depth) {
-		this.board_depth = board_depth;
+	public void board_pnum(String board_pnum) {
+		this.board_pnum = board_pnum;
 	}
 	
 
@@ -289,7 +289,7 @@ public class boardDto {
 				+ ", board_fileno=" + board_fileno + ", board_originfile="
 				+ board_originfile + ", board_storedfile=" + board_storedfile + ", board_fileregdate="
 				+ board_fileregdate + ", board_filesize=" + board_filesize + ", board_filedelflag=" + board_filedelflag
-				+ ", board_refer=" + board_refer + ", board_step=" + board_step + ", board_depth=" + board_depth + "]";
+				+ ", board_refer=" + board_refer + ", board_step=" + board_step + ", board_pnum=" + board_pnum + "]";
 	}
 	
 }

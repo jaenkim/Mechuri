@@ -10,7 +10,7 @@ import com.hk.mechuri.dtos.replyDto;
 
 public interface IBoardService {
 	
-	public List<boardDto> getAllList(String pnum);
+	public List<boardDto> getAllList(String board_pnum);
 	
 	/*public int insertBoard(boardDto dto);*/
 	public boolean insertFileInfo(HttpServletRequest request,boardDto dto);

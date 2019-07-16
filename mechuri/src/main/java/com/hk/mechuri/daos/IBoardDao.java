@@ -11,7 +11,7 @@ public interface IBoardDao {
 
 	
 
-	public List<boardDto> getAllList(String pnum);
+	public List<boardDto> getAllList(String board_pnum);
 	//커뮤니티 리스트 출력
 	
 	

@@ -24,8 +24,8 @@ public class BoardService implements IBoardService {
 	private IBoardDao boardDao;
 
 	@Override
-	public List<boardDto> getAllList(String pnum) {
-		return boardDao.getAllList(pnum);
+	public List<boardDto> getAllList(String board_pnum) {
+		return boardDao.getAllList(board_pnum);
 	}
 
 	
@@ -137,8 +137,7 @@ public class BoardService implements IBoardService {
 
 	@Override
 	public boolean readCount(int board_no) {
-		// TODO Auto-generated method stub
-		return false;
+		return boardDao.readCount(board_no);
 	}
 
 	//여기부터 첨부파일, 커뮤니티 글 이미지랑 내용 같이보내는거
