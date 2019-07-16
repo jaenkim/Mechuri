@@ -203,8 +203,6 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 
 
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 시작 -->
-
-
 <!-- 쪽지 보내기 쿼리 -->
 <insert id="sendMessage2" parameterType="productDto">
 	<![CDATA[
