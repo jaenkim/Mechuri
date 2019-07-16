@@ -81,6 +81,8 @@
 		<%} else if(!seNaverUsername.equals("")) { 
 				out.print(seNaverUsername); %>
 		<% } else{ } %>
+		
+		
 <c:choose>
 <c:when test="seNaverUsername eq ''">
 <a href="/mechuri/memLogin.do" class="button alt">Log in</a>
