@@ -7,10 +7,13 @@
 
 <% 
 	String seUsername="";
+	String seNaverUsername="";
 	try { 
 		seUsername = (String)session.getAttribute("mem_name");
-		if (seUsername==null ) { 
+		seNaverUsername = (String)session.getAttribute("naverName");
+		if (seUsername==null && seNaverUsername==null) { 
 			seUsername="";
+			seNaverUsername="";
 		}
 	} catch (Exception e) { 
 		throw new ServletException(e);
@@ -74,10 +77,12 @@
 		<% if (!seUsername.equals("")) { 
    out.print(seUsername); %>
 <a style="color:black;" href="logout.do">로그아웃</a>
-<% } else { %>
-   
-<% } %>
+<% } else if(!seNaverUsername.equals("")) { 
+out.print(seNaverUsername); %>
+<a style="color:black;" href="logout.do">로그아웃</a>
+<% } else{%>
 
+<% } %>
 <c:choose>
 <c:when test="seUsername eq ''">
 <a href="/mechuri/memLogin.do" class="button alt">Log in</a>

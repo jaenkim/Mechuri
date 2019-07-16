@@ -61,7 +61,7 @@ public class AController {
 	
 	@RequestMapping(value= "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin() {
-		return "memLogin"; //memLogin.jsp로
+		return "login"; //memLogin.jsp로
 	}
 	
 	@RequestMapping(value= "/login_check.do", method = {RequestMethod.GET, RequestMethod.POST})

@@ -67,21 +67,52 @@ public class LoginController {
         //로그인 사용자 정보를 읽어온다.
 	    apiResult = naverLoginBO.getUserProfile(oauthToken);
 
-//	    String name = apiResult.
-//	    membersService.existNaverId(apiResult);
-
-	    System.out.println("apiResult ["+apiResult+"]");
-
 		model.addAttribute("result", apiResult);
-
+		
 		System.out.println("aaaaaaaaaaaaaaaaaaaaaa"+apiResult);
 		
 //		네이버 로그인 정보를 세션으로 생성해야 함
+		/*db에서 회원정보가 있으면 메인페이지로이동하고 없으면 naverSuccess로 이동해서 네이버 회원가입 완료시킴
+		세션을 만들어서 세션에 저장*/
+		//" "따옴표를  apiResult에서 제거
+		String a = apiResult.replace("\"","");
+		System.out.println("aa ["+a+"]");
+		//apiResult에서 두번째 {의 인덱스를 찾음
+		int b = a.indexOf("{",10);
+		System.out.println("bb ["+b+"]");
+		//apiResult에서 마지막 직전 }를 찾음
+		int c = a.indexOf("}",55);
+		System.out.println("cc ["+c+"]");
+		//apiResult에서 id 부터 name까지 key:value 형태로 자르기 전까지 출력
+		String d = a.substring(b+1, c);
+		System.out.println("dd ["+d+"]");
 		
-		
+		String[] array = d.split(",");
+		String tempNaverID = array[0];
+		String tempNaverNickname = array[1];
+		String tempNaverEmail = array[2];
+		String tempNaverName = array[3];
 
-		System.out.println("로그인 컨트롤러에서 jsp로 출력전 모델 내용 보기(at콜백점두) ["+model.getClass()+"]");
-		System.out.println("로그인 컨트롤러에서 jsp로 출력전 모델 내용 보기(at콜백점두) ["+model.toString()+"]");
+		System.out.println("naverID ["+tempNaverID+"]");
+		System.out.println("naverNickname ["+tempNaverNickname+"]");
+		System.out.println("naverEmail ["+tempNaverEmail+"]");
+		System.out.println("naverName ["+tempNaverName+"]");
+		
+		//네이버 apiResult에서 분리한 id(난수), email, name, nickName
+		String naverId = tempNaverID.substring(3, tempNaverID.length());
+		String naverNickname = tempNaverNickname.substring(9, tempNaverNickname.length());
+		String naverEmail = tempNaverEmail.substring(6, tempNaverEmail.length());
+		String naverName = tempNaverName.substring(5, tempNaverName.length());
+		System.out.println("naverID ["+naverId+"]");
+		System.out.println("naverNickname ["+naverNickname+"]");
+		System.out.println("naverEmail ["+naverEmail+"]");
+		System.out.println("naverName ["+naverName+"]");
+		
+		session=request.getSession();
+		session.setAttribute("naverId", naverId);
+		session.setAttribute("naverNickname", naverNickname);
+		session.setAttribute("naverEmail", naverEmail);
+		session.setAttribute("naverName", naverName);
 
         /* 네이버 로그인 성공 페이지 View 호출 */
 		return "naverSuccess";
