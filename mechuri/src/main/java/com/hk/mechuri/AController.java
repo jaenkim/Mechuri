@@ -61,11 +61,11 @@ public class AController {
 	
 	@RequestMapping(value= "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin() {
-		return "login"; //memLogin.jsp로
+		return "memLogin"; //memLogin.jsp로
 	}
 	
 	@RequestMapping(value= "/login_check.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView login_check(							//spring에선 선언하면 session 객체 만들어줘
+	public String login_check(							//spring에선 선언하면 session 객체 만들어줘
 	@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
 		System.out.println(dto);
 		System.out.println(session);
@@ -76,16 +76,18 @@ public class AController {
 		System.out.println(mav);
 		if(result) { //로그인 성공
 			mav.setViewName("loginresult"); //main.jsp
-			mav.addObject("message", "success"); 
+			mav.addObject("message", "success"); 		return "redirect:main.do" ;
+
 		}else { //로그인 실패 
 			mav.setViewName("memLogin");
 			mav.addObject("message", "error");
-		}
-		return mav;
+			
+		}return "loginerror" ;
 	}
 	
 	@RequestMapping(value= "/logout.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpSession session) {
+		System.out.println("로그아웃 들어오니?");
 		session.invalidate();
 		return "redirect:main.do";
 	}
@@ -112,6 +114,10 @@ public class AController {
 		}
 	}
 
+
+	
+		
+	
 	@RequestMapping(value = "/mail.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer mail(Model model, String mem_id) 
@@ -131,5 +137,19 @@ public class AController {
 		return result;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/idcheck.do", method = {RequestMethod.POST})
+	public String idcheck(Model model, String mem_id, membersDto dto) {
 
+		logger.info("아이디 중복체크 {}.");
+
+		dto=MembersService.idcheck(mem_id);
+		if(dto==null) {
+			return "a";
+		}else {
+			return "b";
+		}
 	}
+
+	
+}	

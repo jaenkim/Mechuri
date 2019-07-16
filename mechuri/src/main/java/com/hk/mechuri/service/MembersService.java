@@ -77,10 +77,15 @@ public class MembersService implements IMembersService {
 		return MembersDao.NaverSignUp(mem_email,mem_name,mem_id);
 	}
 
+	 @Override
+	   public membersDto existNaverId(membersDto mDto) {
+	      return MembersDao.existNaverId(mDto);
+	      
+	   }
+	 
 	@Override
-	public membersDto existNaverId(membersDto mDto) {
-		return MembersDao.existNaverId(mDto);
-		
+	public membersDto idcheck(String mem_id) {
+		return MembersDao.idcheck(mem_id);
 	}
 
 	

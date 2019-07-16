@@ -11,44 +11,51 @@
 <head>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-	function mailChk() 
-	{
- 		var email = $("#mem_id").val();
-		
-		$.ajax
-		(
-			{
-				type: "POST",
-				url: "./mail.do",
-				data:"mem_id="+email,
-				async: true,
-				success: function(msg)
-				{
-					$("#hid").val(msg);
-					$("#bt").attr("disabled",true);
-					$("#btn").attr("disabled",false);
-					
-					alert("메일로 인증코드를 전송하였습니다.");
-				}
+	function mailChk() {
+		var email = $("#mem_id").val();
+
+		$.ajax({
+			type : "POST",
+			url : "./mail.do",
+			data : "mem_id=" + email,
+			async : true,
+			success : function(msg) {
+				$("#hid").val(msg);
+				$("#bt").attr("disabled", true);
+				$("#btn").attr("disabled", false);
+
+				alert("메일로 인증코드를 전송하였습니다.");
 			}
-		);
+		});
 	}
-	
-	function keyChk()
-	{
-		if($("#insrt").val()==$("#hid").val())
-		{
+
+	function keyChk() {
+		if ($("#insrt").val() == $("#hid").val()) {
 			alert("인증확인완료");
-			$("#sbm").attr("disabled",false);
-		}
-		else
-		{
+			$("#sbm").attr("disabled", false);
+		} else {
 			alert("잘못된 인증번호 입니다. 다시 한 번 확인해 주세요.");
 		}
 	}
 	
-	
-	
+	function idcheck() {
+		var email = $("#mem_id").val();
+
+		$.ajax({
+			type : "POST",
+			url : "./idcheck.do",
+			data : "mem_id=" + email,
+			async : true,
+			success : function(msg) {
+				if(msg=="a"){
+					alert("사용 가능한 아이디입니다.")
+				}else{
+					alert("이미 존재하는 아이디입니다.")
+				}
+			}
+			
+		});
+	}
 </script>
 
 <style>
@@ -179,175 +186,213 @@ h3 {
 	transform: translateX(8px);
 }
 
-
-
 33
 .3
 
+
  
+
 
 %
 {
 -webkit-transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (-6
 px
+
+
 );
-
-
-	
-
 transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (-6
 px
+
+
 );
-
-
-
-
 }
 49
 .95
 
+
  
+
 
 %
 {
 -webkit-transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (4
 px
+
+
 );
-
-
-	
-
 transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (4
 px
+
+
 );
-
-
-
-
 }
 66
 .6
 
+
  
+
 
 %
 {
 -webkit-transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (-2
 px
+
+
 );
-
-
-	
-
 transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (-2
 px
+
+
 );
-
-
-
-
 }
 83
 .25
 
+
  
+
 
 %
 {
 -webkit-transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (1
 px
+
+
 );
-
-
-	
-
 transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (1
 px
+
+
 );
-
-
-
-
 }
 100%
 {
@@ -356,13 +401,19 @@ px
 
 
 
+
+
 :
+
 
 
  
 
 
+
 translateX
+
+
 
 
 
@@ -373,13 +424,19 @@ transform
 
 
 
+
+
 :
+
 
 
  
 
 
+
 translateX
+
+
 
 
 
@@ -396,170 +453,210 @@ keyframes hvr-wobble-horizontal { 16.65% {
 33
 .3
 
+
  
+
 
 %
 {
 -webkit-transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (-6
 px
+
+
 );
-
-
-	
-
 transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (-6
 px
+
+
 );
-
-
-
-
 }
 49
 .95
 
+
  
+
 
 %
 {
 -webkit-transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (4
 px
+
+
 );
-
-
-	
-
 transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (4
 px
+
+
 );
-
-
-
-
 }
 66
 .6
 
+
  
+
 
 %
 {
 -webkit-transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (-2
 px
+
+
 );
-
-
-	
-
 transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (-2
 px
+
+
 );
-
-
-
-
 }
 83
 .25
 
+
  
+
 
 %
 {
 -webkit-transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (1
 px
+
+
 );
-
-
-	
-
 transform
 
 
+
+
 :
 
+
  
+
 
 translateX
 
 
+
+
 (1
 px
+
+
 );
-
-
-
-
 }
 100%
 {
@@ -568,13 +665,19 @@ px
 
 
 
+
+
 :
+
 
 
  
 
 
+
 translateX
+
+
 
 
 
@@ -585,13 +688,19 @@ transform
 
 
 
+
+
 :
+
 
 
  
 
 
+
 translateX
+
+
 
 
 
@@ -682,13 +791,19 @@ display
 
 
 
+
+
 :
+
 
 
  
 
 
+
 flex
+
+
 
 
 
@@ -699,13 +814,19 @@ align-items
 
 
 
+
+
 :
+
 
 
  
 
 
+
 center
+
+
 
 
 
@@ -716,14 +837,20 @@ margin-left
 
 
 
+
+
 :
+
 
 
  
 
 
+
 23
 px
+
+
 
 
 
@@ -767,42 +894,45 @@ input {
 		<!-- <div class="inner"> -->
 
 		<h3>일반회원 가입</h3>
-		
 
-		<div class="form-holder" style="text-align:center">
-  <input type="hidden" name="mem_id" />
-		<input type="text" placeholder="아이디" name="mem_id" id="mem_id" class="form-control"/> <input type="button" value="아이디인증" id="bt" onclick="mailChk()"/>
-		<input type="hidden" id="hid">
-		<input type="text" id="insrt" placeholder="인증번호를 입력해주세요.">
-		<center>
-		<input type="button" class="btn-success" id="btn" disabled="disabled" onclick="keyChk()" value="인증" >
-		</center>
+
+		<div class="form-holder" style="text-align: center">
+			<input type="hidden" name="mem_id" /> 
+			<input type="button" value="아이디중복확인" id="btbt" onclick="idcheck()" /> <input
+				type="text" placeholder="아이디" name="mem_id" id="mem_id"
+				class="form-control" /> <input type="button" value="아이디인증" id="bt"
+				onclick="mailChk()" /> <input type="hidden" id="hid"> <input
+				type="text" id="insrt" placeholder="인증번호를 입력해주세요.">
+			<center>
+				<input type="button" class="btn-success" id="btn"
+					disabled="disabled" onclick="keyChk()" value="인증">
+			</center>
 		</div>
-	
 
-	<div class="form-holder">
-		<input type="text" placeholder="비밀번호" name="mem_pw"
-			class="form-control">
-	</div>
-	<div class="form-holder">
-		<input type="password" placeholder="비밀번호 확인" class="form-control"
-			style="font-size: 15px;">
-	</div>
-	<div class="form-holder">
-		<input type="text" placeholder="이름" name="mem_name"
-			class="form-control" style="font-size: 15px;">
-	</div>
-	<div class="form-holder">
-		<input type="text" placeholder="별명" name="mem_nick"
-			class="form-control" style="font-size: 15px;">
-	</div>
-	<div class="form-holder">
-		<input type="text" placeholder="핸드폰" name="mem_phone"
-			class="form-control" style="font-size: 15px;">
-	</div>
-	<div class="checkbox"></div>
 
-	<button input type="submit" id="sbm">회원가입하기</button>
+		<div class="form-holder">
+			<input type="text" placeholder="비밀번호" name="mem_pw"
+				class="form-control">
+		</div>
+		<div class="form-holder">
+			<input type="password" placeholder="비밀번호 확인" class="form-control"
+				style="font-size: 15px;">
+		</div>
+		<div class="form-holder">
+			<input type="text" placeholder="이름" name="mem_name"
+				class="form-control" style="font-size: 15px;">
+		</div>
+		<div class="form-holder">
+			<input type="text" placeholder="별명" name="mem_nick"
+				class="form-control" style="font-size: 15px;">
+		</div>
+		<div class="form-holder">
+			<input type="text" placeholder="핸드폰" name="mem_phone"
+				class="form-control" style="font-size: 15px;">
+		</div>
+		<div class="checkbox"></div>
+
+		<button input type="submit" id="sbm">회원가입하기</button>
 
 	</form>
 	<!-- 	</div>  -->

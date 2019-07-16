@@ -399,6 +399,13 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 	SELECT MEM_ID, MEM_NAME, MEM_OTHERS01, MEM_NICK FROM MEMBERS
 	WHERE MEM_ID = #{mem_id}
 </select>
+
+<select id = 'idcheck' resultType='membersDto' parameterType='String'>
+		SELECT MEM_ID 
+		FROM MEMBERS 
+		WHERE MEM_id= #{mem_id}
+</select>
+
 </mapper>
 
 

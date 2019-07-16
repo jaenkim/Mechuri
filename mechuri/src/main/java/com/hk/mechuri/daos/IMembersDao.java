@@ -20,15 +20,13 @@ public interface IMembersDao {
 	public membersDto NaverLogCheck(String mem_email);//네이버 로그인시 이메일 체크
 
 	public boolean NaverSignUp(String mem_email, String mem_name, String mem_id);//네이버 로그인시 회원가입하기
+
+	public membersDto idcheck(String mem_id);
+
+	membersDto existNaverId(membersDto mDto);
 	
 
 	
-
-	public boolean alter_userkey(String mem_id, String mem_key);
-
-	public membersDto existNaverId(membersDto mDto);
-
 	
-
 
 }
