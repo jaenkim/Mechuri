@@ -1,8 +1,10 @@
 package com.hk.mechuri.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import com.hk.mechuri.dtos.membersDto;
@@ -22,7 +24,13 @@ public interface IMembersService {
 
 	public boolean NaverSignUp(String mem_email, String mem_name, String mem_id);//네이버 로그인시 회원가입하기
 
+
 	public membersDto existNaverId(membersDto mDto);
+
+
+
+
+
 	
 	
 	/*public void regist(membersDto dto);

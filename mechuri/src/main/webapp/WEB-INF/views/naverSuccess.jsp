@@ -23,12 +23,18 @@ h3 {
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
+<<<<<<< HEAD
 		var mem_id=${result}.response.id;
 		var mem_name = ${result}.response.name;
 		var mem_email = ${result}.response.email;
 		var mem_nick = ${result}.response.nickname;
 
 		$("#mem_name").html("환영합니다. "+mem_name+"님");
+=======
+		var nick = ${result}.response.id;
+		var mem_email = ${result}.response.email;
+		$("#nick").html("환영합니다. "+nick+"님");
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 		$("#mem_email").html(mem_email);
 		$("#mem_nick").html("별명"+mem_nick);
 		
@@ -39,7 +45,6 @@ h3 {
 		
 	  });
 </script>
-
 </head>
 <body>
 	<div
@@ -47,7 +52,7 @@ h3 {
 		<h3>SIST Naver_Login Success</h3>
 	</div>
 	<br>
-	<h2 style="text-align: center" id="mem_name"></h2>
+	<h2 style="text-align: center" id="nick"></h2>
 	<h4 style="text-align: center" id="mem_email"></h4>
 	<h4 style="text-align: center" id="mem_nick"></h4>
 <form action="naverSignUp.do" method="post">

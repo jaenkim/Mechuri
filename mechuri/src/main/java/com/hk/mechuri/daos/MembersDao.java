@@ -57,15 +57,9 @@ public class MembersDao implements IMembersDao {
 			return cnt>0?true:false;
 		}
 		
-		@Override
-		public boolean GetKey(String member_id, String member_key) {
-			Map<String,Object> map = new HashMap<String,Object>();
-			map.put("member_id", member_id);
-			map.put("member_key", member_key);
-			int cnt = sqlSession.update(namespace+"getkey",map);
-			return cnt>0?true:false;
-		}
+	
 		
+
 		@Override
 		public boolean alter_userkey(String mem_id, String member_key) {
 			Map<String,Object> map = new HashMap<String,Object>();
@@ -84,6 +78,7 @@ public class MembersDao implements IMembersDao {
 
 
 		
+
 	/*@Override
 	public Map<String, Object> selectUserInfo(Map<String, Object>map) throws Exception {
 		return (Map<String, Object>)selectOne("Members.selectUserInfo", map);
@@ -97,4 +92,5 @@ public class MembersDao implements IMembersDao {
 	public membersDto get(membersDto dto) {
 		return sqlSession.selectOne(namespace+"memLogin",dto);
 	}*/
+
 }

@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +38,7 @@ public class HomeController {
 
 
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String main(Locale locale, Model model) {
+	public String main(Locale locale, Model model,HttpSession session) {
 
 		return "ranking/main";
 	}
