@@ -112,6 +112,7 @@
 </head>
 <body>
 
+
 	<!-- Header -->
 	<header id="header"> <nav class="left"> <a href="#menu"><span>Menu</span></a>
 	</nav> <a href="index.jsp" class="logo">Mechuri</a> <nav class="right">
