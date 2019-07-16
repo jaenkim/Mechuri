@@ -28,10 +28,6 @@ public interface IMembersService {
 	public membersDto existNaverId(membersDto mDto);
 
 
-
-
-
-	
 	
 	/*public void regist(membersDto dto);
 
