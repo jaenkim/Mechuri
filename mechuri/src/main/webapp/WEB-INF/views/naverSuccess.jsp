@@ -23,10 +23,26 @@ h3 {
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
+<<<<<<< HEAD
+		var mem_id=${result}.response.id;
+		var mem_name = ${result}.response.name;
+		var mem_email = ${result}.response.email;
+		var mem_nick = ${result}.response.nickname;
+
+		$("#mem_name").html("환영합니다. "+mem_name+"님");
+=======
 		var nick = ${result}.response.id;
 		var mem_email = ${result}.response.email;
 		$("#nick").html("환영합니다. "+nick+"님");
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 		$("#mem_email").html(mem_email);
+		$("#mem_nick").html("별명"+mem_nick);
+		
+		$("input[name=resultid]").val(mem_id);
+		$("input[name=resultname]").val(mem_name);
+		$("input[name=resultemail]").val(mem_email);
+		$("input[name=resultnick]").val(mem_nick);
+		
 	  });
 </script>
 </head>
@@ -38,6 +54,15 @@ h3 {
 	<br>
 	<h2 style="text-align: center" id="nick"></h2>
 	<h4 style="text-align: center" id="mem_email"></h4>
+	<h4 style="text-align: center" id="mem_nick"></h4>
+<form action="naverSignUp.do" method="post">
+	<input type="hidden" name="resultid" />
+	<input type="hidden" name="resultname"  />
+	<input type="hidden" name="resultemail"  />
+	<input type="hidden" name="resultnick"  />
+	<input type="submit" value="너 컨트롤러에 가니? 회원가입 좀 하자" />
+</form>
+	
 
 </body>
 </html>

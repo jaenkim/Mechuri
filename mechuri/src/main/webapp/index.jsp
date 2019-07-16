@@ -35,13 +35,10 @@
 <a href="groupbuyingContents7.do">공동구매 제품상세(립)'3'</a><br>
 <a href="groupbuyingContents8.do">공동구매 제품상세(썬크리)'3'</a><br>
 
-<a href="addProduct.do">기업 제품등록'3'</a><br>
-
 <a href="boardlist2.do">커뮤니티 리스트'3'</a><br>
 <a href="boardwrite.do">커뮤니티 글 작성'3'</a><br>
 <a href="boardupdate.do">커뮤니티 글 수정'3'</a><br>
 <a href="boarddetail.do">커뮤니티 글 상세보기'3'</a><br>
-<a href="sendsendemail.do">메일보내기</a>
 
 <!-- 일반 회원 메뉴 -->
 <a href="userInfo.do">*내 정보 보기(일반회원/회원번호가 26번인 회원)- 수정/탈퇴</a><br>

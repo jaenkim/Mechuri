@@ -54,9 +54,9 @@ $(function(){
 <h3><a href="logout">로그아웃</a></h3>
 </c:when>
 <c:otherwise>
-<form action="login.do" method="post" name="frm" style="width:470px;">
-<h2>로그인</h2>
-</form>
+<!-- <form action="login.do" method="post" name="frm" style="width:470px;"> -->
+<!-- <h2>로그인</h2> -->
+<!-- </form> -->
 <br>
 <!-- 네이버 로그인 창으로 이동 -->
 <div id="naver_id_login" style="text-align:center"><a href="${url}">

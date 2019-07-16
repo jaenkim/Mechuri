@@ -23,6 +23,12 @@ public interface IMembersDao {
 	
 
 	
+
+	public boolean alter_userkey(String mem_id, String mem_key);
+
+	public membersDto existNaverId(membersDto mDto);
+
 	
+
 
 }
