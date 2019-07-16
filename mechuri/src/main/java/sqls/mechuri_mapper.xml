@@ -395,9 +395,6 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 		FROM MEMBERS 
 		WHERE MEM_NO= 6
 </select>
-
-
-
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 끝 -->
 
 </mapper>
