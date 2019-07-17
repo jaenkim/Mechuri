@@ -56,7 +56,7 @@
 	<thead>
 		<tr>
 			<th>순위 <button onclick="sortTD ( 0 )">▲</button><button onclick="reverseTD ( 0 )">▼</button> </th>
-	<!-- 		<th>사진</th>		-->
+<!-- 		<th>사진</th>	 -->
 			<th>브랜드 <button onclick="sortTD ( 1 )">▲</button><button onclick="reverseTD ( 1 )">▼</button> </th>
 			<th>제품명 <button onclick="sortTD ( 2 )">▲</button><button onclick="reverseTD ( 2 )">▼</button> </th>
 			<th>평점/평점인원 <button onclick="sortTD ( 3 )">▲</button><button onclick="reverseTD ( 3 )">▼</button> </th>
@@ -65,7 +65,7 @@
   	<tbody>
 		<c:forEach items="${list}" var="dto">
 			<tr class="sorting">
-<%--  		<td><img src="images/${dto.product_storedname }.png" alt="이미지">	--%>
+<%--   		<td><img src="images/${dto.product_storedname }.png" alt="이미지"> --%>
 				<td>${dto.product_rank}</td>
 				<td>${dto.product_brand}</td>
 				<td><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name} </a></td>
