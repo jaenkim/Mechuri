@@ -28,8 +28,11 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	//여기부터 커뮤니티 기능                    
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
 	public String boardlist2(HttpSession session,Locale locale, Model model,HttpServletRequest request) {
-		System.out.println("여기도 안들어오나");
-	//	System.out.println("pnum=["+request.getParameter("pnum")+"]");
+		String loginInfo = (String)session.getAttribute("mem_name");
+		if(loginInfo==null || loginInfo=="") {
+			return "commuError";
+		}else {
+		
 		String board_pnum = request.getParameter("board_pnum");  //해당 페이지 갖고옴
 		System.out.println("board_pnum=["+board_pnum+"]");
 		session = request.getSession();//세션생성
@@ -53,6 +56,7 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		model.addAttribute("list",list);
 		System.out.println("pcount=["+pcount+"]");
 		model.addAttribute("pcount",pcount);
+		}
 		}
 		return "community/boardlist2";
 	}
