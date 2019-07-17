@@ -29,34 +29,35 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
 	public String boardlist2(HttpSession session,Locale locale, Model model,HttpServletRequest request) {
 		String loginInfo = (String)session.getAttribute("mem_name");
-		if(loginInfo==null || loginInfo=="") {
+		String naverLoginInfo = (String)session.getAttribute("naverEmail");
+		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
 			return "commuError";
 		}else {
 		
-		String board_pnum = request.getParameter("board_pnum");  //해당 페이지 갖고옴
-		System.out.println("board_pnum=["+board_pnum+"]");
-		session = request.getSession();//세션생성
-		session.setAttribute("board_pnum", board_pnum);//해당페이지 세션에 넣음
-		//request.getSession().removeAttribute("readcount");
-		if(board_pnum == null ||board_pnum == "") {
-			board_pnum="1";//1페이지로 기본세팅
+			String board_pnum = request.getParameter("board_pnum");  //해당 페이지 갖고옴
+			System.out.println("board_pnum=["+board_pnum+"]");
+			session = request.getSession();//세션생성
+			session.setAttribute("board_pnum", board_pnum);//해당페이지 세션에 넣음
+			//request.getSession().removeAttribute("readcount");
+			if(board_pnum == null ||board_pnum == "") {
+				board_pnum="1";//1페이지로 기본세팅
+				List<boardDto> list=boardService.getAllList(board_pnum);
+				int pcount = boardService.getPcount(); //총 페이지 수			
+				model.addAttribute("list",list);
+				model.addAttribute("pcount",pcount);
+				
+			} else {
+				
+			//pnum="1";//1페이지로 기본세팅
 			List<boardDto> list=boardService.getAllList(board_pnum);
-			int pcount = boardService.getPcount(); //총 페이지 수			
+			int pcount = boardService.getPcount(); //총 페이지 수	
+			
+			System.out.println("최신글 뉴=["+list.get(0).getBoard_new()+"]");
+			
 			model.addAttribute("list",list);
+			System.out.println("pcount=["+pcount+"]");
 			model.addAttribute("pcount",pcount);
-			
-		} else {
-			
-		//pnum="1";//1페이지로 기본세팅
-		List<boardDto> list=boardService.getAllList(board_pnum);
-		int pcount = boardService.getPcount(); //총 페이지 수	
-		
-		System.out.println("최신글 뉴=["+list.get(0).getBoard_new()+"]");
-		
-		model.addAttribute("list",list);
-		System.out.println("pcount=["+pcount+"]");
-		model.addAttribute("pcount",pcount);
-		}
+			}
 		}
 		return "community/boardlist2";
 	}
