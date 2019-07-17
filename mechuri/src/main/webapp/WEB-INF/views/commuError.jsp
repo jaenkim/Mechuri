@@ -13,7 +13,7 @@
 <body>
 	<script type="text/javascript">
 		alert("로그인 후 이용가능합니다.");
-		window.location.replace("http://localhost:8888/mechuri/login.do");
+		window.location.replace("http://localhost:7177/mechuri/login.do");
 	</script>
 	
 	
