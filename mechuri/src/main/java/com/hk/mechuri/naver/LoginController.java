@@ -134,13 +134,13 @@ public class LoginController {
     public String naverSignUp(Model model,HttpSession session, HttpServletResponse response, HttpServletRequest request)throws IOException {
     System.out.println("여기는 네이버 회원가입");
     
-    String mem_others01 = request.getParameter("resultid");
+    String mem_naverId = request.getParameter("resultid");
     String mem_id = request.getParameter("resultemail");
     String mem_name = request.getParameter("resultname");
     String mem_nick = request.getParameter("resultnick"); 
 
     System.out.println("넘어온 아이디:"+mem_id);
-    membersDto mDto = new membersDto(mem_id, mem_name,mem_nick, mem_others01);
+    membersDto mDto = new membersDto(mem_id, mem_name,mem_nick, mem_naverId);
     membersDto naverIdCheck = membersService.existNaverId(mDto);
 
     System.out.println("로그인 컨트롤러에서 네이버회원가입을 위해 이동해볼게");

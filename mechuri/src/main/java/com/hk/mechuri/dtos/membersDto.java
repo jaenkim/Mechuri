@@ -21,17 +21,17 @@ public class membersDto {
 	private String mem_delflag;
 	private String mem_apprflag;
 	private String mem_homepage;
-	private String mem_others01;
+	private String mem_naverId;
 	private String mem_others02;
 
 	//생성자
 	public membersDto() {	super(); }
 
-	public membersDto( String mem_id, String mem_name, String mem_nick, String mem_others01) {	
+	public membersDto( String mem_id, String mem_name, String mem_nick, String mem_naverId) {	
 		super(); 
 		this.mem_id = mem_id;
 		this.mem_name = mem_name;
-		this.mem_others01 = mem_others01;
+		this.mem_naverId = mem_naverId;
 		this.mem_nick = mem_nick;
 	}
 	
@@ -89,8 +89,8 @@ public class membersDto {
 	public String getMem_homepage() {	return mem_homepage;}
 	public void setMem_homepage(String mem_homepage) {	this.mem_homepage = mem_homepage;}
 
-	public String getMem_others01() {return mem_others01;}
-	public void setMem_others01(String mem_others01) {this.mem_others01 = mem_others01;}
+	public String getMem_naverId() {return mem_naverId;}
+	public void setMem_naverId(String mem_naverId) {this.mem_naverId = mem_naverId;}
 
 	public String getMem_others02() {return mem_others02;}
 	public void setMem_others02(String mem_others02) {this.mem_others02 = mem_others02;}
@@ -103,7 +103,7 @@ public class membersDto {
 				+ ", mem_phone=" + mem_phone + ", mem_email=" + mem_email + ", mem_post=" + mem_post + ", mem_addr1="
 				+ mem_addr1 + ", mem_addr2=" + mem_addr2 + ", mem_regdate=" + mem_regdate + ", mem_deldate="
 				+ mem_deldate + ", mem_delflag=" + mem_delflag + ", mem_apprflag=" + mem_apprflag + ", mem_homepage="
-				+ mem_homepage + ", mem_others01=" + mem_others01 + ", mem_others02=" + mem_others02 + "]";
+				+ mem_homepage + ", mem_naverId=" + mem_naverId + ", mem_others02=" + mem_others02 + "]";
 	}
 	
 }
