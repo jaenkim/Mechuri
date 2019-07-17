@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.mechuri.daos.MessageDao;
 import com.hk.mechuri.daos.addProductDao;
-import com.hk.mechuri.dtos.msgDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.tempinfoDto;
 
@@ -31,9 +31,9 @@ public class addProductService {
 	@Autowired
 	private MessageDao msgDao;
 	
-	public boolean addProduct(HttpServletRequest request, productDto dto) {
+	public boolean addProduct(HttpServletRequest request, productDto dto,HttpSession session) {
 		
-		
+		int product_compno = (Integer)session.getAttribute("mem_no");
 		String product_catelname = request.getParameter("filter_catelname");
 		String product_catesname = request.getParameter("filter_catesname");
 		String product_name = request.getParameter("product_name");
@@ -56,11 +56,11 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/SRC1/finalhehe222227/src/main/webapp/images/"+product_storedfile);
+		File f=new File("C:/Users/HKEDU/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
 		try { 
 			multiFile.transferTo(f);
 	
-			isS=addproductDao.addProduct(new productDto(product_catelname,product_catesname,product_name,product_ml,product_price,product_conts,product_ingre,product_skintype,product_age,product_gender,product_originfile,product_storedfile,product_filesize));	
+			isS=addproductDao.addProduct(new productDto(product_compno,product_catelname,product_catesname,product_name,product_ml,product_price,product_conts,product_ingre,product_skintype,product_age,product_gender,product_originfile,product_storedfile,product_filesize));	
 		} catch (IllegalStateException e) {
 	e.printStackTrace();
 		} catch (IOException e) {
@@ -81,8 +81,8 @@ public class addProductService {
 	}
 	
 	
-	public List<productDto> getProductList() {
-		return addproductDao.getProductList();
+	public List<productDto> getProductList(int mem_no) {
+		return addproductDao.getProductList(mem_no);
 	}
 	
 	
@@ -135,7 +135,7 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/SRC1/finalhehe222227/src/main/webapp/images/"+product_storedfile);
+		File f=new File("C:/Users/HKEDU/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
 		try {
 			multiFile.transferTo(f);
 			dto.setTempinfo_originfile(product_originfile);

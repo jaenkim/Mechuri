@@ -35,8 +35,8 @@ public class userManageService {
 		return usermanageDao.compAppr(mem_no);
 	}
 	
-	public List<membersDto> comInfo() {
-		return usermanageDao.comInfo();
+	public List<membersDto> comInfo(int mem_no) {
+		return usermanageDao.comInfo(mem_no);
 	}
 	
 	public boolean comtal(Integer mem_no) {
@@ -47,8 +47,8 @@ public class userManageService {
 		return usermanageDao.infoUpdate(dto);
 	}
 	
-	public List<membersDto> userInfo() {
-		return usermanageDao.userInfo();
+	public List<membersDto> userInfo(int mem_no) {
+		return usermanageDao.userInfo(mem_no);
 	}
 	
 }

@@ -9,16 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원목록</title>
-
-<script type="text/javascript">
-	function removeCheck() {
-	 if (confirm("정말 삭제하시겠습니까?") == true){    //확인
-	     document.removefrm.submit();
-	 }else{   //취소
-	     return;
-	 }
-	}
-    </script>
     
 </head>
 <body>
@@ -62,11 +52,21 @@
  <td>${member.mem_delflag }</td>
  <td><fmt:formatDate value="${member.mem_deldate }" pattern="yyyy.MM.dd"/></td>
  
- <td><input type='button' value="삭제" onclick='removeCheck()'></td> 
+ <td><button onclick="removeCheck()">삭제</button></td> 
  </tr>
  
 </c:forEach>
 </table>
  </form>
+ 
+ <script type="text/javascript">
+	function removeCheck() {
+	 if (confirm("정말 삭제하시겠습니까?") == true){    //확인
+	     document.removefrm.submit();
+	 }else{   //취소
+	     return;
+	 }
+	}
+    </script>
 </body>
 </html>

@@ -22,7 +22,7 @@ public class addProductDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public int addProduct(productDto dto) {	//제품 등록 dao
+	public int addProduct(productDto dto) {	//제품 등록 신청
 		return sqlSession.insert(namespace+"insertProduct",dto);
 		
 	}
@@ -35,8 +35,8 @@ public class addProductDao {
 		return sqlSession.selectList(namespace+"approveProductList1");
 	}
 	
-	public List<productDto> getProductList() { //자사 제품 목록
-		return sqlSession.selectList(namespace+"getProductList");
+	public List<productDto> getProductList(int mem_no) { //자사 제품 목록
+		return sqlSession.selectList(namespace+"getProductList",mem_no);
 	}
 	
 	public boolean approveProduct(int product_no) { //제품 등록 승인

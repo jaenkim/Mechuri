@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,10 +42,10 @@ public class HController {
 	private userManageService usermanageService;
 		
 	@RequestMapping(value = "/msglist.do", method = RequestMethod.GET)
-	public String sendMessage(HttpServletRequest request, Locale locale, Model model) {
+	public String sendMessage(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("쪽지 보기", locale);
-
-		List<msgDto> list = MsgSerivce.getAllList();
+		int mem_no = (Integer)session.getAttribute("mem_no");
+		List<msgDto> list = MsgSerivce.getAllList(mem_no);
 		model.addAttribute("list", list );
 		
 		return "msg2";
@@ -53,15 +54,18 @@ public class HController {
 	
 	@RequestMapping(value = "/addProductForm.do")
 	public String addProductForm(Locale locale, Model model) {
-		logger.info("제품등록 폼", locale);
+		logger.info("제품등록신청 폼", locale);
 			return "addProduct2";
 		}
 
 
 	@RequestMapping(value = "/addProduct.do", method = RequestMethod.POST)
-	public String addProduct(Locale locale, Model model, HttpServletRequest request) {
-		logger.info("제품등록 ing....", locale);
+	public String addProduct(Locale locale, Model model, HttpServletRequest request,HttpSession session) {
+		logger.info("제품등록신청 ing....", locale);
 		
+		int mem_no = (Integer)session.getAttribute("mem_no");
+		
+		int product_compno = mem_no;
 		String product_catelname = request.getParameter("filter_catelname");
 		String product_catesname = request.getParameter("filter_catesname");
 		String product_name = request.getParameter("product_name");
@@ -73,9 +77,9 @@ public class HController {
 		String	product_age = request.getParameter("product_age");
 		String	product_gender = request.getParameter("product_gender");
 				
-		productDto dto = new productDto(product_catelname,product_catesname,product_name,product_ml,product_price,product_conts,product_ingre,product_skintype,product_age,product_gender);
+		productDto dto = new productDto(product_compno,product_catelname,product_catesname,product_name,product_ml,product_price,product_conts,product_ingre,product_skintype,product_age,product_gender);
 
-		boolean isS = addproductService.addProduct(request, dto);
+		boolean isS = addproductService.addProduct(request, dto,session);
 		
 		if(isS) {
 			return "sendDone";
@@ -142,10 +146,11 @@ public class HController {
 	
 	
 	@RequestMapping(value = "/ProductList.do", method = RequestMethod.GET)
-	public String productList(HttpServletRequest request, Locale locale, Model model) {
+	public String productList(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("자사 제품 목록 보기", locale);
 
-		List<productDto> list = addproductService.getProductList();
+		int mem_no = (Integer)session.getAttribute("mem_no");
+		List<productDto> list = addproductService.getProductList(mem_no);
 		model.addAttribute("list", list );
 		
 		
@@ -266,10 +271,11 @@ public class HController {
 	
 	
 	@RequestMapping(value = "/comInfo.do", method = RequestMethod.GET)
-	public String comInfo(HttpServletRequest request, Locale locale, Model model) {
+	public String comInfo(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("내 정보(기업회원) 보기", locale);
-
-		List<membersDto> cominfo = usermanageService.comInfo();
+		
+		int mem_no = (Integer)session.getAttribute("mem_no");
+		List<membersDto> cominfo = usermanageService.comInfo(mem_no);
 		model.addAttribute("cominfo", cominfo );
 
 		
@@ -304,10 +310,11 @@ public class HController {
 	
 	
 	@RequestMapping(value = "/userInfo.do", method = RequestMethod.GET)
-	public String userInfo(HttpServletRequest request, Locale locale, Model model) {
+	public String userInfo(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("내 정보(일반회원) 보기", locale);
-
-		List<membersDto> userInfo = usermanageService.userInfo();
+		
+		int mem_no = (Integer)session.getAttribute("mem_no");
+		List<membersDto> userInfo = usermanageService.userInfo(mem_no);
 		model.addAttribute("userInfo", userInfo );
 
 		

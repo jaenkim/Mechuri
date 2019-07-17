@@ -33,8 +33,8 @@ public class MessageDao {
 	}
 	
 	
-	public List<msgDto> getAllList() {
-		return sqlSession.selectList(namespace+"msgList");
+	public List<msgDto> getAllList(int mem_no) {
+		return sqlSession.selectList(namespace+"msgList",mem_no);
 	}
 	
 }

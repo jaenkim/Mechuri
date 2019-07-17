@@ -217,38 +217,38 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	
 </insert>
 
-<!-- 2)제품 수정 승인 쪽지 , MSG_RECEIVENO='34'으로 임의 설정 해놓음 나중에 고치기 -->
+<!-- 2)제품 수정 승인 쪽지  -->
 
-<insert id="sendMessage3" parameterType='msgDto'>
+<insert id="sendMessage3" parameterType='tempinfoDto'>
 		
 	INSERT INTO MSG(MSG_NO, MSG_TITLE, MSG_CONTS, MSG_REGDATE, MSG_RECEIVENO, MSG_RETURNCONTS, MSG_OTHERS01, MSG_OTHER02)
-	VALUES(MSG_SEQ.NEXTVAL, '[제품수정 승인 알림]', CONCAT(#{tempinfo_name},' 제품 수정 승인되었습니다.'), SYSDATE , 9 , NULL, NULL, NULL)
+	VALUES(MSG_SEQ.NEXTVAL, '[제품수정 승인 알림]', CONCAT(#{tempinfo_name},' 제품 수정 승인되었습니다.'), SYSDATE , (SELECT PRODUCT_COMPNO FROM PRODUCT WHERE PRODUCT_NO = #{tempinfo_no}) , NULL, NULL, NULL)
 	
 </insert>
 
 
-<!-- 쪽지 리스트 쿼리 , MSG_RECEIVENO='34'으로 임의 설정 해놓음 나중에 고치기 -->
+<!-- 쪽지 리스트 쿼리 -->
 
-<select id = 'msgList' resultType='msgDto' parameterType="Map">
+<select id = 'msgList' resultType='msgDto' parameterType="int">
 		SELECT MSG_TITLE, MSG_CONTS, MSG_REGDATE 
 		FROM MSG
-		WHERE MSG_RECEIVENO = 9
+		WHERE MSG_RECEIVENO = #{mem_no}
 </select>
 
  
-<!-- 제품 등록 신청,   PRODUCT_COMPNO= '34'로 임의 설정 해놓음 나중에 고치기 -->
+<!-- 제품 등록 신청-->
 
 <insert id="insertProduct" parameterType='productDto'>
 INSERT INTO PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_CONTS,PRODUCT_COMPNO,PRODUCT_BRAND,PRODUCT_CATELNAME,PRODUCT_CATESNAME,PRODUCT_SKINTYPE,PRODUCT_SKINCONTS,PRODUCT_AGE,PRODUCT_GENDER,PRODUCT_INGRE,PRODUCT_LIKE,PRODUCT_REVIEW,PRODUCT_POINT,PRODUCT_FILENO,PRODUCT_ORIGINFILE,PRODUCT_STOREDFILE,PRODUCT_FILEREGDATE,PRODUCT_FILESIZE,PRODUCT_FLAG,PRODUCT_DJFLAG,PRODUCT_REGDATE,PRODUCT_REPLACEDATE,PRODUCT_OTHERS01,PRODUCT_OTHERS02)  
-VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{product_conts}, 9, '헤라', #{product_catelname}, #{product_catesname}, #{product_skintype}, NULL, #{product_age}, #{product_gender}, #{product_ingre}, NULL, NULL, NULL, PRODUCT_SEQ.nextval , #{product_originfile} ,#{product_storedfile} , SYSDATE , #{product_filesize} ,'N',NULL,SYSDATE,NULL,NULL,NULL) 
+VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{product_conts}, #{product_compno}, (SELECT MEM_BRAND FROM MEMBERS WHERE MEM_NO=#{product_compno}), #{product_catelname}, #{product_catesname}, #{product_skintype}, NULL, #{product_age}, #{product_gender}, #{product_ingre}, NULL, NULL, NULL, PRODUCT_SEQ.nextval , #{product_originfile} ,#{product_storedfile} , SYSDATE , #{product_filesize} ,'N',NULL,SYSDATE,NULL,NULL,NULL) 
 </insert>
 
-<!-- 자사 제품 목록 , PRODUCT_COMPNO= '34'로 임의 설정 해놓음 나중에 고치기-->
+<!-- 자사 제품 목록-->
 
-<select id = 'getProductList' resultType='productDto' parameterType="Map">
+<select id = 'getProductList' resultType='productDto' parameterType="int">
 		SELECT PRODUCT_NO, PRODUCT_NAME, PRODUCT_ML,PRODUCT_PRICE,PRODUCT_CONTS, PRODUCT_BRAND,PRODUCT_CATELNAME,PRODUCT_CATESNAME,PRODUCT_SKINTYPE,PRODUCT_SKINCONTS,PRODUCT_AGE,PRODUCT_GENDER,PRODUCT_INGRE,PRODUCT_FILENO,PRODUCT_ORIGINFILE,PRODUCT_STOREDFILE,PRODUCT_FILEREGDATE,PRODUCT_FILESIZE,PRODUCT_FLAG,PRODUCT_DJFLAG,PRODUCT_REGDATE, PRODUCT_REPLACEDATE, PRODUCT_OTHERS01 
 		FROM PRODUCT
-		WHERE PRODUCT_COMPNO = 9
+		WHERE PRODUCT_COMPNO = #{mem_no}
 </select>
 
 <!-- (제품등록)승인해야 할 제품 목록 -->
@@ -368,12 +368,12 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 </update>
 
 
-<!-- 내 정보 가져오기(기업) , MEM_NO='30'으로 임의 설정해놓음, 나중에 고치기! -->
+<!-- 내 정보 가져오기(기업)-->
 
-<select id = 'comInfo' resultType='membersDto'>
+<select id = 'comInfo' resultType='membersDto' parameterType="int">
 		SELECT * 
 		FROM MEMBERS 
-		WHERE MEM_NO= 9
+		WHERE MEM_NO= #{mem_no}
 </select>
 
 
@@ -391,14 +391,15 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 		WHERE MEM_NO = #{mem_no} 
 </update>
 
-<!-- 내 정보 가져오기(일반회원) , MEM_NO=26으로 임의 설정 해해놓음 -->
+<!-- 내 정보 가져오기(일반회원)-->
 
-<select id = 'userInfo' resultType='membersDto'>
+<select id = 'userInfo' resultType='membersDto' parameterType="int">
 		SELECT * 
 		FROM MEMBERS 
-		WHERE MEM_NO= 6
+		WHERE MEM_NO= #{mem_no} 
 </select>
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 끝 -->
+
 
 <select id="existNaver" resultType="membersDto" parameterType="membersDto">
 	SELECT MEM_ID, MEM_NAME, MEM_OTHERS01, MEM_NICK FROM MEMBERS

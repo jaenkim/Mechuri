@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h1>자사 제품 리스트 - (${list[0].product_brand })</h1>
+<h1>자사 제품 리스트</h1>
 <table border='1'>
     <tr>
       <th>제품번호</th>
