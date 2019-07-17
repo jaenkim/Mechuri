@@ -52,8 +52,7 @@ h3 {
 	<br>
 	<% 
 		String isMyMem = (String)request.getAttribute("isMyMem");
-		if (!isMyMem.equals("")){	%>
-		<script type="text/javascript">alert("회원가입 완료되었습니다. 다시 로그인해주시기 바랍니다.");</script>
+		if (isMyMem != null){ 	%>
 		<jsp:forward page="ranking/main.jsp"/>
 	<% } else { %>
 		<h2 style="text-align: center" id="mem_name"></h2>
