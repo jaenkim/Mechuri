@@ -142,21 +142,22 @@ public class LoginController {
     String mem_nick = request.getParameter("resultnick"); 
 
     System.out.println("넘어온 아이디:"+mem_id);
-    membersDto mDto = new membersDto(mem_id, mem_name,mem_nick, mem_naverid);
+  /*  membersDto mDto = new membersDto(mem_id, mem_name,mem_nick, mem_naverid);
     membersDto naverIdCheck = membersService.existNaverId(mDto);
-
+*/
     System.out.println("로그인 컨트롤러에서 네이버회원가입을 위해 이동해볼게");
-    if(naverIdCheck!= null ) {
+/*    if(naverIdCheck!= null ) {
     	session.setAttribute("naverName", naverIdCheck.getMem_name());
 		session.setAttribute("naverNickname", naverIdCheck.getMem_nick());
     	return "ranking/main";
     }else {
-    	System.out.println("로그인 컨트롤러 else안으로 들어오니?");
+*/    	System.out.println("로그인 컨트롤러 else안으로 들어오니?");
     	model.addAttribute("mem_id", mem_id);
     	model.addAttribute("mem_name",mem_name);
     	model.addAttribute("mem_nick",mem_nick);
+    	model.addAttribute("mem_naverid",mem_naverid);
     	return "naverSignUp";
-    }
+/*    }*/
     
     }//naverSignUp 메서드 END
 

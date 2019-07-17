@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,8 +52,8 @@ h3 {
 	</div>
 	<br>
 	<% 
-		String isMyMem = (String)request.getAttribute("isMyMem");
-		if (isMyMem != null){ 	%>
+		String isMyMem = (String)request.getAttribute("isMyMem").toString();
+		if (!isMyMem.equals("")){ 	%>
 		<jsp:forward page="ranking/main.jsp"/>
 	<% } else { %>
 		<h2 style="text-align: center" id="mem_name"></h2>
