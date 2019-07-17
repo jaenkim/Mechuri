@@ -14,7 +14,7 @@
 	String seNaverUsername = "";
 	try {
 		seUsername = (String) session.getAttribute("mem_name");
-		seNaverUsername = (String) session.getAttribute("naverId");
+		seNaverUsername = (String) session.getAttribute("naverName");
 		if (seNaverUsername == null) {
 			seNaverUsername = "";
 		}

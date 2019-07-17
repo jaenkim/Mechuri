@@ -110,10 +110,12 @@ public class LoginController {
 		model.addAttribute("isMyMem",mDDto==null?"":mDDto);
 		session=request.getSession();
 		session.setAttribute("naverId", naverId);
-//		session.setAttribute("naverNickname", mDDto.getMem_name());
 		session.setAttribute("naverEmail", naverEmail);
 		session.setAttribute("naverStatus", "M");
-//		session.setAttribute("naverName", mDDto.getMem_nick());
+//		if(mDDto != null) {
+//			session.setAttribute("naverNickname", mDDto.getMem_name());
+//			session.setAttribute("naverName", mDDto.getMem_nick());
+//		}
 
         /* 네이버 로그인 성공 페이지 View 호출 */
 		return "naverSuccess";
@@ -140,10 +142,11 @@ public class LoginController {
     System.out.println("넘어온 아이디:"+mem_id);
     membersDto mDto = new membersDto(mem_id, mem_name,mem_nick, mem_others01);
     membersDto naverIdCheck = membersService.existNaverId(mDto);
-//    String getID = naverIdCheck.getMem_id();
-//    System.out.println("555555555555555555555"+naverIdCheck);
+
     System.out.println("로그인 컨트롤러에서 네이버회원가입을 위해 이동해볼게");
     if(naverIdCheck!= null ) {
+    	session.setAttribute("naverName", naverIdCheck.getMem_name());
+		session.setAttribute("naverNickname", naverIdCheck.getMem_nick());
     	return "ranking/main";
     }else {
     	System.out.println("로그인 컨트롤러 else안으로 들어오니?");

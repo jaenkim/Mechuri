@@ -46,7 +46,7 @@ public class AController {
 	}
 
 	@RequestMapping(value = "/signUpBoard.do", method = {RequestMethod.POST})
-	public String signUpBoard(Model model, membersDto dto) {
+	public String signUpBoard(Model model, HttpSession session, membersDto dto) {
 
 		logger.info("회원 추가합니다. {}.");
 		System.out.println("A컨트롤러에서 출력: ["+dto.getMem_id()+"]");
