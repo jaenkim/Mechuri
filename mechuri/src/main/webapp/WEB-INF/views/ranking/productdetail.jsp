@@ -49,7 +49,16 @@
 	<td>
 	<div>
 		<span class="heading">별점</span> 
-		<img 	src="images/productPoint/point_${proInfo.product_point }.png" alt="이미지">
+		<c:choose>
+			<c:when test="${proInfo.product_point == 0 }" >
+				<img src="images/productPoint/point_0.png" alt="0점">
+			</c:when>
+			<c:when test="${0.00000001 < proInfo.product_point < 0.99999999}" >
+				<img src="images/productPoint/point_05.png" alt="0점">
+			</c:when>
+		</c:choose>
+		
+		
 		<p>별점 평균: ${proInfo.product_point } 별점 준 사람 수: ${proInfo.product_pointcount }</p>
 	</div>
 	</td>

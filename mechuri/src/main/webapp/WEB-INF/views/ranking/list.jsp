@@ -69,7 +69,16 @@
 				<td>${dto.product_rank}</td>
 				<td>${dto.product_brand}</td>
 				<td><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name} </a></td>
-				<td><fmt:formatNumber value="${dto.product_point }" pattern=".00" /> / ${dto.product_pointcount }</td>
+				<td>
+					<c:choose>
+						<c:when test="${dto.product_pointcount == 0}">
+							평점 없음
+						</c:when>
+						<c:otherwise>
+						<fmt:formatNumber value="${dto.product_point }" pattern=".00" /> / ${dto.product_pointcount }
+						</c:otherwise>
+					</c:choose>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>
