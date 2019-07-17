@@ -137,8 +137,11 @@ WHERE INGRE_NO IN
 
 	<!-- 커뮤니티 상세글 수정 -->
 <update id="updateboard" parameterType='Map'>
-	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE,
-	BOARD_ORIGINFILE=#{board_originfile},BOARD_STOREDFILE=#{board_storedfile},BOARD_FILESIZE=#{board_filesize} WHERE BOARD_NO=#{board_no}
+	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTS=#{board_conts},BOARD_REGDATE=SYSDATE
+	<if test="board_originfile != 'empty'">
+	,BOARD_ORIGINFILE=#{board_originfile},BOARD_STOREDFILE=#{board_storedfile},BOARD_FILESIZE=#{board_filesize} 
+	</if>
+	WHERE BOARD_NO=#{board_no}
 </update>
 
 <insert id="replyinsert" parameterType="replyDto">

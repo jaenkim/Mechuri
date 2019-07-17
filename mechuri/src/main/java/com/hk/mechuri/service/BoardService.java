@@ -49,25 +49,14 @@ public class BoardService implements IBoardService {
 		System.out.println("11서비스multi["+multiFile+"]");
 		String board_originfile=multiFile.getOriginalFilename();
 		System.out.println("1122서비스origin["+board_originfile+"]");
-		if(board_originfile=="") {
+		if(board_originfile==null||board_originfile=="") {
 			System.out.println("if문 안 서비스 업데이트파일-첨부파일 수정 안할 때 ");
-			
-			/*isS=boardDao.updateBoard(new boardDto(isS, multi.getParameter("board_no"),multi.getParameter("board_nick")
-					,multi.getParameter("board_title"),null, isS, isS, multi.getParameter("board_conts")
-					,multi.getParameter("board_originfile"),null, isS, multi.getParameter("board_storedfile")
-					,multi.getParameter("board_filesize"), null, null));*/
-			
-			
 			
 			isS=boardDao.updateBoard(new boardDto(Integer.parseInt(request.getParameter("board_no")),request.getParameter("writernick"),
 					request.getParameter("titlename"),request.getParameter("content")
 					,"empty","empty",0
 					));	
 		
-			
-
-			
-			
 		} else {
 			System.out.println("서비스 업데이트 else안");
 		
@@ -80,7 +69,8 @@ public class BoardService implements IBoardService {
 			//상대경로 : 내가 지정하는게 아닌 톰캣이 알아서 경로정해서 저장해줌
 			//String realPath=request.getSession().getServletContext().getRealPath("upload");
 			//절대경로 : 경로를 내가 직접 지정해서 저장해줘야함
-			File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile);
+		//	File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile); 깃에있는 경로
+			File f=new File("C:/SRCNEW02/mechuri2/src/main/webapp/upload/"+board_storedfile);//복사한폴더경로
 			try {
 				
 				multiFile.transferTo(f);
@@ -97,12 +87,9 @@ public class BoardService implements IBoardService {
 				isS=boardDao.updateBoard(new boardDto(Integer.parseInt(request.getParameter("board_no")),request.getParameter("writernick"),
 						request.getParameter("titlename"),request.getParameter("content")
 
-						
-						/*multi.getParameter("board_no"),multi.getParameter("writernick")
-						,multi.getParameter("titlename"),multi.getParameter("content")*/
+					
 						,board_storedfile,board_originfile,board_filesize
 						));	
-			
 
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
@@ -158,9 +145,10 @@ public class BoardService implements IBoardService {
 		String board_originfile=multiFile.getOriginalFilename();
 		System.out.println("1122서비스origin["+board_originfile+"]");
 		if(board_originfile=="") {
+			System.out.println("서비스insertFileInfo오리진파일 없을 때 여기들어옴 if문 안");
 			isS=boardDao.insertBoard(new boardDto(board_nick,board_title,board_conts,"empty","empty",0));
 		}else {
-			
+			System.out.println("서비스insertFileInfo오리진파일 있을 때 여기들어옴 else문 안");
 			String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 			System.out.println("1122서비스creatUUID["+creatUUID+"]");
 			String board_storedfile=creatUUID+board_originfile.substring(board_originfile.lastIndexOf("."));
@@ -170,11 +158,12 @@ public class BoardService implements IBoardService {
 			//상대경로 : 내가 지정하는게 아닌 톰캣이 알아서 경로정해서 저장해줌
 			//String realPath=request.getSession().getServletContext().getRealPath("upload");
 			//절대경로 : 경로를 내가 직접 지정해서 저장해줘야함
-			File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile);
+		//	File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile);//깃에있는 경로
+			File f=new File("C:/SRCNEW02/mechuri2/src/main/webapp/upload/"+board_storedfile);//복사한폴더경로
+			
 			try {
 				System.out.println("서비스try문 안 위 multi["+multiFile+"]");
 				multiFile.transferTo(f);
-//			boardDao.insertBoard(dto);
 				System.out.println("서비스에서 확인하는 닉네임: ["+board_nick+"]");
 				System.out.println("서비스에서 확인하는 글제목: ["+board_title+"]");
 				System.out.println("서비스에서 확인하는 글내용: ["+board_conts+"]");

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,19 +20,22 @@ import com.hk.mechuri.service.IBoardService;
 @Controller
 public class SController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SController.class);
+private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	@Autowired
 	private IBoardService boardService;
 
 	//여기부터 커뮤니티 기능                    
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
-	public String boardlist2(Locale locale, Model model,HttpServletRequest request) {
+	public String boardlist2(HttpSession session,Locale locale, Model model,HttpServletRequest request) {
 		System.out.println("여기도 안들어오나");
 	//	System.out.println("pnum=["+request.getParameter("pnum")+"]");
-		String board_pnum = request.getParameter("board_pnum");  //페이징
+		String board_pnum = request.getParameter("board_pnum");  //해당 페이지 갖고옴
+		System.out.println("board_pnum=["+board_pnum+"]");
+		session = request.getSession();//세션생성
+		session.setAttribute("board_pnum", board_pnum);//해당페이지 세션에 넣음
 		//request.getSession().removeAttribute("readcount");
-		if(board_pnum==null) {
+		if(board_pnum == null ||board_pnum == "") {
 			board_pnum="1";//1페이지로 기본세팅
 			List<boardDto> list=boardService.getAllList(board_pnum);
 			int pcount = boardService.getPcount(); //총 페이지 수			
@@ -55,14 +59,14 @@ public class SController {
 	
 	@RequestMapping(value = "/boardwrite.do") /*글작성 폼으로 이동*/
 	public String boardwrite(Locale locale, Model model) {	
-		return "insertWrite";
+		return "community/boardwrite";
 	}
 	
 	
 	@RequestMapping(value = "/insertWrite.do") /*커뮤니티 글 작성*/
 	public String insertWrite(Locale locale, Model model, HttpServletRequest request) {	
 		logger.info("글 추가하기 {}.", locale);
-		System.out.println("컨트롤러 파일=["+request.getParameter("filename")+"]");
+		
 		String nick = request.getParameter("nickname");
 		String title = request.getParameter("titlename");
 		String content = request.getParameter("content");
@@ -72,12 +76,12 @@ public class SController {
 	
 		//파일업로드
 		boolean isS = boardService.insertFileInfo(request, dto1);
-		System.out.println();
+		System.out.println("isS=["+isS+"]");
 		if(isS) {
 			return "redirect:boardlist2.do";
 		} else {
-			
-			return "redirect:boardlist2.do";
+			System.out.println("글작성을 실패하였습니다.");
+			return "redirect:boardwrite.do";
 		}
 		
 	}
@@ -88,7 +92,9 @@ public class SController {
 		logger.info("게시글 상세보기 {}.", locale);
 		System.out.println("board_no["+board_no+"]");
 		//String pnum = request.getParameter("pnum");
+		String bPnum = (String)request.getSession().getAttribute("board_pnum");
 		String rCount = (String)request.getSession().getAttribute("readcount");
+		
 		if(rCount==null) {
 			boardService.readCount(board_no);
 			request.getSession().setAttribute("readcount", board_no+"");
@@ -172,6 +178,7 @@ public class SController {
 			return "community/boarddetail";
 		}
 	}
+	
 	
 	
 

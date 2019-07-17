@@ -63,7 +63,7 @@
   <div>
 	<input type="button" value="수정" onclick="updateBoard()" />
 	<input type="button" value="삭제" onclick="delBoard('${dto.board_no}')"/>
-	<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=1'" />
+	<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
   </div>
   
 <!--   <br> -->
