@@ -39,8 +39,8 @@ public class userManageDao {
 		return count>0?true:false;
 	}
 	
-	public List<membersDto> comInfo() { //내 정보 가져오기(기업)
-		return sqlSession.selectList(namespace+"comInfo");
+	public List<membersDto> comInfo(int mem_no) { //내 정보 가져오기(기업)
+		return sqlSession.selectList(namespace+"comInfo",mem_no);
 	}
 	
 	public boolean comtal(int mem_no) { //기업회원 탈퇴하기(실제탈퇴X,탈퇴 플래그만 바꿈)
@@ -66,8 +66,8 @@ public class userManageDao {
 		return count>0?true:false;
 	}
 	
-	public List<membersDto> userInfo() { //내 정보 가져오기(일반회원)
-		return sqlSession.selectList(namespace+"userInfo");
+	public List<membersDto> userInfo(int mem_no) { //내 정보 가져오기(일반회원)
+		return sqlSession.selectList(namespace+"userInfo",mem_no);
 	}
 	
 }

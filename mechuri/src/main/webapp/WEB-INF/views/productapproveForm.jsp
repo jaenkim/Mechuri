@@ -37,6 +37,7 @@
   <input type='hidden' name='product_compno' value='${dto.product_compno}'>
  
          ${dto.product_no}
+         ${dto.product_brand }
  <a href="productUpdateForm.do?product_no=${dto.product_no}" >${dto.product_name} </a>
          ${dto.product_ml }
          ${dto.product_conts }

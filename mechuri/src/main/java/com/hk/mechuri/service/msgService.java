@@ -16,8 +16,8 @@ public class msgService {
 	@Autowired
 	private MessageDao msgDao;
 
-	public List<msgDto> getAllList() {
-		return msgDao.getAllList();
+	public List<msgDto> getAllList(int mem_no) {
+		return msgDao.getAllList(mem_no);
 	}
 	
 

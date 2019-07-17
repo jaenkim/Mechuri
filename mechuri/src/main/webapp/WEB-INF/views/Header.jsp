@@ -177,7 +177,7 @@
 			</li>
 			<li class="active">
 				<p>
-					<span class="icon-tasks"></span>쪽지함
+					<span class="icon-tasks"></span><a href="msglist.do">쪽지함</a>
 				</p>
 				
 			</li>
@@ -194,28 +194,28 @@
 		<ul>
 			<li>
 				<p>
-					<span class="icon-dashboard"></span>자사제품 전체보기
+					<span class="icon-dashboard"></span><a href="ProductList.do">자사제품 전체보기</a>
 				</p>
 				
 			</li>
 			<li class="active">
 				<p>
-					<span class="icon-tasks"></span>할인기간 등록하기
+					<span class="icon-tasks"></span><a href="#">할인기간 등록하기</a>
 				</p>
 				
 			</li>
 			<li>
 				<p>
-					<span class="icon-calendar"></span>제품등록하기
+					<span class="icon-calendar"></span><a href="addProductForm.do">제품등록 신청하기</a>
 				</p>
 				
 			</li>
 			<li>
 				<p>
-					<span class="icon-heart"></span>기업정보수정
+					<span class="icon-heart"></span><a href="comInfo.do">기업정보 보기/수정</a>
 				</p>
 				<p>
-					<span class="icon-heart"></span>쪽지함
+					<span class="icon-heart"></span><a href="msglist.do">쪽지함</a>
 				</p>
 				
 			</li>
@@ -233,25 +233,25 @@
 		<ul>
 			<li>
 				<p>
-					<span class="icon-dashboard"></span>일반회원 목록보기
+					<span class="icon-dashboard"></span><a href="userManage.do">일반회원 목록보기</a>
 				</p>
 				
 			</li>
 			<li class="active">
 				<p>
-					<span class="icon-tasks"></span>기업회원 목록보기
+					<span class="icon-tasks"></span><a href="comUserManage.do">기업회원 목록보기</a>
 				</p>
 				
 			</li>
 			<li>
 				<p>
-					<span class="icon-calendar"></span>제품등록 수정 승인
+					<span class="icon-calendar"></span><a href="productadminlist.do">제품등록 수정 승인</a>
 				</p>
 				
 			</li>
 			<li>
 				<p>
-					<span class="icon-heart"></span>할인기간 승인
+					<span class="icon-heart"></span><a href="#">할인기간 승인</a>
 				</p>
 				
 			</li>
