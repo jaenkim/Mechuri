@@ -74,7 +74,7 @@
 		</c:forEach>
 	</tbody>
 	</table>
-	
+<jsp:include page="../TopScroll.jsp" />	
 <!-- 정렬 -->
 <script type="text/javascript">
 	var myTable = document.getElementById( "rankingTable" ); 
