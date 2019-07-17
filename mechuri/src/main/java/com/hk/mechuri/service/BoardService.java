@@ -69,8 +69,8 @@ public class BoardService implements IBoardService {
 			//상대경로 : 내가 지정하는게 아닌 톰캣이 알아서 경로정해서 저장해줌
 			//String realPath=request.getSession().getServletContext().getRealPath("upload");
 			//절대경로 : 경로를 내가 직접 지정해서 저장해줘야함
-		//	File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile); 깃에있는 경로
-			File f=new File("C:/SRCNEW02/mechuri2/src/main/webapp/upload/"+board_storedfile);//복사한폴더경로
+			File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile); //깃에있는 경로
+			//File f=new File("C:/SRCNEW02/mechuri2/src/main/webapp/upload/"+board_storedfile);//복사한폴더경로
 			try {
 				
 				multiFile.transferTo(f);
@@ -158,8 +158,8 @@ public class BoardService implements IBoardService {
 			//상대경로 : 내가 지정하는게 아닌 톰캣이 알아서 경로정해서 저장해줌
 			//String realPath=request.getSession().getServletContext().getRealPath("upload");
 			//절대경로 : 경로를 내가 직접 지정해서 저장해줘야함
-		//	File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile);//깃에있는 경로
-			File f=new File("C:/SRCNEW02/mechuri2/src/main/webapp/upload/"+board_storedfile);//복사한폴더경로
+			File f=new File("C:/Users/서은영/git/Mechuri03/mechuri/src/main/webapp/upload/"+board_storedfile);//깃에있는 경로
+			//File f=new File("C:/SRCNEW02/mechuri2/src/main/webapp/upload/"+board_storedfile);//복사한폴더경로
 			
 			try {
 				System.out.println("서비스try문 안 위 multi["+multiFile+"]");
