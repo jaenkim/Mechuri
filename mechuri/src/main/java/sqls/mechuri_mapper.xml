@@ -405,8 +405,8 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 </select>
 
 <select id="forNaverSession" resultType="membersDto" parameterType="String">
-	SELECT MEM_NO,MEM_NAME,MEM_NICK FROM MEMBERS
-	WHERE MEM_NAVERID = #{naverid}
+	SELECT MEM_NO,MEM_NAME,MEM_NICK,MEM_STATUS,MEM_DELFLAG FROM MEMBERS
+	WHERE MEM_ID = #{naverEmail}
 </select>
 
 <select id = 'idcheck' resultType='membersDto' parameterType='String'>

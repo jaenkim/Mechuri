@@ -106,7 +106,7 @@ public class LoginController {
 		System.out.println("naverID ["+naverid+"]");
 		System.out.println("naverEmail ["+naverEmail+"]");
 		
-		membersDto mDDto = membersService.getNameForNaverMember(naverid);
+		membersDto mDDto = membersService.getNameForNaverMember(naverEmail);
 		model.addAttribute("isMyMem",mDDto==null?"":mDDto);
 		System.out.println("model의 값은?"+model.toString());
 		session=request.getSession();

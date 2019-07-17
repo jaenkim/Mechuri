@@ -25,7 +25,7 @@ public interface IMembersDao {
 
 	public membersDto existNaverId(membersDto mDto);
 
-	public membersDto getNameForNaverMember(String naverId);
+	public membersDto getNameForNaverMember(String naverEmail);
 
 
 	

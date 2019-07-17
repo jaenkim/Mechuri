@@ -84,8 +84,8 @@ public class MembersService implements IMembersService {
 	   }
 		//네이버 로그인 시 기존 네이버 가입자의 이름과 별명을 가져오는 메서드
 	@Override
-	public membersDto getNameForNaverMember(String naverId) {
-		return MembersDao.getNameForNaverMember(naverId);
+	public membersDto getNameForNaverMember(String naverEmail) {
+		return MembersDao.getNameForNaverMember(naverEmail);
 	}
 	
 	@Override
