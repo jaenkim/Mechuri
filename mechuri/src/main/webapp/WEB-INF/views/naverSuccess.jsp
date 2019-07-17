@@ -52,10 +52,10 @@ h3 {
 	<br>
 	<% 
 		String isMyMem = (String)request.getAttribute("isMyMem");
-		if (!isMyMem.equals("")){
-		response.sendRedirect("ranking/main");
-
-		} else { %>
+// 		out.println("isMyMem") ;	
+		if (isMyMem != null){ %>
+		<jsp:forward page="ranking/main.jsp"/>
+	<% } else { %>
 		<h2 style="text-align: center" id="mem_name"></h2>
 		<h4 style="text-align: center" id="mem_email"></h4>
 		<h4 style="text-align: center" id="mem_nick"></h4>

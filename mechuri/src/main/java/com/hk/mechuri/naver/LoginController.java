@@ -108,14 +108,16 @@ public class LoginController {
 		
 		membersDto mDDto = membersService.getNameForNaverMember(naverid);
 		model.addAttribute("isMyMem",mDDto==null?"":mDDto);
+		System.out.println("model의 값은?"+model.toString());
 		session=request.getSession();
 		session.setAttribute("naverId", naverid);
 		session.setAttribute("naverEmail", naverEmail);
 		session.setAttribute("naverStatus", "M");
-//		if(mDDto != null) {
-//			session.setAttribute("naverNickname", mDDto.getMem_name());
-//			session.setAttribute("naverName", mDDto.getMem_nick());
-//		}
+		
+		if(mDDto != null) {
+			session.setAttribute("naverName", mDDto.getMem_name());
+			session.setAttribute("naverNickname", mDDto.getMem_nick());
+		}
 
         /* 네이버 로그인 성공 페이지 View 호출 */
 		return "naverSuccess";
