@@ -91,25 +91,25 @@ public class LoginController {
 		String tempNaverID = array[0];
 		String tempNaverNickname = array[1];
 		String tempNaverEmail = array[2];
-		String tempNaverName = array[3];
+//		String tempNaverName = array[3];
 
 		System.out.println("naverID ["+tempNaverID+"]");
-		System.out.println("naverNickname ["+tempNaverNickname+"]");
+//		System.out.println("naverNickname ["+tempNaverNickname+"]");
 		System.out.println("naverEmail ["+tempNaverEmail+"]");
-		System.out.println("naverName ["+tempNaverName+"]");
+//		System.out.println("naverName ["+tempNaverName+"]");
 		
 		//네이버 apiResult에서 분리한 id(난수), email, name, nickName
-		String naverId = tempNaverID.substring(3, tempNaverID.length());
+		String naverid = tempNaverID.substring(3, tempNaverID.length());
 		String naverEmail = tempNaverEmail.substring(6, tempNaverEmail.length());
 		String naverNickname = tempNaverNickname.substring(9, tempNaverNickname.length());
-		String naverName = tempNaverName.substring(5, tempNaverName.length());
-		System.out.println("naverID ["+naverId+"]");
+//		String naverName = tempNaverName.substring(5, tempNaverName.length());
+		System.out.println("naverID ["+naverid+"]");
 		System.out.println("naverEmail ["+naverEmail+"]");
 		
-		membersDto mDDto = membersService.getNameForNaverMember(naverId);
+		membersDto mDDto = membersService.getNameForNaverMember(naverid);
 		model.addAttribute("isMyMem",mDDto==null?"":mDDto);
 		session=request.getSession();
-		session.setAttribute("naverId", naverId);
+		session.setAttribute("naverId", naverid);
 		session.setAttribute("naverEmail", naverEmail);
 		session.setAttribute("naverStatus", "M");
 //		if(mDDto != null) {
@@ -134,13 +134,13 @@ public class LoginController {
     public String naverSignUp(Model model,HttpSession session, HttpServletResponse response, HttpServletRequest request)throws IOException {
     System.out.println("여기는 네이버 회원가입");
     
-    String mem_naverId = request.getParameter("resultid");
+    String mem_naverid = request.getParameter("resultid");
     String mem_id = request.getParameter("resultemail");
     String mem_name = request.getParameter("resultname");
     String mem_nick = request.getParameter("resultnick"); 
 
     System.out.println("넘어온 아이디:"+mem_id);
-    membersDto mDto = new membersDto(mem_id, mem_name,mem_nick, mem_naverId);
+    membersDto mDto = new membersDto(mem_id, mem_name,mem_nick, mem_naverid);
     membersDto naverIdCheck = membersService.existNaverId(mDto);
 
     System.out.println("로그인 컨트롤러에서 네이버회원가입을 위해 이동해볼게");

@@ -361,6 +361,7 @@ input {
 		<!-- <div class="inner"> -->
 
 		<h3>일반회원 가입</h3>
+			<input type="hidden" value="${mem_naverid}" name="mem_naverid" />
 		<div class="form-holder">
 			<input type="text" value="${mem_id}" name="mem_id"
 				class="form-control" readonly="readonly">

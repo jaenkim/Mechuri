@@ -183,10 +183,8 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_n
 
 
 <insert id="signUpBoard" parameterType='membersDto'>
-	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
-MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE) 
-	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'C','브랜드명',#{mem_name},#{mem_nick},#{mem_phone},'이메일1','포스트'
-	,'주소1','주소2',SYSDATE,SYSDATE,'N','N','홈페이지')
+	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_REGDATE,MEM_DELFLAG,MEM_NAVERID) 
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'M',#{mem_name},#{mem_nick},#{mem_phone},SYSDATE,'N',#{mem_naverid})
 </insert>
 
 <insert id="compSignUpBoard" parameterType="membersDto">
@@ -402,13 +400,13 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 
 
 <select id="existNaver" resultType="membersDto" parameterType="membersDto">
-	SELECT MEM_ID, MEM_NAME, MEM_OTHERS01, MEM_NICK FROM MEMBERS
+	SELECT MEM_ID, MEM_NAME, MEM_NAVERID, MEM_NICK FROM MEMBERS
 	WHERE MEM_ID = #{mem_id}
 </select>
 
 <select id="forNaverSession" resultType="membersDto" parameterType="String">
 	SELECT MEM_NO,MEM_NAME,MEM_NICK FROM MEMBERS
-	WHERE MEM_OTHERS01 = #{naverId}
+	WHERE MEM_NAVERID = #{naverid}
 </select>
 
 <select id = 'idcheck' resultType='membersDto' parameterType='String'>
