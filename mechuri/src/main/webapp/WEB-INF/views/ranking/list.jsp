@@ -11,6 +11,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="assets/js/rankSorting.js"></script>
 <title>제품 목록 페이지</title>
 
 <!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
@@ -48,43 +49,43 @@
 		</form>
 	</div>
 	<div>
-		<h3>정렬</h3>
-		<p><a href="list.do?command=sortbyhighprice">가격 높은순</a></p>
-		<p><a href="list.do?command=sortbylowprice">가격 낮은순</a></p>
-		<p><a href="list.do?command=sortbyascname">이름순</a></p>
-		<p><a href="list.do?command=sortbymaxreview">리뷰 많은순</a></p>
-		<p><a href="list.do?command=sortbyminreview">리뷰 적은순</a></p>
+	
 	</div>
-	<table border='1'>
+	
+	<table border='1' id="rankingTable">
+	<thead>
 		<tr>
- 			<th>순위</th>
-<!-- 		<th>사진</th>		-->
-			<th>브랜드</th>
-			<th>제품명</th>
-			<th>평점</th>
+			<th>순위 <button onclick="sortTD ( 0 )">▲</button><button onclick="reverseTD ( 0 )">▼</button> </th>
+	<!-- 		<th>사진</th>		-->
+			<th>브랜드 <button onclick="sortTD ( 1 )">▲</button><button onclick="reverseTD ( 1 )">▼</button> </th>
+			<th>제품명 <button onclick="sortTD ( 2 )">▲</button><button onclick="reverseTD ( 2 )">▼</button> </th>
+			<th>평점/평점인원 <button onclick="sortTD ( 3 )">▲</button><button onclick="reverseTD ( 3 )">▼</button> </th>
 		</tr>
+	</thead>
+  	<tbody>
 		<c:forEach items="${list}" var="dto">
-			<tr>
+			<tr class="sorting">
 <%--  		<td><img src="images/${dto.product_storedname }.png" alt="이미지">	--%>
 				<td>${dto.product_rank}</td>
 				<td>${dto.product_brand}</td>
-				<td><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name}</a></td>
-				<td><fmt:formatNumber value="${dto.product_point }" pattern=".00" /></td>
+				<td><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name} </a></td>
+				<td><fmt:formatNumber value="${dto.product_point }" pattern=".00" /> / ${dto.product_pointcount }</td>
 			</tr>
 		</c:forEach>
+	</tbody>
 	</table>
-
+	
+<!-- 정렬 -->
+<script type="text/javascript">
+	var myTable = document.getElementById( "rankingTable" ); 
+	var replace = replacement( myTable ); 
+	function sortTD( index ){    replace.ascending( index );    } 
+	function reverseTD( index ){    replace.descending( index );    } 
+</script>
 	
 	<jsp:include page="../Footer.jsp" />
 	<script src="assets/js/index.js"></script>
 	<script src="assets/js/cate_filter.js"></script>
-	<script type="text/javascript">
-//  		function productdetail(product_no){
-//  			onclick = "productdetail(${dto.product_no})"
-// 			location.href = "productdetail.do?product_no="+product_no;
-// 		} 
-	
-	</script>
 </body>
 
 </html>

@@ -18,12 +18,11 @@
 
 <title>${proInfo.product_name} :: 메추리 랭킹</title>
 </head>
-<script type="text/javascript">
-
-</script>
 <body>
 
 <h1>제품 상세페이지</h1>
+
+
 <!-- 제품상세 -->
 <table border='1'>
 	<tr>
@@ -32,13 +31,13 @@
 	</tr>
 	<tr>
 		<td rowspan="5">사진</td> <!-- 제품 이미지 -->
-		<td class="sortPname">${proInfo.product_name} <input type="button" value="${proInfo.product_catelname} &#47; ${proInfo.product_catesname}" class="btn btn-light" /></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
+		<td>${proInfo.product_name} <input type="button" value="${proInfo.product_catelname} &#47; ${proInfo.product_catesname}" class="btn btn-light" /></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
 	</tr>
 	<tr>
-		<td class="sortPrice">용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a></td>
+		<td>용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a></td>
 	</tr>
 	<tr>
-		<td class="sortCountofPointers"><img src="images/productPoint/point_${proInfo.product_point }.png" alt="이미지"> &#47; ${proInfo.product_point } &#47; ${proInfo.product_pointcount } </td>
+		<td><img src="images/productPoint/point_${proInfo.product_point }.png" alt="이미지"> &#47; ${proInfo.product_point } &#47; ${proInfo.product_pointcount } </td>
 	</tr>
 	<tr> 
 		<td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">성분 상세보기 ></button></td>
@@ -188,9 +187,10 @@
           	</c:forEach>
           	</table>
           </div>
-          
-          
-        </div>
+      </div>
+      
+      
+
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
