@@ -353,7 +353,7 @@ input {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<form action='naverSignUp.do' method='post'>
+	<form action='signUpBoard.do' method='post'>
 		<br>
 		<br>
 		<br>

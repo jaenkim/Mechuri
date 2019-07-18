@@ -34,11 +34,7 @@ public class MembersService implements IMembersService {
 	public boolean signUpBoard(membersDto dto) {
 		return MembersDao.signUpBoard(dto); 
 	}
-	
-	@Override
-	public boolean naverSignUpBoard(membersDto dto) {
-		return MembersDao.naverSignUpBoard(dto);
-	}
+
 	
 	@Override
 	public boolean compSignUpBoard(membersDto dto) {

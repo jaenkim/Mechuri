@@ -33,6 +33,7 @@ h3 {
 
 		var nick = ${result}.response.id;
 		var mem_email = ${result}.response.email;
+		$("#mem_id").html("네이버id"+mem_id);
 		$("#mem_name").html("환영합니다. "+mem_name+"님");
 		$("#mem_email").html(mem_email);
 		$("#mem_nick").html("별명"+mem_nick);
@@ -56,6 +57,7 @@ h3 {
 		if (!isMyMem.equals("")){ 	%>
 		<jsp:forward page="ranking/main.jsp"/>
 	<% } else { %>
+		<h2 style="text-align: center" id="mem_id"></h2>
 		<h2 style="text-align: center" id="mem_name"></h2>
 		<h4 style="text-align: center" id="mem_email"></h4>
 		<h4 style="text-align: center" id="mem_nick"></h4>

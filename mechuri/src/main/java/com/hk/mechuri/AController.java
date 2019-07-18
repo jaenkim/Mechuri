@@ -63,27 +63,6 @@ public class AController {
 		}
 	}
 	
-	@RequestMapping(value = "/naverSignUp.do", method = {RequestMethod.POST})
-	public String naverSignUpBoard(Model model, HttpSession session, membersDto dto) {
-
-		logger.info("회원 추가합니다. {}.");
-		System.out.println("A컨트롤러에서 출력: ["+dto.getMem_id()+"]");
-		System.out.println("에러위치찾기 0");
-		boolean isS=MembersService.naverSignUpBoard(dto);
-		System.out.println("에러위치찾기 1");
-		if(isS) {
-			System.out.println("에러위치찾기 2");
-			session.setAttribute("naverName", dto.getMem_name());
-			session.setAttribute("naverNickname", dto.getMem_nick());
-	
-			return "redirect:main.do";
-		}else {
-			System.out.println("에러위치찾기 3");
-			model.addAttribute("msg","회원가입 실패");
-			return "error";
-		}
-	}
-	
 	@RequestMapping(value= "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin() {
 		return "memLogin"; //memLogin.jsp로
