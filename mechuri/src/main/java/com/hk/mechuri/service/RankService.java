@@ -11,19 +11,20 @@ import com.hk.mechuri.dtos.filterDto;
 import com.hk.mechuri.dtos.ingreDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
+import com.hk.mechuri.list.SearchCriteria;
 
 @Service
 public class RankService implements iRankService {
-	
+
 	@Autowired
 	private iRankDao rankDao;
-	
+
 	//전체 상품의 랭링 목록을 출력함
 	@Override
 	public List<productDto> getAllProductList(){
 		return rankDao.getAllProductList();
 	}
-	
+
 	@Override
 	public List<productDto> getFilterProductList(filterDto dto){
 		return rankDao.getFilterProductList(dto);
@@ -55,8 +56,19 @@ public class RankService implements iRankService {
 		return rankDao.getProductIngre(pDto);
 	}
 
+	//여기부터 검색입니당...............................
 
-	
+	@Override            
+	public List<productDto> listSearch(SearchCriteria scri) throws Exception{ //목록+페이징+검색
+		return rankDao.listSearch(scri);
+	}
+
+	@Override
+	public int countSearch(SearchCriteria scri) throws Exception{ //검색 결과 갯수
+		return rankDao.countSearch(scri);
+	}
+
+
 }
 
 
