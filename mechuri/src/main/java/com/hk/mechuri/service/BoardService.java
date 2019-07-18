@@ -136,6 +136,7 @@ public class BoardService implements IBoardService {
 		String board_conts = dto.getBoard_conts();
 		String board_nick = dto.getBoard_nick();
 		System.out.println("서비스에서 타이틀 파라미터 확인 ["+dto.getBoard_title()+"]");
+		
 		int isS = 0;
 		
 		
