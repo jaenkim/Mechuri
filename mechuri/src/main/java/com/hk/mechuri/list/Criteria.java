@@ -1,6 +1,6 @@
 package com.hk.mechuri.list;
 
-public class Criteria { //페이징
+public class Criteria { //시작 값과 끝 값을 다루는 클래스
 
 		private int page;
 		private int perPageNum;
@@ -10,12 +10,12 @@ public class Criteria { //페이징
 		public Criteria()
 		{
 			this.page = 1;
-			this.perPageNum = 10;
+			this.perPageNum = 20;
 		}
 
 		public void setPage(int page)
 		{
-			if (page <= 0)
+			if (page <= 1)
 			{ 
 				this.page = 1;
 				return;
@@ -25,9 +25,9 @@ public class Criteria { //페이징
 
 		public void setPerPageNum(int perPageNum)
 		{
-			if (perPageNum <= 0 || perPageNum > 100)
+			if (perPageNum <= 1 || perPageNum > 100)
 			{
-				this.perPageNum = 10;
+				this.perPageNum = 20;
 				return;
 			}
 			this.perPageNum = perPageNum;

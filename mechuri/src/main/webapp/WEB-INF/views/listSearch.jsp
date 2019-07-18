@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="search">
- <select name="searchType">
+ <select name="searchType"> <!-- 컨트롤러에서 값을 보내주는것이 아니라 컨트롤러에 요청된 URL에 따라 값이 달라짐. -->
   <option value="no"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
   <option value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>이름</option>
   <option value="b"<c:out value="${scri.searchType eq 'b' ? 'selected' : ''}"/>>브랜드</option>
@@ -39,11 +39,10 @@
 
  <button id="searchBtn" >검색</button>
  
- 	<form action="listSearch.do" method="post">
  	<h2>상품 검색 목록</h2>
  		<table border='1' id="serachTable">
  		<thead>
-			<tr><th>상품번호</th><th>상품이름</th><th>큰카테고리</th><th>작은카테고리</th><th>브랜드</th><th>가격</th></tr>
+			<tr><th>상품번호</th><th>상품이름</th><th>큰 카테고리</th><th>작은 카테고리</th><th>브랜드</th><th>가격</th></tr>
 		</thead>	
 			<!-- 목록 시작 -->
 			<c:forEach items="${list}" var="dto">
@@ -61,6 +60,7 @@
 			</tr>
 			</c:forEach>
 			<!-- 목록 끝 -->
+ 	</table>
  	
  	<div class="col-md-offset-3"> 
 			<ul class="pagination">
@@ -72,34 +72,13 @@
 					<li <c:out value="${pageMaker.cri.page == idx ? 'class=active' : ''}"/>>
 					<a href="listSearch${pageMaker.makeSearch(idx)}">${idx}</a></li>
 				</c:forEach>
-						
+	<!--  jstl로 URL 또는 세션에 있는 scri.searchType값을 가져와서, 이 값이 'w'라면 selected를 출력하고, 아니면 공백('')을 출력한다는 조건문 --> 
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 					<li><a href="listSearch${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
 				</c:if>	
 			</ul> 
 		</div>
- 	
- 	
- 	
- 	
- 	
- 		</table>
- 	</form>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 </div>
+<jsp:include page="Footer.jsp" />
 </body>
 </html>
