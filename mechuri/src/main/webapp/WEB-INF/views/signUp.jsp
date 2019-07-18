@@ -11,6 +11,40 @@
 <head>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+
+	function checkz() { //아이디(이메일형식), 비밀번호, 비밀번호 확인 유효성 검사
+		var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
+		var getId = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+
+		if (!getCheck.test($("#tbPwd").val())) {
+			alert("pw를 형식에 맞게 입력해주세요");
+			$("#tbPwd").val("");
+			$("#tbPwd").focus();
+			return false;
+		}
+		if ($("#tbPwd").val() != ($("#cpass").val())) {
+			alert("비밀번호가 틀렸습니다. 다시 입력해 주세요");
+			$("#tbPwd").val("");
+			$("#cpass").val("");
+			$("#tbPwd").focus();
+			return false;
+		}
+		//이메일 공백 확인
+		if ($("#mem_id").val() == "") {
+			alert("아이디를 입력해주세요");
+			$("#mem_id").focus();
+			return false;
+		}
+		//이메일 유효성 검사
+		if (!getMail.test($("#mem_id").val())) {
+			alert("아이디를 형식에 맞게 입력해주세요")
+			$("#mem_id").val("");
+			$("#mem_id").focus();
+			return false;
+		}
+	}
+
 	function mailChk() {
 		var email = $("#mem_id").val();
 
@@ -37,7 +71,7 @@
 			alert("잘못된 인증번호 입니다. 다시 한 번 확인해 주세요.");
 		}
 	}
-	
+
 	function idcheck() {
 		var email = $("#mem_id").val();
 
@@ -47,13 +81,13 @@
 			data : "mem_id=" + email,
 			async : true,
 			success : function(msg) {
-				if(msg=="a"){
+				if (msg == "a") {
 					alert("사용 가능한 아이디입니다.")
-				}else{
+				} else {
 					alert("이미 존재하는 아이디입니다.")
 				}
 			}
-			
+
 		});
 	}
 </script>
@@ -190,7 +224,9 @@ h3 {
 .3
 
 
+
  
+
 
 
 %
@@ -200,10 +236,14 @@ h3 {
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -211,8 +251,12 @@ translateX
 
 
 
+
+
 (-6
 px
+
+
 
 
 );
@@ -221,10 +265,14 @@ transform
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -232,8 +280,12 @@ translateX
 
 
 
+
+
 (-6
 px
+
+
 
 
 );
@@ -242,7 +294,9 @@ px
 .95
 
 
+
  
+
 
 
 %
@@ -252,10 +306,14 @@ px
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -263,8 +321,12 @@ translateX
 
 
 
+
+
 (4
 px
+
+
 
 
 );
@@ -273,10 +335,14 @@ transform
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -284,8 +350,12 @@ translateX
 
 
 
+
+
 (4
 px
+
+
 
 
 );
@@ -294,7 +364,9 @@ px
 .6
 
 
+
  
+
 
 
 %
@@ -304,10 +376,14 @@ px
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -315,8 +391,12 @@ translateX
 
 
 
+
+
 (-2
 px
+
+
 
 
 );
@@ -325,10 +405,14 @@ transform
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -336,8 +420,12 @@ translateX
 
 
 
+
+
 (-2
 px
+
+
 
 
 );
@@ -346,7 +434,9 @@ px
 .25
 
 
+
  
+
 
 
 %
@@ -356,10 +446,14 @@ px
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -367,8 +461,12 @@ translateX
 
 
 
+
+
 (1
 px
+
+
 
 
 );
@@ -377,10 +475,14 @@ transform
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -388,8 +490,12 @@ translateX
 
 
 
+
+
 (1
 px
+
+
 
 
 );
@@ -403,7 +509,10 @@ px
 
 
 
+
+
 :
+
 
 
 
@@ -411,7 +520,10 @@ px
 
 
 
+
 translateX
+
+
 
 
 
@@ -426,7 +538,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -434,7 +549,10 @@ transform
 
 
 
+
 translateX
+
+
 
 
 
@@ -454,7 +572,9 @@ keyframes hvr-wobble-horizontal { 16.65% {
 .3
 
 
+
  
+
 
 
 %
@@ -464,10 +584,14 @@ keyframes hvr-wobble-horizontal { 16.65% {
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -475,8 +599,12 @@ translateX
 
 
 
+
+
 (-6
 px
+
+
 
 
 );
@@ -485,10 +613,14 @@ transform
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -496,8 +628,12 @@ translateX
 
 
 
+
+
 (-6
 px
+
+
 
 
 );
@@ -506,7 +642,9 @@ px
 .95
 
 
+
  
+
 
 
 %
@@ -516,10 +654,14 @@ px
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -527,8 +669,12 @@ translateX
 
 
 
+
+
 (4
 px
+
+
 
 
 );
@@ -537,10 +683,14 @@ transform
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -548,8 +698,12 @@ translateX
 
 
 
+
+
 (4
 px
+
+
 
 
 );
@@ -558,7 +712,9 @@ px
 .6
 
 
+
  
+
 
 
 %
@@ -568,10 +724,14 @@ px
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -579,8 +739,12 @@ translateX
 
 
 
+
+
 (-2
 px
+
+
 
 
 );
@@ -589,10 +753,14 @@ transform
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -600,8 +768,12 @@ translateX
 
 
 
+
+
 (-2
 px
+
+
 
 
 );
@@ -610,7 +782,9 @@ px
 .25
 
 
+
  
+
 
 
 %
@@ -620,10 +794,14 @@ px
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -631,8 +809,12 @@ translateX
 
 
 
+
+
 (1
 px
+
+
 
 
 );
@@ -641,10 +823,14 @@ transform
 
 
 
+
+
 :
 
 
+
  
+
 
 
 translateX
@@ -652,8 +838,12 @@ translateX
 
 
 
+
+
 (1
 px
+
+
 
 
 );
@@ -667,7 +857,10 @@ px
 
 
 
+
+
 :
+
 
 
 
@@ -675,7 +868,10 @@ px
 
 
 
+
 translateX
+
+
 
 
 
@@ -690,7 +886,10 @@ transform
 
 
 
+
+
 :
+
 
 
 
@@ -698,7 +897,10 @@ transform
 
 
 
+
 translateX
+
+
 
 
 
@@ -793,7 +995,10 @@ display
 
 
 
+
+
 :
+
 
 
 
@@ -801,7 +1006,10 @@ display
 
 
 
+
 flex
+
+
 
 
 
@@ -816,7 +1024,10 @@ align-items
 
 
 
+
+
 :
+
 
 
 
@@ -824,7 +1035,10 @@ align-items
 
 
 
+
 center
+
+
 
 
 
@@ -839,7 +1053,10 @@ margin-left
 
 
 
+
+
 :
+
 
 
 
@@ -847,8 +1064,11 @@ margin-left
 
 
 
+
 23
 px
+
+
 
 
 
@@ -899,7 +1119,7 @@ input {
 		<div class="form-holder" style="text-align: center">
 			<input type="hidden" name="mem_id" /> 
 			<input type="button" value="아이디중복확인" id="btbt" onclick="idcheck()" /> <input
-				type="text" placeholder="아이디" name="mem_id" id="mem_id"
+				type="text" placeholder="ex)aaa@gmail.com" name="mem_id" id="mem_id"
 				class="form-control" /> <input type="button" value="아이디인증" id="bt"
 				onclick="mailChk()" /> <input type="hidden" id="hid"> <input
 				type="text" id="insrt" placeholder="인증번호를 입력해주세요.">
@@ -911,11 +1131,11 @@ input {
 
 
 		<div class="form-holder">
-			<input type="text" placeholder="비밀번호" name="mem_pw"
+			<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" id="tbPwd"
 				class="form-control">
 		</div>
 		<div class="form-holder">
-			<input type="password" placeholder="비밀번호 확인" class="form-control"
+			<input type="password" placeholder="비밀번호 확인" class="form-control" id="cpass"
 				style="font-size: 15px;">
 		</div>
 		<div class="form-holder">

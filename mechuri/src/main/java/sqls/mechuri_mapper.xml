@@ -178,20 +178,46 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_n
 </select>
 
 
+<!--                      검색기능                                                -->
+<select id="listSearch" resultType="productDto" parameterType="com.hk.mechuri.list.SearchCriteria">
+		SELECT PRODUCT_NO, PRODUCT_NAME, PRODUCT_BRAND, PRODUCT_CATELNAME, PRODUCT_CATESNAME, PRODUCT_PRICE
+			FROM (
+			SELECT PRODUCT_NO, PRODUCT_NAME, PRODUCT_BRAND, PRODUCT_CATELNAME, PRODUCT_CATESNAME, PRODUCT_PRICE, ROW_NUMBER() OVER(ORDER BY PRODUCT_NO DESC) AS rNum
+			FROM PRODUCT
+				<include refid="search"></include>
+			)
+			WHERE rNum BETWEEN #{rowStart} and #{rowEnd} ORDER BY PRODUCT_NO DESC
+</select>
 
+<sql id="search">
+	<if test="searchType != null">
+		<if test="searchType == 'n'.toString()">where product_name like '%' || #{keyword} || '%'</if>
+		<if test="searchType == 'b'.toString()">where product_brand like '%' || #{keyword} || '%'</if>
+		<if test="searchType == 'cl'.toString()">where product_catelname like '%' || #{keyword} || '%'</if>	
+	</if>
+</sql>
+
+<select id="countSearch" resultType="int">
+ select count(product_no)
+  from product
+   <include refid="search"></include>
+<![CDATA[
+   where product_no > 0
+]]>
+</select>
 
 
 
 <insert id="signUpBoard" parameterType='membersDto'>
-	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_REGDATE,MEM_DELFLAG,MEM_NAVERID) 
-	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'M',#{mem_name},#{mem_nick},#{mem_phone},SYSDATE,'N',#{mem_naverid})
+	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_REGDATE,MEM_DELFLAG) 
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'M',#{mem_name},#{mem_nick},#{mem_phone},SYSDATE,'N')
 </insert>
 
 <insert id="compSignUpBoard" parameterType="membersDto">
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
-MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE,MEM_OTHERS01)
+MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE)
 	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'C',#{mem_brand},#{mem_name},'닉',#{mem_phone},#{mem_email},#{mem_post},#{mem_addr1},#{mem_addr2},
-	SYSDATE,SYSDATE,'N','N',#{mem_homepage},#{mem_naverId})
+	SYSDATE,SYSDATE,'N','N',#{mem_homepage})
 </insert>
 
 <select id="login_check" resultType="String" parameterType="membersDto">

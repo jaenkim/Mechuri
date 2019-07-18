@@ -24,6 +24,7 @@ public class MembersDao implements IMembersDao {
 		int count=sqlSession.insert(namespace+"signUpBoard",dto);
 		return count>0?true:false;
 	}
+	
 	@Override
 	public boolean compSignUpBoard(membersDto dto) {
 		int count=sqlSession.insert(namespace+"compSignUpBoard",dto);
@@ -37,7 +38,6 @@ public class MembersDao implements IMembersDao {
 	}
 	@Override
 	public membersDto viewMember(String mem_id) {
-	
 		return sqlSession.selectOne(namespace+"viewMember", mem_id);
 	}
 

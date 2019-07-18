@@ -7,6 +7,7 @@ import com.hk.mechuri.dtos.filterDto;
 import com.hk.mechuri.dtos.ingreDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
+import com.hk.mechuri.list.SearchCriteria;
 
 public interface iRankService {
 
@@ -35,7 +36,9 @@ public interface iRankService {
 	public List<reviewDto> getProductReview(int product_no);
 	public List<ingreDto> getProductIngre(productDto pDto);
 
-	
+	//제품 검색
+	List<productDto> listSearch(SearchCriteria scri) throws Exception;
+	int countSearch(SearchCriteria scri) throws Exception;
 
 
 

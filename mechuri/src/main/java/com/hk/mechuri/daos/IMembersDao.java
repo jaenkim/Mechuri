@@ -28,6 +28,8 @@ public interface IMembersDao {
 	public membersDto getNameForNaverMember(String naverEmail);
 
 
+
+
 	
 
 

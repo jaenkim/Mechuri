@@ -69,7 +69,7 @@ public class LoginController {
 
 		model.addAttribute("result", apiResult);
 		
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaa"+apiResult);
+		System.out.println("로그인 컨트롤러 콜백에서 출력하는 apiResult: ["+apiResult+"]");
 		
 //		네이버 로그인 정보를 세션으로 생성해야 함
 		/*db에서 회원정보가 있으면 메인페이지로이동하고 없으면 naverSuccess로 이동해서 네이버 회원가입 완료시킴
@@ -94,18 +94,20 @@ public class LoginController {
 //		String tempNaverName = array[3];
 
 		System.out.println("naverID ["+tempNaverID+"]");
-//		System.out.println("naverNickname ["+tempNaverNickname+"]");
 		System.out.println("naverEmail ["+tempNaverEmail+"]");
-//		System.out.println("naverName ["+tempNaverName+"]");
+
 		
 		//네이버 apiResult에서 분리한 id(난수), email, name, nickName
 		String naverid = tempNaverID.substring(3, tempNaverID.length());
 		String naverEmail = tempNaverEmail.substring(6, tempNaverEmail.length());
-		String naverNickname = tempNaverNickname.substring(9, tempNaverNickname.length());
+//		String naverNickname = tempNaverNickname.substring(9, tempNaverNickname.length());
 //		String naverName = tempNaverName.substring(5, tempNaverName.length());
 		System.out.println("naverID ["+naverid+"]");
 		System.out.println("naverEmail ["+naverEmail+"]");
 		
+		//네이버 로그인 성공 후 이전에 네이버아이디로 로그인 한 적이 있는지 확인하는 메서드
+		//회원으로 등록되어 있으면 이 메서드에서 가져온 정보로 세션을 생성하고
+		//naverSuccess에서 메인으로 리다이렉트 보낼 예정
 		membersDto mDDto = membersService.getNameForNaverMember(naverEmail);
 		model.addAttribute("isMyMem",mDDto==null?"":mDDto);
 		System.out.println("model의 값은?"+model.toString());
@@ -115,6 +117,7 @@ public class LoginController {
 		session.setAttribute("naverStatus", "M");
 		
 		if(mDDto != null) {
+			session.setAttribute("naverNo", mDDto.getMem_no());
 			session.setAttribute("naverName", mDDto.getMem_name());
 			session.setAttribute("naverNickname", mDDto.getMem_nick());
 		}
@@ -134,7 +137,7 @@ public class LoginController {
     	
     @RequestMapping(value = "/naverSignUp.do", method = { RequestMethod.GET, RequestMethod.POST })
     public String naverSignUp(Model model,HttpSession session, HttpServletResponse response, HttpServletRequest request)throws IOException {
-    System.out.println("여기는 네이버 회원가입");
+    System.out.println("여기는 로그인컨트롤러의 네이버 회원가입(naverSignUp.do)");
     
     String mem_naverid = request.getParameter("resultid");
     String mem_id = request.getParameter("resultemail");

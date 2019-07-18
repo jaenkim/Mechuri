@@ -1,5 +1,6 @@
 package com.hk.mechuri;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hk.mechuri.daos.IMembersDao;
 import com.hk.mechuri.dtos.membersDto;
+import com.hk.mechuri.dtos.productDto;
+import com.hk.mechuri.list.PageMaker;
+import com.hk.mechuri.list.SearchCriteria;
 import com.hk.mechuri.mail.MailSend;
 import com.hk.mechuri.service.IMembersService;
+import com.hk.mechuri.service.RankService;
+import com.hk.mechuri.service.iRankService;
 
 
 /**
@@ -32,13 +38,16 @@ public class AController {
 
 	@Autowired
 	private IMembersService MembersService;
-	
+
 	@Autowired
 	private IMembersDao MembersDao;
 
 	@Autowired
 	private JavaMailSender mailSender;
 	
+	@Autowired
+	private iRankService RankService;
+
 	@RequestMapping(value = "/signUp.do", method = {RequestMethod.GET})
 	public String signUp(Model model) {
 		logger.info("회원 추가폼으로 이동 {}.");
@@ -62,40 +71,19 @@ public class AController {
 			return "error";
 		}
 	}
-	
-	@RequestMapping(value = "/naverSignUpBoard.do", method = {RequestMethod.POST})
-	public String naverSignUpBoard(Model model, HttpSession session, membersDto dto) {
 
-		logger.info("회원 추가합니다. {}.");
-		System.out.println("A컨트롤러에서 출력: ["+dto.getMem_id()+"]");
-		System.out.println("에러위치찾기 0");
-		boolean isS=MembersService.signUpBoard(dto);
-		System.out.println("에러위치찾기 1");
-		if(isS) {
-			System.out.println("에러위치찾기 2");
-			session.setAttribute("naverName", dto.getMem_name());
-			session.setAttribute("naverNickname", dto.getMem_nick());
-	
-			return "redirect:main.do";
-		}else {
-			System.out.println("에러위치찾기 3");
-			model.addAttribute("msg","회원가입 실패");
-			return "error";
-		}
-	}
-	
 	@RequestMapping(value= "/memLogin.do", method = RequestMethod.GET)
 	public String memLogin() {
 		return "memLogin"; //memLogin.jsp로
 	}
-	
+
 	@RequestMapping(value= "/login_check.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String login_check(							//spring에선 선언하면 session 객체 만들어줘
-	@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
+			@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
 		System.out.println(dto);
 		System.out.println(session);
 		boolean result 
-			=MembersService.loginCheck(dto, session);
+		=MembersService.loginCheck(dto, session);
 		System.out.println(MembersService);
 		ModelAndView mav=new ModelAndView();
 		System.out.println(mav);
@@ -106,18 +94,18 @@ public class AController {
 		}else { //로그인 실패 
 			mav.setViewName("memLogin");
 			mav.addObject("message", "error");
-			
+
 		}return "loginerror" ;
 	}
-	
+
 	@RequestMapping(value= "/logout.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpSession session) {
 		System.out.println("로그아웃 들어오니?");
 		session.invalidate();
 		return "redirect:main.do";
 	}
-	
-	
+
+
 
 	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
 	public String compSignUp(Model model) {
@@ -139,15 +127,15 @@ public class AController {
 		}
 	}
 
-	
+
 	@RequestMapping(value = "/mail.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer mail(Model model, String mem_id) 
 	{
 		MailSend ms = new MailSend();
-		
+
 		String title = "회원가입 인증코드 발급안내 입니다.";
-		
+
 		Random random = new Random();
 		int result = random.nextInt(10000)+1000;
 		if(result>10000) {
@@ -155,10 +143,10 @@ public class AController {
 		}
 		String content = "회원님의 인증 코드는 " + result +" 입니다.";
 		ms.mailSend(mem_id, title, content);
-		
+
 		return result;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/idcheck.do", method = {RequestMethod.POST})
 	public String idcheck(Model model, String mem_id, membersDto dto) {
@@ -172,6 +160,26 @@ public class AController {
 			return "b";
 		}
 	}
+	//  검색기능 Board꺼
+	// 글 목록+페이징+검색
+	@RequestMapping(value = "/listSearch.do", method=RequestMethod.GET)
+	public void listSearch(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
+		logger.info("리스트 찾기");
 
-	
+		List<productDto> list = RankService.listSearch(scri);
+		model.addAttribute("list", list);
+
+		logger.info("리스트 들어왔닝");
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		logger.info("scri 잘 들어오닝");
+		model.addAttribute("pageMaker", pageMaker);
+		logger.info("pageMaker 잘 들어오닝");
+
+
+
+
+
+	}
+
 }	
