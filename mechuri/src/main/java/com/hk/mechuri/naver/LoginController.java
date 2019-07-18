@@ -117,6 +117,7 @@ public class LoginController {
 		session.setAttribute("naverStatus", "M");
 		
 		if(mDDto != null) {
+			session.setAttribute("naverNo", mDDto.getMem_no());
 			session.setAttribute("naverName", mDDto.getMem_name());
 			session.setAttribute("naverNickname", mDDto.getMem_nick());
 		}

@@ -38,7 +38,6 @@ public class MembersDao implements IMembersDao {
 	}
 	@Override
 	public membersDto viewMember(String mem_id) {
-	
 		return sqlSession.selectOne(namespace+"viewMember", mem_id);
 	}
 
