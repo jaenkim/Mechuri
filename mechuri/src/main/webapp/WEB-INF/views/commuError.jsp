@@ -8,13 +8,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv='Refresh' content="0; URL=login.do">
 <title>Insert title here</title>
 </head>
 <body>
 	<script type="text/javascript">
 		alert("로그인 후 이용가능합니다.");
-		window.location.replace("http://localhost:7177/mechuri/login.do");
-	</script>
+		/* window.location.replace("http://localhost:7177/mechuri/login.do"); */
+	</script> 
 	
 	
 </body>
