@@ -183,6 +183,11 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_n
 
 
 <insert id="signUpBoard" parameterType='membersDto'>
+	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_REGDATE,MEM_DELFLAG) 
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'M',#{mem_name},#{mem_nick},#{mem_phone},SYSDATE,'N')
+</insert>
+
+<insert id="naverSignUpBoard" parameterType='membersDto'>
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_REGDATE,MEM_DELFLAG,MEM_NAVERID) 
 	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'M',#{mem_name},#{mem_nick},#{mem_phone},SYSDATE,'N',#{mem_naverid})
 </insert>

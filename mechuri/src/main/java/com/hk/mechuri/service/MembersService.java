@@ -34,7 +34,12 @@ public class MembersService implements IMembersService {
 	public boolean signUpBoard(membersDto dto) {
 		return MembersDao.signUpBoard(dto); 
 	}
-
+	
+	@Override
+	public boolean naverSignUpBoard(membersDto dto) {
+		return MembersDao.naverSignUpBoard(dto);
+	}
+	
 	@Override
 	public boolean compSignUpBoard(membersDto dto) {
 		return MembersDao.compSignUpBoard(dto); 
@@ -76,8 +81,8 @@ public class MembersService implements IMembersService {
 	public boolean NaverSignUp(String mem_email, String mem_name, String mem_id) {
 		return MembersDao.NaverSignUp(mem_email,mem_name,mem_id);
 	}
-
-	 @Override
+	
+	@Override
 	   public membersDto existNaverId(membersDto mDto) {
 	      return MembersDao.existNaverId(mDto);
 	      
