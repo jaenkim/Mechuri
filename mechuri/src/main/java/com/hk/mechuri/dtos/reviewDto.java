@@ -8,7 +8,7 @@ public class reviewDto {
 	private String review_memberid;
 	private int review_productno;
 	private String review_conts;
-	private int review_point;
+	private double review_point;
 	private Date review_regdate;
 	private int review_fileno;
 	private String review_originfile;
@@ -56,10 +56,10 @@ public class reviewDto {
 	public void setReview_conts(String review_conts) {
 		this.review_conts = review_conts;
 	}
-	public int getReview_point() {
+	public double getReview_point() {
 		return review_point;
 	}
-	public void setReview_point(int review_point) {
+	public void setReview_point(double review_point) {
 		this.review_point = review_point;
 	}
 	public Date getReview_regdate() {
