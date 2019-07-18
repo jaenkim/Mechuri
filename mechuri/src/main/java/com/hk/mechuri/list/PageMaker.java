@@ -68,7 +68,7 @@ public class PageMaker {
 		next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
 	}
 	
-	public String makeQuery(int page)
+	public String makeQuery(int page) //URI를 만드는 메서드 makeQuery
 	{
 		UriComponents uriComponents = 
 				UriComponentsBuilder.newInstance()

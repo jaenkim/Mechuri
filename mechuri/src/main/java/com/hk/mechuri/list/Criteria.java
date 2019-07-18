@@ -1,6 +1,6 @@
 package com.hk.mechuri.list;
 
-public class Criteria {
+public class Criteria { //페이징
 
 		private int page;
 		private int perPageNum;

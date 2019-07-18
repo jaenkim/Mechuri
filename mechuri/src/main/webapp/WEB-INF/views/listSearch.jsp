@@ -12,6 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script>
+
  $(function(){
   $('#searchBtn').click(function() {
    self.location = "listSearch.do"
@@ -36,7 +37,7 @@
  
  <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 
- <button id="searchBtn">검색</button>
+ <button id="searchBtn" >검색</button>
  
  	<form action="listSearch.do" method="post">
  	<h2>상품 검색 목록</h2>
