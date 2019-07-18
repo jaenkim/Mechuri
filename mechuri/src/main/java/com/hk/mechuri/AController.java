@@ -63,13 +63,13 @@ public class AController {
 		}
 	}
 	
-	@RequestMapping(value = "/naverSignUpBoard.do", method = {RequestMethod.POST})
+	@RequestMapping(value = "/naverSignUp.do", method = {RequestMethod.POST})
 	public String naverSignUpBoard(Model model, HttpSession session, membersDto dto) {
 
 		logger.info("회원 추가합니다. {}.");
 		System.out.println("A컨트롤러에서 출력: ["+dto.getMem_id()+"]");
 		System.out.println("에러위치찾기 0");
-		boolean isS=MembersService.signUpBoard(dto);
+		boolean isS=MembersService.naverSignUpBoard(dto);
 		System.out.println("에러위치찾기 1");
 		if(isS) {
 			System.out.println("에러위치찾기 2");

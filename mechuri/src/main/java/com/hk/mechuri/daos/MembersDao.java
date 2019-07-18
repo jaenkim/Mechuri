@@ -24,6 +24,15 @@ public class MembersDao implements IMembersDao {
 		int count=sqlSession.insert(namespace+"signUpBoard",dto);
 		return count>0?true:false;
 	}
+	
+	
+	@Override
+	public boolean naverSignUpBoard(membersDto dto) {
+		int count=sqlSession.insert(namespace+"naverSignUpBoard",dto);
+		return count>0?true:false;
+	}
+
+
 	@Override
 	public boolean compSignUpBoard(membersDto dto) {
 		int count=sqlSession.insert(namespace+"compSignUpBoard",dto);

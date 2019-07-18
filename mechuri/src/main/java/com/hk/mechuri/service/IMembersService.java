@@ -30,4 +30,6 @@ public interface IMembersService {
 
 	public membersDto getNameForNaverMember(String naverEmail);
 
+	public boolean naverSignUpBoard(membersDto dto);
+
 }

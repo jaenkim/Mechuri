@@ -27,6 +27,8 @@ public interface IMembersDao {
 
 	public membersDto getNameForNaverMember(String naverEmail);
 
+	public boolean naverSignUpBoard(membersDto dto);
+
 
 	
 
