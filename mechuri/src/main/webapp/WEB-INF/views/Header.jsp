@@ -82,11 +82,24 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Title insert here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/style.min.css" />
 <link rel="stylesheet" href="assets/css/modules.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style type="text/css">
+
+
+#var {
+background: rgba(255, 99, 71, 0.5);
+height: 17px;
+}
+
+  
+ 
 #accordian li {
 	list-style-type: none;
 }
@@ -259,9 +272,46 @@
 	</div>
 </nav>
 <% } %>		
+<script>
+// Hide Header on on scroll down 
+var didScroll; 
+var lastScrollTop = 0; 
+var delta = 5; 
+var navbarHeight = $('header').outerHeight();
+
+$(window).scroll(function(event){ 
+	didScroll = true; 
+}); 
+
+setInterval(function() { 
+	if (didScroll) { 
+		hasScrolled(); 
+		didScroll = false;
+		} 
+	}, 250); 
+	
+function hasScrolled() { 
+	var st = $(this).scrollTop(); 
+// Make sure they scroll more than delta 
+if(Math.abs(lastScrollTop - st) <= delta) 
+	return; 
+// If they scrolled down and are past the navbar, add class .nav-up. 
+// This is necessary so you never see what is "behind" the navbar. 
+if (st > lastScrollTop && st > navbarHeight){ 
+	// Scroll Down 
+	$('header').removeClass('nav-down').addClass('nav-up');
+} else { 
+	// Scroll Up 
+if(st + $(window).height() < $(document).height()) { 
+	$('header').removeClass('nav-up').addClass('nav-down');
+	} 
+  } 
+	lastScrollTop = st; 
+}
+</script>
 
 <!-- 헤더 네이게이션바 메뉴 -->
-<section class="MOD_MENU" data-theme="_bgp">
+<!-- <section class="MOD_MENU" data-theme="_bgp">
   <div data-layout="_r" class="nopadding">
     <nav class="MOD_MENU_Nav">
       <p class="MOD_MENU_Title">Menu</p>
@@ -314,8 +364,37 @@
       </ul>
     </nav>
   </div>
-</section>
+</section> -->
 <!--END MODULE AREA 2: Menu 1-->
+
+
+
+
+ 
+
+<body>
+
+<nav class="navbar navbar-inverse" id="var">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+      <li><a href="#">Page 4</a></li>
+    </ul>
+    <form class="navbar-form navbar-left" action="/action_page.php">
+    </form>
+  </div>
+</nav>
+
+
+
+
+
 
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
