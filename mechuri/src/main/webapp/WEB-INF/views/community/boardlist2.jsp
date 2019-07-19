@@ -126,7 +126,7 @@
         </c:choose>
          	
           <p class="MOD_ARTICLEBLOCKS1_Category">${dto.board_nick} </p>
-          조회:<div> ${dto.board_count}</div>
+        <div>조회: ${dto.board_count}</div>
         </div>
         
       </a>

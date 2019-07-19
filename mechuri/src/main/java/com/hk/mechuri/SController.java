@@ -28,9 +28,9 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	//여기부터 커뮤니티 기능                    
 	@RequestMapping(value = "/boardlist2.do") /*커뮤니티리스트*/
 	public String boardlist2(HttpSession session,Locale locale, Model model,HttpServletRequest request) {
-		String loginInfo = (String)session.getAttribute("mem_name");
-		String naverLoginInfo = (String)session.getAttribute("naverEmail");
-		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
+		String loginInfo = (String)session.getAttribute("mem_name");  //세션에서 일반회원 로그인정보 꺼내기
+		String naverLoginInfo = (String)session.getAttribute("naverEmail");  //세션에서 네이버 일반회원 로그인정보 꺼내기
+		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) { //로그인 안했으면 commuError.jsp로 보내기
 			return "commuError";
 		}else {
 		
@@ -39,9 +39,9 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 			session = request.getSession();//세션생성
 			session.setAttribute("board_pnum", board_pnum);//해당페이지 세션에 넣음
 			//request.getSession().removeAttribute("readcount");
-			if(board_pnum == null ||board_pnum == "") {
-				board_pnum="1";//1페이지로 기본세팅
-				List<boardDto> list=boardService.getAllList(board_pnum);
+			if(board_pnum == null ||board_pnum == "") {  //로그인 후 커뮤니티 1페이지로 들어오나 클릭한 기록이 없어null인 상태임, null처리위한if문
+				board_pnum="1";//null일 때 1페이지로 기본세팅
+				List<boardDto> list=boardService.getAllList(board_pnum); 
 				int pcount = boardService.getPcount(); //총 페이지 수			
 				model.addAttribute("list",list);
 				model.addAttribute("pcount",pcount);
@@ -63,14 +63,23 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	}
 	
 	@RequestMapping(value = "/boardwrite.do") /*글작성 폼으로 이동*/
-	public String boardwrite(Locale locale, Model model) {	
-		return "community/boardwrite";
+	public String boardwrite(HttpSession session,Locale locale, Model model) {	
+		String mem_nick = (String)session.getAttribute("mem_nick");//세션에 담긴 닉 
+		String loginInfo = (String)session.getAttribute("mem_name");
+		String naverLoginInfo = (String)session.getAttribute("naverEmail");
+		
+		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
+			return "commuError";
+		}else {
+			return "community/boardwrite";
+		}
 	}
 	
 	
 	@RequestMapping(value = "/insertWrite.do") /*커뮤니티 글 작성*/
 	public String insertWrite(Locale locale, Model model, HttpServletRequest request) {	
 		logger.info("글 추가하기 {}.", locale);
+		
 		
 		String nick = request.getParameter("nickname");
 		String title = request.getParameter("titlename");
@@ -121,10 +130,15 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	
 	@RequestMapping(value = "/boardDelete.do") /* 삭제 */
-	public String boardDelete(Locale locale, Model model, int board_no) {	
+	public String boardDelete(HttpSession session,Locale locale, Model model, int board_no) {	
 		logger.info("상세보기 글 삭제 {}.", locale);	
+		boolean isS;
 		
-		boolean isS=boardService.delBoard(board_no);
+		String myLogin = (String)session.getAttribute("mem_name");
+		String myNaverLogin = (String)session.getAttribute("naverEmail");
+		
+		isS=boardService.delBoard(board_no);
+
 		if(isS) {
 			return "redirect:boardlist2.do";
 		} else {
