@@ -83,9 +83,25 @@ public class HomeController {
 			System.out.println("컨트롤러에서 filter_catesname:[ "+catesname+"]");
 			filterDto dto = new filterDto(age10,age20,age30,age40,age50,female,male, catelname, catesname);
 			
+			String ageArray[] = new String[5];
+			String genderArray[] = new String[2];
+			String cateArray[] = new String[2];
+		
+			ageArray[0] = age10==null?"empty":age10;
+			ageArray[1] = age20==null?"empty":age20;
+			ageArray[2] = age30==null?"empty":age30;
+			ageArray[3] = age40==null?"empty":age40;
+			ageArray[4] = age50==null?"empty":age50;
+			genderArray[0] = female==null?"empty":female;
+			genderArray[1] = male==null?"empty":male;
+			cateArray[0] = catelname==null?"empty":catelname;
+			cateArray[1] = catesname==null?"empty":catesname;
+			
+			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
+			
 //			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
 			
-			List<productDto>list2 = rankService.getFilterProductList(dto);		
+/*			List<productDto>list2 = rankService.getFilterProductList(dto);*/		
 			model.addAttribute("list",list2);
 //			System.out.println("컨트롤러에서 반환된 값 확인 ["+list2.get(1).getProduct_name());
 			return "ranking/list";

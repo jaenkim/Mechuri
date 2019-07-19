@@ -56,12 +56,14 @@ public class RankDao implements iRankDao {
 	//필터에서 뭣 좀 해보려 한것 
 	@Override
 	public List<productDto> FilterDao(String[] ageArray, String[] genderArray, String[] cateArray) {
-		Map<String,String[]> mmap = new HashMap<String,String[]>();
+		Map<String,Object> mmap = new HashMap<String,Object>();
 //		System.out.println("다오(ageArray) ["+ageArray[0]+"]");
 //		System.out.println("다오(genderArray) ["+genderArray[0]+"]");
 		mmap.put("ages", ageArray);
 		mmap.put("genders", genderArray);
-		return sqlSession.selectList(namepace+"applyFilter",mmap);
+		mmap.put("catelname", cateArray[0]);
+		mmap.put("catesname", cateArray[1]);
+		return sqlSession.selectList(namepace+"doFilter2",mmap);
 	}
 		
 	@Override
