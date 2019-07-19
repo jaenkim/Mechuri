@@ -203,6 +203,12 @@ public class BoardService implements IBoardService {
 	}
 
 
+	@Override
+	public boolean delReply(int board_no) {
+		return boardDao.delReply(board_no);
+	}
+
+
 	
 	
 }

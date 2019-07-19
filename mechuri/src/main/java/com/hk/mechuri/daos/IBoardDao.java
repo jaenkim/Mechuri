@@ -51,6 +51,9 @@ public interface IBoardDao {
 	public boardDto getFileInfo (int board_fileno);
 	
 	public int getPagecount();
+
+
+	public boolean delReply(int board_no);
 	
 	
 	

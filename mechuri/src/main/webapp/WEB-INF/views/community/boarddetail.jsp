@@ -66,7 +66,7 @@
   		<c:when test="${mem_nick eq dto.board_nick}">
   			<input type="button" value="수정" onclick="updateBoard()" />
 			<input type="button" value="삭제" onclick="delBoard('${dto.board_no}')"/>
-			<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
+			<input type="button" value="해당 글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
   		</c:when>
   		<c:otherwise>
   			<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
@@ -127,7 +127,12 @@
     		<div id="replyregdate">${replylist.reply_regdate}</div>
         </c:otherwise> 
     </c:choose>
-    
+
+  	<input type="button" value="댓글삭제" onclick="delReply('${reply.board_no}')">
+  
+  			
+  	
+ 
     
     
     </div>
@@ -152,10 +157,10 @@
 	function updateBoard(board_no) {
 		location.href="updateForm.do?board_no=${dto.board_no}";
 	}
-	//리스트폼으로 이동
-	/* function listBoard(pnum) {
-		location.href="boardlist2.do?board_pnum=${board_pnum}";
-	} */
+	//댓글삭제 이동
+	function delReply(board_no) {
+		location.href="replyDelete.do?board_no=${dto.board_no}"; 
+	}
 	
 </script>
 

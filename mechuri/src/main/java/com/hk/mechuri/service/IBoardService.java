@@ -33,6 +33,8 @@ public interface IBoardService {
 	public boardDto getFileInfo (int board_fileno);
 	
 	public int getPcount();
+
+	public boolean delReply(int board_no);
 	
 	
 	
