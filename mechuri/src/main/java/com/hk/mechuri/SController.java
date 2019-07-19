@@ -106,8 +106,8 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		logger.info("게시글 상세보기 {}.", locale);
 		System.out.println("board_no["+board_no+"]");
 		//String pnum = request.getParameter("pnum");
-		String bPnum = (String)request.getSession().getAttribute("board_pnum");
-		String rCount = (String)request.getSession().getAttribute("readcount");
+		String bPnum = (String)request.getSession().getAttribute("board_pnum");//세션에서 현재페이지 꺼내기
+		String rCount = (String)request.getSession().getAttribute("readcount");//세션에서 카운트  꺼내기
 		
 		if(rCount==null) {
 			boardService.readCount(board_no);

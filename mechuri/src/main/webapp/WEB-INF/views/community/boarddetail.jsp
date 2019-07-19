@@ -61,9 +61,18 @@
   
   <br>
   <div>
-	<input type="button" value="수정" onclick="updateBoard()" />
-	<input type="button" value="삭제" onclick="delBoard('${dto.board_no}')"/>
-	<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
+	
+	<c:choose>
+  		<c:when test="${mem_nick eq dto.board_nick}">
+  			<input type="button" value="수정" onclick="updateBoard()" />
+			<input type="button" value="삭제" onclick="delBoard('${dto.board_no}')"/>
+			<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
+  		</c:when>
+  		<c:otherwise>
+  			<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
+  		</c:otherwise>
+  	</c:choose>	
+
   </div>
   
 <!--   <br> -->
