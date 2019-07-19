@@ -40,19 +40,20 @@ public class RankDao implements iRankDao {
 		//dto에 값이 담겨있는 걸 꺼내서
 		Map<String,String> maap = new HashMap<String,String>();
 	
-		maap.put("filter_age10",dto.getAge10()==null?"empty":dto.getAge10());
-		maap.put("filter_age20",dto.getAge20()==null?"empty":dto.getAge20());
-		maap.put("filter_age30",dto.getAge30()==null?"empty":dto.getAge30());
-		maap.put("filter_age40",dto.getAge40()==null?"empty":dto.getAge40());
-		maap.put("filter_age50",dto.getAge50()==null?"empty":dto.getAge50());
-		maap.put("filter_genderF",dto.getFemale()==null?"empty":dto.getFemale());
-		maap.put("filter_genderM",dto.getMale()==null?"empty":dto.getMale());
-		maap.put("filter_catelname",dto.getCatelname()==null?"empty":dto.getCatelname());
-		maap.put("filter_catesname",dto.getCatesname()==null?"empty":dto.getCatesname());
+		maap.put("age10",dto.getAge10()==null?"empty":dto.getAge10());
+		maap.put("age20",dto.getAge20()==null?"empty":dto.getAge20());
+		maap.put("age30",dto.getAge30()==null?"empty":dto.getAge30());
+		maap.put("age40",dto.getAge40()==null?"empty":dto.getAge40());
+		maap.put("age50",dto.getAge50()==null?"empty":dto.getAge50());
+		maap.put("female",dto.getFemale()==null?"empty":dto.getFemale());
+		maap.put("male",dto.getMale()==null?"empty":dto.getMale());
+		maap.put("catelname",dto.getCatelname()==null?"empty":dto.getCatelname());
+		maap.put("catesname",dto.getCatesname()==null?"empty":dto.getCatesname());
 
 		return sqlSession.selectList(namepace+"applyFilter",maap);
 	}
 
+	//필터에서 뭣 좀 해보려 한것 
 	@Override
 	public List<productDto> FilterDao(String[] ageArray, String[] genderArray, String[] cateArray) {
 		Map<String,String[]> mmap = new HashMap<String,String[]>();

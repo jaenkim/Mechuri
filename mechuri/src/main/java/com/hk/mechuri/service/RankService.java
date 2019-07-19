@@ -36,7 +36,7 @@ public class RankService implements iRankService {
 	public List<productDto> getFilterProductList(filterDto dto){
 		return rankDao.getFilterProductList(dto);
 	}
-
+	//필터에서 뭣 좀 해보려 한것 
 	@Override
 	public List<productDto> Filter(String[] ageArray, String[] genderArray, String[] cateArray) {
 		System.out.println("서비스(ageArray) ["+ageArray[0]+"]");

@@ -41,9 +41,9 @@
 			<input type="checkbox" name="female" value="전체" /> 여성 
 			<input	type="checkbox" name="male" value="남성" /> 남성 <br />
 			<p>카테고리</p>
-			<select name="catelname" style="width: 200px">
+			<select name="filter_catelname" style="width: 200px">
 				<option value="">전체</option>
-			</select> <select name="catesname" style="width: 200px">
+			</select> <select name="filter_catesname" style="width: 200px">
 				<option value="">전체</option>
 			</select> <input type="submit" value="선택 조건으로 검색" />
 		</form>

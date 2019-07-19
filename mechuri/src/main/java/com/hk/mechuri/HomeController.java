@@ -70,8 +70,8 @@ public class HomeController {
 			String age50 = request.getParameter("age50");
 			String female = request.getParameter("female");
 			String male = request.getParameter("male");
-			String catelname = request.getParameter("catelname");
-			String catesname = request.getParameter("catesname");
+			String catelname = request.getParameter("filter_catelname");
+			String catesname = request.getParameter("filter_catesname");
 			System.out.println("컨트롤러에서 10대:[ "+age10+"]");
 			System.out.println("컨트롤러에서 20대:[ "+age20+"]");
 			System.out.println("컨트롤러에서 30대:[ "+age30+"]");
