@@ -46,6 +46,8 @@ public class HomeController {
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String main(Locale locale, Model model,HttpSession session) {
 
+		//가장 리뷰점수가 높은 제품 출력(catelname 별 1개씩)
+		//가장 조회수가 놓은 커뮤니티의 글 4개 출력
 		return "ranking/main";
 	}
 
