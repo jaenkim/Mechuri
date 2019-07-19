@@ -97,6 +97,7 @@ public class HomeController {
 			cateArray[0] = catelname==null?"empty":catelname;
 			cateArray[1] = catesname==null?"empty":catesname;
 			
+			
 			//컨트롤러에서 매개변수의 값이 입력되지 않으면 전체선택되어 서비스로 보내지도록 처리할 것!!!
 			//김재원 놀지마!! '^'
 			
