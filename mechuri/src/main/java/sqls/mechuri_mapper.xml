@@ -178,7 +178,7 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_n
 </select>
 
 
-<!--                      검색기능                                                -->
+<!--                      검색기능                        rNum:rownum약자                        -->
 <select id="listSearch" resultType="productDto" parameterType="com.hk.mechuri.list.SearchCriteria">
 		SELECT PRODUCT_NO, PRODUCT_NAME, PRODUCT_BRAND, PRODUCT_CATELNAME, PRODUCT_CATESNAME, PRODUCT_PRICE
 			FROM (
