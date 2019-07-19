@@ -5,7 +5,7 @@ import java.util.Date;
 public class reviewDto {
 
 	private int review_no;
-	private String review_memberid;
+	private String review_membernick;
 	private int review_productno;
 	private String review_conts;
 	private double review_point;
@@ -27,7 +27,34 @@ public class reviewDto {
 	//생성자
 	public reviewDto() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public reviewDto(int review_no, int review_productno, String review_membernick) {
+		super();
+		this.review_no = review_no;
+		this.review_productno = review_productno;
+		this.review_membernick = review_membernick;
+	}
+	
+	public reviewDto(int review_productno, String review_membernick, String review_conts, Double review_point) {
+		super();
+		this.review_productno = review_productno;
+		this.review_membernick = review_membernick;
+		this.review_conts = review_conts;
+		this.review_point = review_point;
+	}
+
+	public reviewDto(int review_productno, String review_membernick, String review_conts, Double review_point,
+			String review_originfile, String review_storedfile, int review_filesize) {
+		super();
+		this.review_productno = review_productno;
+		this.review_membernick = review_membernick;
+		this.review_conts = review_conts;
+		this.review_point = review_point;
+		this.review_originfile = review_originfile;
+		this.review_storedfile = review_storedfile;
+		this.review_filesize = review_filesize;
 	}
 
 
@@ -38,11 +65,11 @@ public class reviewDto {
 	public void setReview_no(int review_no) {
 		this.review_no = review_no;
 	}
-	public String getReview_memberid() {
-		return review_memberid;
+	public String getReview_membernick() {
+		return review_membernick;
 	}
-	public void setReview_memberid(String review_memberid) {
-		this.review_memberid = review_memberid;
+	public void setReview_membernick(String review_membernick) {
+		this.review_membernick = review_membernick;
 	}
 	public int getReview_productno() {
 		return review_productno;
@@ -144,7 +171,7 @@ public class reviewDto {
 
 	@Override
 	public String toString() {
-		return "reviewDto [review_no=" + review_no + ", review_memberid=" + review_memberid + ", review_productno="
+		return "reviewDto [review_no=" + review_no + ", review_membernick=" + review_membernick + ", review_productno="
 				+ review_productno + ", review_conts=" + review_conts + ", review_point=" + review_point
 				+ ", review_regdate=" + review_regdate + ", review_fileno=" + review_fileno + ", review_originfile="
 				+ review_originfile + ", review_storedfile=" + review_storedfile + ", review_fileregdate="

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +21,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.mechuri.dtos.filterDto;
 import com.hk.mechuri.dtos.ingreDto;
@@ -27,6 +31,8 @@ import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
 import com.hk.mechuri.service.RankService;
 import com.hk.mechuri.service.iRankService;
+
+import javafx.scene.control.Alert;
 
 @Controller
 public class HomeController {
@@ -93,7 +99,6 @@ public class HomeController {
 	@RequestMapping(value = "/refilter.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String refilter(HttpServletRequest request, Locale locale, Model model, productDto dto) {
 		return null;
-		
 	}
 	
 	@RequestMapping(value = "/productdetail.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -101,6 +106,7 @@ public class HomeController {
 		
 		int product_no = Integer.parseInt(request.getParameter("no"));
 		String product_ingre = request.getParameter("ingre");
+		System.out.println("product_ingre ["+product_ingre+"]");
 		productDto pDto = new productDto(product_no,product_ingre);
 		
 		
@@ -114,39 +120,103 @@ public class HomeController {
 		model.addAttribute("reviewInfo",reviewInfo);
 
 		List<ingreDto> ingreInfo = rankService.getProductIngre(pDto);
+		System.out.println("오류 위치 찾기 aaaaa");
 		model.addAttribute("ingreInfo",ingreInfo);
+		System.out.println("오류 위치 찾기 bbbb");
+		model.addAttribute("callbackReview", product_ingre);
+		System.out.println("오류 위치 찾기 cccccc");
 		
 		return "ranking/productdetail";
 	}
+		
+		//리뷰 작성하는 페이지로 이동
+		@RequestMapping(value = "/reviewpage.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String callReviewPage(HttpServletRequest request, Locale locale, Model model, productDto dto, HttpSession session) {
+			
+			//세션 체크
+			String loginInfo = (String)session.getAttribute("mem_name");
+			String naverLoginInfo = (String)session.getAttribute("naverEmail");
+			
+			if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
+				return "doLogin";
+			}else {
+					
+				int pNo = Integer.parseInt(request.getParameter("pNo")); 
+				String callbackIngre = request.getParameter("ingre");
+				productDto reviewProduct = rankService.getOneProductInfo(pNo);
+				
+				if(session.getAttribute("naverNickname")!=null) {
+					String reviewNick = (String) session.getAttribute("naverNickname");
+					model.addAttribute("writer", reviewNick);
+					System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(네이버로그인) : ["+reviewNick+"]");
+				}else if(session.getAttribute("mem_nick")!=null) {
+					String reviewNick = (String) session.getAttribute("mem_nick");
+					model.addAttribute("writer", reviewNick);
+					System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(일반회원로그인) : ["+reviewNick+"]");
+				}else {
+					System.out.println("세션이 없음");
+					return "login";
+				}
+				model.addAttribute("product", reviewProduct);
+				model.addAttribute("callbackIngre", callbackIngre);
+				return "review/insertReview";
+				}
+		}
 	
+		//리뷰 작성하는 페이지로 이동
+		@RequestMapping(value = "/insertReview.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String insertReview(HttpServletRequest request, Locale locale, Model model, productDto dto, HttpSession session) {
+			
+			int review_productno = Integer.parseInt(request.getParameter("product_no"));
+			String review_membernick = request.getParameter("writer");
+			String review_conts = request.getParameter("reviewconts");
+			Double review_point = Double.parseDouble(request.getParameter("points"));
+			String callbackIngre = request.getParameter("callbackIngre");
+			
+			reviewDto rDto = new reviewDto(review_productno,review_membernick,review_conts,review_point);
+			
+			boolean isS = rankService.insertReview(request, rDto);
 
+			if(isS) {
+				System.out.println("리뷰 작성에 성공!");
+				return "redirect:productdetail.do?no="+review_productno+"&ingre="+callbackIngre;
+				
+			}else {
+				System.out.println("리뷰 작성에 실패했습니다.");
+				return "redirect:productdetail.do?no="+review_productno+"&ingre="+callbackIngre;
+			}
+		}//insertReview END
+		
+		@ResponseBody
+		@RequestMapping(value = "/deleteReview.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String deleteReview(HttpServletRequest request, Locale locale, Model model, productDto pDto, reviewDto rDto, HttpSession session) {
+			
+			//세션 체크
+			String loginInfo = (String)session.getAttribute("mem_nick");
+			String naverLoginInfo = (String)session.getAttribute("naverNickname");
+			
+			if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
+				return "doLogin";
+				
+			}else {			
+				int review_productno = Integer.parseInt(request.getParameter("productNo"));
+				String callbackIngre = request.getParameter("ingre");
+				int review_no = Integer.parseInt(request.getParameter("reviewNo"));
+				System.out.println("review_no ["+review_no+"]");
+				String review_membernick = request.getParameter("reviewNick"); 
+				System.out.println("reviewNick ["+review_membernick+"]");
+				
+				reviewDto rDDto = new reviewDto(review_no, review_productno, review_membernick);
+				int isS = rankService.deleteReview(rDDto);
+				
+				return isS+"";
+			}
+			
+		}//deleteReview END
+		
+		
+		
 }
 
 
 //쓰지 않는 것 모아두기
-//			if(request.getParameter("filter_age10").equals("전체,10대")) {filter_age10 = request.getParameter("filter_age10");}
-//			else {filter_age10 = "전체";}
-//			
-//			if(request.getParameter("filter_age20").equals("전체,20대")) {	filter_age20 = request.getParameter("filter_age20");}
-//			else {filter_age20 = "전체";}
-//			
-//			if(request.getParameter("filter_age30").equals("전체,30대")) {	filter_age30 = request.getParameter("filter_age30");}
-//			else {filter_age30 = "전체";}
-//			
-//			if(request.getParameter("filter_age40").equals("전체,40대")) {	filter_age40 = request.getParameter("filter_age40");}
-//			else {filter_age40 = "전체";}
-//			
-//			if(request.getParameter("filter_age50").equals("전체,50대 이상")) {filter_age50 = request.getParameter("filter_age50");}
-//			else {filter_age50 = "전체";}
-//			
-//			if(request.getParameter("filter_genderF").equals("전체,여성")) {filter_genderF = request.getParameter("filter_genderF");}
-//			else {filter_genderF = "전체";}
-//			
-//			if(request.getParameter("filter_genderM").equals("전체,남성")) {filter_genderM = request.getParameter("filter_genderM");}
-//			else {filter_genderM = "전체";}
-//			
-//			if(!(request.getParameter("filter_catelname").equals("전체"))) {filter_catelname = request.getParameter("filter_catelname");}
-//			else {filter_catelname = "전체";}
-//			
-//			if(!(request.getParameter("filter_catesname").equals("전체"))) {filter_catesname = request.getParameter("filter_catesname");}
-//			else {filter_catesname = "전체";}

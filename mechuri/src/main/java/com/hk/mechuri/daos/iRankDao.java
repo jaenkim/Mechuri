@@ -31,11 +31,13 @@ public interface iRankDao {
 	List<productDto> listSearch(SearchCriteria srci) throws Exception; //목록+페이징+검색
 
 	int countSearch(SearchCriteria srci); //검색 결과 갯수
+	
+	//리뷰 작성할 때, 작성되는 리뷰의 대상이되는 제품정보를 불러오는 메서드
+	productDto getOneProductInfo(int pNo);
+
+	int insertReview(reviewDto reviewDto);
+
+	int deleteReview(reviewDto rDDto);
+
 }
 
-
-//	String ageFilterDao(String[] ageArray);
-//
-//String genderFilterDao(String[] genderFilter);
-//
-//String categoryFilterDao(String[] cateArray);

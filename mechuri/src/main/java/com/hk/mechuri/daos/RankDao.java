@@ -21,13 +21,13 @@ import com.hk.mechuri.list.SearchCriteria;
 
 @Repository
 public class RankDao implements iRankDao {
-
+	
 	//myBatis 사용하기 위해 namespace 준비 '3'
 	private String namepace="com.hk.mechuri.";
 
 	@Autowired //application-context.xml에 빈 생성해놓은 sqlSession 가져와서 의존관계를 설정
 	private SqlSessionTemplate sqlSession;
-
+	
 	//페이지에 제품의 전체 목록을 출력하는 다오
 
 	@Override
@@ -39,7 +39,7 @@ public class RankDao implements iRankDao {
 	public List<productDto> getFilterProductList(filterDto dto) {
 		//dto에 값이 담겨있는 걸 꺼내서
 		Map<String,String> maap = new HashMap<String,String>();
-
+	
 		maap.put("filter_age10",dto.getFilter_age10()==null?"empty":dto.getFilter_age10());
 		maap.put("filter_age20",dto.getFilter_age20()==null?"empty":dto.getFilter_age20());
 		maap.put("filter_age30",dto.getFilter_age30()==null?"empty":dto.getFilter_age30());
@@ -56,13 +56,13 @@ public class RankDao implements iRankDao {
 	@Override
 	public List<productDto> FilterDao(String[] ageArray, String[] genderArray, String[] cateArray) {
 		Map<String,String[]> mmap = new HashMap<String,String[]>();
-		//		System.out.println("다오(ageArray) ["+ageArray[0]+"]");
-		//		System.out.println("다오(genderArray) ["+genderArray[0]+"]");
+//		System.out.println("다오(ageArray) ["+ageArray[0]+"]");
+//		System.out.println("다오(genderArray) ["+genderArray[0]+"]");
 		mmap.put("ages", ageArray);
 		mmap.put("genders", genderArray);
 		return sqlSession.selectList(namepace+"applyFilter",mmap);
 	}
-
+		
 	@Override
 	public productDto getDetailProductList(int product_no) {
 
@@ -85,17 +85,16 @@ public class RankDao implements iRankDao {
 	public List<ingreDto> getProductIngre(productDto pDto) {
 		int product_no = pDto.getProduct_no();
 		String ingre = pDto.getProduct_ingre();
-
+		
 		String[] ingreArray = ingre.split(",");
-
+		
 		Map<String,String[]> mapp = new HashMap<String,String[]>();
-
+		
 		mapp.put("product_ingre", ingreArray);
-		//		mapp.put("product_no", product_no);
-
+//		mapp.put("product_no", product_no);
+		
 		return sqlSession.selectList(namepace+"productIngre",mapp);
 	}
-
 	//여기부터 검색
 
 	@Override
@@ -108,4 +107,32 @@ public class RankDao implements iRankDao {
 		return sqlSession.selectOne(namepace +"countSearch", scri);
 	}	
 
+	//리뷰 작성할 때, 작성되는 리뷰의 대상이되는 제품정보를 불러오는 메서드
+		@Override
+		public productDto getOneProductInfo(int pNo) {
+			return sqlSession.selectOne(namepace+"getOneProductInfo", pNo);
+		}
+		
+		//리뷰 작성하는 메서드
+		@Override
+		public int insertReview(reviewDto dto) {
+			Map<String,Object> mmapp = new HashMap<String,Object>();
+			mmapp.put("review_membernick", dto.getReview_membernick());
+			mmapp.put("review_productno", dto.getReview_productno());
+			mmapp.put("review_conts", dto.getReview_conts());
+			mmapp.put("review_point", dto.getReview_point());
+			mmapp.put("review_originfile", dto.getReview_originfile());
+			mmapp.put("review_storedfile", dto.getReview_storedfile());
+			mmapp.put("review_filesize", dto.getReview_filesize());
+			
+			return sqlSession.insert(namepace+"insertReview", mmapp);
+		}
+
+		@Override
+		public int deleteReview(reviewDto rDDto) {
+			return sqlSession.delete(namepace+"deleteReview", rDDto);
+		}
+		
+		
+	
 }

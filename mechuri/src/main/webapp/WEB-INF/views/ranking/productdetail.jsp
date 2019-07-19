@@ -15,7 +15,28 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+	<script type="text/javascript">
+		function delReview(clickBtn) {
+			var productNo = $("#productNo").val();
+			var ingre = $("#ingre").val();
+			var reviewNo = $("#reviewNo").val();
+			var reviewNick = $("#reviewNick").val();
+		
+			$.ajax({
+				type : "POST",
+				url : "./deleteReview.do",
+				data : {"productNo":productNo,"ingre":ingre,"reviewNo":reviewNo,"reviewNick":reviewNick},
+				async : true,
+				success : function(msg) {
+					alert("회원님의 리뷰가 삭제되었습니다.");
+					$(clickBtn).parent().parent().remove();
+				},
+				error: function(msg){
+ 					alert("본인의 리뷰만 삭제가 가능합니다.");
+				}
+			});
+		}
+	</script>
 <title>${proInfo.product_name} :: 메추리 랭킹</title>
 </head>
 <body>
@@ -49,14 +70,17 @@
 	<td>
 	<div>
 		<span class="heading">별점</span> 
-		<c:choose>
-			<c:when test="${proInfo.product_point == 0 }" >
+<%-- 		<c:choose> --%>
+<%-- 			<c:when test="${proInfo.product_point == 0 }" > --%>
 				<img src="images/productPoint/point_0.png" alt="0점">
-			</c:when>
-			<c:when test="${0.00000001 < proInfo.product_point < 0.99999999}" >
-				<img src="images/productPoint/point_05.png" alt="0점">
-			</c:when>
-		</c:choose>
+<%-- 			</c:when> --%>
+<%-- 			<c:when test="${0.00000001 < proInfo.product_point < 0.99999999}" > --%>
+<!-- 				<img src="images/productPoint/point_05.png" alt="0점"> -->
+<%-- 			</c:when> --%>
+<%-- 			<c:otherwise> --%>
+<!-- 				<img src="images/productPoint/point_3.png" alt="0점"> -->
+<%-- 			</c:otherwise> --%>
+<%-- 		</c:choose> --%>
 		
 		
 		<p>별점 평균: ${proInfo.product_point } 별점 준 사람 수: ${proInfo.product_pointcount }</p>
@@ -125,6 +149,16 @@
 	</td>
 	</tr>
 	</table>
+	
+	
+	<!-- 리뷰 작성하기 버튼 -->
+	<div>
+		<button class="reviewBtn" onclick="location.href='reviewpage.do?pNo=${proInfo.product_no}&ingre=${callbackReview}'" >리뷰 작성하기</button>
+	</div>
+	
+	
+	<!-- 리뷰 목록 -->
+	
 	<table border="1">
 		<tr>
 		<th>리뷰번호</th>
@@ -133,18 +167,39 @@
 		<th>별점</th>
 		<th>사진</th>
 		<th>리뷰 작성일</th>
+		<th>삭제</th>
 		</tr>
 		<c:forEach items="${reviewInfo}" var="reviewInfo">
-		<tr>
-			<td>${reviewInfo.review_no}</td>
-			<td>${reviewInfo.review_nick }</td>
-			<td>${reviewInfo.review_conts }</td>
-			<td>${reviewInfo.review_point }</td>
-			<td>${reviewInfo.review_storedfile }</td>
-			<td>${reviewInfo.review_regdate }</td>
-		</tr>
+<!-- 		<form action="deleteReview.do" > -->
+			<input type="hidden" id="productNo" value="${proInfo.product_no}" />
+			<input type="hidden" id="ingre" value="${callbackReview}" />
+			<input type="hidden" id="reviewNo" value="${reviewInfo.review_no}" />
+			<input type="hidden" id="reviewNick" value="${review_nick}" />
+			<tr>
+				<td>${reviewInfo.review_no}</td>
+				<td>${reviewInfo.review_nick }</td>
+				<td>${reviewInfo.review_conts }</td>
+				<td>${reviewInfo.review_point }</td>
+				<td><img src="upload/${reviewInfo.review_storedfile}" alt="이미지"></td>
+				<td>${reviewInfo.review_regdate }</td>
+				<td>
+<%-- 					<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${naverNickname eq reviewInfo.review_nick?"":"style='display:none'"} /> --%>
+					<c:choose>
+						<c:when test="${naverNickname!=null}">
+							<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${naverNickname eq reviewInfo.review_nick?"":"style='display:none'"}  />
+						</c:when>
+						<c:when test="${mem_nick!=null}">
+							<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${mem_nick eq reviewInfo.review_nick?"":"style='display:none'"}  />
+						</c:when>
+						
+					</c:choose>
+					
+				</td>
+			</tr>
+<!-- 		</form> -->
 		</c:forEach>
 	</table>
+
 
  <!-- 성분 Modal -->
   <div class="modal fade" id="myModal" role="dialog">
