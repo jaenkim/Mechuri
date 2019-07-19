@@ -128,7 +128,7 @@
         </c:otherwise> 
     </c:choose>
 
-  	<input type="button" value="댓글삭제" onclick="delReply('${reply.board_no}')">
+  	<input type="button" value="댓글삭제" onclick="delReply('${reply.board_no}')"> <!-- 댓글삭제버튼이 위의otherwise에들어가면 아예안나옴.. -->
   
   			
   	
