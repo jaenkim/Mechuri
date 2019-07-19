@@ -4,6 +4,8 @@
 <mapper namespace="com.hk.mechuri">
 
 <!-- 김재원 -->
+
+<!-- 리스트 출력하는 쿼리 -->
 <select id='productlist' resultType='productDto' parameterType="Map">
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,PRODUCT_PRICE,
 ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
@@ -35,47 +37,51 @@ WHERE PRODUCT_FLAG='Y'
 ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
+
+<!-- 필터 적용하는 쿼리 -->
+<!-- 필터적용 원본 쿼리 -->
 <select id="doFilter" resultType='productDto' parameterType="Map">
-SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
-ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
-(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
-DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
-FROM PRODUCT
-WHERE PRODUCT_FLAG='Y'
-		AND PRODUCT_AGE IN
-			<foreach collection="ages" item="age" open="(" close=")" separator=",">
-				#{age}
-			</foreach>
-		AND PRODUCT_GENDER IN
-			<foreach collection="genders" item="gender" open="(" close=")" separator=",">
-				#{gender}
-			</foreach>
-		AND (PRODUCT_CATELNAME=#{catelname} AND PRODUCT_CATESNAME=#{catesname})
-		AND (PRODUCT_DJFALG = NULL OR PRODUCT_DJFLAG = 'Y')
-ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
+	SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
+	ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
+	(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
+	DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
+	FROM PRODUCT
+	WHERE PRODUCT_FLAG='Y'
+			AND PRODUCT_AGE IN
+				<foreach collection="ages" item="age" open="(" close=")" separator=",">
+					#{age}
+				</foreach>
+			AND PRODUCT_GENDER IN
+				<foreach collection="genders" item="gender" open="(" close=")" separator=",">
+					#{gender}
+				</foreach>
+			AND (PRODUCT_CATELNAME=#{catelname} AND PRODUCT_CATESNAME=#{catesname})
+			AND (PRODUCT_DJFALG = NULL OR PRODUCT_DJFLAG = 'Y')
+	ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
+<!-- 은영이가 보내준 테이블 수정한 것 필터적용하는 쿼리 -->
 <select id="doFilter2" resultType='productDto' parameterType="Map">
-SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
-ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO),3) AS PRODUCT_POINT,
-(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
-DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
-FROM PRODUCT2
-WHERE PRODUCT_FLAG='Y'
-		AND PRODUCT_AGE IN
-			<foreach collection="ages" item="age" open="(" close=")" separator=",">
-				#{age}
-			</foreach>
-		AND PRODUCT_GENDER IN
-			<foreach collection="genders" item="gender" open="(" close=")" separator=",">
-				#{gender}
-			</foreach>
-		AND (PRODUCT_CATELNAME=#{catelname} or PRODUCT_CATESNAME=#{catesname})
-ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
+	SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
+	ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO),3) AS PRODUCT_POINT,
+	(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
+	DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
+	FROM PRODUCT2
+	WHERE PRODUCT_FLAG='Y'
+			AND PRODUCT_AGE IN
+				<foreach collection="ages" item="age" open="(" close=")" separator=",">
+					#{age}
+				</foreach>
+			AND PRODUCT_GENDER IN
+				<foreach collection="genders" item="gender" open="(" close=")" separator=",">
+					#{gender}
+				</foreach>
+			AND (PRODUCT_CATELNAME=#{catelname} or PRODUCT_CATESNAME=#{catesname})
+	ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
 
-
+<!-- 제품상세페이지 보는 쿼리!! -->
 <!-- 제품 상세페이지 보기 -->
 <select id="productDetail" resultType="productDto" parameterType="int">
 	SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_CONTS,PRODUCT_BRAND,PRODUCT_COMPNO,PRODUCT_CATELNAME,PRODUCT_CATESNAME,
@@ -112,6 +118,9 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 		#{ingre}
 	</foreach>
 </select>
+
+
+<!-- 리뷰용 쿼리!! -->
 <!-- 리뷰작성시 작성되는 리뷰의 대상이 되는 제품정보 1개를 출력 -->
 <select id="getOneProductInfo" resultType="productDto" parameterType="int">
 	SELECT PRODUCT_NO, PRODUCT_NAME, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_CONTS, PRODUCT_CATELNAME, PRODUCT_CATESNAME, PRODUCT_ML
@@ -130,6 +139,19 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </delete>
 
 
+<!-- 리뷰용 세션용 쿼리!! -->
+<!-- 네이버 로그인 세션을 확인하는 쿼리 -->
+<select id="existNaver" resultType="membersDto" parameterType="membersDto">
+	SELECT MEM_ID, MEM_NAME, MEM_NAVERID, MEM_NICK FROM MEMBERS
+	WHERE MEM_ID = #{mem_id}
+</select>
+
+<select id="forNaverSession" resultType="membersDto" parameterType="String">
+	SELECT MEM_NO,MEM_NAME,MEM_NICK,MEM_STATUS,MEM_DELFLAG FROM MEMBERS
+	WHERE MEM_ID = #{naverEmail}
+</select>
+
+<!-- 김재원 끝끝끝 김재원 끝끝끝 김재원 끝끝끝 김재원 끝끝끝 김재원 끝끝끝 김재원 끝끝끝 -->
 
 <!-- 커뮤니티 리스트 출력 쿼리 -->
  <select id='boardlist2' resultType='boardDto' parameterType='String'>
@@ -446,17 +468,6 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 </select>
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 끝 -->
 
-
-<select id="existNaver" resultType="membersDto" parameterType="membersDto">
-	SELECT MEM_ID, MEM_NAME, MEM_NAVERID, MEM_NICK FROM MEMBERS
-	WHERE MEM_ID = #{mem_id}
-</select>
-
-<select id="forNaverSession" resultType="membersDto" parameterType="String">
-	SELECT MEM_NO,MEM_NAME,MEM_NICK,MEM_STATUS,MEM_DELFLAG FROM MEMBERS
-	WHERE MEM_ID = #{naverEmail}
-</select>
-
 <select id = 'idcheck' resultType='membersDto' parameterType='String'>
 		SELECT MEM_ID 
 		FROM MEMBERS 
@@ -464,5 +475,3 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 </select>
 
 </mapper>
-
-

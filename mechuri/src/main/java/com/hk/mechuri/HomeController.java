@@ -72,15 +72,15 @@ public class HomeController {
 			String male = request.getParameter("male");
 			String catelname = request.getParameter("filter_catelname");
 			String catesname = request.getParameter("filter_catesname");
-			System.out.println("컨트롤러에서 10대:[ "+age10+"]");
-			System.out.println("컨트롤러에서 20대:[ "+age20+"]");
-			System.out.println("컨트롤러에서 30대:[ "+age30+"]");
-			System.out.println("컨트롤러에서 40대:[ "+age40+"]");
-			System.out.println("컨트롤러에서 50대:[ "+age50+"]");
-			System.out.println("컨트롤러에서 filter_genderM:[ "+female+"]");
-			System.out.println("컨트롤러에서 filter_genderF:[ "+male+"]");
-			System.out.println("컨트롤러에서 filter_catelname:[ "+catelname+"]");
-			System.out.println("컨트롤러에서 filter_catesname:[ "+catesname+"]");
+			System.out.println("컨트롤러에서 10대 값 들어옴? :[ "+age10+"]");
+			System.out.println("컨트롤러에서 20대 값 들어옴? :[ "+age20+"]");
+			System.out.println("컨트롤러에서 30대 값 들어옴? :[ "+age30+"]");
+			System.out.println("컨트롤러에서 40대 값 들어옴? :[ "+age40+"]");
+			System.out.println("컨트롤러에서 50대 값 들어옴? :[ "+age50+"]");
+			System.out.println("컨트롤러에서 여성 선택 값 들어옴? :[ "+female+"]");
+			System.out.println("컨트롤러에서 남성 선택 값 들어옴? :[ "+male+"]");
+			System.out.println("컨트롤러에서 카테고리 대분류 값 들어옴? :[ "+catelname+"]");
+			System.out.println("컨트롤러에서 카테고리 소붙류 값 들어옴? :[ "+catesname+"]");
 			filterDto dto = new filterDto(age10,age20,age30,age40,age50,female,male, catelname, catesname);
 			
 			String ageArray[] = new String[5];
@@ -96,6 +96,12 @@ public class HomeController {
 			genderArray[1] = male==null?"empty":male;
 			cateArray[0] = catelname==null?"empty":catelname;
 			cateArray[1] = catesname==null?"empty":catesname;
+			
+			//컨트롤러에서 매개변수의 값이 입력되지 않으면 전체선택되어 서비스로 보내지도록 처리할 것!!!
+			//김재원 놀지마!! '^'
+			
+			
+			
 			
 			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
 			
