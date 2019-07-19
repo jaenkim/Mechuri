@@ -11,19 +11,7 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<script>
 
- $(function(){
-  $('#searchBtn').click(function() {
-   self.location = "listSearch.do"
-     + '${pageMaker.makeQuery(1)}'
-     + "&searchType="
-     + $("select option:selected").val()
-     + "&keyword="
-     + encodeURIComponent($('#keywordInput').val());
-    });
- });   
- </script>
 <title>제품 전체보기 검색</title>
 </head>
 <body>
@@ -39,6 +27,20 @@
 
  <button id="searchBtn" >검색</button>
  
+ 
+ <script>
+  //http://localhost:8888/mechuri/listSearch.do?page=1&perPageNum=20&searchType=n&keyword=아
+ $(function(){  
+  $('#searchBtn').click(function() {
+   self.location = "listSearch.do"
+     + '${pageMaker.makeQuery(1)}'
+     + "&searchType="
+     + $("select option:selected").val()
+     + "&keyword="
+     + encodeURIComponent($('#keywordInput').val());
+    });
+ });   
+ </script>
  	<h2>상품 검색 목록</h2>
  		<table border='1' id="serachTable">
  		<thead>
@@ -62,7 +64,7 @@
 			<!-- 목록 끝 -->
  	</table>
  	
- 	<div class="col-md-offset-3"> 
+ 	<%-- <div class="col-md-offset-3"> 
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li><a href="listSearch${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
@@ -77,7 +79,7 @@
 					<li><a href="listSearch${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
 				</c:if>	
 			</ul> 
-		</div>
+		</div> --%>
 </div>
 <jsp:include page="Footer.jsp" />
 </body>
