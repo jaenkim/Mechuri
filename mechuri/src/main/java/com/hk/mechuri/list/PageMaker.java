@@ -14,7 +14,7 @@ public class PageMaker {
 	private boolean prev; //이전 페이지로 이동하는 링크의 존재 여부
 	private boolean next; //다음 페이지로 이동하는 링크의 존재 여부
 
-	private int displayPageNum = 10;
+	private int displayPageNum = 100;
 
 	private Criteria cri;
 	
