@@ -33,8 +33,8 @@
   <option value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>이름</option>
   <option value="b"<c:out value="${scri.searchType eq 'b' ? 'selected' : ''}"/>>브랜드</option>
   <option value="cl"<c:out value="${scri.searchType eq 'cl' ? 'selected' : ''}"/>>카테고리</option>
- </select>
- 
+ </select>								<!-- 검색 타입 값에 따라 출력   -->				
+ 					
  <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 
  <button id="searchBtn" >검색</button>
@@ -42,7 +42,7 @@
  	<h2>상품 검색 목록</h2>
  		<table border='1' id="serachTable">
  		<thead>
-			<tr><th>상품번호</th><th>상품이름</th><th>큰 카테고리</th><th>작은 카테고리</th><th>브랜드</th><th>가격</th></tr>
+			<tr><th>상품번호</th><th>상품이름</th><th>카테고리</th><th>제품 카테고리</th><th>브랜드</th><th>가격</th></tr>
 		</thead>	
 			<!-- 목록 시작 -->
 			<c:forEach items="${list}" var="dto">
@@ -72,7 +72,7 @@
 					<li <c:out value="${pageMaker.cri.page == idx ? 'class=active' : ''}"/>>
 					<a href="listSearch${pageMaker.makeSearch(idx)}">${idx}</a></li>
 				</c:forEach>
-	<!--  jstl로 URL 또는 세션에 있는 scri.searchType값을 가져와서, 이 값이 'w'라면 selected를 출력하고, 아니면 공백('')을 출력한다는 조건문 --> 
+	<!--  jstl로 URL 또는 세션에 있는 scri.searchType값을 가져와서, 이 값이 'w'라면 selected를 출력하고, 아니면 공백('')을 출력하는 조건문 --> 
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 					<li><a href="listSearch${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
 				</c:if>	

@@ -15,7 +15,7 @@ public class Criteria { //시작 값과 끝 값을 다루는 클래스
 
 		public void setPage(int page)
 		{
-			if (page <= 1)
+			if (page <= 0)
 			{ 
 				this.page = 1;
 				return;
@@ -25,7 +25,7 @@ public class Criteria { //시작 값과 끝 값을 다루는 클래스
 
 		public void setPerPageNum(int perPageNum)
 		{
-			if (perPageNum <= 1 || perPageNum > 100)
+			if (perPageNum <= 0 || perPageNum > 100)
 			{
 				this.perPageNum = 20;
 				return;
