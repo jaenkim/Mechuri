@@ -26,24 +26,24 @@
 
 
 	<section>
-	<h1>이 곳에 페이지를 작성 '3'</h1>
+	<h5>이 곳에 페이지를 작성 '3'</h5>
 	</section>
 
 	<div>
 		<form action="list.do" method="post">
 		<h3>필터 영역</h3>
 			<input type="hidden" name="command" value="filter" /> 
-			<input	type="checkbox" name="filter_age10" value="10대" /> 10대 
-			<input	type="checkbox" name="filter_age20" value="20대" /> 20대 
-			<input	type="checkbox" name="filter_age30" value="30대" /> 30대<br /> 
-			<input	type="checkbox" name="filter_age40" value="40대" /> 40대 
-			<input	type="checkbox" name="filter_age50" value="50대" /> 50대 이상<br />
-			<input type="checkbox" name="filter_genderF" value="전체" /> 여성 
-			<input	type="checkbox" name="filter_genderM" value="남성" /> 남성 <br />
+			<input	type="checkbox" name="age10" value="10대" /> 10대 
+			<input	type="checkbox" name="age20" value="20대" /> 20대 
+			<input	type="checkbox" name="age30" value="30대" /> 30대<br /> 
+			<input	type="checkbox" name="age40" value="40대" /> 40대 
+			<input	type="checkbox" name="age50" value="50대" /> 50대 이상<br />
+			<input type="checkbox" name="female" value="전체" /> 여성 
+			<input	type="checkbox" name="male" value="남성" /> 남성 <br />
 			<p>카테고리</p>
-			<select name="filter_catelname" style="width: 200px">
+			<select name="catelname" style="width: 200px">
 				<option value="">전체</option>
-			</select> <select name="filter_catesname" style="width: 200px">
+			</select> <select name="catesname" style="width: 200px">
 				<option value="">전체</option>
 			</select> <input type="submit" value="선택 조건으로 검색" />
 		</form>

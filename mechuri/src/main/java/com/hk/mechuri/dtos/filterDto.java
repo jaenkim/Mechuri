@@ -2,105 +2,106 @@ package com.hk.mechuri.dtos;
 
 public class filterDto {
 
-	private String filter_age10;
-	private String filter_age20;
-	private String filter_age30;
-	private String filter_age40;
-	private String filter_age50;
-	private String filter_genderF;
-	private String filter_genderM;
-	private String filter_catelname;
-	private String filter_catesname;
-	private String filter_price; 
+	private String age10;
+	private String age20;
+	private String age30;
+	private String age40;
+	private String age50;
+	private String female;
+	private String male;
+	private String catelname;
+	private String catesname;
+	private String price; 
 		
 	
 	public filterDto() {super();	}
 
-	public filterDto(String filter_age10, String filter_age20, String filter_age30, String filter_age40,
-		String filter_age50, String filter_genderF, String filter_genderM, String filter_catelname,
-		String filter_catesname) {
-	super();
-	this.filter_age10 = filter_age10;
-	this.filter_age20 = filter_age20;
-	this.filter_age30 = filter_age30;
-	this.filter_age40 = filter_age40;
-	this.filter_age50 = filter_age50;
-	this.filter_genderF = filter_genderF;
-	this.filter_genderM = filter_genderM;
-	this.filter_catelname = filter_catelname;
-	this.filter_catesname = filter_catesname;
-}
+	public filterDto(String age10, String age20, String age30, String age40, String age50, String female, String male,
+			String catelname, String catesname) {
+		super();
+		this.age10 = age10;
+		this.age20 = age20;
+		this.age30 = age30;
+		this.age40 = age40;
+		this.age50 = age50;
+		this.female = female;
+		this.male = male;
+		this.catelname = catelname;
+		this.catesname = catesname;
+	}
 
-	
-	public String getFilter_age10() {
-		return filter_age10;
+
+
+
+	public String getAge10() {
+		return age10;
 	}
-	public void setFilter_age10(String filter_age10) {
-		this.filter_age10 = filter_age10;
+	public void setAge10(String age10) {
+		this.age10 = age10;
 	}
-	public String getFilter_age20() {
-		return filter_age20;
+	public String getAge20() {
+		return age20;
 	}
-	public void setFilter_age20(String filter_age20) {
-		this.filter_age20 = filter_age20;
+	public void setAge20(String age20) {
+		this.age20 = age20;
 	}
-	public String getFilter_age30() {
-		return filter_age30;
+	public String getAge30() {
+		return age30;
 	}
-	public void setFilter_age30(String filter_age30) {
-		this.filter_age30 = filter_age30;
+	public void setAge30(String age30) {
+		this.age30 = age30;
 	}
-	public String getFilter_age40() {
-		return filter_age40;
+	public String getAge40() {
+		return age40;
 	}
-	public void setFilter_age40(String filter_age40) {
-		this.filter_age40 = filter_age40;
+	public void setAge40(String age40) {
+		this.age40 = age40;
 	}
-	public String getFilter_age50() {
-		return filter_age50;
+	public String getAge50() {
+		return age50;
 	}
-	public void setFilter_age50(String filter_age50) {
-		this.filter_age50 = filter_age50;
+	public void setAge50(String age50) {
+		this.age50 = age50;
 	}
-	public String getFilter_genderF() {
-		return filter_genderF;
+	public String getFemale() {
+		return female;
 	}
-	public void setFilter_genderF(String filter_genderF) {
-		this.filter_genderF = filter_genderF;
+	public void setFemale(String female) {
+		this.female = female;
 	}
-	public String getFilter_genderM() {
-		return filter_genderM;
+	public String getMale() {
+		return male;
 	}
-	public void setFilter_genderM(String filter_genderM) {
-		this.filter_genderM = filter_genderM;
+	public void setMale(String male) {
+		this.male = male;
 	}
-	public String getFilter_catelname() {
-		return filter_catelname;
+	public String getCatelname() {
+		return catelname;
 	}
-	public void setFilter_catelname(String filter_catelname) {
-		this.filter_catelname = filter_catelname;
+	public void setCatelname(String catelname) {
+		this.catelname = catelname;
 	}
-	public String getFilter_catesname() {
-		return filter_catesname;
+	public String getCatesname() {
+		return catesname;
 	}
-	public void setFilter_catesname(String filter_catesname) {
-		this.filter_catesname = filter_catesname;
+	public void setCatesname(String catesname) {
+		this.catesname = catesname;
 	}
-	public String getFilter_price() {
-		return filter_price;
+	public String getPrice() {
+		return price;
 	}
-	public void setFilter_price(String filter_price) {
-		this.filter_price = filter_price;
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 
 	@Override
 	public String toString() {
-		return "filterDto [filter_age10=" + filter_age10 + ", filter_age20=" + filter_age20 + ", filter_age30="
-				+ filter_age30 + ", filter_age40=" + filter_age40 + ", filter_age50=" + filter_age50
-				+ ", filter_genderF=" + filter_genderF + ", filter_genderM=" + filter_genderM + ", filter_catelname="
-				+ filter_catelname + ", filter_catesname=" + filter_catesname + "]";
+		return "filterDto [age10=" + age10 + ", age20=" + age20 + ", age30=" + age30 + ", age40=" + age40 + ", age50="
+				+ age50 + ", female=" + female + ", male=" + male + ", catelname=" + catelname + ", catesname="
+				+ catesname + ", price=" + price + "]";
 	}
-		
+
+	
 	
 }

@@ -63,25 +63,25 @@ public class HomeController {
 			return "ranking/list";
 
 		}else if(command.equals("filter")) {
-			String filter_age10 = request.getParameter("filter_age10");
-			String filter_age20 = request.getParameter("filter_age20");
-			String filter_age30 = request.getParameter("filter_age30");
-			String filter_age40 = request.getParameter("filter_age40");
-			String filter_age50 = request.getParameter("filter_age50");
-			String filter_genderF = request.getParameter("filter_genderF");
-			String filter_genderM = request.getParameter("filter_genderM");
-			String filter_catelname = request.getParameter("filter_catelname");
-			String filter_catesname = request.getParameter("filter_catesname");
-			System.out.println("컨트롤러에서 10대:[ "+filter_age10+"]");
-			System.out.println("컨트롤러에서 20대:[ "+filter_age20+"]");
-			System.out.println("컨트롤러에서 30대:[ "+filter_age30+"]");
-			System.out.println("컨트롤러에서 40대:[ "+filter_age40+"]");
-			System.out.println("컨트롤러에서 50대:[ "+filter_age50+"]");
-			System.out.println("컨트롤러에서 filter_genderM:[ "+filter_genderM+"]");
-			System.out.println("컨트롤러에서 filter_genderF:[ "+filter_genderF+"]");
-			System.out.println("컨트롤러에서 filter_catelname:[ "+filter_catelname+"]");
-			System.out.println("컨트롤러에서 filter_catesname:[ "+filter_catesname+"]");
-			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderF,filter_genderM, filter_catelname, filter_catesname);
+			String age10 = request.getParameter("age10");
+			String age20 = request.getParameter("age20");
+			String age30 = request.getParameter("age30");
+			String age40 = request.getParameter("age40");
+			String age50 = request.getParameter("age50");
+			String female = request.getParameter("female");
+			String male = request.getParameter("male");
+			String catelname = request.getParameter("catelname");
+			String catesname = request.getParameter("catesname");
+			System.out.println("컨트롤러에서 10대:[ "+age10+"]");
+			System.out.println("컨트롤러에서 20대:[ "+age20+"]");
+			System.out.println("컨트롤러에서 30대:[ "+age30+"]");
+			System.out.println("컨트롤러에서 40대:[ "+age40+"]");
+			System.out.println("컨트롤러에서 50대:[ "+age50+"]");
+			System.out.println("컨트롤러에서 filter_genderM:[ "+female+"]");
+			System.out.println("컨트롤러에서 filter_genderF:[ "+male+"]");
+			System.out.println("컨트롤러에서 filter_catelname:[ "+catelname+"]");
+			System.out.println("컨트롤러에서 filter_catesname:[ "+catesname+"]");
+			filterDto dto = new filterDto(age10,age20,age30,age40,age50,female,male, catelname, catesname);
 			
 //			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
 			

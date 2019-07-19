@@ -40,15 +40,15 @@ public class RankDao implements iRankDao {
 		//dto에 값이 담겨있는 걸 꺼내서
 		Map<String,String> maap = new HashMap<String,String>();
 	
-		maap.put("filter_age10",dto.getFilter_age10()==null?"empty":dto.getFilter_age10());
-		maap.put("filter_age20",dto.getFilter_age20()==null?"empty":dto.getFilter_age20());
-		maap.put("filter_age30",dto.getFilter_age30()==null?"empty":dto.getFilter_age30());
-		maap.put("filter_age40",dto.getFilter_age40()==null?"empty":dto.getFilter_age40());
-		maap.put("filter_age50",dto.getFilter_age50()==null?"empty":dto.getFilter_age50());
-		maap.put("filter_genderF",dto.getFilter_genderF()==null?"empty":dto.getFilter_genderF());
-		maap.put("filter_genderM",dto.getFilter_genderM()==null?"empty":dto.getFilter_genderM());
-		maap.put("filter_catelname",dto.getFilter_catelname()==null?"empty":dto.getFilter_catelname());
-		maap.put("filter_catesname",dto.getFilter_catesname()==null?"empty":dto.getFilter_catesname());
+		maap.put("filter_age10",dto.getAge10()==null?"empty":dto.getAge10());
+		maap.put("filter_age20",dto.getAge20()==null?"empty":dto.getAge20());
+		maap.put("filter_age30",dto.getAge30()==null?"empty":dto.getAge30());
+		maap.put("filter_age40",dto.getAge40()==null?"empty":dto.getAge40());
+		maap.put("filter_age50",dto.getAge50()==null?"empty":dto.getAge50());
+		maap.put("filter_genderF",dto.getFemale()==null?"empty":dto.getFemale());
+		maap.put("filter_genderM",dto.getMale()==null?"empty":dto.getMale());
+		maap.put("filter_catelname",dto.getCatelname()==null?"empty":dto.getCatelname());
+		maap.put("filter_catesname",dto.getCatesname()==null?"empty":dto.getCatesname());
 
 		return sqlSession.selectList(namepace+"applyFilter",maap);
 	}
