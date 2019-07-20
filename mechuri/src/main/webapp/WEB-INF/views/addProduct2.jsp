@@ -3,47 +3,39 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html;charset=UTF-8"); %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-	
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script type="text/javascript">
-	function addCheck() {
-	 if (confirm("등록 하시겠습니까?") == true){    //확인
-	     document.addfrm.submit();
-	 }else{   //취소
-	     return;
-	 }
-	}
-    </script>
+    
 <title>기업 제품 등록 페이지</title>
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
 <br><br><br><br>
-<form action='addProduct.do' method='post' enctype='multipart/form-data' name='addfrm'>
+<form action='addProduct.do' method='post' enctype='multipart/form-data' id='addfrm' name='addfrm'>
 <h3>신규 제품 등록</h3>
 
 	 	 
 	 <p>카테고리</p>
-         <select name="filter_catelname" style="width: 200px">
-            <option value="전체">전체</option>
+         <select name="filter_catelname" id="filter_catelname" style="width: 200px">
+            <option value="">카테고리 선택</option>
          </select> 
-         <select name="filter_catesname" style="width: 200px">
-            <option value="전체">전체</option>
+         <select name="filter_catesname" id="filter_catesname" style="width: 200px">
+            <option value="">카테고리 선택</option>
          </select> 
          <br>
-         
-         
-제품명: <input type="text" name="product_name"/><br>
-용량: <input type="text" name="product_ml"><br>
-가격: <input type="text" name="product_price"><br>
+        
+제품명: <input type="text" name="product_name" required="required"/><br>
+용량: <input type="text" name="product_ml" required="required"><br>
+가격: <input type="text" name="product_price" required="required"><br>
 제품설명: <input type="text" name="product_conts"><br>
-성분: <input type="text" name="product_ingre"><br>
+성분: <input type="text" name="product_ingre" required="required"><br>
 피부타입: <select name="product_skintype">
 		<option value="전체">전체</option>
 		<option value="건성">건성</option>
@@ -70,14 +62,25 @@
 		
 
   <label>제품 사진:
-   	 <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+   	 <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value" required="required"/>
     </label>
     <input type="text" readonly="readonly" title="File Route" id="file_route">
     <br>
     <br>
-<input type='button' value='등록' onclick="addCheck()">  
+
+<input type='submit' value='등록'>  
 
 <script src="assets/js/cate_filter.js"></script>
+<script>
+$("#addfrm").submit(function(){
+	if($("#filter_catelname").val()=="" || $("#filter_catesname").val()==""){
+        	 alert('카테고리를 선택해주세요');
+        	 return false;
+         }
+	return true;
+	});
+</script>
 </form>
+
 </body>
 </html>
