@@ -47,6 +47,7 @@ public class MembersService implements IMembersService {
 		if(result) { // 세션 변수 저장, 세션 관리 기능->controller에서 할 것을 service에 넘겨서 한거...
 			membersDto dto2 = viewMember(dto.getMem_id());
 			session.setAttribute("mem_id", dto2.getMem_id());
+			session.setAttribute("mem_pw", dto2.getMem_pw());
 			session.setAttribute("mem_name", dto2.getMem_name());
 			session.setAttribute("mem_no", dto2.getMem_no());
 			session.setAttribute("mem_status", dto2.getMem_status());
