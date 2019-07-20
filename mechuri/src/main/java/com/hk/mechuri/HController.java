@@ -43,7 +43,13 @@ public class HController {
 	@RequestMapping(value = "/msglist.do", method = RequestMethod.GET)
 	public String sendMessage(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("쪽지 보기", locale);
-		int mem_no = (Integer)session.getAttribute("mem_no");
+		int mem_no=-1;
+		
+		if((Integer)session.getAttribute("mem_no")!=null) {
+			mem_no = (Integer)session.getAttribute("mem_no");
+		}else {
+			mem_no = (Integer)session.getAttribute("naverNo");
+		}
 		List<msgDto> list = MsgSerivce.getAllList(mem_no);
 		model.addAttribute("list", list );
 
@@ -284,7 +290,13 @@ public class HController {
 	public String comInfo(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("내 정보(기업회원) 보기", locale);
 
-		int mem_no = (Integer)session.getAttribute("mem_no");
+		int mem_no=-1;
+		
+		if((Integer)session.getAttribute("mem_no")!=null) {
+			mem_no = (Integer)session.getAttribute("mem_no");
+		}else {
+			mem_no = (Integer)session.getAttribute("naverNo");
+		}
 		List<membersDto> cominfo = usermanageService.comInfo(mem_no);
 		model.addAttribute("cominfo", cominfo );
 
@@ -329,7 +341,13 @@ public class HController {
 	public String userInfo(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("내 정보(일반회원) 보기", locale);
 
-		int mem_no = (Integer)session.getAttribute("mem_no");
+		int mem_no=-1;
+		
+		if((Integer)session.getAttribute("mem_no")!=null) {
+			mem_no = (Integer)session.getAttribute("mem_no");
+		}else {
+			mem_no = (Integer)session.getAttribute("naverNo");
+		}
 		List<membersDto> userInfo = usermanageService.userInfo(mem_no);
 		model.addAttribute("userInfo", userInfo );
 

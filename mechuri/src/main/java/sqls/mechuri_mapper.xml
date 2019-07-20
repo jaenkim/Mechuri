@@ -355,13 +355,16 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 	VALUES(#{tempinfo_no}, #{tempinfo_name}, #{tempinfo_ml}, #{tempinfo_price}, #{tempinfo_conts}, #{tempinfo_skintype}, #{tempinfo_age}, #{tempinfo_gender}, #{tempinfo_ingre}, #{tempinfo_originfile}, #{tempinfo_storedfile}, SYSDATE, #{tempinfo_filesize}, 'N', NULL) 
 	</insert>
 	
+	
 <!-- 제품 수정 승인하기(관리자)-->
 
 	<update id="approveProduct1" parameterType="tempinfoDto">
 		UPDATE PRODUCT SET 
-		PRODUCT_NAME= #{tempinfo_name}, PRODUCT_ML=#{tempinfo_ml},PRODUCT_PRICE=#{tempinfo_price},PRODUCT_CONTS=#{tempinfo_conts},PRODUCT_SKINTYPE=#{tempinfo_skintype},PRODUCT_AGE=#{tempinfo_age},PRODUCT_GENDER=#{tempinfo_gender},PRODUCT_INGRE=#{tempinfo_ingre}, PRODUCT_OTHERS01='Y' ,PRODUCT_ORIGINFILE=#{tempinfo_originfile} ,PRODUCT_STOREDFILE=#{tempinfo_storedfile} ,PRODUCT_FILEREGDATE=SYSDATE,PRODUCT_FILESIZE=#{tempinfo_filesize}, PRODUCT_REPLACEDATE=SYSDATE   
-		WHERE PRODUCT_NO = #{tempinfo_no}
+		PRODUCT_NAME= #{tempinfo_name}, PRODUCT_ML=#{tempinfo_ml},PRODUCT_PRICE=#{tempinfo_price},PRODUCT_CONTS=#{tempinfo_conts},PRODUCT_SKINTYPE=#{tempinfo_skintype},PRODUCT_AGE=#{tempinfo_age},PRODUCT_GENDER=#{tempinfo_gender},PRODUCT_INGRE=#{tempinfo_ingre}, PRODUCT_OTHERS01='Y' ,  PRODUCT_ORIGINFILE=#{tempinfo_originfile} , PRODUCT_REPLACEDATE=SYSDATE <if test="tempinfo_originfile != 'empty'">, PRODUCT_STOREDFILE=#{tempinfo_storedfile} ,PRODUCT_FILEREGDATE=SYSDATE,PRODUCT_FILESIZE=#{tempinfo_filesize} </if>  
+		WHERE PRODUCT_NO = #{tempinfo_no} 
 	</update>
+	
+	
 	
 	<!-- 제품 수정 승인하기2 , 제품 수정 승인할 목록 볼 때, TEMPINFO_OTHERS01='N'인 것만 보려고 -->
 	<update id="approveProduct2" parameterType="tempinfoDto">

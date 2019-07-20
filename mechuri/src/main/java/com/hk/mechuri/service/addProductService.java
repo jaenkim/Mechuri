@@ -56,7 +56,7 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/SRC1/mechuri0718/src/main/webapp/upload/"+product_storedfile);
+		File f=new File("C:/SRC1/mechuri0720/src/main/webapp/upload/"+product_storedfile);
 		try { 
 			multiFile.transferTo(f);
 	
@@ -132,10 +132,13 @@ public class addProductService {
 		MultipartFile multiFile=multi.getFile("filename");
 		
 		String product_originfile=multiFile.getOriginalFilename();
+		if(product_originfile==null||product_originfile=="") {
+			isS=addproductDao.tempinfoInsert(new tempinfoDto(Integer.parseInt(request.getParameter("pno")),request.getParameter("tempinfo_name"),request.getParameter("tempinfo_ml"),request.getParameter("tempinfo_price"),request.getParameter("tempinfo_conts"),request.getParameter("tempinfo_ingre"),request.getParameter("tempinfo_skintype"),request.getParameter("tempinfo_age"),request.getParameter("tempinfo_gender"),"empty","empty",0));	
+		}else {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/SRC1/mechuri0718/src/main/webapp/upload/"+product_storedfile);
+		File f=new File("C:/SRC1/mechuri0720/src/main/webapp/upload/"+product_storedfile);
 		try {
 			multiFile.transferTo(f);
 			dto.setTempinfo_originfile(product_originfile);
@@ -146,6 +149,7 @@ public class addProductService {
 	e.printStackTrace();
 		} catch (IOException e) {
 	e.printStackTrace();
+		}
 		}
 		return isS>0?true:false;
 	}

@@ -25,7 +25,24 @@ public class tempinfoDto {
 		super();
 	}
 
-	
+	//생성자2 승희
+	public tempinfoDto(int tempinfo_no, String tempinfo_name, String tempinfo_ml, String tempinfo_price, String tempinfo_conts,
+			String tempinfo_ingre, String tempinfo_skintype, String tempinfo_age, String tempinfo_gender, String tempinfo_storedfile,String tempinfo_originfile, int tempinfo_filesize) {
+		
+		this.tempinfo_no = tempinfo_no;
+		this.tempinfo_name = tempinfo_name;
+		this.tempinfo_ml = tempinfo_ml;
+		this.tempinfo_price = tempinfo_price;
+		this.tempinfo_conts = tempinfo_conts;
+		this.tempinfo_skintype = tempinfo_skintype;
+		this.tempinfo_age = tempinfo_age;
+		this.tempinfo_gender = tempinfo_gender;
+		this.tempinfo_ingre = tempinfo_ingre;
+		this.tempinfo_originfile = tempinfo_originfile;
+		this.tempinfo_storedfile = tempinfo_storedfile;
+		this.tempinfo_filesize = tempinfo_filesize;
+	}
+
 	//Getter and Setter
 	public int getTempinfo_no() {
 		return tempinfo_no;
