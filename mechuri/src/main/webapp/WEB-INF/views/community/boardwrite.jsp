@@ -22,7 +22,7 @@
       <label for="title">닉네임</label>
     </div>
     <div class="col-75">
-      <input type="text" id="title" name="nickname" required="required">
+      <input type="text" id="title" name="nickname" value="${mem_nick}" readonly="readonly">
     </div>
     <div class="col-25">
       <label for="title">제목</label>
