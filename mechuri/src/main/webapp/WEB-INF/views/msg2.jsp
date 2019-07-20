@@ -10,6 +10,8 @@
 <title>쪽지 보기</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"/>
+<br><br><br><br>
 <h1>쪽지함</h1>
 <br><br>
 <table border='1'>

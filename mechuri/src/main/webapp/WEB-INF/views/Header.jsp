@@ -138,8 +138,17 @@ height: 17px;
 
 
 	<!-- Header -->
-	<header id="header"> <nav class="left"> <a href="#menu"><span>Menu</span></a>
-	</nav> <a href="index.jsp" class="logo">Mechuri</a> <nav class="right">
+	<% if(seUsername.equals("") && seNaverUsername.equals("")){ %>
+	<header id="header">
+	<a href="index.jsp" class="logo">Mechuri</a>
+	<nav class="right"><a href="/mechuri/login.do" class="button alt">Log in</a>
+	</nav></header>
+<%}else{ %>	
+ 
+ <header id="header">
+	<nav class="left"> <a href="#menu"><span>Menu</span></a></nav>
+	<a href="index.jsp" class="logo">Mechuri</a>
+	<nav class="right">
  <%
       if (!seUsername.equals("")) {
          out.print(seUsername);
@@ -271,7 +280,7 @@ height: 17px;
 		</ul>
 	</div>
 </nav>
-<% } %>		
+<% }} %>		
 <script>
 // Hide Header on on scroll down 
 var didScroll; 

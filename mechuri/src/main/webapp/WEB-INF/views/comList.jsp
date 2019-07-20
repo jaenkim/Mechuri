@@ -12,8 +12,12 @@
     
 </head>
 <body>
+<jsp:include page="Header.jsp"/>
+<br><br><br><br>
 <h1>기업 회원 목록</h1>
  <form action='userDelete.do' method='post' name='removefrm'>
+  <input type="hidden" name="mem_no" value="${member.mem_no }"/>
+    <input type="hidden" name="mem_status" value="C"/>
 
 <table border='1'>
 <tr>
@@ -29,7 +33,6 @@
 <th>삭제(완전탈퇴)</th>
 </tr>
  <c:forEach items="${commembers}" var="member">
-  <input type="hidden" name="mem_no" value="${member.mem_no }"/>
  
  <tr>
  <td>${member.mem_no}</td>
@@ -52,7 +55,7 @@
  <td>${member.mem_delflag }</td>
  <td><fmt:formatDate value="${member.mem_deldate }" pattern="yyyy.MM.dd"/></td>
  
- <td><button onclick="removeCheck()">삭제</button></td> 
+ <td><button onclick="removeCheck(${member.mem_no})">삭제</button></td> 
  </tr>
  
 </c:forEach>
@@ -60,11 +63,12 @@
  </form>
  
  <script type="text/javascript">
-	function removeCheck() {
+	function removeCheck(mem_no) {
 	 if (confirm("정말 삭제하시겠습니까?") == true){    //확인
+	     document.removefrm.mem_no.value = mem_no;
 	     document.removefrm.submit();
 	 }else{   //취소
-	     return;
+	     return false;
 	 }
 	}
     </script>

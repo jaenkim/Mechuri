@@ -11,12 +11,15 @@
 <title>내 정보 보기(기업)</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"/>
+<br><br><br><br>
 <h1>내 정보 보기(기업)</h1>
  <c:forEach items="${cominfo}" var="cominfo">
 <form action='infoUpdate.do' method='post' name='updatefrm'>
 <input type="hidden" name="mem_no" value="${cominfo.mem_no }"/>
+<input type="hidden" name='mem_status' value="C"/>
 브랜드명 : <input type="text" name="mem_brand" value="${cominfo.mem_brand }" required="required"><br>
-아이디: <input type="text" name="mem_id" value="${cominfo.mem_id }" required="required"><br>
+아이디: <input type="text" name="mem_id" value="${cominfo.mem_id }" readonly="readonly"><br>
 비밀번호: <input type="password" name="mem_pw" value="${cominfo.mem_pw }" required="required"><br>
 담당자명: <input type="text" name="mem_name" value="${cominfo.mem_name }" required="required"><br>
 이메일: <input type="text" name="mem_email" value="${cominfo.mem_email }" required="required"><br>

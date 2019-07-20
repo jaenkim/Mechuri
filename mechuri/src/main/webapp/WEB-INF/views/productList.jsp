@@ -12,7 +12,8 @@
 <title>자사 제품 보기</title>
 </head>
 <body>
-
+<jsp:include page="Header.jsp"/>
+<br><br><br><br>
 <h1>자사 제품 리스트</h1>
 <table border='1'>
     <tr>

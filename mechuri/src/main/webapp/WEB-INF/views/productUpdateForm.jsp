@@ -12,6 +12,8 @@
 
 </head>
 <body>
+<jsp:include page="Header.jsp"/>
+<br><br><br><br>
 <form action='tempinfoInsert.do' method='post' enctype='multipart/form-data' name='updatefrm'>
 <input type='hidden' name='pno' value='${dto.product_no }'/>
 <h3>제품 정보 - ${dto.product_name }</h3>

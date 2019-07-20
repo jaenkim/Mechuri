@@ -23,6 +23,8 @@
 <title>기업 제품 등록 페이지</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"/>
+<br><br><br><br>
 <form action='addProduct.do' method='post' enctype='multipart/form-data' name='addfrm'>
 <h3>신규 제품 등록</h3>
 
