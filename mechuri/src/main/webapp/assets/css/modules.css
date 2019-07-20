@@ -291,7 +291,9 @@ label {
   }
 }
 input {
-  width: 100%;
+	text-align: center;
+	padding-right:100%
+  width: 100px;
   max-width: 18rem;
   font-size: 1em;
 font-family: 'Noto Sans KR', sans-serif;

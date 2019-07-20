@@ -3,6 +3,11 @@
   box-sizing: border-box;
 }
 
+#writelist {
+	margin:0px 0px 0px 30px;
+	
+}
+
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
@@ -18,7 +23,7 @@ label {
 
 #replyregdate{
     width: 20%;
-    float: right;
+    padding-right: 5%;
     display: inline-block;
     text-align: right;
     
@@ -32,7 +37,7 @@ label {
     
 }
 #replycon {
-	width: 50%;
+	width: 40%;
     text-align: center;
     margin: 0 auto;
     display: inline-block;
@@ -62,7 +67,7 @@ label {
 
 #replybtn1 {
   display:inline;
-  width: 20%;
+  width: 10%;
   float:right;
 }
 
@@ -70,14 +75,14 @@ label {
 #replybtn{
   background-color: #25a2c3;
   color: white;
-  padding: 12px 20px;
+/*   padding: 12px 20px; */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   float: right;
   width: 150px;
   line-height: 30px;
-  margin-left:10px;
+  margin-right:50px;
   
 }
 

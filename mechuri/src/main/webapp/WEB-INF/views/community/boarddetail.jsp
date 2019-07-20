@@ -69,7 +69,7 @@
 			<input type="button" value="해당 글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
   		</c:when>
   		<c:otherwise>
-  			<input type="button" value="글목록" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
+  			<input type="button" value="글목록" id="writelist" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
   		</c:otherwise>
   	</c:choose>	
 
@@ -125,6 +125,7 @@
             <div id="replynick">${replylist.reply_nick}</div>
     		<div id="replycon">${replylist.reply_conts}</div>
     		<div id="replyregdate">${replylist.reply_regdate}</div>
+    		<span><input type="button" value="댓글삭제" onclick="delReply('${reply.board_no}')"></span>
         </c:otherwise> 
     </c:choose>
 
