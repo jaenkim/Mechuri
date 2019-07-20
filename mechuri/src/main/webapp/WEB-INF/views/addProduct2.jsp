@@ -69,9 +69,11 @@
 		</select><br>
 		
 
-<label for="filephoto">제품 사진:</label>
-<input type="file" name="filename"/><br>
-    
+  <label>제품 사진:
+   	 <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+    </label>
+    <input type="text" readonly="readonly" title="File Route" id="file_route">
+    <br>
     <br>
 <input type='button' value='등록' onclick="addCheck()">  
 

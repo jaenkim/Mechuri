@@ -24,10 +24,14 @@
 </c:choose>
 <br><br>
 
-	<img src="images/${dto.product_storedfile} "/>
+	<img src="upload/${dto.product_storedfile} "/>
 	<br><br>
-	<label for="filephoto">제품 사진:</label>
-	<input type="file" name="filename" required="required" /><br><br>
+  <label>제품사진: 
+        <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value">
+    </label>
+    <input type="text" readonly="readonly" title="File Route" name="storedfile" value="${dto.product_storedfile}" id="file_route">
+	
+	<br><br>
 
           
          
