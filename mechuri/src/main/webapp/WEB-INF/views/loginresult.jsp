@@ -4351,8 +4351,6 @@ body>#login form .idpw {
 					<div style="color: red;">로그아웃 되었습니다.</div>
 				</c:if>	
 	</form>
-
-
 	<jsp:include page="Footer.jsp" />
 </body>
 </html>

@@ -89,7 +89,9 @@ public class AController {
 		System.out.println(mav);
 		if(result) { //로그인 성공
 			mav.setViewName("loginresult"); //main.jsp
-			mav.addObject("message", "success"); 		return "redirect:main.do" ;
+			mav.addObject("message", "success"); 		
+			
+		return "redirect:main.do" ;
 
 		}else { //로그인 실패 
 			mav.setViewName("memLogin");
@@ -104,7 +106,6 @@ public class AController {
 		session.invalidate();
 		return "redirect:main.do";
 	}
-
 
 
 	@RequestMapping(value = "/compSignUp.do", method = {RequestMethod.GET})
@@ -126,7 +127,6 @@ public class AController {
 			return "error";
 		}
 	}
-
 
 	@RequestMapping(value = "/mail.do", method = RequestMethod.POST)
 	@ResponseBody
