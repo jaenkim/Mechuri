@@ -328,7 +328,7 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 
 <!-- (제품수정)승인해야 할 제품 목록 -->
 <select id = 'approveProductList1' resultType='tempinfoDto' parameterType="Map">
-		SELECT TEMPINFO_NO, TEMPINFO_NAME, TEMPINFO_ML,TEMPINFO_PRICE,TEMPINFO_CONTS, TEMPINFO_SKINTYPE, TEMPINFO_AGE, TEMPINFO_GENDER, TEMPINFO_INGRE, TEMPINFO_ORIGINFILE, TEMPINFO_STOREDFILE, TEMPINFO_REGDATE, TEMPINFO_FILESIZE, TEMPINFO_OTHERS01
+		SELECT TEMPINFO_NO, TEMPINFO_NAME, TEMPINFO_ML,TEMPINFO_PRICE,TEMPINFO_CONTS, TEMPINFO_SKINTYPE, TEMPINFO_AGE, TEMPINFO_GENDER, TEMPINFO_INGRE, TEMPINFO_ORIGINFILE, TEMPINFO_STOREDFILE, TEMPINFO_REGDATE, TEMPINFO_FILESIZE, TEMPINFO_OTHERS01, TEMPINFO_OTHERS02 
 		FROM TEMPINFO
 		WHERE TEMPINFO_OTHERS01= 'N'
 </select>
@@ -352,7 +352,7 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 <!-- 제품 수정 신청 하기(기업, tempinfo에 넣기) -->	
 	<insert id="tempinfoInsert" parameterType='tempinfoDto'>
 	INSERT INTO TEMPINFO(TEMPINFO_NO,TEMPINFO_NAME,TEMPINFO_ML,TEMPINFO_PRICE,TEMPINFO_CONTS,TEMPINFO_SKINTYPE, TEMPINFO_AGE, TEMPINFO_GENDER, TEMPINFO_INGRE, TEMPINFO_ORIGINFILE, TEMPINFO_STOREDFILE, TEMPINFO_REGDATE, TEMPINFO_FILESIZE, TEMPINFO_OTHERS01, TEMPINFO_OTHERS02)  
-	VALUES(#{tempinfo_no}, #{tempinfo_name}, #{tempinfo_ml}, #{tempinfo_price}, #{tempinfo_conts}, #{tempinfo_skintype}, #{tempinfo_age}, #{tempinfo_gender}, #{tempinfo_ingre}, #{tempinfo_originfile}, #{tempinfo_storedfile}, SYSDATE, #{tempinfo_filesize}, 'N', NULL) 
+	VALUES(#{tempinfo_no}, #{tempinfo_name}, #{tempinfo_ml}, #{tempinfo_price}, #{tempinfo_conts}, #{tempinfo_skintype}, #{tempinfo_age}, #{tempinfo_gender}, #{tempinfo_ingre}, #{tempinfo_originfile}, #{tempinfo_storedfile}, SYSDATE, #{tempinfo_filesize}, 'N', (SELECT PRODUCT_BRAND FROM PRODUCT WHERE PRODUCT_NO = #{tempinfo_no}) ) 
 	</insert>
 	
 	
@@ -391,6 +391,12 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 <delete id="productdel" parameterType="int">
 		DELETE PRODUCT 
 		WHERE PRODUCT_NO = #{product_no}
+</delete>
+
+<!-- 제품 삭제하면 tempinfo에 있는 제품도 함께 삭제 -->
+<delete id="tempinfodel" parameterType="int">
+		DELETE TEMPINFO 
+		WHERE TEMPINFO_NO = #{product_no}
 </delete>
 
 <!-- tempinfoDto가져오기 -->

@@ -77,6 +77,9 @@ public class addProductDao {
 	
 	public boolean productdel(int product_no) { //제품 삭제 dao
 		int count= sqlSession.delete(namespace+"productdel",product_no);
+		if(count>0) { //제품 삭제하고, tempinfo에 있는 제품도 삭제하기
+			sqlSession.delete(namespace+"tempinfodel",product_no);
+		}
 		return count>0?true:false;
 	}
 	

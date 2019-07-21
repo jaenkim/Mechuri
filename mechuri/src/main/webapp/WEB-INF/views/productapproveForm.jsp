@@ -62,6 +62,7 @@
     <input type='hidden' name='tempinfo_no' value='${dto1.tempinfo_no}'>
   <c:forEach items="${list1}" var="dto1">
          ${dto1.tempinfo_no}
+         ${dto1.tempinfo_others02 }
 <a href="productUpdateForm.do?product_no=${dto1.tempinfo_no}" > ${dto1.tempinfo_name}</a>
          ${dto1.tempinfo_ml }
          ${dto1.tempinfo_conts }
