@@ -50,11 +50,11 @@
 			<c:forEach items="${list}" var="dto">
 			<tr>
 				<td>${dto.product_no}</td>
-				<td><a href="/mechuri/listSearch.do?product_no=${dto.product_no}&
+				<td><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name} </a><%-- <a href="/mechuri/listSearch.do?product_no=${dto.product_no}&
 										page=${scri.page}&
 										perPageNum=${scri.perPageNum}&
 										searchType=${scri.searchType}&
-										keyword=${scri.keyword}">${dto.product_name}</a></td>
+										keyword=${scri.keyword}">${dto.product_name}</a> --%></td>
 				<td>${dto.product_catelname}</td>
 				<td>${dto.product_catesname}</td>
 				<td>${dto.product_brand}</td>
