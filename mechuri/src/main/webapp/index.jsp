@@ -17,15 +17,11 @@
 <a href="main.do">메인화면 '3'</a> <br /><br>
 <a href="list.do">제품 랭킹 '3'</a><br>
 <a href="signUp.do">일반 회원가입 '3'</a><br>
-<a href="login.do">네아로 회원가입 '3'</a><br>
+<a href="login.do">로그인 '3'</a><br>
 
 <a href="listSearch.do">제품검색'3'</a><br>
 <a href="list.do">제품 리스트 '3'</a> <br /><br>
-<a href="groupbuying.do">공동구매 리스트 '3'</a><br>
-<a href="memLogin.do">로그인 페이지'3'</a><br>
 <a href="compSignUp.do">기업 회원가입'3'</a><br>
-<a href="testLogin.do">부트스트랩 테스트 로그인'3'</a><br>
-<a href="mailSending.do">회원 이메일 인증'3'</a><br>
 
 <a href="boardlist2.do?pnum=1">커뮤니티 리스트'3'</a><br>
 <a href="boardwrite.do">커뮤니티 글 작성'3'</a><br>
