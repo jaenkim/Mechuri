@@ -1117,7 +1117,6 @@ input {
 
 
 		<div class="form-holder" style="text-align: center">
-			<input type="hidden" name="mem_id" /> 
 			<input type="button" value="아이디중복확인" id="btbt" onclick="idcheck()" /> <input
 				type="text" placeholder="ex)aaa@gmail.com" name="mem_id" id="mem_id"
 				class="form-control" /> <input type="button" value="아이디인증" id="bt"
