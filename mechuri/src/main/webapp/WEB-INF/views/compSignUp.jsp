@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html;charset=UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -63,7 +63,7 @@
         }).open();
     }
 </script>
-<style>
+<!-- <style>
 
 
 * {
@@ -309,64 +309,104 @@ button {
  	display: block;
 }
 
-</style>
+</style> -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>기업 회원가입 페이지</title>
 </head>
 <body>
-<jsp:include page="Header.jsp" />
-<form action='compSignUpBoard.do' method='post'>
-<br><br><br>
- 
-			<!-- <div class="inner"> -->
-				
-					<h3>기업회원 가입</h3>
-					<div class="form-holder">
-						<input type="text" placeholder="브랜드명" name="mem_brand" class="form-control" style="font-size: 16px;">
-					</div>
-					
-					
-					
-					<div class="form-holder">
-					  <div class="well">
-					    <input type="text" id="sample4_postcode" name="mem_post" placeholder="우편번호"><br>
-						<input type="button" id="sample4_button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample4_roadAddress" name="mem_addr1" placeholder="도로명주소"><br>
-						<input type="text" id="sample4_jibunAddress" name="mem_addr2" placeholder="지번주소"><br>
-						<input type="text" id="sample4_detailAddress" name="mem_others01" placeholder="상세주소">
-					  </div>
-					</div><br>
-					<div class="form-holder">
-						<input type="text" placeholder="홈페이지" name="mem_homepage" class="form-control" style="font-size: 16px;">
-					</div>
-					<br>
-					<h3>담당자 정보</h3>
-					<div class="form-holder">
-						<input type="text" placeholder="아이디" name="mem_id" class="form-control" style="font-size: 16px;">
-					</div>
-					<div class="form-holder">
-						<input type="password" placeholder="비밀번호" name="mem_pw" class="form-control" style="font-size: 16px;">
-					</div>
-					<div class="form-holder">
-						<input type="password" placeholder="비밀번호확인" class="form-control" style="font-size: 16px;">
-					</div>
-					<div class="form-holder">
-						<input type="text" placeholder="담당자명" name="mem_name" class="form-control" style="font-size: 16px;">
-					</div>
-					<div class="form-holder">
-						<input type="email" placeholder="이메일" name="mem_email" class="form-control" style="font-size: 16px;">
-					</div>
-					<div class="form-holder">
-						<input type="text" placeholder="연락처" name="mem_phone" class="form-control" style="font-size: 16px;">
-					</div>
-						<button input type="submit" style="background-color: #f6755e;">회원가입하기</button>
-					
-				</form>
-		<!-- 	</div>  -->
+	<jsp:include page="Header.jsp" />
+	<form action='compSignUpBoard.do' method='post'>
+		<br> <br> <br>
+
+		<!-- <div class="inner"> -->
+
+
+		<div class="form-holder" style="text-align: center">
+			<center>
+				<h3>기업회원 가입</h3>
+				<input type="text" placeholder="브랜드명" name="mem_brand"
+					class="form-control" style="font-size: 13px;">
+			</center>
+		</div>
 
 
 
-<jsp:include page="Footer.jsp" />
+		<div class="form-holder" style="text-align: center">
+			<div class="well">
+				<center>
+					<input type="text" id="sample4_postcode" name="mem_post"
+						placeholder="우편번호" style="font-size: 13px;"><br> <input
+						type="button" id="sample4_button"
+						onclick="sample4_execDaumPostcode()" value="우편번호 찾기"
+						style="font-size: 13px;"><br> <input type="text"
+						id="sample4_roadAddress" name="mem_addr1" placeholder="도로명주소"
+						style="font-size: 13px;"><br> <input type="text"
+						id="sample4_jibunAddress" name="mem_addr2" placeholder="지번주소"
+						style="font-size: 13px;"><br> <input type="text"
+						id="sample4_detailAddress" name="mem_others01" placeholder="상세주소"
+						style="font-size: 13px;">
+				</center>
+			</div>
+		</div>
+		<br>
+
+		<div class="form-holder" style="text-align: center">
+			<center>
+				<input type="text" placeholder="홈페이지" name="mem_homepage"
+					class="form-control" style="font-size: 13px;">
+			</center>
+		</div>
+		<br>
+
+		<div class="form-holder" style="text-align: center">
+			<center>
+				<h3>담당자 정보</h3>
+				<input type="text" placeholder="아이디" name="mem_id"
+					class="form-control" style="font-size: 13px;">
+			</center>
+		</div>
+		<div class="form-holder" style="text-align: center">
+			<center>
+				<input type="password" placeholder="비밀번호" name="mem_pw"
+					class="form-control" style="font-size: 13px;">
+			</center>
+		</div>
+		<div class="form-holder" style="text-align: center">
+			<center>
+				<input type="password" placeholder="비밀번호확인" class="form-control"
+					style="font-size: 13px;">
+			</center>
+		</div>
+		<div class="form-holder" style="text-align: center">
+			<center>
+				<input type="text" placeholder="담당자명" name="mem_name"
+					class="form-control" style="font-size: 13px;">
+			</center>
+		</div>
+		<div class="form-holder" style="text-align: center">
+			<center>
+				<input type="email" placeholder="이메일" name="mem_email"
+					class="form-control" style="font-size: 13px;">
+			</center>
+		</div>
+		<div class="form-holder" style="text-align: center">
+			<center>
+				<input type="text" placeholder="연락처" name="mem_phone"
+					class="form-control" style="font-size: 13px;">
+			</center>
+		</div>
+		<div style="text-align: center">
+			<center>
+				<button input type="submit" style="background-color: #f6755e;"
+					style="font-size:13px;">회원가입하기</button>
+			</center>
+		</div>
+	</form>
+	<!-- 	</div>  -->
+
+
+
+	<jsp:include page="Footer.jsp" />
 </body>
 </html>
