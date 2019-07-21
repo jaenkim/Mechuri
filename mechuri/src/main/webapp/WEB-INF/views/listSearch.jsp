@@ -13,6 +13,26 @@
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 
 <title>제품 전체보기 검색</title>
+
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #d3f4f3}
+
+th {
+  background-color: #ff9999;
+  color: white;
+}
+</style>
+
 </head>
 <body>
 <div class="search">
@@ -42,7 +62,7 @@
  });   
  </script>
  	<h2>상품 검색 목록</h2>
- 		<table border='1' id="serachTable">
+ 		<table id="serachTable">
  		<thead>
 			<tr><th>상품번호</th><th>상품이름</th><th>카테고리</th><th>제품 카테고리</th><th>브랜드</th><th>가격</th></tr>
 		</thead>	
