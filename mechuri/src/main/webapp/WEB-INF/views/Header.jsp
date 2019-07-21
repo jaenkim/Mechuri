@@ -35,6 +35,16 @@
 		throw new ServletException(e);
 	}
 
+	String sePw = "";
+	try {
+		seId = (String) session.getAttribute("mem_pw");
+		if (seId == null) {
+			sePw = "";
+		}
+	} catch (Exception e) {
+		throw new ServletException(e);
+	}
+	
 	String seStatus = "";
 	try {
 		seStatus = (String) session.getAttribute("mem_status");
