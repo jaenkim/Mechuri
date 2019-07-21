@@ -45,23 +45,62 @@
 		}
 	}
 
+// 	function mailChk() {
+// 		var email = $("#mem_id").val();
+
+// 		$.ajax({
+// 			type : "POST",
+// 			url : "./mail.do",
+// 			data : "mem_id=" + email,
+// 			async : true,
+// 			success : function(msg) {
+// 				$("#hid").val(msg);
+// 				$("#bt").attr("disabled", true);
+// 				$("#btn").attr("disabled", false);
+
+// 				alert("메일로 인증코드를 전송하였습니다.");
+// 			}
+// 		});
+// 	}
+	
+	
+	//아이디 중복체크& 메일 인증 보내기 한번에 하기! (버튼 하나 없애기!)
 	function mailChk() {
+		
+		
 		var email = $("#mem_id").val();
 
 		$.ajax({
 			type : "POST",
-			url : "./mail.do",
+			url : "./idcheck.do",
 			data : "mem_id=" + email,
 			async : true,
 			success : function(msg) {
-				$("#hid").val(msg);
-				$("#bt").attr("disabled", true);
-				$("#btn").attr("disabled", false);
+				if (msg == "a") {
+					var email = $("#mem_id").val();
 
-				alert("메일로 인증코드를 전송하였습니다.");
+					$.ajax({
+						type : "POST",
+						url : "./mail.do",
+						data : "mem_id=" + email,
+						async : true,
+						success : function(msg) {
+							$("#hid").val(msg);
+							$("#bt").attr("disabled", true);
+							$("#btn").attr("disabled", false);
+
+							alert("메일로 인증코드를 전송하였습니다.");
+						}
+					});
+				} else {
+					alert("이미 존재하는 아이디입니다.");
+				}
 			}
+
 		});
+		
 	}
+	
 
 	function keyChk() {
 		if ($("#insrt").val() == $("#hid").val()) {
@@ -72,24 +111,24 @@
 		}
 	}
 
-	function idcheck() {
-		var email = $("#mem_id").val();
+// 	function idcheck() {
+// 		var email = $("#mem_id").val();
 
-		$.ajax({
-			type : "POST",
-			url : "./idcheck.do",
-			data : "mem_id=" + email,
-			async : true,
-			success : function(msg) {
-				if (msg == "a") {
-					alert("사용 가능한 아이디입니다.")
-				} else {
-					alert("이미 존재하는 아이디입니다.")
-				}
-			}
+// 		$.ajax({
+// 			type : "POST",
+// 			url : "./idcheck.do",
+// 			data : "mem_id=" + email,
+// 			async : true,
+// 			success : function(msg) {
+// 				if (msg == "a") {
+// 					alert("사용 가능한 아이디입니다.")
+// 				} else {
+// 					alert("이미 존재하는 아이디입니다.")
+// 				}
+// 			}
 
-		});
-	}
+// 		});
+// 	}
 </script>
 
 
@@ -112,21 +151,17 @@
 		<h3>일반회원 가입</h3>
 			 <input type="text" placeholder="ex)aaa@gmail.com" name="mem_id" id="mem_id"
 				class="form-control" />
+			<input type="button" value="아이디인증" id="bt" onclick="mailChk()" />
 		</center>		
 		</div>		
-		<span>	  <input type="button" value="아이디중복확인" id="btbt" onclick="idcheck()" />
-				 <input type="hidden" id="hid" style="font-size:13px;"> </span>	
-				 <br>
+	
 		<div class="form-holder" style="text-align: center">	
 		<center>	 
 				<input type="text" id="insrt" placeholder="인증번호를 입력해주세요." style="font-size:13px;">
+				<input type="button" class="btn-success" id="btn" disabled="disabled" onclick="keyChk()" value="인증">
+				
 		</center>	
 		</div>	
-				<input type="button" value="아이디인증" id="bt" onclick="mailChk()" />
-				<input type="button" class="btn-success" id="btn"
-					disabled="disabled" onclick="keyChk()" value="인증">
-			
-		
 
 		<div class="form-holder" style="text-align: center">
 		<center>
@@ -163,8 +198,9 @@
 		</div>
 		<div class="checkbox"></div>
 
+		<center>
 		<button input type="submit" id="sbmd">회원가입하기</button>
-			
+		</center>
 	</form>
 	
 	<!-- 	</div>  -->
