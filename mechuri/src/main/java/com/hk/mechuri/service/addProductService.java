@@ -56,7 +56,9 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
+		
+		File f=new File("C:/Users/82108/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); //김재원 경로
+//		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); // 승희 경로
 		try { 
 			multiFile.transferTo(f);
 	
@@ -138,7 +140,8 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
+		File f=new File("C:/Users/82108/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); //김재원 경로
+//		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); //승희경로
 		try {
 			multiFile.transferTo(f);
 			dto.setTempinfo_originfile(product_originfile);

@@ -47,6 +47,7 @@ public class HController {
 		
 		if((Integer)session.getAttribute("mem_no")!=null) {
 			mem_no = (Integer)session.getAttribute("mem_no");
+			System.out.println("H컨트롤러 쪽지의 회원번호는? ["+mem_no+"]");
 		}else {
 			mem_no = (Integer)session.getAttribute("naverNo");
 		}

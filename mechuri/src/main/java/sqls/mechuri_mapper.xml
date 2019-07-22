@@ -219,8 +219,8 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_n
 
 
 <insert id="signUpBoard" parameterType='membersDto'>
-	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_REGDATE,MEM_DELFLAG) 
-	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'M',#{mem_name},#{mem_nick},#{mem_phone},SYSDATE,'N')
+	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_REGDATE,MEM_DELFLAG,MEM_APPRFLAG) 
+	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'M',#{mem_name},#{mem_nick},#{mem_phone},SYSDATE,'N','Y')
 </insert>
 
 <insert id="compSignUpBoard" parameterType="membersDto">
@@ -240,17 +240,15 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 </select>
 
 <select id="delflagCheck" parameterType="membersDto" resultType="int">
-	SELECT count(*) FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_DELFLAG='N'
+	SELECT count(*) FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_DELFLAG='N' AND MEM_APPRFLAG='Y'
 </select>
 
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 시작 -->
 <!-- 쪽지 보내기 쿼리 -->
 <insert id="sendMessage2" parameterType="productDto">
-	<![CDATA[
 		INSERT INTO MSG (MSG_NO, MSG_TITLE, MSG_CONTS, MSG_REGDATE, MSG_RECEIVENO, MSG_RETURNCONTS, MSG_OTHERS01, MSG_OTHER02)
 		VALUES(MSG_SEQ.NEXTVAL, '[제품등록 승인 알림]', CONCAT(#{product_name},' 제품 등록이 승인되었습니다.') , SYSDATE , #{product_compno} , NULL, NULL, NULL)	
-	]]>	
-	
+
 </insert>
 
 <!-- 2)제품 수정 승인 쪽지  -->
@@ -276,7 +274,7 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 
 <insert id="insertProduct" parameterType='productDto'>
 INSERT INTO PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_CONTS,PRODUCT_COMPNO,PRODUCT_BRAND,PRODUCT_CATELNAME,PRODUCT_CATESNAME,PRODUCT_SKINTYPE,PRODUCT_SKINCONTS,PRODUCT_AGE,PRODUCT_GENDER,PRODUCT_INGRE,PRODUCT_LIKE,PRODUCT_REVIEW,PRODUCT_POINT,PRODUCT_FILENO,PRODUCT_ORIGINFILE,PRODUCT_STOREDFILE,PRODUCT_FILEREGDATE,PRODUCT_FILESIZE,PRODUCT_FLAG,PRODUCT_DJFLAG,PRODUCT_REGDATE,PRODUCT_REPLACEDATE,PRODUCT_OTHERS01,PRODUCT_OTHERS02)  
-VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{product_conts}, #{product_compno}, (SELECT MEM_BRAND FROM MEMBERS WHERE MEM_NO=#{product_compno}), #{product_catelname}, #{product_catesname}, #{product_skintype}, NULL, #{product_age}, #{product_gender}, #{product_ingre}, NULL, NULL, NULL, PRODUCT_SEQ.nextval , #{product_originfile} ,#{product_storedfile} , SYSDATE , #{product_filesize} ,'N',NULL,SYSDATE,NULL,NULL,NULL) 
+VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{product_conts}, #{product_compno}, (SELECT MEM_BRAND FROM MEMBERS WHERE MEM_NO=#{product_compno}), #{product_catelname}, #{product_catesname}, #{product_skintype}, NULL, #{product_age}, #{product_gender}, #{product_ingre}, NULL, NULL, NULL, PRODUCTFILE_SEQ.nextval , #{product_originfile} ,#{product_storedfile} , SYSDATE , #{product_filesize} ,'N',NULL,SYSDATE,NULL,NULL,NULL) 
 </insert>
 
 <!-- 자사 제품 목록-->

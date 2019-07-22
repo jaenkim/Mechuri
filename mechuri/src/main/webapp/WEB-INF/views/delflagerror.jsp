@@ -13,7 +13,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		alert("이미 탈퇴한 회원입니다.");
+		alert("회원 승인이 되지 않았거나 이미 탈퇴한 회원입니다.");
 	
 	</script> 
 	

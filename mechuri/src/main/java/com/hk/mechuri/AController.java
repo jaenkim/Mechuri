@@ -85,8 +85,7 @@ public class AController {
 		
 		boolean delflagchk = MembersService.delflagCheck(dto);
 		if(delflagchk) {
-		boolean result 
-		=MembersService.loginCheck(dto, session);
+		boolean result =MembersService.loginCheck(dto, session);
 		System.out.println(MembersService);
 		ModelAndView mav=new ModelAndView();
 		System.out.println(mav);

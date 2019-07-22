@@ -31,10 +31,10 @@
          </select> 
          <br>
         
-제품명: <input type="text" name="product_name" required="required"/><br>
-용량: <input type="text" name="product_ml" required="required"><br>
-가격: <input type="text" name="product_price" required="required"><br>
-제품설명: <input type="text" name="product_conts"><br>
+제품명: <input type="text" name="product_name" placeholder="제품명을 입력하시기 바랍니다."  required="required"/><br>
+용량: <input type="text" name="product_ml" placeholder="(예, 150ml, 180g)" required="required"><br>
+가격: <input type="text" name="product_price" placeholder="(예, 15,000 )" required="required"><br>
+제품설명: <input type="text" placeholder="2000자 이내로 작성하시기 바랍니다."  name="product_conts"><br>
 성분: <input type="text" name="product_ingre" required="required"><br>
 피부타입: <select name="product_skintype">
 		<option value="전체">전체</option>

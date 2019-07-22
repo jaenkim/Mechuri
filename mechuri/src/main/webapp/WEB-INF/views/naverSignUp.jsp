@@ -368,7 +368,7 @@ input {
 		</div>
 		<div class="form-holder">
 			<input type="text" placeholder="네이버 로그인 비밀번호와 동일합니다." name="mem_pw"
-				class="form-control">
+				class="form-control" readonly="readonly">
 		</div>
 		<div class="form-holder">
 			<input type="text" value="${mem_name }" name="mem_name"

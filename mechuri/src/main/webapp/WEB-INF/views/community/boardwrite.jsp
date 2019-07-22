@@ -26,29 +26,24 @@
     </div> --%>
     
     
-    
+    	
     
   			<div class="col-25">
       			<label for="title">닉네임</label>
     		</div>
     		<div class="col-75">
-      			<input type="text" id="title" name="nickname" value="${naverNickname}" readonly="readonly">
-   			</div>
+      			<input type="text" id="title" readonly="readonly" name="nickname" value=
+      				<c:choose>
+    					<c:when test="${naverNickname eq null}">
+    						${mem_nick}
+    					</c:when>
+  		 				<c:otherwise>
+    						${naverNickname}
+    	 				</c:otherwise>
+    				</c:choose> />		
+     		</div>
   		
-  			<div class="col-25">
-      			<label for="title">닉네임</label>
-    		</div>
-    		<div class="col-75">
-      			<input type="text" id="title" name="nickname" value="${mem_nick}" readonly="readonly">
-    		</div>
-  	
-    
-    
-    
-    
-    
-    
-    
+  		   
     <div class="col-25">
       <label for="title">제목</label>
     </div>
