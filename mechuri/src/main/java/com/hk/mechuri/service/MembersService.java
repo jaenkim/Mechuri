@@ -95,6 +95,12 @@ public class MembersService implements IMembersService {
 		return MembersDao.idcheck(mem_id);
 	}
 
+
+	@Override
+	public boolean delflagCheck(membersDto dto) {
+		return MembersDao.delflagCheck(dto);
+	}
+
 	
 
 	/*@Override

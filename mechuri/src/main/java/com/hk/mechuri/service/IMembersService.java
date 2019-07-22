@@ -30,6 +30,8 @@ public interface IMembersService {
 
 	public membersDto getNameForNaverMember(String naverEmail);
 
+	public boolean delflagCheck(membersDto dto);
+
 	
 
 }

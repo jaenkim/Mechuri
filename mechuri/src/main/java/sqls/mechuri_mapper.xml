@@ -273,7 +273,9 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	SELECT * FROM MEMBERS WHERE MEM_ID=#{mem_id}
 </select>
 
-
+<select id="delflagCheck" parameterType="membersDto" resultType="int">
+	SELECT count(*) FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_DELFLAG='N'
+</select>
 
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 시작 -->
 <!-- 쪽지 보내기 쿼리 -->

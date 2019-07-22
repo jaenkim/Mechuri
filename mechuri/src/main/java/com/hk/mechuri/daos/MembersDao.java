@@ -76,5 +76,11 @@ public class MembersDao implements IMembersDao {
 			return mdto;
 		}
 
+		@Override
+		public boolean delflagCheck(membersDto dto) {
+			int delflag = sqlSession.selectOne(namespace+"delflagCheck",dto);
+			return delflag>0?true:false;
+		}
+
 
 }

@@ -82,6 +82,9 @@ public class AController {
 			@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
 		System.out.println(dto);
 		System.out.println(session);
+		
+		boolean delflagchk = MembersService.delflagCheck(dto);
+		if(delflagchk) {
 		boolean result 
 		=MembersService.loginCheck(dto, session);
 		System.out.println(MembersService);
@@ -98,7 +101,9 @@ public class AController {
 			mav.addObject("message", "error");
 
 		}return "loginerror" ;
+	}return "delflagerror";
 	}
+
 
 	@RequestMapping(value= "/logout.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpSession session) {
