@@ -15,29 +15,6 @@ FROM PRODUCT
 ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
-<select id="applyFilter" resultType="productDto" parameterType="Map">
-SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_AGE,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
-ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
-(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
-DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
-FROM PRODUCT
-WHERE PRODUCT_FLAG='Y'
-<choose>
-	<when test="(filter_age10==null and filter_age20==null and filter_age30==null and filter_age40==null and filter_age50==null) and (filter_genderF!=null or filter_genderM!=null" >
-		AND PRODUCT_GENDER IN (#{filter_genderF},#{filter_genderM})
-	</when>
-	<when test="(filter_age10!=null and filter_age20!=null and filter_age30!=null and filter_age40!=null and filter_age50!=null)and (filter_genderF==null and filter_genderM==null)">
-		AND PRODUCT_AGE IN (#{filter_age10},#{filter_age20},#{filter_age30},#{filter_age40},#{filter_age50})
-	</when>
-	<otherwise>
-		AND PRODUCT_AGE IN (#{filter_age10},#{filter_age20},#{filter_age30},#{filter_age40},#{filter_age50})
-		AND PRODUCT_GENDER IN (#{filter_genderF},#{filter_genderM})
-	</otherwise>
-</choose>
-ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
-</select>
-
-
 <!-- 필터 적용하는 쿼리 -->
 <select id="doFilter" resultType="productDto" parameterType="Map">
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_AGE,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
