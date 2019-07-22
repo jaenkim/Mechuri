@@ -94,26 +94,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Title insert here</title>
-<link rel="stylesheet" href="assets/css/main.css" />
-<link rel="stylesheet" href="assets/css/style.min.css" />
-<link rel="stylesheet" href="assets/css/modules.css" />
+<link rel="stylesheet" href="assets/css/main.css" /> <!-- 메추리 가운데 -->
+<!-- <link rel="stylesheet" href="assets/css/style.min.css" /> -->
+<link rel="stylesheet" href="assets/css/modules2.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style type="text/css">
-
-
 #var {
 background: rgba(255, 99, 71, 0.5);
 height: 17px;
 }
-
-  
- 
 #accordian li {
 	list-style-type: none;
 }
-
 /* 서브메뉴 스타일 */
 #accordian ul ul li a {
 	color: white;
@@ -203,8 +197,6 @@ height: 17px;
 					<li><a href="#">내 글보기</a></li>
 					<li><a href="#">내 댓글 보기</a></li>
 					<li><a href="#">내 리뷰 보기</a></li>
-					<li><a href="#">내가 좋아요한 제품</a></li>
-					<li><a href="#">내 구매 정보</a></li>
 				</ul>
 			</li>
 			<li class="active">
@@ -218,7 +210,6 @@ height: 17px;
 </nav>
 <% } %>	
 	
-	
 <!-- 기업회원 -->
 <% if (seStatus.equals("C")) {%> 
 <nav id="menu">
@@ -227,12 +218,6 @@ height: 17px;
 			<li>
 				<p>
 					<span class="icon-dashboard"></span><a href="ProductList.do">자사제품 전체보기</a>
-				</p>
-				
-			</li>
-			<li class="active">
-				<p>
-					<span class="icon-tasks"></span><a href="#">할인기간 등록하기</a>
 				</p>
 				
 			</li>
@@ -281,12 +266,6 @@ height: 17px;
 				</p>
 				
 			</li>
-			<li>
-				<p>
-					<span class="icon-heart"></span><a href="#">할인기간 승인</a>
-				</p>
-				
-			</li>
 		</ul>
 	</div>
 </nav>
@@ -329,91 +308,24 @@ if(st + $(window).height() < $(document).height()) {
 }
 </script>
 
-<!-- 헤더 네이게이션바 메뉴 -->
-<!-- <section class="MOD_MENU" data-theme="_bgp">
-  <div data-layout="_r" class="nopadding">
-    <nav class="MOD_MENU_Nav">
-      <p class="MOD_MENU_Title">Menu</p>
-      <svg class="MOD_MENU_Button" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
-        <rect width="30" height="6"/>
-        <rect y="24" width="30" height="6"/>
-        <rect y="12" width="30" height="6"/>
-      </svg>
-      <ul class="AP_Menu_List">
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-          <ul>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item</a>
-            </li>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item long title</a>
-            </li>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-        </li>
-        <li>
-          <a href="#" data-theme="_bgp">Menu Item</a>
-          <ul>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item</a>
-            </li>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item long title</a>
-            </li>
-            <li>
-              <a href="#" data-theme="_bgpd">Sub-Menu Item</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</section> -->
-<!--END MODULE AREA 2: Menu 1-->
-
-
-
-
- 
 
 <body>
 
 <nav class="navbar navbar-inverse" id="var">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
+<!--     <div class="navbar-header"> -->
+<!--       <a class="navbar-brand" href="#">WebSiteName</a> -->
+<!--     </div> -->
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-      <li><a href="#">Page 4</a></li>
+<!--       <li class="active"><a href="#">Home</a></li> -->
+      <li><a href="list.do">랭킹보기</a></li>
+      <li><a href="boardlist2.do">커뮤니티</a></li>
+      <li><a href="listSearch.do">제품검색</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
     </form>
   </div>
 </nav>
-
-
-
-
-
 
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>

@@ -35,12 +35,13 @@ th {
 
 </head>
 <body>
+<jsp:include page="Header.jsp" />
 <div class="search">
- <select name="searchType"> <!-- 컨트롤러에서 값을 보내주는것이 아니라 컨트롤러에 요청된 URL에 따라 값이 달라짐. -->
-  <option value="no"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
-  <option value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>이름</option>
-  <option value="b"<c:out value="${scri.searchType eq 'b' ? 'selected' : ''}"/>>브랜드</option>
-  <option value="cl"<c:out value="${scri.searchType eq 'cl' ? 'selected' : ''}"/>>카테고리</option>
+ <select style="size:50px;" name="searchType"> <!-- 컨트롤러에서 값을 보내주는것이 아니라 컨트롤러에 요청된 URL에 따라 값이 달라짐. -->
+  <option  value="no"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+  <option id="bb" class="none" value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>이름</option>
+  <option id="cc" class="none" value="b"<c:out value="${scri.searchType eq 'b' ? 'selected' : ''}"/>>브랜드</option>
+  <option id="dd" class="none" value="cl"<c:out value="${scri.searchType eq 'cl' ? 'selected' : ''}"/>>카테고리</option>
  </select>								<!-- 검색 타입 값에 따라 출력   -->				
  					
  <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>

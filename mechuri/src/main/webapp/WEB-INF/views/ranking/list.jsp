@@ -20,7 +20,7 @@
 </head>
 <body class="default">
 
-<%-- <jsp:include page="../Header.jsp" />  --%>
+<jsp:include page="../Header.jsp" />  
 
 <script type="text/javascript">
 /* 체크박스 전체선택, 전체해제 */
