@@ -10,6 +10,7 @@
 <title>게시판 상세보기 폼</title>
 <link rel="stylesheet" href="commAssets/css/boarddetail.css">
 
+
 </head>
 <body>
 <jsp:include page="../Header.jsp"/>
@@ -83,7 +84,6 @@
 
 </div>
 
-
 <!-- 여기부터 댓글 -->
  <form action="replyboard.do" method="post">
  
@@ -91,8 +91,21 @@
 <input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
     <div class="col-25">
-      <label for="reply"><input type="text" name="reply_nick" required="required" /></label>
+      <label for="reply"><input type="text" name="reply_nick" readonly="readonly" 
+      value=
+      <c:choose>
+    	<c:when test="${naverNickname eq null}">
+    		${mem_nick}
+    	</c:when>
+  		 <c:otherwise>
+    		${naverNickname}
+    	 </c:otherwise>
+    		</c:choose>
+    	>
+
+      </label>
     </div>
+
     <div class="col-75">
     	<div id="reply1">
       <input type="text" id="reply" name="reply_contents" required="required" />
@@ -103,7 +116,7 @@
     </div>
   </div>
   <br><br>
-  
+   
   
   
   <div>
@@ -111,11 +124,14 @@
    	 <div id="replyconts">
    	 
    	 
-   	 
+   	
    	 <c:choose>
    	 	<c:when test="${replylist.reply_new eq 'true' }"> 
    	 	
-    		<div id="replynick"><img src="${pageContext.request.contextPath}/images/new2.png" style="max-width:10%; height:auto;" />&nbsp;${replylist.reply_nick}</div>
+    		<div id="replynick"><img src="${pageContext.request.contextPath}/images/new2.png" style="max-width:10%; height:auto;" />
+    		
+    		
+    		</div>
     		<div id="replycon">${replylist.reply_conts}</div>
     		<div id="replyregdate"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년 MM월 dd일" /></div>
    		 
