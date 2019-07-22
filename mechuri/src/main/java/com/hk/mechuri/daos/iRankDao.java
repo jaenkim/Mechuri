@@ -21,7 +21,7 @@ public interface iRankDao {
 
 	reviewDto getDetailPoint(int product_no);
 	
-	List<productDto> setFilterProductList(String[] ageArray, String[] genderArray, String catelname, String catesname);
+	List<productDto> setFilterProductList(String[] ages, String[] genders, String[] skins, String catelname, String catesname);
 	
 	List<reviewDto> getProductReview(int product_no);
 

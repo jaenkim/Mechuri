@@ -17,7 +17,7 @@ public interface iRankService {
 	List<productDto> getAllProductList();
 
 	//필터를 적용한 제품의 랭킹 목록을 출력함
-	List<productDto> setFilterProductList(String[] ageArray, String[] genderArray, String catelname, String catesname);
+	List<productDto> setFilterProductList(String[] ages, String[] genders, String[] skins, String catelname, String catesname);
 	
 	public List<productDto> getFilterProductList(filterDto dto);
 

@@ -53,7 +53,7 @@ public class HomeController {
 
 	
 	@RequestMapping(value = "/list.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String list(HttpServletRequest request, Locale locale, Model model,String[] age,String[] gender) {
+	public String list(HttpServletRequest request, Locale locale, Model model,String[] ages,String[] genders, String[] skins) {
 		String command = request.getParameter("command");
 
 		if(command == null) {
@@ -69,6 +69,7 @@ public class HomeController {
 		
 			String tempAge[] = new String[6];
 			String tempGender[] = new String[3];
+			String tempSkin[] = new String[4];
 			tempAge[0] = "10대";
 			tempAge[1] = "20대";
 			tempAge[2] = "30대";
@@ -77,9 +78,13 @@ public class HomeController {
 			tempAge[5] = "전체";
 			tempGender[0] = "여성";
 			tempGender[1] = "남성";
-			tempGender[1] = "전체";
+			tempGender[2] = "전체";
+			tempSkin[0] = "건성";
+			tempSkin[1] = "지성";
+			tempSkin[2] = "여드름성";
+			tempSkin[3] = "전체";
 						
-			List<productDto>list2 = rankService.setFilterProductList(age==null?tempAge:age,gender==null?tempGender:gender,catelname,catesname);	
+			List<productDto>list2 = rankService.setFilterProductList(ages==null?tempAge:ages,genders==null?tempGender:genders,skins==null?tempSkin:skins,catelname,catesname);	
 			model.addAttribute("list",list2);
 
 			return "ranking/list";

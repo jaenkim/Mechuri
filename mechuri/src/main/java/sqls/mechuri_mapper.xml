@@ -29,6 +29,9 @@ WHERE PRODUCT_FLAG='Y'
 		<foreach collection="genders" item="gender" open="AND PRODUCT_GENDER IN(" close=")" separator=",">
 			#{gender, jdbcType=VARCHAR}
 		</foreach>
+		<foreach collection="skins" item="skin" open="AND PRODUCT_SKINTYPE IN(" close=")" separator=",">
+			#{skin, jdbcType=VARCHAR}
+		</foreach>
 		<choose>
 			<when test="catelname != null and catesname != null">
 				AND (PRODUCT_CATELNAME=#{catelname, jdbcType=VARCHAR} AND PRODUCT_CATESNAME=#{catesname, jdbcType=VARCHAR})

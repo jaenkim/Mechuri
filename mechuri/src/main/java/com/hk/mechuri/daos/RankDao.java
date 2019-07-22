@@ -68,11 +68,12 @@ public class RankDao implements iRankDao {
 		
 	
 	@Override
-	public List<productDto> setFilterProductList(String[] ageArray, String[] genderArray, String catelname, String catesname){
+	public List<productDto> setFilterProductList(String[] ages, String[] genders, String[] skins, String catelname, String catesname){
 		Map<String,Object> mapp = new HashMap<String,Object>();
 	
-		mapp.put("ages", ageArray);
-		mapp.put("genders", genderArray);
+		mapp.put("ages", ages);
+		mapp.put("genders", genders);
+		mapp.put("skins", skins);
 		mapp.put("catelname", catelname==""?null:catelname);
 		mapp.put("catesname", catesname==""?null:catesname);
 		System.out.println("catelname ["+mapp.get("catelname")+"]");

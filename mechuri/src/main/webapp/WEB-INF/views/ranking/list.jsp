@@ -33,13 +33,16 @@
 		<form action="list.do" method="post">
 		<h3>필터 영역</h3>
 			<input type="hidden" name="command" value="filter" /> 
-			<input	type="checkbox" name="age" value="10대" /> 10대 
-			<input	type="checkbox" name="age" value="20대" /> 20대 
-			<input	type="checkbox" name="age" value="30대" /> 30대<br /> 
-			<input	type="checkbox" name="age" value="40대" /> 40대 
-			<input	type="checkbox" name="age" value="50대 이상" /> 50대 이상<br />
-			<input type="checkbox" name="gender" value="여성" /> 여성 
-			<input	type="checkbox" name="gender" value="남성" /> 남성 <br />
+			<input	type="checkbox" name="ages" value="10대" /> 10대 
+			<input	type="checkbox" name="ages" value="20대" /> 20대 
+			<input	type="checkbox" name="ages" value="30대" /> 30대<br /> 
+			<input	type="checkbox" name="ages" value="40대" /> 40대 
+			<input	type="checkbox" name="ages" value="50대 이상" /> 50대 이상<br />
+			<input type="checkbox" name="genders" value="여성" /> 여성 
+			<input	type="checkbox" name="genders" value="남성" /> 남성 <br />
+			<input type="checkbox" name="skins" value="건성" /> 건성 
+			<input	type="checkbox" name="skins" value="지성" /> 지성 
+			<input type="checkbox" name="skins" value="여드름성" /> 여드름성 <br />
 			<p>카테고리</p>
 			<select name="filter_catelname" style="width: 200px">
 				<option value="">전체</option>
