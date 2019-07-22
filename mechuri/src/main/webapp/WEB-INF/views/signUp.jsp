@@ -73,7 +73,16 @@
 		
 		
 		var email = $("#mem_id").val();
+		var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 
+		//이메일 유효성 검사
+		if (!getMail.test($("#mem_id").val())) {
+			alert("아이디를 형식에 맞게 입력해주세요")
+			$("#mem_id").val("");
+			$("#mem_id").focus();
+			return false;
+		}
+		
 		$.ajax({
 			type : "POST",
 			url : "./idcheck.do",
@@ -154,7 +163,7 @@
 		<center>
 		<h3>일반회원 가입</h3>
 			 <input type="email" placeholder="ex)aaa@gmail.com" name="mem_id" id="mem_id"
-				class="form-control" />
+				class="form-control" required="required" />
 				<br><br><br>
 			<input type="button" value="아이디인증" id="bt" onclick="mailChk()" />
 		</center>		
@@ -162,7 +171,7 @@
 	
 		<div class="form-holder" style="text-align: center">	
 		<center>	 
-				<input type="text" id="insrt" placeholder="인증번호를 입력해주세요." style="font-size:13px;">
+				<input type="text" id="insrt" placeholder="인증번호를 입력해주세요." style="font-size:13px;" required="required">
 				<input type="button" class="btn-success" id="btn" disabled="disabled" onclick="keyChk()" value="인증">
 				
 		</center>	
@@ -171,35 +180,35 @@
 		<div class="form-holder" style="text-align: center">
 		<center>
 			<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" id="tbPwd"
-				class="form-control" style="font-size:13px;">
+				class="form-control" style="font-size:13px;" required="required">
 			<input type="button" value="비밀번호확인" onclick="checkz()">
 		</center>
 		</div>
 		<div class="form-holder" style="text-align: center">
 		<center>
 			<input type="password" placeholder="비밀번호 확인" class="form-control" id="cpass"
-				style="font-size: 13px;">
+				style="font-size: 13px;" required="required">
 				</center>
 			
 		</div>
 		<div class="form-holder" style="text-align: center">
 		<center>
 			<input type="text" placeholder="이름" name="mem_name"
-				class="form-control" style="font-size: 13px;">
+				class="form-control" style="font-size: 13px;" required="required">
 		</center>
 		</div>
 		<div class="form-holder" style="text-align: center">
 		
 		<center>
 			<input type="text" placeholder="별명" name="mem_nick"
-				class="form-control" style="font-size: 13px;">
+				class="form-control" style="font-size: 13px;" required="required">
 		</center>
 		</div>
 		<div class="form-holder" style="text-align: center">
 	
 		<center>
 			<input type="text" placeholder="핸드폰" name="mem_phone"
-				class="form-control" style="font-size: 153x;">
+				class="form-control" style="font-size: 153x;" required="required">
 		</center>
 		</div>
 		<div class="checkbox"></div>
