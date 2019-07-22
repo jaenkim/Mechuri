@@ -6,7 +6,7 @@
 <%
 	response.setContentType("text/html;charset=UTF-8");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -17,20 +17,7 @@
 		var getId = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 		var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 
-		if (!getCheck.test($("#tbPwd").val())) {
-			alert("pw를 형식에 맞게 입력해주세요");
-			$("#tbPwd").val("");
-			$("#tbPwd").focus();
-			return false;
-		}
-		if ($("#tbPwd").val() != ($("#cpass").val())) {
-			alert("비밀번호가 틀렸습니다. 다시 입력해 주세요");
-			$("#tbPwd").val("");
-			$("#cpass").val("");
-			$("#tbPwd").focus();
-			return false;
-		}
-		//이메일 공백 확인
+		/* //이메일 공백 확인
 		if ($("#mem_id").val() == "") {
 			alert("아이디를 입력해주세요");
 			$("#mem_id").focus();
@@ -42,7 +29,24 @@
 			$("#mem_id").val("");
 			$("#mem_id").focus();
 			return false;
+		} */
+		
+		if (!getCheck.test($("#tbPwd").val())) {
+			alert("pw를 형식에 맞게 입력해주세요");
+			$("#tbPwd").val("");
+			$("#tbPwd").focus();
+			return;
 		}
+		if ($("#tbPwd").val() != ($("#cpass").val())) {
+			alert("비밀번호가 틀렸습니다. 다시 입력해 주세요");
+			$("#tbPwd").val("");
+			$("#cpass").val("");
+			$("#tbPwd").focus();
+			
+		}else{
+			alert("비밀번호가 맞습니다. 가입을 진행해주세요");
+		}
+		return;
 	}
 
 // 	function mailChk() {
@@ -138,7 +142,7 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<form action='signUpBoard.do' method='post'>
+	<form action='signUpBoard.do' method='post' name="sub">
 		<br> <br> <br>
 
 		<!-- <div class="inner"> -->
@@ -149,8 +153,9 @@
 		<div class="form-holder" style="text-align: center">
 		<center>
 		<h3>일반회원 가입</h3>
-			 <input type="text" placeholder="ex)aaa@gmail.com" name="mem_id" id="mem_id"
+			 <input type="email" placeholder="ex)aaa@gmail.com" name="mem_id" id="mem_id"
 				class="form-control" />
+				<br><br><br>
 			<input type="button" value="아이디인증" id="bt" onclick="mailChk()" />
 		</center>		
 		</div>		
@@ -167,6 +172,7 @@
 		<center>
 			<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" id="tbPwd"
 				class="form-control" style="font-size:13px;">
+			<input type="button" value="비밀번호확인" onclick="checkz()">
 		</center>
 		</div>
 		<div class="form-holder" style="text-align: center">
