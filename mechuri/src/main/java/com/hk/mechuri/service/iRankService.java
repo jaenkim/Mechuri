@@ -17,6 +17,8 @@ public interface iRankService {
 	List<productDto> getAllProductList();
 
 	//필터를 적용한 제품의 랭킹 목록을 출력함
+	List<productDto> setFilterProductList(String[] ageArray, String[] genderArray, String catelname, String catesname);
+	
 	public List<productDto> getFilterProductList(filterDto dto);
 
 	public List<productDto> Filter(String[] ageArray, String[] genderArray, String[] cateArray);
@@ -37,6 +39,8 @@ public interface iRankService {
 	boolean insertReview(HttpServletRequest request, reviewDto rDto);
 
 	int deleteReview(reviewDto rDDto);
+
+	
 
 
 }

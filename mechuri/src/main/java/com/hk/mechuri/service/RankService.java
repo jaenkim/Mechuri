@@ -41,6 +41,11 @@ public class RankService implements iRankService {
 	public List<productDto> Filter(String[] ageArray, String[] genderArray, String[] cateArray) {
 		return rankDao.FilterDao(ageArray,genderArray,cateArray);		
 	}
+	
+	@Override
+	public List<productDto> setFilterProductList(String[] ageArray, String[] genderArray, String catelname, String catesname) {
+		return rankDao.setFilterProductList(ageArray,genderArray,catelname, catesname);
+	}
 
 	@Override
 	public productDto getDetailProductList(int product_no) {

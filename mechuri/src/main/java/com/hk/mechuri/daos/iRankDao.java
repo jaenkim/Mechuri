@@ -20,7 +20,9 @@ public interface iRankDao {
 	productDto getDetailProductList(int product_no);
 
 	reviewDto getDetailPoint(int product_no);
-
+	
+	List<productDto> setFilterProductList(String[] ageArray, String[] genderArray, String catelname, String catesname);
+	
 	List<reviewDto> getProductReview(int product_no);
 
 	List<ingreDto> getProductIngre(productDto pDto);
@@ -38,6 +40,8 @@ public interface iRankDao {
 	int insertReview(reviewDto reviewDto);
 
 	int deleteReview(reviewDto rDDto);
+
+	
 
 }
 

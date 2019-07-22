@@ -53,7 +53,7 @@ public class HomeController {
 
 	
 	@RequestMapping(value = "/list.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String list(HttpServletRequest request, Locale locale, Model model) {
+	public String list(HttpServletRequest request, Locale locale, Model model,String[] age,String[] gender) {
 		String command = request.getParameter("command");
 
 		if(command == null) {
@@ -63,62 +63,30 @@ public class HomeController {
 			return "ranking/list";
 
 		}else if(command.equals("filter")) {
-			String age10 = request.getParameter("age10");
-			String age20 = request.getParameter("age20");
-			String age30 = request.getParameter("age30");
-			String age40 = request.getParameter("age40");
-			String age50 = request.getParameter("age50");
-			String female = request.getParameter("female");
-			String male = request.getParameter("male");
+			
 			String catelname = request.getParameter("filter_catelname");
 			String catesname = request.getParameter("filter_catesname");
-			System.out.println("컨트롤러에서 10대 값 들어옴? :[ "+age10+"]");
-			System.out.println("컨트롤러에서 20대 값 들어옴? :[ "+age20+"]");
-			System.out.println("컨트롤러에서 30대 값 들어옴? :[ "+age30+"]");
-			System.out.println("컨트롤러에서 40대 값 들어옴? :[ "+age40+"]");
-			System.out.println("컨트롤러에서 50대 값 들어옴? :[ "+age50+"]");
-			System.out.println("컨트롤러에서 여성 선택 값 들어옴? :[ "+female+"]");
-			System.out.println("컨트롤러에서 남성 선택 값 들어옴? :[ "+male+"]");
-			System.out.println("컨트롤러에서 카테고리 대분류 값 들어옴? :[ "+catelname+"]");
-			System.out.println("컨트롤러에서 카테고리 소붙류 값 들어옴? :[ "+catesname+"]");
-			filterDto dto = new filterDto(age10,age20,age30,age40,age50,female,male, catelname, catesname);
-			
-			String ageArray[] = new String[5];
-			String genderArray[] = new String[2];
-			String cateArray[] = new String[2];
 		
-			ageArray[0] = age10==null?"empty":age10;
-			ageArray[1] = age20==null?"empty":age20;
-			ageArray[2] = age30==null?"empty":age30;
-			ageArray[3] = age40==null?"empty":age40;
-			ageArray[4] = age50==null?"empty":age50;
-			genderArray[0] = female==null?"empty":female;
-			genderArray[1] = male==null?"empty":male;
-			cateArray[0] = catelname==null?"empty":catelname;
-			cateArray[1] = catesname==null?"empty":catesname;
-			
-			
-			//컨트롤러에서 매개변수의 값이 입력되지 않으면 전체선택되어 서비스로 보내지도록 처리할 것!!!
-			//김재원 놀지마!! '^'
-			
-			
-			
-			
-			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
-			
-//			List<productDto> list2 = rankService.Filter(ageArray,genderArray,cateArray);
-			
-/*			List<productDto>list2 = rankService.getFilterProductList(dto);*/		
+			String tempAge[] = new String[6];
+			String tempGender[] = new String[3];
+			tempAge[0] = "10대";
+			tempAge[1] = "20대";
+			tempAge[2] = "30대";
+			tempAge[3] = "40대";
+			tempAge[4] = "50대 이상";
+			tempAge[5] = "전체";
+			tempGender[0] = "여성";
+			tempGender[1] = "남성";
+			tempGender[1] = "전체";
+						
+			List<productDto>list2 = rankService.setFilterProductList(age==null?tempAge:age,gender==null?tempGender:gender,catelname,catesname);	
 			model.addAttribute("list",list2);
-//			System.out.println("컨트롤러에서 반환된 값 확인 ["+list2.get(1).getProduct_name());
-			return "ranking/list";
 
-//			String cateFilter = Arrays.toString(cateArray);
-//			rankService.categoryFilter(cateArray);
-//			filterDto dto = new filterDto(filter_age10,filter_age20,filter_age30,filter_age40,filter_age50,filter_genderF,filter_genderM, filter_catelname, filter_catesname);
-//			List<productDto>list2 = rankService.getFilterProductList(dto);
+			return "ranking/list";
+			
 		}
 		return "error";
+		
 	}//list END
 
 	@RequestMapping(value = "/refilter.do", method = {RequestMethod.GET, RequestMethod.POST})

@@ -39,45 +39,31 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 
 
 <!-- 필터 적용하는 쿼리 -->
-<!-- 필터적용 원본 쿼리 -->
-<select id="doFilter" resultType='productDto' parameterType="Map">
-	SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
-	ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
-	(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
-	DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
-	FROM PRODUCT
-	WHERE PRODUCT_FLAG='Y'
-			AND PRODUCT_AGE IN
-				<foreach collection="ages" item="age" open="(" close=")" separator=",">
-					#{age}
-				</foreach>
-			AND PRODUCT_GENDER IN
-				<foreach collection="genders" item="gender" open="(" close=")" separator=",">
-					#{gender}
-				</foreach>
-			AND (PRODUCT_CATELNAME=#{catelname} AND PRODUCT_CATESNAME=#{catesname})
-			AND (PRODUCT_DJFALG = NULL OR PRODUCT_DJFLAG = 'Y')
-	ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
-</select>
-
-<!-- 은영이가 보내준 테이블 수정한 것 필터적용하는 쿼리 -->
-<select id="doFilter2" resultType='productDto' parameterType="Map">
-	SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
-	ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO),3) AS PRODUCT_POINT,
-	(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
-	DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
-	FROM PRODUCT2
-	WHERE PRODUCT_FLAG='Y'
-			AND PRODUCT_AGE IN
-				<foreach collection="ages" item="age" open="(" close=")" separator=",">
-					#{age}
-				</foreach>
-			AND PRODUCT_GENDER IN
-				<foreach collection="genders" item="gender" open="(" close=")" separator=",">
-					#{gender}
-				</foreach>
-			AND (PRODUCT_CATELNAME=#{catelname} or PRODUCT_CATESNAME=#{catesname})
-	ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
+<select id="doFilter" resultType="productDto" parameterType="Map">
+SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_AGE,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
+ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO),3) AS PRODUCT_POINT,
+(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
+DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT2.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
+FROM PRODUCT2
+WHERE PRODUCT_FLAG='Y'
+		<foreach collection="ages" item="age" open="AND PRODUCT_AGE IN (" close=")" separator=",">
+			#{age, jdbcType=VARCHAR}
+		</foreach>
+		<foreach collection="genders" item="gender" open="AND PRODUCT_GENDER IN(" close=")" separator=",">
+			#{gender, jdbcType=VARCHAR}
+		</foreach>
+		<choose>
+			<when test="catelname != null and catesname != null">
+				AND (PRODUCT_CATELNAME=#{catelname, jdbcType=VARCHAR} AND PRODUCT_CATESNAME=#{catesname, jdbcType=VARCHAR})
+			</when>
+			<when test="catelname != null and catesname == null">
+				AND PRODUCT_CATELNAME=#{catelname, jdbcType=VARCHAR} 
+			</when>
+			<otherwise>
+				
+			</otherwise>
+		</choose>
+ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
 
