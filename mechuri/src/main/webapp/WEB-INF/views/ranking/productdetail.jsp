@@ -191,7 +191,9 @@
 						<c:when test="${mem_nick!=null}">
 							<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${mem_nick eq reviewInfo.review_nick?"":"style='display:none'"}  />
 						</c:when>
+						<c:otherwise>
 						
+						</c:otherwise>
 					</c:choose>
 					
 				</td>
