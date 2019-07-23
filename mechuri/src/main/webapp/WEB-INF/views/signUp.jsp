@@ -158,14 +158,14 @@
 
 		
 
-		
+		<section class="wrapper" id="main">
 		<div class="form-holder" style="text-align: center">
 		<center>
 		<h3>일반회원 가입</h3>
 			 <input type="email" placeholder="ex)aaa@gmail.com" name="mem_id" id="mem_id"
 				class="form-control" required="required" />
 				<br><br><br>
-			<input type="button" value="아이디인증" id="bt" onclick="mailChk()" />
+			<input type="button" class="button" value="아이디인증" id="bt" onclick="mailChk()" />
 		</center>		
 		</div>		
 	
@@ -217,7 +217,7 @@
 		<button input type="submit" id="sbmd">회원가입하기</button>
 		</center>
 	</form>
-	
+	</section>
 	<!-- 	</div>  -->
 
 
