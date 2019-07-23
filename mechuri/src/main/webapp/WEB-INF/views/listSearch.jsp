@@ -46,7 +46,7 @@ th {
   <option id="dd" class="none" value="cl" <c:out value="${scri.searchType eq 'cl' ? 'selected' : ''}"/>>카테고리</option>
  </select>								<!-- 검색 타입 값에 따라 출력   -->				
 				
- <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+ <input type="text" name="keyword" id="keywordInput" placeholder="검색어를 입력하세요" value="${scri.keyword}"/>
 </div> 	
  <button id="searchBtn" style="display:inline-block;">검색</button>
  
