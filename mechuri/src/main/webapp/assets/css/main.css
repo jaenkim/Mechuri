@@ -9,6 +9,8 @@
 */
 
 /* Reset */
+@font-face { font-family: 'Happy'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff'); } @font-face { font-family: 'Happy'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff'); } .lottemarthappy * { font-family: 'Happy', sans-serif; }
+@font-face { font-family: 'Dream'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff'); } @font-face { font-family: 'Dream'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff'); } @font-face { font-family: 'Dream'; font-style: normal; font-weight: 300; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff'); } .lottemartdream * { font-family: 'Dream', sans-serif; }
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
@@ -133,7 +135,7 @@
 		}
 
 		.container {
-			width: 45em;
+			width: 65em;
 		}
 
 	}
@@ -1615,7 +1617,7 @@
 
 	body, input, select, textarea {
 		color: #767d85;
-		font-family: "Open Sans", Arial, Helvetica, sans-serif;
+		font-family: Dream;
 		font-size: 13pt;
 		font-weight: 300;
 		line-height: 1.65;
@@ -1686,9 +1688,9 @@
 	h1, h2, h3, h4, h5, h6 {
 		color: #727a82;
 		font-weight: 700;
-		font-family: "Montserrat", sans-serif;
+		font-family: Happy;
 		line-height: 1.5;
-		/* margin: 0 0 1em 0; */
+		margin: 0 0 1em 0;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1758,7 +1760,7 @@
 		background: rgba(144, 144, 144, 0.075);
 		border-radius: 4px;
 		border: solid 1px #dee1e3;
-		font-family: "Courier New", monospace;
+		font-family: Happy;
 		font-size: 0.9em;
 		margin: 0 0.25em;
 		padding: 0.25em 0.65em;
@@ -1766,7 +1768,7 @@
 
 	pre {
 		-webkit-overflow-scrolling: touch;
-		font-family: "Courier New", monospace;
+		font-family: Happy;
 		font-size: 0.9em;
 		margin: 0 0 2em 0;
 	}
@@ -1845,7 +1847,7 @@
 		display: block;
 		font-size: 0.9em;
 		font-weight: 700;
-		/* margin: 0 0 1em 0; */
+		margin: 0 0 1em 0;
 	}
 
 	input[type="text"],
@@ -1867,7 +1869,7 @@
 		outline: 0;
 		padding: 0 1em;
 		text-decoration: none;
-		width: 80%;
+		width: 100%;
 	}
 
 		input[type="text"]:invalid,
@@ -1899,7 +1901,7 @@
 			content: "";
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
+			font-family: Happy;
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
@@ -1953,7 +1955,7 @@
 			text-decoration: none;
 			color: #767d85;
 			cursor: pointer;
-			display: inline-block;
+			display: inline;
 			font-size: 1em;
 			font-weight: 300;
 			padding-left: 2.4em;
@@ -1965,7 +1967,7 @@
 			input[type="radio"] + label:before {
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
-				font-family: FontAwesome;
+				font-family: Happy;
 				font-style: normal;
 				font-weight: normal;
 				text-transform: none !important;
@@ -2074,7 +2076,7 @@
 		.icon:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
+			font-family: Happy;
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
@@ -2402,7 +2404,7 @@
 		color: #ffffff;
 		cursor: pointer;
 		display: inline-block;
-		font-family: "Montserrat", sans-serif;
+		font-family: Happy;
 		height: 3.5em;
 		line-height: 3.5em;
 		padding: 0 3.5em;
@@ -2622,11 +2624,11 @@
 /* Wrapper */
 
 	.wrapper {
-		/* padding: 6em 0 4em 0; */
+		padding: 6em 0 4em 0;
 	}
 
 		.wrapper h1, .wrapper h2, .wrapper h3, .wrapper h4, .wrapper h5 {
-			color: black;
+			color: #25a2c3;
 		}
 
 		.wrapper.style1 {
@@ -2730,7 +2732,7 @@
 						content: "";
 						-moz-osx-font-smoothing: grayscale;
 						-webkit-font-smoothing: antialiased;
-						font-family: FontAwesome;
+						font-family: Happy;
 						font-style: normal;
 						font-weight: normal;
 						text-transform: none !important;
@@ -2869,7 +2871,7 @@
 				content: "";
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
-				font-family: FontAwesome;
+				font-family: Happy;
 				font-style: normal;
 				font-weight: normal;
 				text-transform: none !important;
@@ -2920,7 +2922,7 @@
 
 	#banner {
 		padding: 14em 0 12em 0;
-		background-image: url(../../images/banner.jpg);
+		background-image: url(../../images/banner.png);
 		background-size: cover;
 		background-position: center top;
 		background-repeat: no-repeat;

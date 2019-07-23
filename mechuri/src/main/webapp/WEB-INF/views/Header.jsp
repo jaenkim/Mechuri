@@ -93,6 +93,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/rightMenu.css" />
 </head>
 <body>
 
@@ -102,7 +103,9 @@
    <header id="header">
    <a href="index.jsp" class="logo">Mechuri</a>
    <nav class="right"><a href="/mechuri/login.do" class="button alt">Log in</a>
-   </nav></header>
+   </nav>
+   </header>
+   
 <%}else{ %>   
  
  <header id="header">
@@ -125,6 +128,7 @@
 <% } %>
 
    </nav> 
+
 
 
 
@@ -193,6 +197,12 @@
          <script src="assets/js/skel.min.js"></script>
          <script src="assets/js/util.js"></script>
          <script src="assets/js/main.js"></script>
+
+<div id="wholeSidenav" class="wholesidenav">
+  <a href="list.do" id="ranking">메추리 랭킹</a>
+  <a href="boardlist2.do" id="community">메추리톡</a>
+  <a href="listSearch.do" id="search">제품검색</a>
+</div>
 
 </header>
 </html>

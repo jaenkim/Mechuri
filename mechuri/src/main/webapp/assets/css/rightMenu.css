@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+#wholeSidenav a {
+  font-family: Happy;
+  font-style: bold;
+  position: absolute;
+  right: -150px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 180px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 15px 0px 0px 15px;
+}
+
+#wholeSidenav a:hover {
+  right: 0;
+}
+
+#ranking {
+  top: 120px;
+  background-color: #f78a76;
+}
+
+#community {
+  top: 180px;
+  background-color: #fabeb4;
+}
+
+#search {
+  top: 240px;
+  background-color: #fcd8d1;
+}
