@@ -9,7 +9,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.mechuri.dtos.boardDto;
 import com.hk.mechuri.dtos.productDto;
+import com.hk.mechuri.dtos.replyDto;
+import com.hk.mechuri.dtos.reviewDto;
 import com.hk.mechuri.dtos.tempinfoDto;
 
 
@@ -94,4 +97,18 @@ public class addProductDao {
 		return count1;
 	
 	}
+	
+	
+	public List<boardDto> myboardlist(String mem_nick) { //내가 쓴 커뮤니티 글 목록
+		return sqlSession.selectList(namespace+"myboardlist",mem_nick);
+	}
+	
+	public List<reviewDto> myreviewlist(String mem_nick) { //내가 쓴 리뷰 목록
+		return sqlSession.selectList(namespace+"myreviewlist",mem_nick);
+	}
+	
+	public List<replyDto> myreplylist(String mem_nick) { //내가 쓴 댓글 목록
+		return sqlSession.selectList(namespace+"myreplylist",mem_nick);
+	}
+	
 }

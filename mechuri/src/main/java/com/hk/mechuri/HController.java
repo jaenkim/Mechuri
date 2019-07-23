@@ -15,9 +15,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hk.mechuri.dtos.boardDto;
 import com.hk.mechuri.dtos.membersDto;
 import com.hk.mechuri.dtos.msgDto;
 import com.hk.mechuri.dtos.productDto;
+import com.hk.mechuri.dtos.replyDto;
+import com.hk.mechuri.dtos.reviewDto;
 import com.hk.mechuri.dtos.tempinfoDto;
 import com.hk.mechuri.service.addProductService;
 import com.hk.mechuri.service.msgService;
@@ -47,7 +50,6 @@ public class HController {
 		
 		if((Integer)session.getAttribute("mem_no")!=null) {
 			mem_no = (Integer)session.getAttribute("mem_no");
-			System.out.println("H컨트롤러 쪽지의 회원번호는? ["+mem_no+"]");
 		}else {
 			mem_no = (Integer)session.getAttribute("naverNo");
 		}
@@ -354,6 +356,64 @@ public class HController {
 
 
 		return "userInfo";
+	}
+	
+	
+	@RequestMapping(value = "/myboardlist.do", method = RequestMethod.GET)
+	public String myboardlist(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
+		logger.info("내가 쓴 글 보기", locale);
+		
+		String mem_nick="닉네임";
+		if((String)session.getAttribute("mem_nick")!=null) {
+			mem_nick = (String)session.getAttribute("mem_nick");
+			System.out.println("멤닉>>>"+mem_nick);
+		}else {
+			mem_nick = (String)session.getAttribute("naverNickname");
+		}
+		List<boardDto> myboard = addproductService.myboardlist(mem_nick);
+		model.addAttribute("myboard", myboard );
+
+
+
+		return "myboardlist";
+	}
+	
+	
+	@RequestMapping(value = "/myreviewlist.do", method = RequestMethod.GET)
+	public String myreviewlist(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
+		logger.info("내가 쓴 리뷰 보기", locale);
+		
+		String mem_nick="";
+		if((String)session.getAttribute("mem_nick")!=null) {
+			mem_nick = (String)session.getAttribute("mem_nick");
+		}else {
+			mem_nick = (String)session.getAttribute("naverNickname");
+		}
+		List<reviewDto> myreview = addproductService.myreviewlist(mem_nick);
+		model.addAttribute("myreview", myreview );
+
+
+
+		return "myreviewlist";
+	}
+	
+	
+	@RequestMapping(value = "/myreplylist.do", method = RequestMethod.GET)
+	public String myreplylist(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
+		logger.info("내가 쓴 리뷰 보기", locale);
+		
+		String mem_nick="";
+		if((String)session.getAttribute("mem_nick")!=null) {
+			mem_nick = (String)session.getAttribute("mem_nick");
+		}else {
+			mem_nick = (String)session.getAttribute("naverNickname");
+		}
+		List<replyDto> myreply = addproductService.myreplylist(mem_nick);
+		model.addAttribute("myreply", myreply );
+
+
+
+		return "myreplylist";
 	}
 
 

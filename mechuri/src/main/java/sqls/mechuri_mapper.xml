@@ -247,9 +247,11 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 시작 -->
 <!-- 쪽지 보내기 쿼리 -->
 <insert id="sendMessage2" parameterType="productDto">
+	<![CDATA[
 		INSERT INTO MSG (MSG_NO, MSG_TITLE, MSG_CONTS, MSG_REGDATE, MSG_RECEIVENO, MSG_RETURNCONTS, MSG_OTHERS01, MSG_OTHER02)
 		VALUES(MSG_SEQ.NEXTVAL, '[제품등록 승인 알림]', CONCAT(#{product_name},' 제품 등록이 승인되었습니다.') , SYSDATE , #{product_compno} , NULL, NULL, NULL)	
-
+	]]>	
+	
 </insert>
 
 <!-- 2)제품 수정 승인 쪽지  -->
@@ -441,6 +443,28 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 		SELECT * 
 		FROM MEMBERS 
 		WHERE MEM_NO= #{mem_no} 
+</select>
+
+<!-- 내가 쓴 커뮤니티 글 목록 가져오기 -->
+<select id = 'myboardlist' resultType='boardDto' parameterType="String">
+		SELECT * 
+		FROM BOARD 
+		WHERE BOARD_NICK= #{mem_nick} 
+</select>
+
+
+<!-- 내가 쓴 리뷰 글 목록 가져오기 -->
+<select id = 'myreviewlist' resultType='reviewDto' parameterType="String">
+		SELECT * 
+		FROM REVIEW 
+		WHERE REVIEW_MEMBERNICK= #{mem_nick} 
+</select>
+
+<!-- 내가 쓴 댓글 목록 가져오기 -->
+<select id = 'myreplylist' resultType='replyDto' parameterType="String">
+		SELECT * 
+		FROM REPLY  
+		WHERE REPLY_NICK= #{mem_nick} 
 </select>
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 끝 -->
 

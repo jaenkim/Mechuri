@@ -11,7 +11,6 @@
 <head>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-
 	function checkz() { //아이디(이메일형식), 비밀번호, 비밀번호 확인 유효성 검사
 		var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
 		var getId = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
@@ -30,7 +29,7 @@
 			$("#mem_id").focus();
 			return false;
 		} */
-		
+
 		if (!getCheck.test($("#tbPwd").val())) {
 			alert("pw를 형식에 맞게 입력해주세요");
 			$("#tbPwd").val("");
@@ -42,36 +41,34 @@
 			$("#tbPwd").val("");
 			$("#cpass").val("");
 			$("#tbPwd").focus();
-			
-		}else{
+
+		} else {
 			alert("비밀번호가 맞습니다. 가입을 진행해주세요");
 		}
 		return;
 	}
 
-// 	function mailChk() {
-// 		var email = $("#mem_id").val();
+	// 	function mailChk() {
+	// 		var email = $("#mem_id").val();
 
-// 		$.ajax({
-// 			type : "POST",
-// 			url : "./mail.do",
-// 			data : "mem_id=" + email,
-// 			async : true,
-// 			success : function(msg) {
-// 				$("#hid").val(msg);
-// 				$("#bt").attr("disabled", true);
-// 				$("#btn").attr("disabled", false);
+	// 		$.ajax({
+	// 			type : "POST",
+	// 			url : "./mail.do",
+	// 			data : "mem_id=" + email,
+	// 			async : true,
+	// 			success : function(msg) {
+	// 				$("#hid").val(msg);
+	// 				$("#bt").attr("disabled", true);
+	// 				$("#btn").attr("disabled", false);
 
-// 				alert("메일로 인증코드를 전송하였습니다.");
-// 			}
-// 		});
-// 	}
-	
-	
+	// 				alert("메일로 인증코드를 전송하였습니다.");
+	// 			}
+	// 		});
+	// 	}
+
 	//아이디 중복체크& 메일 인증 보내기 한번에 하기! (버튼 하나 없애기!)
 	function mailChk() {
-		
-		
+
 		var email = $("#mem_id").val();
 		var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 
@@ -82,7 +79,7 @@
 			$("#mem_id").focus();
 			return false;
 		}
-		
+
 		$.ajax({
 			type : "POST",
 			url : "./idcheck.do",
@@ -111,9 +108,8 @@
 			}
 
 		});
-		
+
 	}
-	
 
 	function keyChk() {
 		if ($("#insrt").val() == $("#hid").val()) {
@@ -123,28 +119,7 @@
 			alert("잘못된 인증번호 입니다. 다시 한 번 확인해 주세요.");
 		}
 	}
-
-// 	function idcheck() {
-// 		var email = $("#mem_id").val();
-
-// 		$.ajax({
-// 			type : "POST",
-// 			url : "./idcheck.do",
-// 			data : "mem_id=" + email,
-// 			async : true,
-// 			success : function(msg) {
-// 				if (msg == "a") {
-// 					alert("사용 가능한 아이디입니다.")
-// 				} else {
-// 					alert("이미 존재하는 아이디입니다.")
-// 				}
-// 			}
-
-// 		});
-// 	}
 </script>
-
-
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>일반 회원가입 페이지</title>
@@ -154,72 +129,91 @@
 	<form action='signUpBoard.do' method='post' name="sub">
 		<br> <br> <br>
 
-		<!-- <div class="inner"> -->
-
-		
-
 		<section class="wrapper" id="main">
-		<div class="form-holder" style="text-align: center">
-		<center>
-		<h3>일반회원 가입</h3>
-			 <input type="email" placeholder="ex)aaa@gmail.com" name="mem_id" id="mem_id"
-				class="form-control" required="required" />
-				<br><br><br>
-			<input type="button" class="button" value="아이디인증" id="bt" onclick="mailChk()" />
-		</center>		
-		</div>		
-	
-		<div class="form-holder" style="text-align: center">	
-		<center>	 
-				<input type="text" id="insrt" placeholder="인증번호를 입력해주세요." style="font-size:13px;" required="required">
-				<input type="button" class="btn-success" id="btn" disabled="disabled" onclick="keyChk()" value="인증">
-				
-		</center>	
-		</div>	
-
-		<div class="form-holder" style="text-align: center">
-		<center>
-			<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" id="tbPwd"
-				class="form-control" style="font-size:13px;" required="required">
-			<input type="button" value="비밀번호확인" onclick="checkz()">
-		</center>
-		</div>
-		<div class="form-holder" style="text-align: center">
-		<center>
-			<input type="password" placeholder="비밀번호 확인" class="form-control" id="cpass"
-				style="font-size: 13px;" required="required">
-				</center>
+		<div style="width:800px; margin: 0 auto;">
+			<div class="form-holder">
+<!-- 				<center> -->
+					<h3>일반회원 가입</h3>
+					<br><br>
+					<div class="6u$ 12u$(xsmall)" style="width:800px;">
+						<input type="email" placeholder="ex)aaa@gmail.com" name="mem_id"
+							id="mem_id" class="form-control" required="required" style="width:70%;display:inline-block; margin-right: 10px; " />
+							
+			<input type="button" class="button" value="아이디인증" id="bt" style="display:inline-block; "
+				onclick="mailChk()" />
 			
-		</div>
-		<div class="form-holder" style="text-align: center">
-		<center>
-			<input type="text" placeholder="이름" name="mem_name"
-				class="form-control" style="font-size: 13px;" required="required">
-		</center>
-		</div>
-		<div class="form-holder" style="text-align: center">
-		
-		<center>
-			<input type="text" placeholder="별명" name="mem_nick"
-				class="form-control" style="font-size: 13px;" required="required">
-		</center>
-		</div>
-		<div class="form-holder" style="text-align: center">
-	
-		<center>
-			<input type="text" placeholder="핸드폰" name="mem_phone"
-				class="form-control" style="font-size: 153x;" required="required">
-		</center>
-		</div>
-		<div class="checkbox"></div>
+					</div>
 
-		<center>
-		<button input type="submit" id="sbmd">회원가입하기</button>
-		</center>
+<!-- 				</center> -->
+			</div>
+			
+			
+			<div class="form-holder" >
+
+				<br>
+					<div class="6u$ 12u$(xsmall)" style="width:800px;">
+						<input type="text" id="insrt" placeholder="인증번호를 입력해주세요." style="width:70%;display:inline-block; margin-right: 10px;"
+							style="font-size: 13px;" required="required"> 
+						<input type="button" class="btn-success" id="btn" disabled="disabled" style="display:inline-block;"
+							onclick="keyChk()" value="인증">
+					</div>
+				
+			</div>
+		
+			<div class="form-holder">
+				<br>
+					<div class="6u$ 12u$(xsmall)" style="width:800px;">
+						<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" style="width:70%;display:inline-block; margin-right: 10px;
+							id="tbPwd" class="form-control" style="font-size: 13px;"
+							required="required"> 
+					</div>
+				
+			</div>
+			<div class="form-holder">
+			<br>
+					<div class="6u$ 12u$(xsmall)" style="width:800px;">
+						<input type="password" placeholder="비밀번호 확인" class="form-control" style="width:70%;display:inline-block; margin-right: 10px;"
+							id="cpass" style="font-size: 13px;" required="required">
+							<input type="button" value="비밀번호확인"  style="display:inline-block;" onclick="checkz()">
+					</div>
+				
+
+			</div>
+			<div class="form-holder">
+				<br>
+					<div class="6u$ 12u$(xsmall)" style="width:800px;">
+						<input type="text" placeholder="이름" name="mem_name" style="width:70%;display:inline-block; margin-right: 10px;
+							class="form-control" style="font-size: 13px;" required="required">
+					</div>
+				
+			</div>
+			<div class="form-holder">
+
+				<br>
+					<div class="6u$ 12u$(xsmall)" style="width:800px;">
+						<input type="text" placeholder="별명" name="mem_nick" style="width:70%;display:inline-block; margin-right: 10px;  
+							class="form-control" style="font-size: 13px;" required="required">
+					</div>
+				
+			</div>
+			<div class="form-holder">
+
+				<br>
+					<div class="6u$ 12u$(xsmall)" style="width:800px;">
+						<input type="text" placeholder="핸드폰" name="mem_phone" style="width:70%;display:inline-block; margin-right: 10px;
+							class="form-control" style="font-size: 153x;" required="required">
+					</div>
+				
+			</div>
+			<div class="checkbox"></div>
+
+				<br>
+				<button input type="submit" id="sbmd" style=font-color:white;>회원가입하기</button>
+		
+	</div>
 	</form>
 	</section>
 	<!-- 	</div>  -->
-
 
 
 	<jsp:include page="Footer.jsp" />

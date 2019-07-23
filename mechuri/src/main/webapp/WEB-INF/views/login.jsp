@@ -65,44 +65,23 @@
 	<center>
 		<form name="form1" id="form1" method="post" action="login_check.do">
 
-			<div class="board_list">
+			<!-- <div class="board_list"> -->
+			<div class="6u$ 12u$(xsmall)">
 				<input type="text" id="mem_id" name="mem_id" class="wdp_90"
 					placeholder="아이디" style="font-size:13px;">
 			</div>
-
+	<!-- </div> -->
 			<div class="field_container">
+			<div class="6u$ 12u$(xsmall)">
 				<input type="Password" id="mem_pw" name="mem_pw" class="wdp_90"
 					placeholder="비밀번호" style="font-size:13px;"> <br>
-				<button id="btn_area">
-					<span class="btn" id="btnLogin" background-color="#f6755e">로그인</span> <br> <br>
-				</button>
+				<button class="button special" id="btn_area">
+					<span class="btn" id="btnLogin" class="button" background-color="#f6755e" text-align:center;>로그인</span> <br> <br>
+				</button> 
+			</div>
 			</div>
 		</form>
 	</center>
-
-
-
-
-	<%-- <center> --%>
-	<%-- <c:choose> --%>
-	<%-- <c:when test="${sessionId != null}"> --%>
-	<!-- <h2> 네이버 아이디 로그인 성공하셨습니다!! </h2> -->
-	<%-- <h3>'${sessionId}' 님 환영합니다! </h3> --%>
-	<!-- <h3><a href="logout">로그아웃</a></h3> -->
-	<%-- </c:when> --%>
-	<%-- <c:otherwise> --%>
-	<!-- <form action="login.do" method="post" name="frm" style="width:470px;"> -->
-	<!-- <h2>로그인</h2> -->
-	<!-- </form> -->
-	<!-- <br> -->
-	<!-- <!-- 네이버 로그인 창으로 이동 -->
-	<%-- <div id="naver_id_login" style="text-align:center"><a href="${url}"> --%>
-	<!-- <img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div> -->
-	<!-- <br> -->
-	<%-- </c:otherwise> --%>
-	<%-- </c:choose> --%>
-	<%-- </center> --%>
-
 
 	<c:if test="${message == 'error' }">
 		<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
