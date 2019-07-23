@@ -15,6 +15,8 @@
 	<link rel="stylesheet" href="commAssets/css/style.min.css">
 	<link rel="stylesheet" href="commAssets/css/modules.css">
 	<link rel="stylesheet" href="commAssets/css/button.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/main.css">
 	
 
 	<!-- Canonical URL usage -->
@@ -91,7 +93,6 @@
 </header>
  
  
- 
 <section data-theme="_bgp">
 
 
@@ -114,6 +115,7 @@
         <div style="background-image:url('upload/${dto.board_storedfile}')" class="MOD_ARTICLEBLOCKS1_Img" role="img" aria-label="alt text" ></div> 
         </c:otherwise> 
 		</c:choose>
+		<!-- 여기부터글 -->
         <div class="MOD_ARTICLEBLOCKS1_Txt">
         <c:choose>
         	<c:when test="${dto.board_new eq 'true' }"> 
