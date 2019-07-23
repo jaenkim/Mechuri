@@ -17,8 +17,8 @@
 		<!-- Banner -->
 			<section id="banner">
 				<div class="content">
-					<h1 style="font-family: 'LotteMartHappy';">당신에게 꼭 맞는 화장품을 찾아보세요</h1>
-					<p style="font-family: 'LotteMartHappy';">수 많은 화장품 중 당신에게 꼭 맞는 화장품은 무엇일까요?<br />함께 찾아봐요. 메추리가 도와드릴게요.</p>
+					<h1>당신에게 꼭 맞는 화장품을 찾아보세요</h1>
+					<p>수 많은 화장품 중 당신에게 꼭 맞는 화장품은 무엇일까요?<br />함께 찾아봐요. 메추리가 도와드릴게요.</p>
 					<ul class="actions">
 						<li><a href="list.do" class="button scrolly">시작하기</a></li>
 					</ul>
