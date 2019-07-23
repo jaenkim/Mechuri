@@ -106,7 +106,7 @@
 
     <div class="col-75">
     	<div id="reply1">
-      <input type="text" id="reply" name="reply_contents" required="required" />
+      <input type="text" id="reply" name="reply_contents" required="required" placeholder="댓글을 작성해 주세요" style="width:85%"; />
       </div>
       <div id="replybtn1">
       <input type="submit" id="replybtn" value="작성"  />
@@ -130,7 +130,7 @@
     		
     		
     		</div>
-    		<div id="replycon">${replylist.reply_conts}</div>
+    		<div id="replycon" >${replylist.reply_conts}</div>
     		<div id="replyregdate"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년 MM월 dd일" /></div>
    		 
     
