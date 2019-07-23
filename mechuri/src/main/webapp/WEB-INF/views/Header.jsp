@@ -102,7 +102,7 @@
    <% if(seUsername.equals("") && seNaverUsername.equals("")){ %>
    <header id="header">
    <a href="index.jsp" class="logo">Mechuri</a>
-   <nav class="right"><a href="/mechuri/login.do" class="button alt">Log in</a>
+   <nav class="right"><a href="/mechuri/login.do" class="button alt" style="margin-top:20%">Log in</a>
    </nav>
    </header>
    
