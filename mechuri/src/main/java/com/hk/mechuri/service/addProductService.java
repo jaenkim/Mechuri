@@ -19,7 +19,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.mechuri.daos.MessageDao;
 import com.hk.mechuri.daos.addProductDao;
+import com.hk.mechuri.dtos.boardDto;
 import com.hk.mechuri.dtos.productDto;
+import com.hk.mechuri.dtos.replyDto;
+import com.hk.mechuri.dtos.reviewDto;
 import com.hk.mechuri.dtos.tempinfoDto;
 
 @Service
@@ -56,9 +59,7 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		
-		File f=new File("C:/Users/82108/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); //김재원 경로
-//		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); // 승희 경로
+		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
 		try { 
 			multiFile.transferTo(f);
 	
@@ -140,8 +141,7 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/Users/82108/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); //김재원 경로
-//		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); //승희경로
+		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
 		try {
 			multiFile.transferTo(f);
 			dto.setTempinfo_originfile(product_originfile);
@@ -157,5 +157,17 @@ public class addProductService {
 		return isS>0?true:false;
 	}
 	
+	
+	public List<boardDto> myboardlist(String mem_nick) {
+		return addproductDao.myboardlist(mem_nick);
+	}
+	
+	public List<reviewDto> myreviewlist(String mem_nick) {
+		return addproductDao.myreviewlist(mem_nick);
+	}
+	
+	public List<replyDto> myreplylist(String mem_nick) {
+		return addproductDao.myreplylist(mem_nick);
+	}
 }
 
