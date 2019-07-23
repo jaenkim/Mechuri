@@ -11,6 +11,7 @@
 </head>
 <body>
 <jsp:include page="../Header.jsp"/>
+
 <br><br><br>
 
 <div class="container">
@@ -18,7 +19,7 @@
   <input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
     <div class="col-25">
-      <label for="title">제목</label>
+      <label for="title"  style="margin:5% 0% 0% 40%;">제목</label>
     </div>
     <div class="col-75">
       <input type="text" id="title" name="titlename" value="${dto.board_title}">
@@ -27,7 +28,7 @@
   
     <div class="row">
     <div class="col-25">
-      <label for="writernick">작성자</label>
+      <label for="writernick"  style="margin:5% 0% 0% 40%;">작성자</label>
     </div>
     <div class="col-75">
       <input type="text" id="writernick" name="writernick" value="${dto.board_nick}" readonly="readonly">
@@ -37,7 +38,7 @@
  
   <div class="row">
     <div class="col-25">
-      <label for="content">내용</label>
+      <label for="content"  style="margin:5% 0% 0% 40%;">내용</label>
     </div>
     <div class="col-75">
     	<textarea id="content" name="content" style="height:200px">${dto.board_conts}</textarea>
@@ -46,7 +47,7 @@
    <br>
   <br>
 	<div class="file_input">
-    <label>
+    <label  style="margin:0% 0% 0% 8%;">
         	파일첨부
         <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value">
     </label>
@@ -55,8 +56,10 @@
 
   <br>
   <div>
+  <center>
     <input type="submit" value="수정완료" />
 	<input type="button" value="글목록" onclick="location.href='boardlist2.do?pnum=1'" />
+  </center>
    </div>
   </form>
 </div> 

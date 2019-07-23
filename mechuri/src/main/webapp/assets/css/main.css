@@ -133,7 +133,7 @@
 		}
 
 		.container {
-			width: 65em;
+			width: 45em;
 		}
 
 	}
@@ -1688,7 +1688,7 @@
 		font-weight: 700;
 		font-family: "Montserrat", sans-serif;
 		line-height: 1.5;
-		margin: 0 0 1em 0;
+		/* margin: 0 0 1em 0; */
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1845,7 +1845,7 @@
 		display: block;
 		font-size: 0.9em;
 		font-weight: 700;
-		margin: 0 0 1em 0;
+		/* margin: 0 0 1em 0; */
 	}
 
 	input[type="text"],
@@ -1867,7 +1867,7 @@
 		outline: 0;
 		padding: 0 1em;
 		text-decoration: none;
-		width: 100%;
+		width: 80%;
 	}
 
 		input[type="text"]:invalid,
@@ -2622,7 +2622,7 @@
 /* Wrapper */
 
 	.wrapper {
-		padding: 6em 0 4em 0;
+		/* padding: 6em 0 4em 0; */
 	}
 
 		.wrapper h1, .wrapper h2, .wrapper h3, .wrapper h4, .wrapper h5 {

@@ -78,9 +78,8 @@
 <!-- End Head -->
 <body class="default">
 <jsp:include page="../Header.jsp"/>
-
-
-<br><br><br><br>
+<section id="main" class="wrapper">
+<div class="inner">
 <header class="MOD_HEADER1">
   <div data-layout="_r">
     <div data-layout="al16 de10" class="MOD_HEADER1_Title">
@@ -97,7 +96,7 @@
 
 
 
-  <div data-layout="_r" class="MOD_ARTICLEBLOCKS1" a href="boardDetail.do?seq=${dto.board_no}">
+  <div style="background-color:#f2f2f2;" data-layout="_r" class="MOD_ARTICLEBLOCKS1" a href="boardDetail.do?seq=${dto.board_no}">
   
   
   <c:forEach items="${list}" var="dto">
@@ -155,9 +154,9 @@
  
 
 </section>
-
+</div>
+</section>
 <jsp:include page="../Footer.jsp"/>
-<!-- </form> -->
 </body>
 
 

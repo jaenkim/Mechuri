@@ -1564,7 +1564,7 @@ body .MOD_IMPACTSTRIP4_Txt p {
 }
 
 .MOD_ARTICLEBLOCKS1_Title {
-  margin-top: 0;
+ /*  margin-top: 0; */
   font-size: 1.2em;
 }
 
