@@ -36,18 +36,19 @@ th {
 </head>
 <body>
 <jsp:include page="Header.jsp" />
+<section id="main" class="wrapper">
 <div class="search">
-<div class="6u$ 12u$(xsmall)">
- <select style="size:50px;" name="searchType"> <!-- 컨트롤러에서 값을 보내주는것이 아니라 컨트롤러에 요청된 URL에 따라 값이 달라짐. -->
+<div class="6u$ 12u$(xsmall)" style=width:10%>
+ <select style="size:50px;display:inline-block;" name="searchType" > <!-- 컨트롤러에서 값을 보내주는것이 아니라 컨트롤러에 요청된 URL에 따라 값이 달라짐. -->
   <option  value="no"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
   <option id="bb" class="none" value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>이름</option>
   <option id="cc" class="none" value="b"<c:out value="${scri.searchType eq 'b' ? 'selected' : ''}"/>>브랜드</option>
-  <option id="dd" class="none" value="cl"<c:out value="${scri.searchType eq 'cl' ? 'selected' : ''}"/>>카테고리</option>
+  <option id="dd" class="none" value="cl" <c:out value="${scri.searchType eq 'cl' ? 'selected' : ''}"/>>카테고리</option>
  </select>								<!-- 검색 타입 값에 따라 출력   -->				
 				
  <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 </div> 	
- <button id="searchBtn" >검색</button>
+ <button id="searchBtn" style="display:inline-block;">검색</button>
  
  
  <script>
@@ -103,6 +104,7 @@ th {
 			</ul> 
 		</div> --%>
 </div>
+</section>
 <jsp:include page="Footer.jsp" />
 </body>
 </html>
