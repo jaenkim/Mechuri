@@ -55,7 +55,7 @@ button.top {
 	<section id="main" class="wrapper">
 	<div class="inner">
 		<div class="6u$ 12u$(xsmall)" style="width: 20%">
-			<select style="size: 50px; display: inline-block;" name="searchType">
+			<select style="size: 50px; display: inline-block;" name="searchType" >
 				<!-- 컨트롤러에서 값을 보내주는것이 아니라 컨트롤러에 요청된 URL에 따라 값이 달라짐. -->
 				<option value="no"
 					<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
