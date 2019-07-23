@@ -13,8 +13,12 @@
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
-<br><br><br><br>
-<h1>자사 제품 리스트</h1>
+<section id="main" class="wrapper">
+	<div class="inner">
+	  <header class="align-center">
+<h1>제품 리스트</h1>
+ </header>
+ 
 <table border='1'>
     <tr>
       <th>제품번호</th>
@@ -65,7 +69,8 @@
 </c:forEach>
  
 </table>
-
+      </div>
+   </section>
 
 </body>
 </html>

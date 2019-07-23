@@ -11,9 +11,11 @@
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
-<br><br><br><br>
+<section id="main" class="wrapper">
+	<div class="inner">
+	  <header class="align-center">
 <h1>쪽지함</h1>
-<br><br>
+ </header>
 <table border='1'>
  <c:forEach items="${list}" var="dto">
  <tr>
@@ -23,6 +25,7 @@
         
 </c:forEach>
 </table>
-
+       </div>
+   </section>
 </body>
 </html>

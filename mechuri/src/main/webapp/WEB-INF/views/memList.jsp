@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원목록</title>
+<title>일반 회원 목록</title>
 
 <script type="text/javascript">
 	function removeCheck(mem_no) {
@@ -21,10 +21,17 @@
 	}
     </script>
 </head>
+
+
 <body>
 <jsp:include page="Header.jsp"/>
-<br><br><br><br>
-<h1>일반 회원 목록</h1>
+
+<section id="main" class="wrapper">
+	<div class="inner">
+	  <header class="align-center">
+		<h1>일반 회원 목록</h1>
+	  </header>
+
  <form action='userDelete.do' method='post' name='removefrm'>
     <input type="hidden" name="mem_no"/>
     <input type="hidden" name="mem_status" value="M"/>
@@ -53,11 +60,12 @@
  <td>${member.mem_delflag }</td>
  <td><fmt:formatDate value="${member.mem_deldate }" pattern="yyyy.MM.dd"/></td>
  
- <td><input type='button' value="삭제" onclick='removeCheck(${member.mem_no})'></td>
+ <td><input type='button' value="삭제" class="button small" onclick='removeCheck(${member.mem_no})' ></td>
  </tr>
 </c:forEach>
 </table>
  </form>
-
+     </div>
+   </section>
 </body>
 </html>

@@ -12,26 +12,33 @@
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
-<br><br><br><br>
+<section id="main" class="wrapper">
+<div style="width:400px; margin: 0 auto;">
+
+				<div class="inner">
+					<header class="align-center">
 <h1>내 정보 보기(기업)</h1>
+					</header>
  <c:forEach items="${cominfo}" var="cominfo">
 <form action='infoUpdate.do' method='post' name='updatefrm'>
 <input type="hidden" name="mem_no" value="${cominfo.mem_no }"/>
 <input type="hidden" name='mem_status' value="C"/>
-브랜드명 : <input type="text" name="mem_brand" value="${cominfo.mem_brand }" required="required"><br>
-아이디: <input type="text" name="mem_id" value="${cominfo.mem_id }" readonly="readonly"><br>
-비밀번호: <input type="password" name="mem_pw" value="${cominfo.mem_pw }" required="required"><br>
-담당자명: <input type="text" name="mem_name" value="${cominfo.mem_name }" required="required"><br>
-이메일: <input type="text" name="mem_email" value="${cominfo.mem_email }" required="required"><br>
-연락처: <input type="text" name="mem_phone" value="${cominfo.mem_phone }" required="required"><br>
-주소: <input type="text" name="mem_post" value="${cominfo.mem_post }" required="required"><br>
+<b>브랜드명 :</b> <input type="text" name="mem_brand" value="${cominfo.mem_brand }" required="required"><br>
+<b>아이디:</b> <input type="text" name="mem_id" value="${cominfo.mem_id }" readonly="readonly"><br>
+<b>비밀번호:</b> <input type="password" name="mem_pw" value="${cominfo.mem_pw }" required="required"><br>
+<b>담당자명:</b> <input type="text" name="mem_name" value="${cominfo.mem_name }" required="required"><br>
+<b>이메일:</b> <input type="text" name="mem_email" value="${cominfo.mem_email }" required="required"><br>
+<b>연락처:</b> <input type="text" name="mem_phone" value="${cominfo.mem_phone }" required="required"><br>
+<b>주소:</b> <input type="text" name="mem_post" value="${cominfo.mem_post }" required="required"><br>
 <input type="text" name="mem_addr1" value="${cominfo.mem_addr1 }" required="required"><br>
 <input type="text" name="mem_addr2" value="${cominfo.mem_addr2 }" required="required"><br>
-홈페이지: <input type="text" name="mem_homepage" value="${cominfo.mem_homepage }" required="required"><br><br><br>
+<b>홈페이지:</b> <input type="text" name="mem_homepage" value="${cominfo.mem_homepage }" required="required"><br><br><br>
 
+<div style="width: 300px; margin: 0 auto;">
 
-<input type='button' value="수정" onclick="updateCheck()">
-<button type='button' onclick="removeCheck('${cominfo.mem_no }')">탈퇴</button> 
+<input type='button' value="수정" onclick="updateCheck()" class="button special">
+<span><input type='button' onclick="removeCheck('${cominfo.mem_no }')" value="탈퇴"/> </span>
+</div>
 
 </form>
 </c:forEach>
@@ -63,5 +70,8 @@
 	 }
 	}
     </script>
+    	</div>
+    	   </div>
+			</section>
 </body>
 </html>

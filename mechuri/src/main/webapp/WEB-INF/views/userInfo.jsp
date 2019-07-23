@@ -8,26 +8,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>내 정보 보기</title>
 </head>
-<body>
+
 <jsp:include page="Header.jsp"/>
-<br><br><br><br>
-<h1>내 정보 보기(일반회원)</h1>
-
-
+<section id="main" class="wrapper">
+<div style="width:400px; margin: 0 auto;">
+	<div class="inner">
+	  <header class="align-center">
+<h1>내 정보 보기</h1>
+ </header>
+<br><br>
+<div class="12u">
 <c:forEach items="${userInfo}" var="userinfo">
 <form action='infoUpdate.do' method='post' name='updatefrm'>
 <input type="hidden" name='mem_status' value="M"/>
 <input type="hidden" name="mem_no" value="${userinfo.mem_no }"/>
-아이디: <input type="text" name="mem_id" value="${userinfo.mem_id }" readonly="readonly"><br>
-이름: <input type="text" name="mem_name" value="${userinfo.mem_name }" required="required"><br>
-비밀번호: <input type="password" name="mem_pw" value="${userinfo.mem_pw }" required="required"><br>
-닉네임: <input type="text" name="mem_nick" value="${userinfo.mem_nick }" required="required"><br>
-연락처: <input type="text" name="mem_phone" value="${userinfo.mem_phone }" required="required"><br>
+<div class="row uniform">
+	<div class="6u 12u$(xsmall)" style="width:400px;">
+<b>아이디:</b> <input type="text" name="mem_id" value="${userinfo.mem_id }" readonly="readonly"><br>
+<b>이름:</b> <input type="text" name="mem_name" value="${userinfo.mem_name }" required="required"><br>
+<b>비밀번호:</b> <input type="password" name="mem_pw" value="${userinfo.mem_pw }" required="required"><br>
+<b>닉네임:</b> <input type="text" name="mem_nick" value="${userinfo.mem_nick }" required="required"><br>
+<b>연락처:</b> <input type="text" name="mem_phone" value="${userinfo.mem_phone }" required="required"><br>
 
 <br>
-<input type='button' value="수정" onclick='updateCheck()'>
-<button type='button' onclick="removeCheck('${userinfo.mem_no }')">탈퇴</button> 
-
+<div style="width: 300px; margin: 0 auto;">
+<input type='button' class="button special" value="수정" onclick='updateCheck()'>
+<span><input type='button' class="button" onclick="removeCheck('${userinfo.mem_no }')" value="탈퇴"> </span>
+</div>
+</div>
+</div>
 </form>
 </c:forEach>
 <script type='text/javascript'>
@@ -59,5 +68,9 @@
 	 }
 	}
     </script>
+    </div>
+             </div>
+             </div>
+   </section>
 </body>
 </html>

@@ -8,13 +8,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원목록</title>
+<title>기업 회원 목록</title>
     
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
-<br><br><br><br>
+<section id="main" class="wrapper">
+	<div class="inner">
+	  <header class="align-center">
 <h1>기업 회원 목록</h1>
+ </header>
+ 
  <form action='userDelete.do' method='post' name='removefrm'>
   <input type="hidden" name="mem_no" value="${member.mem_no }"/>
     <input type="hidden" name="mem_status" value="C"/>
@@ -48,14 +52,14 @@
 <!-- 		<input type='button'  value="가입승인" disabled="disabled" > -->
 	</c:when>
 	<c:otherwise>
- <a href="compAppr.do?mem_no=${member.mem_no }"><input type='button' value="가입승인"></a>
+ <a href="compAppr.do?mem_no=${member.mem_no }"><input type='button' value="가입승인" class="button special small"></a>
  	</c:otherwise>
  	</c:choose>
  </td>
  <td>${member.mem_delflag }</td>
  <td><fmt:formatDate value="${member.mem_deldate }" pattern="yyyy.MM.dd"/></td>
  
- <td><button onclick="removeCheck(${member.mem_no})">삭제</button></td> 
+ <td><button onclick="removeCheck(${member.mem_no})" class="button small" >삭제</button></td> 
  </tr>
  
 </c:forEach>
@@ -72,5 +76,7 @@
 	 }
 	}
     </script>
+         </div>
+   </section>
 </body>
 </html>

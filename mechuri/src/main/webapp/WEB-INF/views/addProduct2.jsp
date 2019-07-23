@@ -17,26 +17,31 @@
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
-<br><br><br><br>
+			<section id="main" class="wrapper">
+			<div style="width:400px; margin: 0 auto;">
+				<div class="inner">
+					<header class="align-center">
+<h1>신규 제품 등록</h1>
+					</header>
+
 <form action='addProduct.do' method='post' enctype='multipart/form-data' id='addfrm' name='addfrm'>
-<h3>신규 제품 등록</h3>
 
 	 	 
-	 <p>카테고리</p>
-         <select name="filter_catelname" id="filter_catelname" style="width: 200px">
+	 <p><b>카테고리:</b></p>
+         <select name="filter_catelname" id="filter_catelname">
             <option value="">카테고리 선택</option>
          </select> 
-         <select name="filter_catesname" id="filter_catesname" style="width: 200px">
+         <select name="filter_catesname" id="filter_catesname">
             <option value="">카테고리 선택</option>
          </select> 
          <br>
         
-제품명: <input type="text" name="product_name" placeholder="제품명을 입력하시기 바랍니다."  required="required"/><br>
-용량: <input type="text" name="product_ml" placeholder="(예, 150ml, 180g)" required="required"><br>
-가격: <input type="text" name="product_price" placeholder="(예, 15,000 )" required="required"><br>
-제품설명: <input type="text" placeholder="2000자 이내로 작성하시기 바랍니다."  name="product_conts"><br>
-성분: <input type="text" name="product_ingre" required="required"><br>
-피부타입: <select name="product_skintype">
+<b>제품명:</b> <input type="text" name="product_name" required="required"/><br>
+<b>용량:</b> <input type="text" name="product_ml" required="required"/><br>
+<b>가격:</b> <input type="text" name="product_price" required="required"><br>
+<b>제품설명:</b> <input type="text" name="product_conts"><br>
+<b>성분:</b> <input type="text" name="product_ingre" required="required"><br>
+<b>피부타입:</b> <select name="product_skintype">
 		<option value="전체">전체</option>
 		<option value="건성">건성</option>
 		<option value="중성">중성</option>
@@ -45,7 +50,7 @@
 		<option value="여드름성">여드름성</option>
 		<option value="아토피성">아토피성</option>
 		</select><br>
-타겟 연령: <select name="product_age">
+<b>타겟 연령:</b><select name="product_age">
 		<option value="전체">전체</option>
 		<option value="10대">10대</option>
 		<option value="20대">20대</option>
@@ -54,22 +59,22 @@
 		<option value="50대 이상">50대 이상</option>
 		</select><br>
 
-타겟 성별: 	<select name="product_gender">
+<b>타겟 성별:</b> 	<select name="product_gender">
 		<option value="전체">전체</option>
 		<option value="여성">여성</option>
 		<option value="남성">남성</option>
 		</select><br>
 		
 
-  <label>제품 사진:
+  <label><b>제품 사진:</b>
    	 <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value" required="required"/>
     </label>
     <input type="text" readonly="readonly" title="File Route" id="file_route">
     <br>
     <br>
-
+<div style="width: 150px; margin: 0 auto;">
 <input type='submit' value='등록'>  
-
+</div>
 <script src="assets/js/cate_filter.js"></script>
 <script>
 $("#addfrm").submit(function(){
@@ -81,6 +86,8 @@ $("#addfrm").submit(function(){
 	});
 </script>
 </form>
-
+	</div>
+	</div>
+			</section>
 </body>
 </html>

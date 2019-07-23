@@ -13,10 +13,17 @@
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
-<br><br><br><br>
+<section id="main" class="wrapper">
+<div style="width:400px; margin: 0 auto;">
+	<div class="inner">
+	  <header class="align-center">
+	<h1>${dto.product_name }</h1>
+	<p>대분류- ${dto.product_catelname } / 소분류- ${dto.product_catelname }</p>
+	</header>
+	
 <form action='tempinfoInsert.do' method='post' enctype='multipart/form-data' name='updatefrm'>
 <input type='hidden' name='pno' value='${dto.product_no }'/>
-<h3>제품 정보 - ${dto.product_name }</h3>
+
 <c:choose>
 	<c:when test= "${dto.product_djflag eq 'N' }">
 		<p>(단종 제품)</p>
@@ -26,16 +33,14 @@
 
 	<img src="upload/${dto.product_storedfile} "/>
 	<br><br>
-  <label>제품사진: 
-        <input type="file" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value">
-    </label>
+  <label for="filename">제품사진:     </label>
+        <input type="file" id="filename" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value">
     <input type="text" readonly="readonly" title="File Route" name="storedfile" value="${dto.product_storedfile}" id="file_route">
 	
 	<br><br>
 
           
          
-카테고리: 대분류- ${dto.product_catelname } / 소분류- ${dto.product_catelname } <br><br>      
 제품명: <input type="text" name="tempinfo_name" value="${dto.product_name }" required="required"/><br><br>
 용량: <input type="text" name="tempinfo_ml" value="${dto.product_ml}" required="required"><br><br>
 가격: <input type="text" name="tempinfo_price" value="${dto.product_price}" required="required"><br><br>
@@ -67,31 +72,31 @@
 		<br><br>
 
 
-
+<div style="width: 400px; margin: 0 auto;">
 	<c:choose>
 	<c:when test= "${dto.product_flag eq 'N' }">
-		<button type='button' disabled="disabled" onclick="updateCheck()">수정신청</button>
+		<button type='button' disabled="disabled" onclick="updateCheck()" class="button special small" >수정신청</button>
 	</c:when>
 	<c:when test= "${dto.product_others01 eq 'N' }">
-		<button type='button' disabled="disabled" onclick="updateCheck()">수정신청</button>
+		<button type='button' disabled="disabled" onclick="updateCheck()" class="button special small">수정신청</button>
 	</c:when>
 	<c:otherwise>
-		<button type='button' onclick="updateCheck()">수정신청</button>
+		<button type='button' onclick="updateCheck()" class="button special small">수정신청</button>
 	</c:otherwise>
 	</c:choose>
 
 	
 	<c:choose>
 	<c:when test= "${dto.product_djflag eq 'N' }">
-	<button type='button' disabled="disabled" onclick="productDj('${dto.product_no }')">단종처리</button> 
+	<button type='button' disabled="disabled" onclick="productDj('${dto.product_no }')" class="button small" class="button small">단종처리</button> 
 	</c:when>
 	<c:otherwise>
-	<button type='button' onclick="danCheck('${dto.product_no }')">단종처리</button> 
+	<button type='button' onclick="danCheck('${dto.product_no }')" class="button small">단종처리</button> 
 	</c:otherwise>
 	</c:choose>
 
-    <button type='button' onclick="removeCheck('${dto.product_no }')">삭제</button> 
-
+    <button type='button' class="button alt small" onclick="removeCheck('${dto.product_no }')" >삭제</button> 
+</div>
 <script src="assets/js/cate_filter.js"></script>
 <script type='text/javascript'>
 	
@@ -140,5 +145,8 @@
     </script>
     
 </form>
+     </div>
+     </div>
+   </section>
 </body>
 </html>
