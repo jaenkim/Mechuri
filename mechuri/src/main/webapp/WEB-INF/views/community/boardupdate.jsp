@@ -55,11 +55,9 @@
 	</div>
 
   <br>
-  <div>
-  <center>
+  <div style="text-align:center;">
     <input type="submit" value="수정완료" />
 	<input type="button" value="글목록" onclick="location.href='boardlist2.do?pnum=1'" />
-  </center>
    </div>
   </form>
 </div> 

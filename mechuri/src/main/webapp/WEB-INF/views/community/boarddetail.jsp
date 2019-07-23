@@ -61,8 +61,7 @@
   </div>
   
   <br>
-  <div>
-	<center>
+  <div style="text-align:center;">
 	<c:choose>
   		<c:when test="${mem_nick eq dto.board_nick}">
   			<input type="button" value="수정" onclick="updateBoard()" />
@@ -73,7 +72,6 @@
   			<input type="button" value="글목록" id="writelist" onclick="location.href='boardlist2.do?board_pnum=${board_pnum}'" />
   		</c:otherwise>
   	</c:choose>	
-	</center>
   </div>
   
 <!--   <br> -->
