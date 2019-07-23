@@ -138,7 +138,7 @@
     	<c:otherwise> 
             <div id="replynick">${replylist.reply_nick}</div>
     		<div id="replycon">${replylist.reply_conts}</div>
-    		<div id="replyregdate">${replylist.reply_regdate}</div>
+    		<div id="replyregdate"><fmt:formatDate value="${replylist.reply_regdate}" pattern="yyyy-MM-dd HH:mm" /></div>
     		<span><input type="button" value="댓글삭제" onclick="delReply('${reply.board_no}')"></span>
         </c:otherwise> 
     </c:choose>
