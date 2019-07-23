@@ -37,7 +37,7 @@
       <label for="title" style="margin:10% 0% 0% 40%;">제목</label>
     </div>
     <div class="col-75">
-      <input type="text" id="title" name="titlename" value="${dto.board_title}" readonly="readonly">
+      <input type="text" id="title" name="titlename" value="${dto.board_title}" readonly="readonly" style="width:80%;">
     </div>
   </div>
   
@@ -46,7 +46,7 @@
       <label for="writernick" style="margin:5% 0% 0% 40%;">작성자</label>
     </div>
     <div class="col-75">
-      <input type="text" id="writernick" name="writernick" value="${dto.board_nick}" readonly="readonly" >
+      <input type="text" id="writernick" name="writernick" value="${dto.board_nick}" readonly="readonly" style="width:80%;" >
     </div>
   </div>
   
@@ -56,7 +56,7 @@
       <label for="content" style="margin:5% 0% 0% 40%;">내용</label>
     </div>
     <div class="col-75">
-      <textarea id="content" name="content" style="height:200px" readonly="readonly" >${dto.board_conts}</textarea>
+      <textarea id="content" name="content" style="height:200px;width:80%;" readonly="readonly" >${dto.board_conts}</textarea>
     </div>
   </div>
   

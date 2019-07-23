@@ -32,7 +32,7 @@
       			<label for="title"  style="margin:5% 0% 0% 40%;">닉네임</label>
     		</div>
     		<div class="col-75">
-      			<input type="text" id="title" readonly="readonly" name="nickname" value=
+      			<input type="text" id="title" style="width:80%;" readonly="readonly" name="nickname" value=
       				<c:choose>
     					<c:when test="${naverNickname eq null}">
     						${mem_nick}
@@ -48,7 +48,7 @@
       <label for="title" style="margin:5% 0% 0% 40%;">제목</label>
     </div>
     <div class="col-75">
-      <input type="text" id="title" required="required" name="titlename" >
+      <input type="text" id="title" required="required" name="titlename" style="width:80%;" >
     </div>
   </div>
  
@@ -57,7 +57,7 @@
       <label for="content" style="margin:5% 0% 0% 40%;">내용</label>
     </div>
     <div class="col-75">
-      <input type="text" id="content" name="content" required="required" style="height:200px" >
+      <input type="text" id="content" name="content" required="required" style="height:200px; width:80%;" >
     </div>
   </div>
   <br>
