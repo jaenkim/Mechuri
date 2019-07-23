@@ -68,13 +68,14 @@
 			<!-- <div class="board_list"> -->
 			<div class="6u$ 12u$(xsmall)">
 				<input type="text" id="mem_id" name="mem_id" class="wdp_90"
-					placeholder="아이디" style="font-size:13px;">
+					placeholder="아이디" style="font-size:13px; width:31%">
 			</div>
 	<!-- </div> -->
 			<div class="field_container">
 			<div class="6u$ 12u$(xsmall)">
+			<br>
 				<input type="Password" id="mem_pw" name="mem_pw" class="wdp_90"
-					placeholder="비밀번호" style="font-size:13px;"> <br>
+					placeholder="비밀번호" style="font-size:13px; width:31%"> <br>
 				<button class="button special" id="btn_area">
 					<span class="btn" id="btnLogin" class="button" background-color="#f6755e" text-align:center;>로그인</span> <br> <br>
 				</button> 
