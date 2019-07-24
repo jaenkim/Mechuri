@@ -153,7 +153,9 @@
 				<br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="text" id="insrt" placeholder="인증번호를 입력해주세요." style="width:70%;display:inline-block; margin-right: 10px;"
-							style="font-size: 13px;" required="required"> 
+							style="font-size: 13px;" required="required"> 							<input type="hidden" id="hid" />
+														<input type="hidden" id="hid" />
+							
 						<input type="button" class="btn-success" id="btn" disabled="disabled" style="display:inline-block;"
 							onclick="keyChk()" value="인증">
 					</div>
