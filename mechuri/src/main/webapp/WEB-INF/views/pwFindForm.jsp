@@ -19,11 +19,11 @@
 		<div style="width: 150px; margin: 0 auto;">
 			<div class="inner">
 
-				<h1>비밀번호 찾기</h1>
+				<h1>비밀번호  찾기</h1>
 				<form action="pwFind.do" method="post" id="pwFind">
 					<input type="text" name="mem_id" id="id" required="required"
-						placeholder="아이디를 입력하세요" /> <input type="text" name="mem_name"
-						id="name" required="required" placeholder="이름을 입력하세요" /> <input
+						placeholder="아이디를 입력하세요" style="width:230px"/> <input type="text" name="mem_name"
+						id="name" required="required" placeholder="이름을 입력하세요" style="width:230px" /> <br><input
 						type="submit" id="sbm" value="비밀번호찾기" onclick="sub()"/>
 
 				</form>
