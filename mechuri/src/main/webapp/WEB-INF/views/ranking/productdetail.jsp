@@ -6,12 +6,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/5stars.css">
+<link rel="stylesheet" href="assets/css/style.main.css">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/listSideNav.css">
+<!-- <link rel="stylesheet" href="assets/css/starRating.css"> -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean" rel="stylesheet">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -40,10 +43,13 @@
 <title>${proInfo.product_name} :: 메추리 랭킹</title>
 </head>
 <body>
-
-<h1>제품 상세페이지</h1>
-
-
+<jsp:include page="../Header.jsp" /> 
+<section id="main" class="wrapper">
+				<div class="inner">
+					<header class="align-center">
+						<h1>Generic Page</h1>
+						<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+					</header>
 <!-- 제품상세 -->
 <table border='1'>
 	<tr>
@@ -204,65 +210,69 @@
 
 
  <!-- 성분 Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- 성분 Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">성분정보</h4>
-        </div>
-        <div class="modal-body">
-          <p>${proInfo.product_name } </p>
-          <p>${proInfo.product_ml},${proInfo.product_price}</p>
-          <p>해당 제품의 전성분에 대한 EWG 안전도 등급입니다.</p>
-          <div>
-	        <img src="images/ingre/ingre_dangernone.png" alt="등급미정">등급미정
-	        <img src="images/ingre/ingre_dangerlow.png" alt="낮은 위험도">낮은 위험도
-	        <img src="images/ingre/ingre_dangermiddle.png" alt="중간 위험도">중간 위험도
-	      	<img src="images/ingre/ingre_dangerhigh.png" alt="높은 위험도">높은 위험도
-          </div>
-          <div>
-          	<table border = '1'>
-          	<c:forEach items="${ingreInfo}" var="ingreInfo">
-          		<tr>
-          			<td>
-          				<img src="images/ingre/ingre_${ingreInfo.ingre_grade}.png" alt="위험도">
-          			</td>
-          			<td>
-          				<p>${ingreInfo.ingre_korname}</p>	
-          				<p>${ingreInfo.ingre_engname}</p>
-          				<p>${ingreInfo.ingre_conts}</p>
-          				<c:choose>
-	          				<c:when test="${ingreInfo.ingre_20conts != null}">
-	          					<img src="images/ingre/ingre_20.png" alt="20가지 주의성분"> 20가지 주의성분 포함 | ${ingreInfo.ingre_20conts}</p>
-	          				</c:when>
-	          				<c:otherwise>
-	          				</c:otherwise>
-          				</c:choose>
-          				<c:choose>
-	          				<c:when test="${ingreInfo.ingre_skintype != null}">
-	          					<img src="images/ingre/ingre_skin.png" alt="도움되는 피부타입"> ${ingreInfo.ingre_skintype}에 도움
-	          				</c:when>
-	          				<c:otherwise>
-	          				</c:otherwise>
-          				</c:choose>
-          			</td>	
-           		</tr>
-          	</c:forEach>
-          	</table>
-          </div>
-      </div>
-      
-      
+		<div class="modal fade" id="myModal" role="dialog" style="height: 60%; top:20%;">
+			<div class="modal-dialog">
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-     
-    </div>
-  </div>
+				<!-- 성분 Modal content-->
+				<div class="modal-content"  >
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">성분정보</h4>
+					</div>
+					<div class="modal-body" >
+						<p>${proInfo.product_name }</p>
+						<p>${proInfo.product_ml},${proInfo.product_price}</p>
+						<p>해당 제품의 전성분에 대한 EWG 안전도 등급입니다.</p>
+						<div>
+							<img src="images/ingre/ingre_dangernone.png" alt="등급미정">등급미정
+							<img src="images/ingre/ingre_dangerlow.png" alt="낮은 위험도">낮은
+							위험도 <img src="images/ingre/ingre_dangermiddle.png" alt="중간 위험도">중간
+							위험도 <img src="images/ingre/ingre_dangerhigh.png" alt="높은 위험도">높은
+							위험도
+						</div>
+						<div>
+							<table border='1'>
+								<c:forEach items="${ingreInfo}" var="ingreInfo">
+									<tr>
+										<td><img
+											src="images/ingre/ingre_${ingreInfo.ingre_grade}.png"
+											alt="위험도"></td>
+										<td>
+											<p>${ingreInfo.ingre_korname}</p>
+											<p>${ingreInfo.ingre_engname}</p>
+											<p>${ingreInfo.ingre_conts}</p> <c:choose>
+												<c:when test="${ingreInfo.ingre_20conts != null}">
+													<img src="images/ingre/ingre_20.png" alt="20가지 주의성분"> 20가지 주의성분 포함 | ${ingreInfo.ingre_20conts}</p>
+												</c:when>
+												<c:otherwise>
+												</c:otherwise>
+											</c:choose> <c:choose>
+												<c:when test="${ingreInfo.ingre_skintype != null}">
+													<img src="images/ingre/ingre_skin.png" alt="도움되는 피부타입"> ${ingreInfo.ingre_skintype}에 도움
+	          				</c:when>
+												<c:otherwise>
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+								</c:forEach>
+							</table>
+						</div>
+					</div>
+
+
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+ </section>
+ <jsp:include page="../Footer.jsp" />
 </body>
 </html>

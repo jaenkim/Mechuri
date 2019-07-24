@@ -87,7 +87,7 @@ function skinChekAll(){
 				<h1>메추리 랭킹</h1>
 				<p>랭킹은 즐거워 </p>
 			</header>
-	<div class="sidenav">
+	<div id="filternav" class="sidenav">
 		<form action="list.do" method="post">
 		<input type="hidden" name="command" value="filter" /> 
 <!-- 		<h3 style="margin-left: 10px; margin-top: 10px;"><img src="images/filter.png" alt="" /> 필터 </h3> -->
