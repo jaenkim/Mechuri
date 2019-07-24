@@ -148,7 +148,7 @@ button.top {
 		</table>
 	</div>
 	</section>
-	
+	<button href="#" class="top">Top</button>
 	
 	<jsp:include page="Footer.jsp" />
 </body>
