@@ -245,6 +245,20 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	SELECT count(*) FROM MEMBERS WHERE MEM_ID=#{mem_id} AND MEM_DELFLAG='N' AND MEM_APPRFLAG='Y'
 </select>
 
+<select id = 'idcheck' resultType='membersDto' parameterType='String'>
+		SELECT MEM_ID 
+		FROM MEMBERS 
+		WHERE MEM_id= #{mem_id}
+</select>
+
+<!-- 아이디 찾기 -->
+	<select id="memIdSearch" parameterType="Map" resultType="String">
+		SELECT MEM_ID
+  		FROM MEMBERS
+  		WHERE MEM_NAME = #{mem_name} AND MEM_PHONE = #{mem_phone}
+	</select>
+
+
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 시작 -->
 <!-- 쪽지 보내기 쿼리 -->
 <insert id="sendMessage2" parameterType="productDto">
@@ -476,10 +490,6 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 </select>
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 끝 -->
 
-<select id = 'idcheck' resultType='membersDto' parameterType='String'>
-		SELECT MEM_ID 
-		FROM MEMBERS 
-		WHERE MEM_id= #{mem_id}
-</select>
+
 
 </mapper>

@@ -32,6 +32,6 @@ public interface IMembersService {
 
 	public boolean delflagCheck(membersDto dto);
 
-	
+	public String memIdSearch(Map<String, String> map);
 
 }

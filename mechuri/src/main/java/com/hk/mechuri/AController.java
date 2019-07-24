@@ -1,6 +1,8 @@
 package com.hk.mechuri;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +46,7 @@ public class AController {
 
 	@Autowired
 	private JavaMailSender mailSender;
-	
+
 	@Autowired
 	private iRankService RankService;
 
@@ -82,25 +84,25 @@ public class AController {
 			@ModelAttribute membersDto dto, HttpServletRequest request, HttpSession session) { //Model 대신 request param(id,pw)으로 두 번 받아도 돼.
 		System.out.println(dto);
 		System.out.println(session);
-		
+
 		boolean delflagchk = MembersService.delflagCheck(dto);
 		if(delflagchk) {
-		boolean result =MembersService.loginCheck(dto, session);
-		System.out.println(MembersService);
-		ModelAndView mav=new ModelAndView();
-		System.out.println(mav);
-		if(result) { //로그인 성공
-			mav.setViewName("loginresult"); //main.jsp
-			mav.addObject("message", "success"); 		
-			
-		return "redirect:main.do" ;
+			boolean result =MembersService.loginCheck(dto, session);
+			System.out.println(MembersService);
+			ModelAndView mav=new ModelAndView();
+			System.out.println(mav);
+			if(result) { //로그인 성공
+				mav.setViewName("loginresult"); //main.jsp
+				mav.addObject("message", "success"); 		
 
-		}else { //로그인 실패 
-			mav.setViewName("memLogin");
-			mav.addObject("message", "error");
+				return "redirect:main.do" ;
 
-		}return "loginerror" ;
-	}return "delflagerror";
+			}else { //로그인 실패 
+				mav.setViewName("memLogin");
+				mav.addObject("message", "error");
+
+			}return "loginerror" ;
+		}return "delflagerror";
 	}
 
 
@@ -180,10 +182,30 @@ public class AController {
 		model.addAttribute("pageMaker", pageMaker);
 		logger.info("pageMaker 잘 들어오닝");
 
-
-
-
-
 	}
 
-}	
+	//아이디 찾기(화면이동)
+	@RequestMapping(value = "/searchAccount.do" , method=RequestMethod.GET)
+	public String searchAccount(){
+		logger.info("searchAccount 실행");
+		return "searchId";
+	}
+
+	//아이디찾기
+	@RequestMapping(value = "/searchId.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Map<String, String> searchId(Model model, HttpServletRequest req){
+		logger.info("searchId 실행");
+		String name = req.getParameter("mem_name");
+		String phone =req.getParameter("mem_phone");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mem_name", name);
+		map.put("mem_phone", phone);
+		logger.info("맵에 들어가니 실행");
+		String id = MembersService.memIdSearch(map);
+		Map<String, String> resultMap = new HashMap<String, String>();
+		resultMap.put("resultId", id);
+		return resultMap;
+	}
+
+}		

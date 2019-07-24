@@ -93,7 +93,7 @@
 	<br>
 	<div class="idpw" style="text-align: center">
 	<center>
-		<a href="#" class="login_link">아이디찾기|</a> <a href="#"
+		<a href="searchAccount.do" class="login_link">아이디찾기|</a> <a href="#"
 			class="login_link">비밀번호찾기|</a> <a href="signUp.do" class="login_link">회원가입</a>
 	</center>
 	</div>

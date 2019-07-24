@@ -82,5 +82,9 @@ public class MembersDao implements IMembersDao {
 			return delflag>0?true:false;
 		}
 
-
+		@Override
+		public String memIdSearch(Map<String, String> map) {
+			String result = sqlSession.selectOne(namespace+"memIdSearch", map);
+			return result;
+		}
 }

@@ -101,39 +101,10 @@ public class MembersService implements IMembersService {
 		return MembersDao.delflagCheck(dto);
 	}
 
-	
-
-	/*@Override
-	public Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
-	public int loginCheck(HashMap<String, String> hstParam) {
-		// TODO Auto-generated method stub
-		return 0;
-	}*/
-	
-	
-	/*@Override
-	public Map<String, Object> selectUserInfo(Map<String, Object> map) throws Exception {
-		return membersDao.selectUserInfo(map);
-    }*/
-	
-
-/*//	<!-- 로그인 -->
-	@Override
-	public membersDto memLoginBoard(membersDto dto) {
-		System.out.println("memLoginBoard Service");
-		return membersDao.memLoginBoard(dto);
+	public String memIdSearch(Map<String, String> map) {
+		return MembersDao.memIdSearch(map);
 	}
-	
-
-	public static boolean loginChk(Map<String, String> map) {
-		// TODO Auto-generated method stub
-		return false;
-	}*/
 
 
 }
