@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/style.main.css">
+<link rel="stylesheet" href="assets/css/main2.css">
 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/css/listSideNav.css">
 <!-- <link rel="stylesheet" href="assets/css/starRating.css"> -->
@@ -51,7 +51,7 @@
 						<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
 					</header>
 <!-- 제품상세 -->
-<table border='1'>
+<table border='1' style="background-color: #ffffff;">
 	<tr>
 		<td>${proInfo.product_rank}</td> <!-- 제품 순위 -->
 		<td>${proInfo.product_brand}</td> <!-- 제품 브랜드 -->
@@ -101,11 +101,11 @@
 					<div class="progress-bar" style="width: 0%">0%</div>
 				</c:when>
 				<c:otherwise>
-					<div class="progress-bar" style="width: ${(detailReview.rev1count/proInfo.product_pointcount)*100}%">${(detailReview.rev1count/proInfo.product_pointcount)*100}%</div>
+					<div class="progress-bar" style="width: ${(detailReview.rev1count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev1count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
 				</c:otherwise>
 			</c:choose>
 			</div>
-			<p>1점(${detailReview.rev1count}명)</p>
+			<p>1점(<fmt:parseNumber value="${detailReview.rev1count}" integerOnly="true" />명)</p>
 		
 		<div class="progress">
 			<c:choose>
@@ -113,41 +113,41 @@
 					<div class="progress-bar" style="width: 0%">0%</div>
 				</c:when>
 				<c:otherwise>
-					<div class="progress-bar" style="width: ${(detailReview.rev2count/proInfo.product_pointcount)*100}%">${(detailReview.rev2count/proInfo.product_pointcount)*100}%</div>
+					<div class="progress-bar" style="width: ${(detailReview.rev2count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev2count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<p>2점(${detailReview.rev2count}명)</p>
+		<p>2점(<fmt:parseNumber value="${detailReview.rev2count}" integerOnly="true" />명)</p>
 		<div class="progress">
 			<c:choose>
 				<c:when test="${ detailReview.rev3count == null}">
 					<div class="progress-bar" style="width: 0%">0%</div>
 				</c:when>
 				<c:otherwise>
-					<div class="progress-bar" style="width: ${(detailReview.rev3count/proInfo.product_pointcount)*100}%">${(detailReview.rev3count/proInfo.product_pointcount)*100}%</div>
+					<div class="progress-bar" style="width: ${(detailReview.rev3count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev3count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<p>3점(${detailReview.rev3count}명)</p>
+		<p>3점(<fmt:parseNumber value="${detailReview.rev3count}" integerOnly="true" />명)</p>
 		<div class="progress">
 			<c:choose>
 				<c:when test="${ detailReview.rev4count == null}">
 					<div class="progress-bar" style="width: 0%">0%</div>
 				</c:when>
 				<c:otherwise>
-					<div class="progress-bar" style="width: ${(detailReview.rev4count/proInfo.product_pointcount)*100}%">${(detailReview.rev4count/proInfo.product_pointcount)*100}%</div>
+					<div class="progress-bar" style="width: ${(detailReview.rev4count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev4count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<p>4점(${detailReview.rev4count}명)</p>
+		<p>4점(<fmt:parseNumber value="${detailReview.rev5count}" integerOnly="true" />명)</p>
 		<div class="progress">
 			<c:choose>
 				<c:when test="${ detailReview.rev5count == null}">
 					<div class="progress-bar" style="width: 0%">0%</div>
 				</c:when>
 				<c:otherwise>
-					<div class="progress-bar" style="width: ${(detailReview.rev5count/proInfo.product_pointcount)*100}%">${(detailReview.rev5count/proInfo.product_pointcount)*100}%</div>
-				</c:otherwise>
+					<div class="progress-bar" style="width: ${(detailReview.rev5count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev5count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
+				</c:otherwise>																							
 			</c:choose>
 		</div>
 		<p>5점(${detailReview.rev5count}명)</p>
@@ -217,44 +217,65 @@
 				<div class="modal-content"  >
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">성분정보</h4>
+						<h2 class="modal-title" style="text-align: center;">성분정보</h4>
 					</div>
 					<div class="modal-body" >
-						<p>${proInfo.product_name }</p>
-						<p>${proInfo.product_ml},${proInfo.product_price}</p>
-						<p>해당 제품의 전성분에 대한 EWG 안전도 등급입니다.</p>
-						<div>
-							<img src="images/ingre/ingre_dangernone.png" alt="등급미정">등급미정
-							<img src="images/ingre/ingre_dangerlow.png" alt="낮은 위험도">낮은
-							위험도 <img src="images/ingre/ingre_dangermiddle.png" alt="중간 위험도">중간
-							위험도 <img src="images/ingre/ingre_dangerhigh.png" alt="높은 위험도">높은
-							위험도
-						</div>
-						<div>
+					<div>
+						<table>
+							<tr>
+								<td rowspan="3" style="width: 20%; height: 10px;" ></td>
+								<td rowspan="3" style="width: 40%;">${proInfo.product_name }</td>
+								<td style="width: 40%;">${proInfo.product_brand}</td>
+							</tr>
+							<tr>
+								<td>${proInfo.product_name }</td>
+							</tr>
+							<tr>
+								<td>${proInfo.product_ml}/${proInfo.product_price}</td>
+							</tr>
+						</table>
+							<hr>
+						<table>
+							<tr>
+								<td style="text-align: center;">해당 제품의 전성분에 대한 EWG 안전도 등급입니다.</td>
+							</tr>
+							<tr>
+								<td style="text-align: center;">
+									<img src="images/ingre/ingre_dangernone.png" alt="등급미정">등급미정
+									<img src="images/ingre/ingre_dangerlow.png" alt="낮은 위험도">낮은	위험도
+									<img src="images/ingre/ingre_dangermiddle.png" alt="중간 위험도">중간 위험도
+									<img src="images/ingre/ingre_dangerhigh.png" alt="높은 위험도">높은 위험도
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div>
 							<table border='1'>
 								<c:forEach items="${ingreInfo}" var="ingreInfo">
+									<tbody>
 									<tr>
-										<td><img
-											src="images/ingre/ingre_${ingreInfo.ingre_grade}.png"
-											alt="위험도"></td>
+										<td  style="text-align: center;"><img src="images/ingre/ingre_${ingreInfo.ingre_grade}.png" alt="위험도"></td>
 										<td>
 											<p>${ingreInfo.ingre_korname}</p>
 											<p>${ingreInfo.ingre_engname}</p>
-											<p>${ingreInfo.ingre_conts}</p> <c:choose>
+											<p>${ingreInfo.ingre_conts}</p> 
+											<c:choose>
 												<c:when test="${ingreInfo.ingre_20conts != null}">
 													<img src="images/ingre/ingre_20.png" alt="20가지 주의성분"> 20가지 주의성분 포함 | ${ingreInfo.ingre_20conts}</p>
-												</c:when>
+										 		</c:when>
 												<c:otherwise>
 												</c:otherwise>
-											</c:choose> <c:choose>
+											</c:choose>
+											<c:choose>
 												<c:when test="${ingreInfo.ingre_skintype != null}">
 													<img src="images/ingre/ingre_skin.png" alt="도움되는 피부타입"> ${ingreInfo.ingre_skintype}에 도움
-	          				</c:when>
+	          									</c:when>
 												<c:otherwise>
 												</c:otherwise>
 											</c:choose>
 										</td>
 									</tr>
+									</tbody>
 								</c:forEach>
 							</table>
 						</div>
