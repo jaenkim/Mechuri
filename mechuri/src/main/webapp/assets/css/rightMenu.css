@@ -3,7 +3,7 @@
 #wholeSidenav a {
   font-family: Happy;
   font-style: bold;
-  position: absolute;
+  position: fixed;
   right: -150px;
   transition: 0.3s;
   padding: 15px;
