@@ -37,7 +37,7 @@
       <label for="img" style="margin:10% 0% 0% 40%;">사진</label>
     </div>
     <div class="col-75">
-      <div style="background-image:url('upload/${dto.board_storedfile}'); background-size:200px;  background-repeat:no-repeat;"  role="img"></div>
+      <div style="background-image:url('upload/${dto.board_storedfile}'); background-size:200px;  background-repeat:no-repeat; width:100px; height:100px; "  role="img"></div>
     </div>
   </div>
 
