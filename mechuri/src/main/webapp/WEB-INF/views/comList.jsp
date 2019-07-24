@@ -27,9 +27,7 @@
 <tr>
 <th>번호</th>
 <th>브랜드명</th>
-<th>담당자명</th>
 <th>연락처</th>
-<th>이메일</th>
 <th>가입신청일</th>
 <th>가입승인여부</th>
 <th>탈퇴여부</th>
@@ -40,10 +38,8 @@
  
  <tr>
  <td>${member.mem_no}</td>
- <td>${member.mem_brand }</td>
- <td>${member.mem_name }</td>
+ <td><a href="infoinfo.do?mem_no=${member.mem_no }&mem_status=C">${member.mem_brand }</a></td>
  <td>${member.mem_phone}</td>
- <td>${member.mem_email}</td>
  <td><fmt:formatDate value="${member.mem_regdate }" pattern="yyyy.MM.dd"/></td>
  <td>
  <c:choose>

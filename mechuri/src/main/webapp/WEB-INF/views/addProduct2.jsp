@@ -44,11 +44,8 @@
 <b>피부타입:</b> <select name="product_skintype">
 		<option value="전체">전체</option>
 		<option value="건성">건성</option>
-		<option value="중성">중성</option>
 		<option value="지성">지성</option>
-		<option value="민감성">민감성</option>
 		<option value="여드름성">여드름성</option>
-		<option value="아토피성">아토피성</option>
 		</select><br>
 <b>타겟 연령:</b><select name="product_age">
 		<option value="전체">전체</option>

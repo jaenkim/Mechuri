@@ -18,7 +18,7 @@
 	  <header class="align-center">
 <h1>제품 리스트</h1>
  </header>
- 
+
 <table border='1'>
     <tr>
       <th>제품번호</th>

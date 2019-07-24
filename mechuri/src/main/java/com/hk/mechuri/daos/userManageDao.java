@@ -28,13 +28,16 @@ public class userManageDao {
 		return sqlSession.selectList(namespace+"getComUserList");
 	}
 	
+	public List<membersDto> infoinfo(int mem_no) { //회원 정보 리스트(관리자메뉴에서 보는) 가져오기
+		return sqlSession.selectList(namespace+"infoinfo",mem_no);
+	}
 	
 	public boolean userdel(int mem_no) { //회원삭제하기
 		int count= sqlSession.delete(namespace+"userdel",mem_no);
 		return count>0?true:false;
 	}
 	
-	public boolean compAppr(int mem_no) { //회원삭제하기
+	public boolean compAppr(int mem_no) { //기업회원삭제하기
 		int count= sqlSession.update(namespace+"compAppr",mem_no);
 		return count>0?true:false;
 	}

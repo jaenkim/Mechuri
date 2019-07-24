@@ -40,9 +40,8 @@
 <th>번호</th>
 <th>아이디</th>
 <th>성명</th>
-<th>가입일</th>
 <th>닉네임</th>
-<th>휴대폰번호</th>
+<th>가입일</th>
 <th>탈퇴여부</th>
 <th>탈퇴일</th>
 <th>삭제(완전탈퇴)</th>
@@ -53,14 +52,13 @@
  <tr>
  <td>${member.mem_no}</td>
  <td>${member.mem_id }</td>
- <td>${member.mem_name }</td>
- <td><fmt:formatDate value="${member.mem_regdate }" pattern="yyyy.MM.dd"/></td>
+ <td><a href="infoinfo.do?mem_no=${member.mem_no }&mem_status=M">${member.mem_name }</a></td>
  <td>${member.mem_nick }</td>
- <td>${member.mem_phone}</td>
+ <td><fmt:formatDate value="${member.mem_regdate }" pattern="yyyy.MM.dd"/></td>
  <td>${member.mem_delflag }</td>
  <td><fmt:formatDate value="${member.mem_deldate }" pattern="yyyy.MM.dd"/></td>
  
- <td><input type='button' value="삭제" class="button small" onclick='removeCheck(${member.mem_no})' ></td>
+ <td><input type="button" value="삭제" class="button small" onclick='removeCheck(${member.mem_no})' /></td>
  </tr>
 </c:forEach>
 </table>

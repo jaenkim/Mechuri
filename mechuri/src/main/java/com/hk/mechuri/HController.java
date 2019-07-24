@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,6 +23,8 @@ import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.replyDto;
 import com.hk.mechuri.dtos.reviewDto;
 import com.hk.mechuri.dtos.tempinfoDto;
+import com.hk.mechuri.list.PageMaker;
+import com.hk.mechuri.list.SearchCriteria;
 import com.hk.mechuri.service.addProductService;
 import com.hk.mechuri.service.msgService;
 import com.hk.mechuri.service.userManageService;
@@ -256,7 +259,7 @@ public class HController {
 
 	@RequestMapping(value = "/userDelete.do")
 	public String userDelete(Integer mem_no, Locale locale, Model model,String mem_status) throws IOException {
-		logger.info("회원 삭제(탈퇴) ing...", locale);
+		logger.info("회원 삭제(진짜 탈퇴) ing...", locale);
 
 		boolean isS= usermanageService.userdel(mem_no);
 		if(isS) {
@@ -359,6 +362,25 @@ public class HController {
 	}
 	
 	
+	@RequestMapping(value = "/infoinfo.do", method = RequestMethod.GET)
+	public String userInfo(HttpServletRequest request, Locale locale, Model model,int mem_no,String mem_status) {
+		logger.info("관리자가 일반회원,기업회원 정보 보기", locale);
+
+		System.out.println("회원구분>>>>>"+mem_status);
+		
+		List<membersDto> infoinfo = usermanageService.infoinfo(mem_no);
+		model.addAttribute("infoinfo", infoinfo );
+		
+		if(mem_status.equals("M")) {
+		return "infoinfo"; 		//일반회원
+		}else {
+			return "infoinfo1";		//기업회원
+		}
+	
+	}
+	
+	
+	
 	@RequestMapping(value = "/myboardlist.do", method = RequestMethod.GET)
 	public String myboardlist(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("내가 쓴 글 보기", locale);
@@ -400,7 +422,7 @@ public class HController {
 	
 	@RequestMapping(value = "/myreplylist.do", method = RequestMethod.GET)
 	public String myreplylist(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
-		logger.info("내가 쓴 리뷰 보기", locale);
+		logger.info("내가 쓴 댓글 보기", locale);
 		
 		String mem_nick="";
 		if((String)session.getAttribute("mem_nick")!=null) {
@@ -415,6 +437,7 @@ public class HController {
 
 		return "myreplylist";
 	}
-
+	
+	
 
 }

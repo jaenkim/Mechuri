@@ -4,13 +4,48 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+		<script>
+			//http://localhost:8888/mechuri/listSearch.do?page=1&perPageNum=20&searchType=n&keyword=아
+			$(function() {
+				$('#searchBtn').click(
+						function() {
+							self.location = "listSearch.do"
+									+ '${pageMaker.makeQuery(1)}'
+									+ "&searchType="
+									+ $("select option:selected").val()
+									+ "&keyword="
+									+ encodeURIComponent($('#keywordInput')
+											.val());
+						});
+			});
+		</script>
+		
+		
+		<script>
+	$(document).ready(function() {
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 200) {
+				$('.top').fadeIn();
+			} else {
+				$('.top').fadeOut();
+			}
+		});
+		$('.top').click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});
+	});
+</script>
+
 <title>제품 전체보기 검색</title>
 
 <style>
@@ -52,9 +87,14 @@ button.top {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
+
 	<section id="main" class="wrapper">
-	<div class="inner">
-		<div class="6u$ 12u$(xsmall)" style="width: 20%">
+				<div class="inner">
+					<header class="align-center">
+		<h2>상품 검색</h2>
+			</header>
+			<div>
+		<div style="float: left; width: 10%; margin-right:10px; margin-top:30px; margin-bottom:30px; margin-left:400px;">
 			<select style="size: 50px; display: inline-block;" name="searchType" >
 				<!-- 컨트롤러에서 값을 보내주는것이 아니라 컨트롤러에 요청된 URL에 따라 값이 달라짐. -->
 				<option value="no"
@@ -64,56 +104,40 @@ button.top {
 				<option id="cc" class="none" value="b"
 					<c:out value="${scri.searchType eq 'b' ? 'selected' : ''}"/>>브랜드</option>
 				<option id="dd" class="none" value="cl"
-					<c:out value="${scri.searchType eq 'cl' ? 'selected' : ''}"/>>카테고리</option>
+					<c:out value="${scri.searchType eq 'cl' ? 'selected' : ''}"/>>대분류명</option>
 			</select>
+			</div>
 			<!-- 검색 타입 값에 따라 출력   -->
-
+		<div style="float: left; width: 40%; margin-right:10px; margin-top:30px; margin-bottom:30px; ">
+	
 			<input type="text" name="keyword" id="keywordInput"
 				placeholder="검색어를 입력하세요" value="${scri.keyword}" />
-		</div>
-		<button id="searchBtn" style="display: inline-block;">검색</button>
+			</div>
+			
+			<div style="float: left; width: 10%;">
+			
+			<button id="searchBtn" style="display: inline-block; margin-top:30px; margin-bottom:30px;">검색</button>
+				
+				</div>
+		
+</div>
 
-
-		<script>
-			//http://localhost:8888/mechuri/listSearch.do?page=1&perPageNum=20&searchType=n&keyword=아
-			$(function() {
-				$('#searchBtn').click(
-						function() {
-							self.location = "listSearch.do"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword="
-									+ encodeURIComponent($('#keywordInput')
-											.val());
-						});
-			});
-		</script>
-
-		<h2>상품 검색 목록</h2>
 		<table id="serachTable">
 			<thead>
 				<tr>
 					<th>상품번호</th>
 					<th>상품이름</th>
-					<th>카테고리</th>
-					<th>제품 카테고리</th>
+					<th>대분류명</th>
+					<th>소분류명</th>
 					<th>브랜드</th>
 					<th>가격</th>
 				</tr>
 			</thead>
-			<!-- 목록 시작 -->
 			<c:forEach items="${list}" var="dto">
 				<tr>
 					<td>${dto.product_no}</td>
-					<td><a
-						href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name}
+					<td><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name}
 					</a>
-					<%-- <a href="/mechuri/listSearch.do?product_no=${dto.product_no}&
-										page=${scri.page}&
-										perPageNum=${scri.perPageNum}&
-										searchType=${scri.searchType}&
-										keyword=${scri.keyword}">${dto.product_name}</a> --%></td>
 					<td>${dto.product_catelname}</td>
 					<td>${dto.product_catesname}</td>
 					<td>${dto.product_brand}</td>
@@ -121,46 +145,11 @@ button.top {
 				</tr>
 			</c:forEach>
 			<!-- 목록 끝 -->
-
 		</table>
-
-		<%-- <div class="col-md-offset-3"> 
-			<ul class="pagination">
-				<c:if test="${pageMaker.prev}">
-					<li><a href="listSearch${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-				</c:if>	
-
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-					<li <c:out value="${pageMaker.cri.page == idx ? 'class=active' : ''}"/>>
-					<a href="listSearch${pageMaker.makeSearch(idx)}">${idx}</a></li>
-				</c:forEach>
-	<!--  jstl로 URL 또는 세션에 있는 scri.searchType값을 가져와서, 이 값이 'w'라면 selected를 출력하고, 아니면 공백('')을 출력하는 조건문 --> 
-				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-					<li><a href="listSearch${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-				</c:if>	
-			</ul> 
-		</div> --%>
 	</div>
 	</section>
 	
-<script>
-	$(document).ready(function() {
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 200) {
-				$('.top').fadeIn();
-			} else {
-				$('.top').fadeOut();
-			}
-		});
-		$('.top').click(function() {
-			$('html, body').animate({
-				scrollTop : 0
-			}, 400);
-			return false;
-		});
-	});
-</script>
-	<button href="#" class="top">Top</button>
+	
 	<jsp:include page="Footer.jsp" />
 </body>
 </html>

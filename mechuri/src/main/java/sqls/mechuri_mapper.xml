@@ -400,6 +400,7 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 		WHERE MEM_STATUS = 'C' 
 </select>
 
+
 <!-- 회원 삭제하기(완전 탈퇴시키기) -->
 <delete id="userdel" parameterType="int">
 		DELETE MEMBERS 
@@ -424,6 +425,12 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 </select>
 
 
+<!-- 관리자메뉴에서 회원 정보 가져오기 -->
+<select id = 'infoinfo' resultType='membersDto' parameterType="int">
+		SELECT * 
+		FROM MEMBERS 
+		WHERE MEM_NO= #{mem_no}
+</select>
 <!-- 기업회원 탈퇴 하기 (실제탈퇴X, 탈퇴플래그만 바꿈) -->
 <update id="comtal" parameterType="int">
 		UPDATE MEMBERS SET 

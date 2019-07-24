@@ -51,5 +51,9 @@ public class userManageService {
 		return usermanageDao.userInfo(mem_no);
 	}
 	
+	public List<membersDto> infoinfo(int mem_no) {
+		return usermanageDao.infoinfo(mem_no);
+	}
+	
 }
 
