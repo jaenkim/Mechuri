@@ -137,19 +137,18 @@
     </c:forEach> 
   
     
-   <!-- 페이징 -->
+  
+    </div>
+    
+    <!-- 페이징 -->
  	
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color:#f2f2f2;">
 
     	<c:forEach begin="1" end="${pcount}" step="1" var="i">
 			<a href="boardlist2.do?board_pnum=${i}">[ ${i} ]</a>
 		</c:forEach>
 
     </div> 
-
-
-
-    </div>
    
  
 
