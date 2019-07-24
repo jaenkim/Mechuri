@@ -133,7 +133,7 @@
 		<div style="width:800px; margin: 0 auto;">
 			<div class="form-holder">
 <!-- 				<center> -->
-					<h3>일반회원 가입</h3>
+					<h2>일반회원 가입</h2><a href="compSignUp.do">기업회원 가입 바로가기</a>
 					<br><br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="email" placeholder="ex)aaa@gmail.com" name="mem_id"

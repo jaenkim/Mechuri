@@ -77,7 +77,7 @@
 		<div style="width:600px; margin: 0 auto;">
 		<div class="form-holder">
 			
-				<h3>기업회원 가입</h3>
+				<h2>기업회원 가입</h2>
 				<div class="6u$ 12u$(xsmall)" style="width:800px;">
 				<input type="text" placeholder="브랜드명" name="mem_brand"
 					class="form-control" style="font-size: 13px; width:70%;display:inline-block; margin-right: 10px; ">
