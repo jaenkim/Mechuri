@@ -199,9 +199,9 @@
          <script src="assets/js/main.js"></script>
 
 <div id="wholeSidenav" class="wholesidenav">
-  <a href="list.do" id="ranking">메추리 랭킹</a>
-  <a href="boardlist2.do" id="community">메추리톡</a>
-  <a href="listSearch.do" id="search">제품검색</a>
+  <a href="list.do" id="ranking" style="line-height: 40px;">메추리 랭킹</a>
+  <a href="boardlist2.do" id="community" style="line-height: 40px;">메추리톡</a>
+  <a href="listSearch.do" id="search" style="line-height: 40px;">제품검색</a>
 </div>
 
 </header>

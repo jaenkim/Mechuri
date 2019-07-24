@@ -8,27 +8,39 @@
   transition: 0.3s;
   padding: 15px;
   width: 180px;
+  height: 70px;
   text-decoration: none;
   font-size: 20px;
   color: white;
   border-radius: 15px 0px 0px 15px;
+  text-align: center;
+  vertical-align: middle;
+
 }
 
 #wholeSidenav a:hover {
   right: 0;
+  text-align: center;
+  vertical-align: middle;
 }
 
 #ranking {
   top: 120px;
   background-color: #f78a76;
+  text-align: center;
+  vertical-align: middle;
 }
 
 #community {
   top: 180px;
   background-color: #fabeb4;
+  text-align: center;
+  vertical-align: middle;
 }
 
 #search {
   top: 240px;
   background-color: #fcd8d1;
+  text-align: center;
+  vertical-align: middle;
 }

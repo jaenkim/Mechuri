@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="assets/css/main2.css">
 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Cute+Font|Gamja+Flower|Nanum+Gothic|Noto+Sans+KR|Noto+Serif+KR|Poor+Story&display=swap" rel="stylesheet">
 <title>Mechuri</title>
