@@ -64,7 +64,7 @@
 				<div class="inner flex flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="images/new1.jpg" alt="" />
+							<img src="images/sally.gif" alt="" />
 						</div>
 						<div class="content">
 							<h3>Consequat</h3>
