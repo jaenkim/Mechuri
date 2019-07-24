@@ -167,7 +167,7 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		
 		System.out.println("컨트롤러업데이트보드리쿼스트=["+request+"");
 		boolean isS = boardService.updateBoard(request);
-		System.out.println("컨트롤러업데이트[-"+isS+"]");
+		System.out.println("컨트롤러업데이트[="+isS+"]");
 		if(isS) {
 			System.out.println("컨트롤러업데이트IF안[-"+isS+"]");
 			return "redirect:boardDetail.do?board_no="+dto.getBoard_no();

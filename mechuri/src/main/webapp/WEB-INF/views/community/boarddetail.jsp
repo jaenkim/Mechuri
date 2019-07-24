@@ -30,9 +30,19 @@
 </div>
 
 <div class="container">
-
+  
   <div class="row">
     <div id="writerDate"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년 MM월 dd일" /></div>
+    <div class="col-25">
+      <label for="img" style="margin:10% 0% 0% 40%;">사진</label>
+    </div>
+    <div class="col-75">
+      <div style="background-image:url('upload/${dto.board_storedfile}'); background-size:200px;  background-repeat:no-repeat;"  role="img"></div>
+    </div>
+  </div>
+
+  <div class="row">
+   <%--  <div id="writerDate"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년 MM월 dd일" /></div> --%>
     <div class="col-25">
       <label for="title" style="margin:10% 0% 0% 40%;">제목</label>
     </div>
