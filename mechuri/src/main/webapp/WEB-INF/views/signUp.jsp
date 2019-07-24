@@ -13,10 +13,10 @@
 <script type="text/javascript">
 	function checkz() { //아이디(이메일형식), 비밀번호, 비밀번호 확인 유효성 검사
 		var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
-/* 		var getId = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-		var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/); */
+ 		var getId = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/); 
 
-		/* //이메일 공백 확인
+		 //이메일 공백 확인
 		if ($("#mem_id").val() == "") {
 			alert("아이디를 입력해주세요");
 			$("#mem_id").focus();
@@ -28,7 +28,7 @@
 			$("#mem_id").val("");
 			$("#mem_id").focus();
 			return false;
-		} */
+		} 
 
 		if (!getCheck.test($("#tbPwd").val())) {
 			alert("pw를 형식에 맞게 입력해주세요");
@@ -165,7 +165,7 @@
 			<div class="form-holder">
 				<br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
-						<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" style="width:70%;display:inline-block; margin-right: 10px;
+						<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" style="width:70%;display:inline-block; margin-right: 10px;"
 							id="tbPwd" class="form-control" style="font-size: 13px;"
 							required="required"> 
 					</div>
