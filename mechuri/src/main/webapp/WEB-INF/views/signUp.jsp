@@ -13,8 +13,8 @@
 <script type="text/javascript">
 	function checkz() { //아이디(이메일형식), 비밀번호, 비밀번호 확인 유효성 검사
 		var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
-		var getId = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-		var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+/* 		var getId = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/); */
 
 		/* //이메일 공백 확인
 		if ($("#mem_id").val() == "") {
