@@ -34,4 +34,7 @@ public interface IMembersService {
 
 	public String memIdSearch(Map<String, String> map);
 
+	public boolean pwFind(membersDto dto);
+
+	membersDto pwSearch(membersDto dto);
 }

@@ -208,4 +208,26 @@ public class AController {
 		return resultMap;
 	}
 
+	//비밀번호 찾기 페이지로 이동
+	@RequestMapping(value="/pwFindForm.do",method={RequestMethod.POST, RequestMethod.GET})
+	public String pwFindForm(membersDto dto, Model model) {
+		return "pwFindForm";
+	}
+
+	//비밀번호 찾기(이메일전송)
+	@RequestMapping(value="/pwFind.do",method=RequestMethod.POST)
+	public String pwFind(membersDto dto) 
+	{
+		boolean isS = MembersService.pwFind(dto);
+
+		if(isS)
+		{
+			return "login";
+		}
+		else
+		{
+			return "error";
+		}
+	}
+
 }		

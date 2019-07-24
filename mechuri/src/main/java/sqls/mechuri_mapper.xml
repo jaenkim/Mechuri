@@ -258,6 +258,13 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
   		WHERE MEM_NAME = #{mem_name} AND MEM_PHONE = #{mem_phone}
 	</select>
 
+<!-- 비밀번호 찾기 -->
+	<select id="findpwForm" resultType="membersDto" parameterType="membersDto">
+		SELECT MEM_PW FROM MEMBERS WHERE
+		MEM_ID=#{mem_id} and MEM_NAME=#{mem_name}
+	</select>
+
+
 
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 시작 -->
 <!-- 쪽지 보내기 쿼리 -->

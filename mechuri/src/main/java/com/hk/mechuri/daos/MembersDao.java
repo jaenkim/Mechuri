@@ -87,4 +87,10 @@ public class MembersDao implements IMembersDao {
 			String result = sqlSession.selectOne(namespace+"memIdSearch", map);
 			return result;
 		}
+		
+//		비밀번호 찾기
+		@Override
+		public membersDto pwSearch(membersDto dto) {
+			return sqlSession.selectOne(namespace+"pwSearch", dto);
+		}
 }

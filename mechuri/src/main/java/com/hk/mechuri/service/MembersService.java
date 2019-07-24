@@ -17,6 +17,7 @@ import com.hk.mechuri.daos.IMembersDao;
 import com.hk.mechuri.daos.MembersDao;
 import com.hk.mechuri.dtos.membersDto;
 import com.hk.mechuri.mail.MailHandler;
+import com.hk.mechuri.mail.MailSend;
 import com.hk.mechuri.mail.TempKey;
 
 @Service
@@ -105,6 +106,34 @@ public class MembersService implements IMembersService {
 	public String memIdSearch(Map<String, String> map) {
 		return MembersDao.memIdSearch(map);
 	}
+	
+//	비밀번호 찾기 
+	@Override
+	public membersDto pwSearch(membersDto dto) {
+		return MembersDao.pwSearch(dto);
+	}
 
-
-}
+//	비밀번호 변경 이메일
+	@Override
+	public boolean pwFind(membersDto dto) {
+		{
+			try 
+			{
+				String mem_id = dto.getMem_id();
+				String title = "비밀번호 변경 이메일 입니다.";
+				String content = 
+						"<html><b>임시 비밀번호는 wbdkk33 입니다.</b>";
+				
+				MailSend ms = new MailSend();
+				ms.mailSend(mem_id, title, content);
+				
+				return true;
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+				return false;
+				}
+			}	
+		}
+	}
