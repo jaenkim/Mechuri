@@ -27,6 +27,7 @@
 			
 		<!-- One-현재 1위 랭킹 제품 -->
 			<section id="two" class="wrapper style1 special">
+				<h2 style="text-align: center;">랭킹 헤더</h2>
 				<div class="inner flex flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
@@ -60,7 +61,7 @@
 			
 		<!-- Two_커뮤니티-->
 		<section id="three" class="wrapper">
-			<h2 style="text-align: center;">랭킹 헤더</h2>
+			<h2 style="text-align: center;">메추리톡 헤더</h2>
 				<div class="inner flex flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
