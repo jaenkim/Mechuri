@@ -98,7 +98,7 @@
 	<section id="main" class="wrapper">
 	<div style="width:150px; margin: 0 auto;">
  	<div class = "inner">
-		<h1>아이디 찾기</h1>
+		<h2>아이디 찾기</h2>
 		<div class = "6u$ 12u$(xsmall)">
 		<form class = "searchIdBox">
 			<fieldset class = "joinField">

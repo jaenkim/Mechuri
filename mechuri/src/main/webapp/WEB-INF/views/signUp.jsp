@@ -133,7 +133,7 @@
 		<div style="width:800px; margin: 0 auto;">
 			<div class="form-holder">
 <!-- 				<center> -->
-					<h3>일반회원 가입</h3>
+					<h2>일반회원 가입</h2><a href="compSignUp.do">기업 회원 가입이라면</a>
 					<br><br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="email" placeholder="ex)aaa@gmail.com" name="mem_id"
@@ -156,7 +156,7 @@
 							style="font-size: 13px;" required="required"> 							<input type="hidden" id="hid" />
 														<input type="hidden" id="hid" />
 							
-						<input type="button" class="btn-success" id="btn" disabled="disabled" style="display:inline-block;"
+						<input type="button" class="btn-success" id="btn" disabled="disabled" style="display:inline-block; width:25%"
 							onclick="keyChk()" value="인증">
 					</div>
 				
@@ -176,7 +176,7 @@
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="password" placeholder="비밀번호 확인" class="form-control" style="width:70%;display:inline-block; margin-right: 10px;"
 							id="cpass" style="font-size: 13px;" required="required">
-							<input type="button" value="비밀번호확인"  style="display:inline-block;" onclick="checkz()">
+							<input type="button" value="비밀번호확인"  style="display:inline-block;width:25%" onclick="checkz()">
 					</div>
 				
 
@@ -203,14 +203,15 @@
 				<br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="text" placeholder="핸드폰" name="mem_phone" style="width:70%;display:inline-block; margin-right: 10px;
-							class="form-control" style="font-size: 153x;" required="required">
+							class="form-control" style="font-size: 13px;" required="required">
 					</div>
 				
 			</div>
 			<div class="checkbox"></div>
 
 				<br>
-				<button input type="submit" id="sbmd" style=font-color:white;>회원가입하기</button>
+				<div class="6u$ 12u$(xsmall)">
+				<button input type="submit" id="sbmd" style="font-color:white;font-size: 15px;">회원가입하기</button>
 		
 	</div>
 	</form>
