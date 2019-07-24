@@ -34,7 +34,7 @@
 <input type="text" name="mem_addr2" value="${cominfo.mem_addr2 }" required="required"><br>
 <b>홈페이지:</b> <input type="text" name="mem_homepage" value="${cominfo.mem_homepage }" required="required"><br><br><br>
 
-<div style="width: 300px; margin: 0 auto;">
+<div style="width: 500px; margin: 0 auto;">
 
 <input type='button' value="수정" onclick="updateCheck()" class="button special">
 <span><input type='button' onclick="removeCheck('${cominfo.mem_no }')" value="탈퇴"/> </span>

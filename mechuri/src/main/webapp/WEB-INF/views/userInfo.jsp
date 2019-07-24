@@ -31,7 +31,7 @@
 <b>연락처:</b> <input type="text" name="mem_phone" value="${userinfo.mem_phone }" required="required"><br>
 
 <br>
-<div style="width: 300px; margin: 0 auto;">
+<div style="width: 500px; margin: 0 auto;">
 <input type='button' class="button special" value="수정" onclick='updateCheck()'>
 <span><input type='button' class="button" onclick="removeCheck('${userinfo.mem_no }')" value="탈퇴"> </span>
 </div>

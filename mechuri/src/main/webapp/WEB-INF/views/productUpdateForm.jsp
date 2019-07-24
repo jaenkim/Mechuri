@@ -72,7 +72,7 @@
 		<br><br>
 
 
-<div style="width: 400px; margin: 0 auto;">
+<div style="width: 800px; margin: 0 auto;">
 	<c:choose>
 	<c:when test= "${dto.product_flag eq 'N' }">
 		<button type='button' disabled="disabled" onclick="updateCheck()" class="button special small" >수정신청</button>
