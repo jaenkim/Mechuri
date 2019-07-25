@@ -10,9 +10,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/main2.css">
+
 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/css/listSideNav.css">
+<link rel="stylesheet" href="assets/css/main2.css">
 <!-- <link rel="stylesheet" href="assets/css/starRating.css"> -->
 <style type="text/css">
 .starR1 {
@@ -84,7 +85,7 @@
 <table  style="background-color: #ffffff;">
 	<tr>
 		<td style="font-family: Happy; font-size: 20px; width: 40%;">&nbsp; &nbsp;${proInfo.product_rank}위</td> <!-- 제품 순위 -->
-		<td colspan="2">카테고리: ${proInfo.product_catelname} &#47; ${proInfo.product_catesname}</td> 
+		<td colspan="2" style="margin-left: 10px;">카테고리: ${proInfo.product_catelname} &#47; ${proInfo.product_catesname}</td> 
 	</tr>
 	<tr>
 		<c:choose>
@@ -96,16 +97,16 @@
 				<td rowspan="5" style="vertical-align: top; align: center;"><div style="background-image:url('upload/${proInfo.product_storedfile}')" role="img" aria-label="alt text" ></div></td> 
 			</c:otherwise>
 		</c:choose>
-		<td style="font-family: Happy; font-size: 20px;">${proInfo.product_name} </td>
+		<td style="font-family: Happy; font-size: 20px; margin-left: 10px;">${proInfo.product_name} </td>
 		<td><button type="button" class="button alt small" >${proInfo.product_brand} 제품 페이지 가기</button></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
 		
 	</tr>
 	<tr>
-		<td>용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a></td>
+		<td style="margin-left: 10px;">용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a></td>
 		<td><button type="button" class="button alt small" data-toggle="modal" data-target="#myModal" >성분 상세보기 ></button></td>
 	</tr>
 	<tr>
-		<td bordercolor="#ffffff;" style="font-family: Happy; font-size: 40px; border-bottom: 0">${proInfo.product_point }</td>
+		<td bordercolor="#ffffff;" style="font-family: Happy; font-size: 40px; margin-left: 10px;">${proInfo.product_point }</td>
 		<td rowspan="2">
 			<div>
 				<div class="progress">
@@ -169,7 +170,7 @@
 			</td>
 	</tr>
 	<tr>
-		<td>
+		<td style="margin-left: 10px;">
 						<div class="starRev" >
 							<span class="starR1">별1_왼쪽</span> <span class="starR2">별1_오른쪽</span>
 							<span class="starR1">별2_왼쪽</span> <span class="starR2">별2_오른쪽</span>
@@ -181,7 +182,7 @@
 		</td>
 	</tr>
 	<tr> 
-		<td colspan="2">
+		<td colspan="2" style="margin-left: 10px;">
 			<p>제품 안내 > </p>
 			<p>${proInfo.product_conts}</td>
 	</tr>
@@ -194,29 +195,20 @@
 	
 	<!-- 리뷰 목록 -->
 	
-	<table border="1">
-		<tr>
-		<th>번호</th>
-		<th>리뷰작성자 닉네임</th>
-		<th>리뷰 내용</th>
-		<th>별점</th>
-		<th>사진</th>
-		<th>리뷰 작성일</th>
-		<th>삭제</th>
-		</tr>
+		
+		<div>
 		<c:forEach items="${reviewInfo}" var="reviewInfo">
+		
+			<table>
+			
 <!-- 		<form action="deleteReview.do" > -->
 			<input type="hidden" id="productNo" value="${proInfo.product_no}" />
 			<input type="hidden" id="ingre" value="${callbackReview}" />
 			<input type="hidden" id="reviewNo" value="${reviewInfo.review_no}" />
 			<input type="hidden" id="reviewNick" value="${review_nick}" />
-			<tr>
-				<td>${reviewInfo.review_no}</td>
-				<td>${reviewInfo.review_nick }</td>
-				<td>${reviewInfo.review_conts }</td>
-				<td>${reviewInfo.review_point }</td>
-				<td><img src="upload/${reviewInfo.review_storedfile}" alt="이미지"></td>
-				<td>${reviewInfo.review_regdate }</td>
+			<tr style="border-bottom: solid 1px;">
+				<hr>
+				<td rowspan="4"><img src="upload/${reviewInfo.review_storedfile}" alt="이미지"></td>
 				<td>
 <%-- 					<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${naverNickname eq reviewInfo.review_nick?"":"style='display:none'"} /> --%>
 					<c:choose>
@@ -233,9 +225,24 @@
 					
 				</td>
 			</tr>
+			<tr>
+				<td>작성자 &#32; &#124; &#32; &#32; ${reviewInfo.review_nick }</td>
+			</tr>
+			<tr>
+				<td>작성일 &#32; &#124; &#32; &#32; ${reviewInfo.review_regdate }</td>
+			</tr>
+			<tr>
+				<td>별점 &#32; &#124; &#32; &#32; ${reviewInfo.review_point }</td>
+			</tr>
+			<tr>				
+				<td colspan="2">${reviewInfo.review_conts }</td>	
+			</tr>
 <!-- 		</form> -->
+			</table>
 		</c:forEach>
-	</table>
+		
+		</div>
+	
 
 
  <!-- 성분 Modal -->

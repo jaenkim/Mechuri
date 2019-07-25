@@ -10,9 +10,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="assets/css/style.main2.css">
+
 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/css/listSideNav.css">
+<link rel="stylesheet" href="assets/css/style.main2.css">
 <!-- <link rel="stylesheet" href="assets/css/starRating.css"> -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean" rel="stylesheet">
 <script src="assets/js/rankSorting.js"></script>

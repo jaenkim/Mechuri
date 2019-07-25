@@ -76,6 +76,7 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 	REVIEW_POINT,REVIEW_REGDATE,REVIEW_STOREDFILE 
 	FROM REVIEW
 	WHERE REVIEW_PRODUCTNO = #{product_no}
+	ORDER BY REVIEW_NO ASC
 </select>
 <!-- 상세페이지 제품의 성분보기 -->
 <select id="productIngre" resultType="ingreDto" parameterType="Map">
