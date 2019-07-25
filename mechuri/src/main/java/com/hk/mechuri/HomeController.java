@@ -59,7 +59,10 @@ public class HomeController {
 		if(command == null) {
 			List<productDto> list = rankService.getAllProductList();
 			model.addAttribute("list",list);
-
+			int random = (int)(Math.random()*10)+1;
+			System.out.println("random"+random);
+			model.addAttribute("random", random+"");
+			
 			return "ranking/list";
 
 		}else if(command.equals("filter")) {
@@ -87,6 +90,10 @@ public class HomeController {
 			List<productDto>list2 = rankService.setFilterProductList(ages==null?tempAge:ages,genders==null?tempGender:genders,skins==null?tempSkin:skins,catelname,catesname);	
 			model.addAttribute("list",list2);
 
+			int random = (int)(Math.random()*10)+1;
+			System.out.println("random"+random);
+			model.addAttribute("random", random+"");
+			
 			return "ranking/list";
 			
 		}
@@ -123,6 +130,9 @@ public class HomeController {
 		System.out.println("오류 위치 찾기 bbbb");
 		model.addAttribute("callbackReview", product_ingre);
 		System.out.println("오류 위치 찾기 cccccc");
+		
+		int random = (int)(Math.random()*10)+1;
+		model.addAttribute("random", random);
 		
 		return "ranking/productdetail";
 	}

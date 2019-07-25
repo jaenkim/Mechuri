@@ -89,7 +89,8 @@
 	<tr>
 		<c:choose>
 			<c:when test="${proInfo.product_storedfile == null}">
-				<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/productThumb/2.jpg" alt="이미지" style="width:100%;"></td> <!-- 기본 제품 이미지 -->
+				
+				<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/product/${random}.jpg" alt="이미지" style="width:100%;"></td> <!-- 기본 제품 이미지 -->
 			</c:when>
 			<c:otherwise>
 				<td rowspan="5" style="vertical-align: top; align: center;"><div style="background-image:url('upload/${proInfo.product_storedfile}')" role="img" aria-label="alt text" ></div></td> 

@@ -148,7 +148,7 @@ function skinChekAll(){
 		<tbody>
 			<tr style="height: 10px;">
 				<td rowspan="3" style="text-align: center; font-family: Happy; font-size: 20px;">${dto.product_rank}</td>
-				<td rowspan="3" style="width: 20%;text-align: center; "><img src="images/productThumb/2.jpg" style="width:120px; text-align: center;" alt="제품 이미지"></td>
+				<td rowspan="3" style="width: 20%;text-align: center; "><img src="images/product/${random}.jpg" style="width:120px; text-align: center;" alt="제품 이미지"></td>
 				<td colspan="4">${dto.product_brand}</td>
 			</tr>
 			<tr>
