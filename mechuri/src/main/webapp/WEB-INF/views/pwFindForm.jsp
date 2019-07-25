@@ -8,12 +8,19 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-	function sub() {
+function sub(){
+	if($("#id").val()==""||$("#name").val()==""){
+		alert("아이디와 이름 모두 입력해주세요.");
+	} else {
+		alert("임시 비밀번호가 고객님의 이메일로 전송 되었습니다.");
+	}
+}
+	/* function sub() {
 		alert("임시 비밀번호가 고객님의 이메일로 전송 되었습니다.");
 		if{
 			
 		}
-	}
+	} */
 </script>
 </head>
 <body>
@@ -21,9 +28,8 @@
 	<section id="main" class="wrapper">
 		<div style="width: 150px; margin: 0 auto;">
 			<div class="inner">
-
-				<h1>비밀번호  찾기</h1>
-				<br>
+				
+				<h1 style="inline;width:200px; ">비밀번호  찾기</h1>
 				<form action="pwFind.do" method="post" id="pwFind">
 					<input type="text" name="mem_id" id="id" required="required"
 						placeholder="아이디를 입력하세요" style="width:230px"/> <input type="text" name="mem_name"
