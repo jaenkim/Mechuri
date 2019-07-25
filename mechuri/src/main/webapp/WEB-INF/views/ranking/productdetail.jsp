@@ -79,94 +79,92 @@
 <body>
 <jsp:include page="../Header.jsp" /> 
 <section id="main" class="wrapper">
-				<div class="inner">
-					<header class="align-center">
-						<h1>Generic Page</h1>
-						<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-					</header>
+<div class="inner">
 <!-- 제품상세 테이블-->
 <table  style="background-color: #ffffff;">
 	<tr>
-		<td style="font-family: Happy; font-size: 20px;">${proInfo.product_rank}위</td> <!-- 제품 순위 -->
-		<td colspan="2">${proInfo.product_brand}</td> <!-- 제품 브랜드 -->
+		<td style="font-family: Happy; font-size: 20px; width: 40%;">&nbsp; &nbsp;${proInfo.product_rank}위</td> <!-- 제품 순위 -->
+		<td colspan="2">카테고리: ${proInfo.product_catelname} &#47; ${proInfo.product_catesname}</td> 
 	</tr>
 	<tr>
 		<c:choose>
 			<c:when test="${proInfo.product_storedfile == null}">
-				<td rowspan="5"><img src="images/productThumb/2.jpg" alt="이미지"></td> <!-- 기본 제품 이미지 -->
+				<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/productThumb/2.jpg" alt="이미지" style="width:100%;"></td> <!-- 기본 제품 이미지 -->
 			</c:when>
 			<c:otherwise>
-				<td><div style="background-image:url('upload/${proInfo.product_storedfile}')" role="img" aria-label="alt text" ></div></td> 
+				<td rowspan="5" style="vertical-align: top; align: center;"><div style="background-image:url('upload/${proInfo.product_storedfile}')" role="img" aria-label="alt text" ></div></td> 
 			</c:otherwise>
 		</c:choose>
-		<td>${proInfo.product_name} </td>
-		<td><input type="button" value="${proInfo.product_catelname} &#47; ${proInfo.product_catesname}" class="btn btn-light" /></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
+		<td style="font-family: Happy; font-size: 20px;">${proInfo.product_name} </td>
+		<td><button type="button" class="button alt small" >${proInfo.product_brand} 제품 페이지 가기</button></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
+		
 	</tr>
 	<tr>
 		<td>용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a></td>
-		<td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">성분 상세보기 ></button></td>
+		<td><button type="button" class="button alt small" data-toggle="modal" data-target="#myModal" >성분 상세보기 ></button></td>
 	</tr>
 	<tr>
-		<td style="font-family: Happy; font-size: 40px;">${proInfo.product_point }</td>
+		<td bordercolor="#ffffff;" style="font-family: Happy; font-size: 40px; border-bottom: 0">${proInfo.product_point }</td>
 		<td rowspan="2">
 			<div>
-						<div class="progress">
+				<div class="progress">
 						<c:choose>
-							<c:when test="${detailReview.rev1count == null}">
-								<div class="progress-bar" style="width: 0%">0%</div>
+							<c:when test="${ detailReview.rev5count == null}">
+								<div class="progress-bar" style="background-color: #ff0000; width: 0%">0%</div>
 							</c:when>
 							<c:otherwise>
-								<div class="progress-bar" style="width: ${(detailReview.rev1count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev1count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
-							</c:otherwise>
+								<div class="progress-bar" style="background-color: #ff0000; width: ${(detailReview.rev5count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev5count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
+							</c:otherwise>																							
 						</c:choose>
-						</div>
-						<p>1점(<fmt:parseNumber value="${detailReview.rev1count}" integerOnly="true" />명)</p>
-					
-					<div class="progress">
+				</div>
+					<p>5점(${detailReview.rev5count}명)</p>
+				<div class="progress">
 						<c:choose>
-							<c:when test="${ detailReview.rev2count == null}">
-								<div class="progress-bar" style="width: 0%">0%</div>
+							<c:when test="${ detailReview.rev4count == null}">
+								<div class="progress-bar" style="background-color: #ff9933; width: 0%">0%</div>
 							</c:when>
 							<c:otherwise>
-								<div class="progress-bar" style="width: ${(detailReview.rev2count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev2count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
+								<div class="progress-bar" style="background-color: #ff9933; width: ${(detailReview.rev4count/proInfo.product_pointcount)*100}% "><fmt:formatNumber value="${(detailReview.rev4count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
 							</c:otherwise>
 						</c:choose>
-					</div>
-					<p>2점(<fmt:parseNumber value="${detailReview.rev2count}" integerOnly="true" />명)</p>
+				</div>
+					<p>4점(<fmt:parseNumber value="${detailReview.rev5count}" integerOnly="true" />명)</p>
+				</div>	
 					<div class="progress">
 						<c:choose>
 							<c:when test="${ detailReview.rev3count == null}">
-								<div class="progress-bar" style="width: 0%">0%</div>
+								<div class="progress-bar" style="background-color: #33cc33; width: 0%">0%</div>
 							</c:when>
 							<c:otherwise>
-								<div class="progress-bar" style="width: ${(detailReview.rev3count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev3count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
+								<div class="progress-bar" style="background-color: #33cc33; width: ${(detailReview.rev3count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev3count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
 							</c:otherwise>
 						</c:choose>
-					</div>
-					<p>3점(<fmt:parseNumber value="${detailReview.rev3count}" integerOnly="true" />명)</p>
-					<div class="progress">
-						<c:choose>
-							<c:when test="${ detailReview.rev4count == null}">
-								<div class="progress-bar" style="width: 0%">0%</div>
-							</c:when>
-							<c:otherwise>
-								<div class="progress-bar" style="width: ${(detailReview.rev4count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev4count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
-							</c:otherwise>
-						</c:choose>
-					</div>
-					<p>4점(<fmt:parseNumber value="${detailReview.rev5count}" integerOnly="true" />명)</p>
-					<div class="progress">
-						<c:choose>
-							<c:when test="${ detailReview.rev5count == null}">
-								<div class="progress-bar" style="width: 0%">0%</div>
-							</c:when>
-							<c:otherwise>
-								<div class="progress-bar" style="width: ${(detailReview.rev5count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev5count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
-							</c:otherwise>																							
-						</c:choose>
-					</div>
-					<p>5점(${detailReview.rev5count}명)</p>
 				</div>
+					<p>3점(<fmt:parseNumber value="${detailReview.rev3count}" integerOnly="true" />명)</p>
+				<div class="progress">
+						<c:choose>
+							<c:when test="${ detailReview.rev2count == null}">
+								<div class="progress-bar" style="background-color: #0099cc; width: 0%">0%</div>
+							</c:when>
+							<c:otherwise>
+								<div class="progress-bar" style="background-color: #0099cc; width: ${(detailReview.rev2count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev2count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
+							</c:otherwise>
+						</c:choose>
+				</div>
+					<p>2점(<fmt:parseNumber value="${detailReview.rev2count}" integerOnly="true" />명)</p>
+				<div class="progress">
+					<c:choose>
+						<c:when test="${detailReview.rev1count == null}">
+							<div class="progress-bar" style="width: 0%">0%</div>
+						</c:when>
+						<c:otherwise>
+							<div class="progress-bar" style="width: ${(detailReview.rev1count/proInfo.product_pointcount)*100}%"><fmt:formatNumber value="${(detailReview.rev1count/proInfo.product_pointcount)*100}" pattern=".0" />%</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
+					<p>1점(<fmt:parseNumber value="${detailReview.rev1count}" integerOnly="true" />명)</p>
+					
+					
 			</td>
 	</tr>
 	<tr>
@@ -182,7 +180,9 @@
 		</td>
 	</tr>
 	<tr> 
-		<td colspan="2">${proInfo.product_conts}</td>
+		<td colspan="2">
+			<p>제품 안내 > </p>
+			<p>${proInfo.product_conts}</td>
 	</tr>
 	</table>
 	
@@ -238,7 +238,7 @@
 
 
  <!-- 성분 Modal -->
-		<div class="modal fade" id="myModal" role="dialog" style="height: 60%; top:20%;">
+		<div class="modal fade" id="myModal" role="dialog" style="top:20%;">
 			<div class="modal-dialog">
 
 				<!-- 성분 Modal content-->
@@ -251,7 +251,16 @@
 					<div>
 						<table>
 							<tr>
-								<td rowspan="3" style="width: 20%; height: 10px;" ></td>
+								<td rowspan="3" style="width: 20%; height: 10px;" >
+									<c:choose>
+										<c:when test="${proInfo.product_storedfile == null}">
+											<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/productThumb/2.jpg" alt="이미지"></td> <!-- 기본 제품 이미지 -->
+										</c:when>
+										<c:otherwise>
+											<td rowspan="5" style="vertical-align: top; align: center;"><div style="background-image:url('upload/${proInfo.product_storedfile}')" role="img" aria-label="alt text" ></div></td> 
+										</c:otherwise>
+									</c:choose>
+								</td>
 								<td rowspan="3" style="width: 40%;">${proInfo.product_name }</td>
 								<td style="width: 40%;">${proInfo.product_brand}</td>
 							</tr>
