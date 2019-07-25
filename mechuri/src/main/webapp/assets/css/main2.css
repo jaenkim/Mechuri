@@ -2043,20 +2043,22 @@ dl dd {
 table {
 	margin: 0 0 2em 0;
 	width: 100%;
-}
-
-table tbody tr {
-	border: solid 1px #ffffff;
-	border-left: 0;
-	border-right: 0;
-}
-
-table tbody tr:nth-child(2n + 1) {
 	background-color: #ffffff;
 }
 
+table th {
+	background-color: #ffffff;
+}
+
+table tr {
+	background-color: #ffffff;
+}
+
+
+
 table td {
 	padding: 0.75em 0.75em;
+	background-color: #ffffff;
 }
 
 table th {
@@ -2067,39 +2069,7 @@ table th {
 	text-align: left;
 }
 
-table thead {
-	border-bottom: solid 2px #ffffff;
-}
 
-table tfoot {
-	border-top: solid 2px #ffffff;
-}
-
-table.alt {
-	border-collapse: separate;
-}
-
-table.alt tbody tr td {
-	border: solid 1px #ffffff;
-	border-left-width: 0;
-	border-top-width: 0;
-}
-
-table.alt tbody tr td:first-child {
-	border-left-width: 1px;
-}
-
-table.alt tbody tr:first-child td {
-	border-top-width: 1px;
-}
-
-table.alt thead {
-	border-bottom: 0;
-}
-
-table.alt tfoot {
-	border-top: 0;
-}
 
 /* Button */
 input[type="submit"], input[type="reset"], input[type="button"], button,
