@@ -229,10 +229,19 @@
 				<td>작성자 &#32; &#124; &#32; &#32; ${reviewInfo.review_nick }</td>
 			</tr>
 			<tr>
-				<td>작성일 &#32; &#124; &#32; &#32; ${reviewInfo.review_regdate }</td>
+				<td>작성일 &#32; &#124; &#32; &#32; <fmt:parseDate var="dateString" value="${reviewInfo.review_regdate }" pattern="yyyyMMdd" /></td>
+				
 			</tr>
 			<tr>
-				<td>별점 &#32; &#124; &#32; &#32; ${reviewInfo.review_point }</td>
+				<td>별&#32; &#32;점 &#32; &#124; &#32; &#32; <div class="starRev" >
+							<span class="starR1">별1_왼쪽</span> <span class="starR2">별1_오른쪽</span>
+							<span class="starR1">별2_왼쪽</span> <span class="starR2">별2_오른쪽</span>
+							<span class="starR1">별3_왼쪽</span> <span class="starR2">별3_오른쪽</span>
+							<span class="starR1">별4_왼쪽</span> <span class="starR2">별4_오른쪽</span>
+							<span class="starR1">별5_왼쪽</span> <span class="starR2">별5_오른쪽</span> 
+							<input type="hidden" name="rate" value="${fn:substring(proInfo.product_point,0,fn:indexOf(proInfo.product_point,'.')+1)}${fn:substring(proInfo.product_point,fn:indexOf(proInfo.product_point,'.')+1,3)<5?'0':'5'}" />
+						</div>
+				</td>
 			</tr>
 			<tr>				
 				<td colspan="2">${reviewInfo.review_conts }</td>	

@@ -129,10 +129,10 @@ function skinChekAll(){
 	<div>
 	
 	</div>
-	<button onclick="sortTD (0)">▲</button><button onclick="reverseTD (0)">▼</button>
-	<button onclick="sortTD ( 1 )">▲</button><button onclick="reverseTD ( 1 )">▼</button>
-	<button onclick="sortTD ( 2 )">▲</button><button onclick="reverseTD ( 2 )">▼</button>
-	<button onclick="sortTD ( 3 )">▲</button><button onclick="reverseTD ( 3 )">▼</button>
+<!-- 	<button onclick="sortTD (0)">▲</button><button onclick="reverseTD (0)">▼</button> -->
+<!-- 	<button onclick="sortTD ( 1 )">▲</button><button onclick="reverseTD ( 1 )">▼</button> -->
+<!-- 	<button onclick="sortTD ( 2 )">▲</button><button onclick="reverseTD ( 2 )">▼</button> -->
+<!-- 	<button onclick="sortTD ( 3 )">▲</button><button onclick="reverseTD ( 3 )">▼</button> -->
 	
 	<table border='1' id="rankingTable">
 <!-- 	<thead> -->
