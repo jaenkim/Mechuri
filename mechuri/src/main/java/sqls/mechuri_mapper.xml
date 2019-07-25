@@ -281,6 +281,16 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	
 </insert>
 
+<!-- 쪽지 전체 발송 -->
+<insert id="gogomsg" parameterType="map">
+	<![CDATA[
+		INSERT INTO MSG (MSG_NO, MSG_TITLE, MSG_CONTS, MSG_REGDATE, MSG_RECEIVENO, MSG_RETURNCONTS, MSG_OTHERS01, MSG_OTHER02)
+		VALUES(MSG_SEQ.NEXTVAL, #{msg_title} , #{msg_conts} , SYSDATE , (SELECT MEM_NO FROM MEMBERS WHERE MEM_STATUS='M' ) , NULL, NULL, NULL)	
+	]]>	
+	
+</insert>
+
+
 <!-- 2)제품 수정 승인 쪽지  -->
 
 <insert id="sendMessage3" parameterType='tempinfoDto'>
@@ -500,6 +510,26 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 		FROM REPLY  
 		WHERE REPLY_NICK= #{mem_nick} 
 </select>
+
+<!-- 메인페이지 커뮤니티 조회수 높은 순으로 4개 가져오기 -->
+<select id = 'mainCommuList' resultType='boardDto'>
+	<![CDATA[
+	SELECT * 
+	FROM (SELECT * FROM BOARD ORDER BY BOARD_COUNT DESC) 
+	WHERE ROWNUM <= 4 
+	]]>
+</select>
+
+<!-- 메인페이지 랭킹 제품 대분류별 랭킹 1위 상품 가져오기 -->
+<select id = 'mainRankList' resultType='productDto'>
+<![CDATA[
+SELECT *
+FROM (SELECT PRODUCT_ML, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_STOREDFILE, PRODUCT_NAME, PRODUCT_NO, PRODUCT_INGRE, PRODUCT_POINT, PRODUCT_CATELNAME, 
+      ROW_NUMBER() OVER (PARTITION BY PRODUCT_CATELNAME ORDER BY PRODUCT_POINT DESC) as ranking FROM PRODUCT) a
+WHERE a.ranking <= 1
+]]>
+</select>
+
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 끝 -->
 
 

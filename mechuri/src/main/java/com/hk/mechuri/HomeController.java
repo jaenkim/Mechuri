@@ -25,11 +25,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.hk.mechuri.dtos.boardDto;
 import com.hk.mechuri.dtos.filterDto;
 import com.hk.mechuri.dtos.ingreDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
 import com.hk.mechuri.service.RankService;
+import com.hk.mechuri.service.addProductService;
 import com.hk.mechuri.service.iRankService;
 
 import javafx.scene.control.Alert;
@@ -43,11 +45,20 @@ public class HomeController {
 	private iRankService rankService;
 
 
+	@Autowired
+	private addProductService productservice;
+
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String main(Locale locale, Model model,HttpSession session) {
 
 		//가장 리뷰점수가 높은 제품 출력(catelname 별 1개씩)
+		List<productDto> mainrank=productservice.mainRankList();
+		model.addAttribute("mainrank",mainrank);
+
 		//가장 조회수가 놓은 커뮤니티의 글 4개 출력
+		List<boardDto> commu=productservice.mainCommuList();
+		model.addAttribute("commu",commu);
+
 		return "ranking/main";
 	}
 

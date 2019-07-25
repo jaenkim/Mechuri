@@ -62,7 +62,31 @@ public class HController {
 		return "msg2";
 	}
 
-
+	@RequestMapping(value = "/allmsgsend.do")
+	public String allmsgsend(Locale locale, Model model) {
+		logger.info("관리자 쪽지 발송 폼", locale);
+		return "allmsgsendform";
+	}
+	
+	
+	@RequestMapping(value = "/gogomsg.do")
+	public String gogomsg(Locale locale, Model model,String msg_title, String msg_conts) {
+		logger.info("전체 회원(일반회원)에게 쪽지 발송 ..ing", locale);
+		
+		System.out.println(msg_title);
+		System.out.println(msg_conts);
+		
+		boolean isS= MsgSerivce.gogomsg(msg_title,msg_conts);
+		if(isS) {		
+		return "redirect:allmsgsend.do";
+		}else {
+		
+		return "error";
+		}
+	}
+		
+	
+	
 	@RequestMapping(value = "/addProductForm.do")
 	public String addProductForm(Locale locale, Model model) {
 		logger.info("제품등록신청 폼", locale);

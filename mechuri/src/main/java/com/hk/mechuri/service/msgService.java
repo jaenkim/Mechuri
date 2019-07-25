@@ -26,5 +26,9 @@ public class msgService {
 		
 	}
 	
+	public boolean gogomsg(String msg_title, String msg_conts) {
+		return msgDao.gogomsg(msg_title,msg_conts);
+		
+	}
 	
 }

@@ -107,10 +107,17 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	
 	@RequestMapping(value = "/boardDetail.do") /*글 상세보기 폼으로 이동*/
-	public String boardDetail(HttpServletRequest request,Locale locale, Model model, Integer board_no) {	
+	public String boardDetail(HttpServletRequest request,Locale locale, Model model, Integer board_no,HttpSession session) {	
 		logger.info("게시글 상세보기 {}.", locale);
 		System.out.println("board_no["+board_no+"]");
 		//String pnum = request.getParameter("pnum");
+		
+		String loginInfo = (String)session.getAttribute("mem_name");  //세션에서 일반회원 로그인정보 꺼내기
+		String naverLoginInfo = (String)session.getAttribute("naverEmail");  //세션에서 네이버 일반회원 로그인정보 꺼내기
+		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) { //로그인 안했으면 commuError.jsp로 보내기
+			return "commuError";
+		}else {
+		
 		String bPnum = (String)request.getSession().getAttribute("board_pnum");//세션에서 현재페이지 꺼내기
 		String rCount = (String)request.getSession().getAttribute("readcount");//세션에서 카운트  꺼내기
 		
@@ -131,7 +138,7 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		
 		return "community/boarddetail";
 	}
-	
+	}
 	
 	
 	@RequestMapping(value = "/boardDelete.do") /* 삭제 */

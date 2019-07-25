@@ -110,5 +110,13 @@ public class addProductDao {
 	public List<replyDto> myreplylist(String mem_nick) { //내가 쓴 댓글 목록
 		return sqlSession.selectList(namespace+"myreplylist",mem_nick);
 	}
+
+	public List<boardDto> mainCommuList() {	//메인 페이지에 최신 커뮤니티글 4개 가져오기
+		return sqlSession.selectList(namespace+"mainCommuList");
+	}
+	
+	public List<productDto> mainRankList() {	//메인 페이지에 대분류별 랭킹 1위 제품 가져오기
+		return sqlSession.selectList(namespace+"mainRankList");
+	}
 	
 }
