@@ -148,8 +148,8 @@ public class AController {
 			result = result - 1000;
 		}					
 		String content = "<html><b>회원님의 인증 코드는 " + result +" 입니다.</b>"
-			/*	+"아래 링크를 누르시면 메추리 홈페이지로 이동합니다."
-				+ "<form action='http://127.0.0.1:8888/mechuri/main.do' method='post'>"*/;
+				+"<br>아래 링크를 누르시면 메추리 홈페이지로 이동합니다."
+				+ "<br><a href='http://127.0.0.1:8888/mechuri/main.do'>메추리 홈페이지</a>";
 		ms.mailSend(mem_id, title, content);
 
 		return result;

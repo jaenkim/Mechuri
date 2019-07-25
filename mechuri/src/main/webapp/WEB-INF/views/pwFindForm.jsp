@@ -9,7 +9,10 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	function sub() {
-		alert("임시 비밀번호가 고객님의 이메일로 전송 되었습니다.")	
+		alert("임시 비밀번호가 고객님의 이메일로 전송 되었습니다.");
+		if{
+			
+		}
 	}
 </script>
 </head>
@@ -20,6 +23,7 @@
 			<div class="inner">
 
 				<h1>비밀번호  찾기</h1>
+				<br>
 				<form action="pwFind.do" method="post" id="pwFind">
 					<input type="text" name="mem_id" id="id" required="required"
 						placeholder="아이디를 입력하세요" style="width:230px"/> <input type="text" name="mem_name"
