@@ -21,6 +21,10 @@ h3 {
 	display: inline-block;
 	padding: 0.6em;
 }
+
+form{
+	text-align: center;
+}
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
