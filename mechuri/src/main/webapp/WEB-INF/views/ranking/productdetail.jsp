@@ -68,7 +68,7 @@
 				async : true,
 				success : function(msg) {
 					alert("회원님의 리뷰가 삭제되었습니다.");
-					$(clickBtn).parent().parent().remove();
+					$(clickBtn).parent().parent().parent().remove();
 				},
 				error: function(msg){
  					alert("본인의 리뷰만 삭제가 가능합니다.");
@@ -98,11 +98,11 @@
 			</c:otherwise>
 		</c:choose>
 		<td style="font-family: Happy; font-size: 20px; margin-left: 10px;">${proInfo.product_name} </td>
-		<td><button type="button" class="button alt small" >${proInfo.product_brand} 제품 페이지 가기</button></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
+		<td><button type="button" class="button alt small" onclick="location.href='brandpage.do?brand=${proInfo.product_brand}'">${proInfo.product_brand} 제품 페이지 가기</button></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
 		
 	</tr>
-	<a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter" ><img src="./images/트위터.png"></a>
-		<a href="#" onclick="javascript:window.open('https://story.kakao.com/s/share?url=' +encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes, height=400,width=600');return false;" target="_blank" alt="Share on kakaostory"> <img src="./images/카스.png"></a>
+	<a style="float: right;" href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter" ><img src="./images/트위터.png"></a>
+		<a style="float: right;" href="#" onclick="javascript:window.open('https://story.kakao.com/s/share?url=' +encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes, height=400,width=600');return false;" target="_blank" alt="Share on kakaostory"> <img src="./images/카스.png"></a>
 	<tr>
 		<td style="margin-left: 10px;">용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a> <hr></td>
 		<td><button type="button" class="button alt small" data-toggle="modal" data-target="#myModal" >성분 상세보기 ></button></td>
@@ -230,10 +230,10 @@
 <%-- 					<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${naverNickname eq reviewInfo.review_nick?"":"style='display:none'"} /> --%>
 					<c:choose>
 						<c:when test="${naverNickname!=null}">
-							<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${naverNickname eq reviewInfo.review_nick?"":"style='display:none'"}  />
+							<input type="button" class="button alt small" value="X" id="delReviewBtn" onclick="delReview(this)" ${naverNickname eq reviewInfo.review_nick?"":"style='display:none'"} style="float: right;"/>
 						</c:when>
 						<c:when test="${mem_nick!=null}">
-							<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${mem_nick eq reviewInfo.review_nick?"":"style='display:none'"}  />
+							<input type="button" class="button alt small" value="X" id="delReviewBtn" onclick="delReview(this)" ${mem_nick eq reviewInfo.review_nick?"":"style='display:none'"} style="float: right;" />
 						</c:when>
 						<c:otherwise>
 						

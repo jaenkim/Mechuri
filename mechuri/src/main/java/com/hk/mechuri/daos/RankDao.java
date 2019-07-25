@@ -152,6 +152,13 @@ public class RankDao implements iRankDao {
 		public int deleteReview(reviewDto rDDto) {
 			return sqlSession.delete(namepace+"deleteReview", rDDto);
 		}
+
+		@Override
+		public List<productDto> getBrandlist(String product_brand) {
+			return sqlSession.selectList(namepace+"brandlist", product_brand);
+		}
+		
+		
 		
 		
 	

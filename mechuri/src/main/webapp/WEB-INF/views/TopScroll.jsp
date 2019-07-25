@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<button onclick="GoTop()" id="goTop" title="Go to top" style="position: fixed; z-index: 1; bottom: 20px; right: 10px;" >Top</button>
+<button onclick="GoTop()" id="goTop" class="button alt" title="Go to top" style="position: fixed; z-index: 1; bottom: 20px; right: 10px;" >Top</button>
 
 <script>
 window.onscroll = function() {scrollFunction()};

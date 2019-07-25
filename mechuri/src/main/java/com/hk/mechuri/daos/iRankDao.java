@@ -41,6 +41,8 @@ public interface iRankDao {
 
 	int deleteReview(reviewDto rDDto);
 
+	List<productDto> getBrandlist(String brand);
+
 	
 
 }

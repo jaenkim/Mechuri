@@ -157,34 +157,36 @@ public class HomeController {
 			String naverLoginInfo = (String)session.getAttribute("naverEmail");
 			String status = (String)session.getAttribute("mem_status");
 			
-			if(status.equals("C")) {
+			if(status.equals("C")|| status==null) {//기업회원 세션체크
 				return "youcannotwritereview";
+			}else{
+				if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
+					return "doLogin";
+				}else {
+						
+					int pNo = Integer.parseInt(request.getParameter("pNo")); 
+					String callbackIngre = request.getParameter("ingre");
+					productDto reviewProduct = rankService.getOneProductInfo(pNo);
+					
+					if(session.getAttribute("naverNickname")!=null) {
+						String reviewNick = (String) session.getAttribute("naverNickname");
+						model.addAttribute("writer", reviewNick);
+						System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(네이버로그인) : ["+reviewNick+"]");
+					}else if(session.getAttribute("mem_nick")!=null) {
+						String reviewNick = (String) session.getAttribute("mem_nick");
+						model.addAttribute("writer", reviewNick);
+						System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(일반회원로그인) : ["+reviewNick+"]");
+					}else {
+						System.out.println("세션이 없음");
+						return "login";
+					}
+					model.addAttribute("product", reviewProduct);
+					model.addAttribute("callbackIngre", callbackIngre);
+					return "review/insertReview";
+					}
 			}
 			
-			if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
-				return "doLogin";
-			}else {
-					
-				int pNo = Integer.parseInt(request.getParameter("pNo")); 
-				String callbackIngre = request.getParameter("ingre");
-				productDto reviewProduct = rankService.getOneProductInfo(pNo);
-				
-				if(session.getAttribute("naverNickname")!=null) {
-					String reviewNick = (String) session.getAttribute("naverNickname");
-					model.addAttribute("writer", reviewNick);
-					System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(네이버로그인) : ["+reviewNick+"]");
-				}else if(session.getAttribute("mem_nick")!=null) {
-					String reviewNick = (String) session.getAttribute("mem_nick");
-					model.addAttribute("writer", reviewNick);
-					System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(일반회원로그인) : ["+reviewNick+"]");
-				}else {
-					System.out.println("세션이 없음");
-					return "login";
-				}
-				model.addAttribute("product", reviewProduct);
-				model.addAttribute("callbackIngre", callbackIngre);
-				return "review/insertReview";
-				}
+			
 		}
 	
 		//리뷰 작성하는 페이지로 이동
@@ -196,8 +198,8 @@ public class HomeController {
 			System.out.println("review_membernick"+review_membernick);
 			String review_conts = request.getParameter("reviewconts");
 			System.out.println("review_conts"+review_conts);
-			System.out.println("review_point"+request.getParameter("rate"));
-			Double review_point = Double.parseDouble(request.getParameter("rate"));
+			System.out.println("review_point"+request.getParameter("review_rating"));
+			Double review_point = Double.parseDouble(request.getParameter("review_rating"));
 			String callbackIngre = request.getParameter("callbackIngre");
 			
 			reviewDto rDto = new reviewDto(review_productno,review_membernick,review_conts,review_point);
@@ -242,6 +244,23 @@ public class HomeController {
 		}//deleteReview END
 		
 		
+
+		//리뷰 작성하는 페이지로 이동
+		@RequestMapping(value = "/brandpage.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String getBrandlist(HttpServletRequest request, Locale locale, Model model, productDto dto, HttpSession session) {
+			
+			String brand = request.getParameter("brand");
+			
+			List<productDto> brandList = rankService.getBrandlist(brand);	
+			model.addAttribute("list",brandList);
+
+			int random = (int)(Math.random()*10)+1;
+			System.out.println("random"+random);
+			model.addAttribute("random", random+"");
+			
+			return "ranking/list";
+			
+		}
 		
 }
 
