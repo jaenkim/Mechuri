@@ -37,7 +37,7 @@ form{
 
 		var nick = ${result}.response.id;
 		var mem_email = ${result}.response.email;
-		$("#mem_id").html("네이버id"+mem_id);
+// 		$("#mem_id").html("네이버id"+mem_id);
 		$("#mem_name").html("환영합니다. "+mem_name+"님");
 		$("#mem_email").html(mem_email);
 		$("#mem_nick").html("별명"+mem_nick);
