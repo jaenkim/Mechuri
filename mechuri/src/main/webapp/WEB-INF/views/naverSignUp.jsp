@@ -89,7 +89,9 @@ h3 {
 }
 
 .form-holder {
-	padding-left: 42%;
+	padding-left: 35%;
+	margin-bottom: 5px;
+	margin-left: 55px;
 }
 
 .form-control {
@@ -102,7 +104,10 @@ h3 {
 	border: none;
 	background: #f7f7f7;
 	margin-bottom: 25px;
+	text-align:center;
 }
+
+
 
 .form-control::-webkit-input-placeholder {
 	font-size: 13px; : #808080;
@@ -223,7 +228,7 @@ translateX
 }
 }
 button {
-	letter-spacing: 2px;
+	/* letter-spacing: 2px;
 	border: none;
 	width: 133px;
 	height: 47px;
@@ -240,7 +245,8 @@ button {
 	font-family: "Montserrat-SemiBold";
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
-	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0); */
+	
 }
 
 button:hover {
@@ -353,45 +359,43 @@ input {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
-	<section class="wrapper" id="main">
-		<div style="width:800px; margin: 0 auto;">
+<!-- 	<section class="wrapper" id="main">
+		<div style="width:800px; margin: 0 auto;"> -->
+	<br><br>
 	<form action='signUpBoard.do' method='post'>
-		<br>
-		<br>
-		<br>
-
+	
 		<!-- <div class="inner"> -->
 
-		<h3>일반회원 가입</h3>
+		<h3>회원가입</h3>
 			<input type="hidden" value="${mem_naverid}" name="mem_naverid"  />
 		<div class="form-holder">
 			<input type="text" value="${mem_id}" name="mem_id"
-				class="form-control" readonly="readonly"  style="width:70%;display:inline-block; margin-right:70%; ">
+				class="form-control" readonly="readonly"  style="width:35%;display:inline-block; margin-right:70%;" >
 		</div>
 		<div class="form-holder">
 			<input type="text" placeholder="네이버 로그인 비밀번호와 동일합니다." name="mem_pw"
-				class="form-control" readonly="readonly">
+				class="form-control" readonly="readonly" style="width:35%;display:inline-block; margin-right:70%;">
 		</div>
 		<div class="form-holder">
 			<input type="text" value="${mem_name }" name="mem_name"
-				class="form-control" readonly="readonly" style="font-size: 15px;">
+				class="form-control" readonly="readonly" style="font-size: 15px; width:35%;display:inline-block; margin-right:70%;">
 		</div>
 		<div class="form-holder">
 			<input type="text" value="${mem_nick }"  name="mem_nick"
-				class="form-control" readonly="readonly" style="font-size: 15px;">
+				class="form-control" readonly="readonly" style="font-size: 15px; width:35%;display:inline-block; margin-right:70%;">
 		</div>
 		<div class="form-holder">
 			<input type="text" placeholder="핸드폰" name="mem_phone"
-				class="form-control" style="font-size: 15px;">
+				class="form-control" style="font-size: 15px; width:35%;display:inline-block; margin-right:70%;">
 		</div>
-		<div class="checkbox"></div>
+		
 
-		<button input type="submit">회원가입하기</button>
+		<button  type="submit" style="mmargin-bottom: 10px;">회원가입하기</button>
 
 	</form>
 	<!-- 	</div>  -->
-</div>
-</section>
+<!-- </div>
+</section> -->
 
 
 	<jsp:include page="Footer.jsp" />
