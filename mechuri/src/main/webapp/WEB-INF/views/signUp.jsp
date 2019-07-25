@@ -175,9 +175,9 @@
 			<div class="form-holder">
 			<br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
-						<input type="password" placeholder="비밀번호 확인" class="form-control" style="width:100%;display:inline-block; margin-right: 10px;"
+						<input type="password" placeholder="비밀번호 확인" class="form-control" style="width:70%;display:inline-block; margin-right: 10px;"
 							id="cpass" style="font-size: 13px;" required="required">
-							<input type="button" value="비밀번호확인"  style="display:inline-block;" onclick="checkz()">
+							<input type="button" value="비밀번호확인"  style="display:inline-block; width:21%" onclick="checkz()">
 					</div>
 				
 
