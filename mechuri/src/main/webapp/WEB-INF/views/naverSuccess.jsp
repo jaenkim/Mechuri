@@ -51,11 +51,8 @@ form{
 </script>
 </head>
 <body>
-	<div
-		style="background-color: #15a181; width: 100%; height: 50px; text-align: center; color: white;">
-		<h3>SIST Naver_Login Success</h3>
-	</div>
-	<br>
+<jsp:include page="Header.jsp"/>
+<br>
 	<% 
 		String isMyMem = (String)request.getAttribute("isMyMem").toString();
 		if (!isMyMem.equals("")){ 	%>
@@ -66,14 +63,14 @@ form{
 		<h4 style="text-align: center" id="mem_email"></h4>
 		<h4 style="text-align: center" id="mem_nick"></h4>
 		<form action="naverSignUp.do" method="post">
-			<input type="text" name="resultid" />
+			<input type="hidden" name="resultid" />
 			<input type="hidden" name="resultname"  />
 			<input type="hidden" name="resultemail"  />
 			<input type="hidden" name="resultnick"  />
-			<input type="submit" value="너 컨트롤러에 가니? 회원가입 좀 하자" />
+			<input type="submit" value="간편가입" />
 		</form>
 
 	<% } %>	
-
+<jsp:include page="Footer.jsp"/>
 </body>
 </html>

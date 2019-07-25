@@ -353,6 +353,8 @@ input {
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
+	<section class="wrapper" id="main">
+		<div style="width:800px; margin: 0 auto;">
 	<form action='signUpBoard.do' method='post'>
 		<br>
 		<br>
@@ -361,10 +363,10 @@ input {
 		<!-- <div class="inner"> -->
 
 		<h3>일반회원 가입</h3>
-			<input type="hidden" value="${mem_naverid}" name="mem_naverid" />
+			<input type="hidden" value="${mem_naverid}" name="mem_naverid"  />
 		<div class="form-holder">
 			<input type="text" value="${mem_id}" name="mem_id"
-				class="form-control" readonly="readonly">
+				class="form-control" readonly="readonly"  style="width:70%;display:inline-block; margin-right:70%; ">
 		</div>
 		<div class="form-holder">
 			<input type="text" placeholder="네이버 로그인 비밀번호와 동일합니다." name="mem_pw"
@@ -388,7 +390,8 @@ input {
 
 	</form>
 	<!-- 	</div>  -->
-
+</div>
+</section>
 
 
 	<jsp:include page="Footer.jsp" />
