@@ -94,4 +94,5 @@ public class MembersDao implements IMembersDao {
 	public membersDto pwSearch(membersDto dto) {
 		return sqlSession.selectOne(namespace+"pwSearch", dto);
 	}
+	
 }
