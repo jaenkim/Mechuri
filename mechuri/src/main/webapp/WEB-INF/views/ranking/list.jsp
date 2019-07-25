@@ -147,12 +147,12 @@ function skinChekAll(){
   	
 		<c:forEach items="${list}" var="dto">
 		<tbody>
-			<tr style="height: 10px;">
+			<tr style="height: 10px; border-bottom-width: 0px;">
 				<td rowspan="3" style="text-align: center; font-family: Happy; font-size: 20px; background-color: #ffffff; border-width: 0px;">${dto.product_rank}</td>
 				<td rowspan="3" style="width: 20%;text-align: center; background-color: #ffffff; border-width: 0px;"><img src="images/product/${random}.jpg" style="width:120px; text-align: center;" alt="제품 이미지"></td>
 				<td colspan="4" style="background-color: #ffffff; border-width: 0px;">${dto.product_brand}</td>
 			</tr>
-			<tr>
+			<tr style="border-width: 0px;">
 				<td style="width: 45%; background-color: #ffffff; border-width: 0px;"><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name}</a></td>
 				<td rowspan="2" style="width:	5%; background-color: #ffffff; border-width: 0px;">
 					<c:choose>
@@ -182,7 +182,7 @@ function skinChekAll(){
 				</td>
 				<td rowspan="2" style="width: 6%;">(${dto.product_pointcount })</td>
 			</tr>
-			<tr>
+			<tr style="border-width: 0px;">
 				<td style="background-color: #ffffff; border-width: 0px;">${dto.product_price } / ${dto.product_ml }</td>
 			</tr>
 			</tbody>

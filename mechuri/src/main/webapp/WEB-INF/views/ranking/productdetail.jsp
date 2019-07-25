@@ -181,14 +181,15 @@
 						</div>&#47; (총 ${proInfo.product_pointcount }명) 
 		</td>
 	</tr>
-	<tr> 
+	<tr style="border-bottom: 1px;"> 
 		<td colspan="2" style="margin-left: 10px;">
 			<hr>
 			<p>제품 안내 > </p>
 			<p>${proInfo.product_conts}</td>
 	</tr>
+	<tr><td colspan="3"><hr></td></tr>
 	</table>
-	
+<jsp:include page="../TopScroll.jsp" />	
 	<!-- 리뷰 작성하기 버튼 -->
 	<div>
 		<button class="button small" onclick="location.href='reviewpage.do?pNo=${proInfo.product_no}&ingre=${callbackReview}'" style="float: right; margin-bottom: 15px;">리뷰 작성하기</button>
@@ -200,15 +201,15 @@
 		<div>
 		<c:forEach items="${reviewInfo}" var="reviewInfo">
 		
-			<table>
+			<table style="padding: 0 0 0 0 ;">
 			
 <!-- 		<form action="deleteReview.do" > -->
 			<input type="hidden" id="productNo" value="${proInfo.product_no}" />
 			<input type="hidden" id="ingre" value="${callbackReview}" />
 			<input type="hidden" id="reviewNo" value="${reviewInfo.review_no}" />
 			<input type="hidden" id="reviewNick" value="${review_nick}" />
-			<tr>
-				<td colspan="2"><hr></td>
+			<tr style="margin: 0 0 0 0;">
+				<td colspan="2" style="padding: 0.0 0.0;"><hr></td>
 			</tr>
 			<tr style="border-bottom: solid 1px;">
 				

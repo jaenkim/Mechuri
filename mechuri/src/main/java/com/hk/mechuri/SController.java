@@ -67,6 +67,11 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		String mem_nick = (String)session.getAttribute("mem_nick");//세션에 담긴 닉 
 		String loginInfo = (String)session.getAttribute("mem_name");
 		String naverLoginInfo = (String)session.getAttribute("naverEmail");
+		String status = (String)session.getAttribute("mem_status");
+		
+		if(status.equals("C")) {
+			return "youcannotwriteboard";
+		}
 		
 		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
 			return "commuError";

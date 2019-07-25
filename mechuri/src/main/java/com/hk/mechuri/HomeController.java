@@ -144,6 +144,11 @@ public class HomeController {
 			//세션 체크
 			String loginInfo = (String)session.getAttribute("mem_name");
 			String naverLoginInfo = (String)session.getAttribute("naverEmail");
+			String status = (String)session.getAttribute("mem_status");
+			
+			if(status.equals("C")) {
+				return "youcannotwritereview";
+			}
 			
 			if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
 				return "doLogin";
