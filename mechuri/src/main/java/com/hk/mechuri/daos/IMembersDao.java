@@ -33,6 +33,5 @@ public interface IMembersDao {
 
 	public membersDto pwSearch(membersDto dto);
 	
-
-
+	public int updatePw(membersDto dto);
 }

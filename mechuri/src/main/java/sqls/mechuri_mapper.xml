@@ -264,7 +264,11 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 		MEM_ID=#{mem_id} and MEM_NAME=#{mem_name}
 	</select>
 
-
+<!-- 비밀번호 변경 -->	
+	<update id="updatePw" parameterType="membersDto">
+		UPDATE MEMBERS SET MEM_PW=#{mem_pw} WHERE MEM_ID=#{mem_id} AND MEM_NAME=#{mem_name}
+	</update>
+	
 
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 시작 -->
 <!-- 쪽지 보내기 쿼리 -->
