@@ -34,5 +34,4 @@ public interface IMembersDao {
 	public membersDto pwSearch(membersDto dto);
 	
 
-
 }
