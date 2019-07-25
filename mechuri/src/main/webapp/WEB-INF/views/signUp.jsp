@@ -37,13 +37,13 @@
 			return;
 		}
 		if ($("#tbPwd").val() != ($("#cpass").val())) {
-			alert("비밀번호가 틀렸습니다. 다시 입력해 주세요");
+			alert("비밀번호가 다릅니다. 다시 입력해 주세요");
 			$("#tbPwd").val("");
 			$("#cpass").val("");
 			$("#tbPwd").focus();
 
 		} else {
-			alert("비밀번호가 맞습니다. 가입을 진행해주세요");
+			alert("비밀번호가 일치합니다. 가입을 진행해주세요");
 		}
 		return;
 	}
