@@ -189,14 +189,14 @@
 	
 	<!-- 리뷰 작성하기 버튼 -->
 	<div>
-		<button class="reviewBtn" onclick="location.href='reviewpage.do?pNo=${proInfo.product_no}&ingre=${callbackReview}'" >리뷰 작성하기</button>
+		<button class="button small" onclick="location.href='reviewpage.do?pNo=${proInfo.product_no}&ingre=${callbackReview}'" style="float: right; margin-bottom: 15px;">리뷰 작성하기</button>
 	</div>
 	
 	<!-- 리뷰 목록 -->
 	
 	<table border="1">
 		<tr>
-		<th>리뷰번호</th>
+		<th>번호</th>
 		<th>리뷰작성자 닉네임</th>
 		<th>리뷰 내용</th>
 		<th>별점</th>
