@@ -34,14 +34,12 @@ form{
       var mem_nick = ${result}.response.nickname;
 
 
-      $("#mem_name").html("환영합니다. "+mem_name+"님");
-
       var nick = ${result}.response.id;
       var mem_email = ${result}.response.email;
 //       $("#mem_id").html("네이버id"+mem_id);
-      $("#mem_name").html("환영합니다. "+mem_name+"님");
-      $("#mem_email").html(mem_email);
-      $("#mem_nick").html("별명"+mem_nick);
+      $("#mem_name").html(mem_name+"님 반갑습니다.");
+      $("#mem_email").html("네이버 아이디 "+mem_email+"로 회원가입을 진행할 수 있습니다.");
+      $("#mem_nick").html("메추리에서 사용하게 될 회원님의 별명은 "+mem_nick+"입니다.");
       
       $("input[name=resultid]").val(mem_id);
       $("input[name=resultname]").val(mem_name);
@@ -72,6 +70,7 @@ form{
       </form>
 
    <% } %>   
-<jsp:include page="Footer.jsp"/>
+
 </body>
+<jsp:include page="Footer.jsp"/>
 </html>
