@@ -33,6 +33,7 @@ form{
       var mem_email = ${result}.response.email;
       var mem_nick = ${result}.response.nickname;
 
+
       $("#mem_name").html("환영합니다. "+mem_name+"님");
 
       var nick = ${result}.response.id;
@@ -48,6 +49,23 @@ form{
       $("input[name=resultnick]").val(mem_nick);
       
      });
+
+		$("#mem_name").html("환영합니다. "+mem_name+"님");
+
+		var nick = ${result}.response.id;
+		var mem_email = ${result}.response.email;
+// 		$("#mem_id").html("네이버id"+mem_id);
+		$("#mem_name").html("환영합니다. "+mem_name+"님");
+		$("#mem_email").html(mem_email);
+		$("#mem_nick").html("별명"+mem_nick);
+		
+		$("input[name=resultid]").val(mem_id);
+		$("input[name=resultname]").val(mem_name);
+		$("input[name=resultemail]").val(mem_email);
+		$("input[name=resultnick]").val(mem_nick);
+		
+	  });
+
 </script>
 </head>
 <body>
