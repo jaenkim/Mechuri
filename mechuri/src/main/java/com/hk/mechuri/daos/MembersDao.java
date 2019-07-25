@@ -89,10 +89,16 @@ public class MembersDao implements IMembersDao {
 		return result;
 	}
 
-	//		비밀번호 찾기
+	//	비밀번호 찾기
 	@Override
 	public membersDto pwSearch(membersDto dto) {
 		return sqlSession.selectOne(namespace+"pwSearch", dto);
+	}
+	
+	//	비밀번호 변경
+	@Transactional
+	public int updatePw(membersDto dto) {
+		return sqlSession.update(namespace+"updatePw", dto);
 	}
 	
 }

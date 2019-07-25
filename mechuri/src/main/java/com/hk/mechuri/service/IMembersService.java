@@ -36,5 +36,5 @@ public interface IMembersService {
 
 	public boolean pwFind(membersDto dto);
 
-	membersDto pwSearch(membersDto dto);
+	public membersDto pwSearch(membersDto dto);
 }
