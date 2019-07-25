@@ -90,7 +90,6 @@
 	<tr>
 		<c:choose>
 			<c:when test="${proInfo.product_storedfile == null}">
-				
 				<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/product/${random}.jpg" alt="이미지" style="width:100%;"></td> <!-- 기본 제품 이미지 -->
 			</c:when>
 			<c:otherwise>
@@ -101,8 +100,9 @@
 		<td><button type="button" class="button alt small" >${proInfo.product_brand} 제품 페이지 가기</button></td> <!-- 제품명 제품카테고리(버튼 > 브랜드 상세페이지 이동) -->
 		
 	</tr>
+	
 	<tr>
-		<td style="margin-left: 10px;">용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a></td>
+		<td style="margin-left: 10px;">용량: ${proInfo.product_ml} &#47; 정가: ${proInfo.product_price}<p><a href="https://search.shopping.naver.com/search/all.nhn?query=${proInfo.product_name}&cat_id=&frm=NVSHATC" >최저가격 확인하기</a> <hr></td>
 		<td><button type="button" class="button alt small" data-toggle="modal" data-target="#myModal" >성분 상세보기 ></button></td>
 	</tr>
 	<tr>
@@ -183,6 +183,7 @@
 	</tr>
 	<tr> 
 		<td colspan="2" style="margin-left: 10px;">
+			<hr>
 			<p>제품 안내 > </p>
 			<p>${proInfo.product_conts}</td>
 	</tr>
@@ -206,8 +207,11 @@
 			<input type="hidden" id="ingre" value="${callbackReview}" />
 			<input type="hidden" id="reviewNo" value="${reviewInfo.review_no}" />
 			<input type="hidden" id="reviewNick" value="${review_nick}" />
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
 			<tr style="border-bottom: solid 1px;">
-				<hr>
+				
 				<td rowspan="4"><img src="upload/${reviewInfo.review_storedfile}" alt="이미지"></td>
 				<td>
 <%-- 					<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${naverNickname eq reviewInfo.review_nick?"":"style='display:none'"} /> --%>
@@ -229,11 +233,11 @@
 				<td>작성자 &#32; &#124; &#32; &#32; ${reviewInfo.review_nick }</td>
 			</tr>
 			<tr>
-				<td>작성일 &#32; &#124; &#32; &#32; <fmt:parseDate var="dateString" value="${reviewInfo.review_regdate }" pattern="yyyyMMdd" /></td>
+				<td>작성일 &#32; &#124; &#32; &#32; <fmt:formatDate value="${reviewInfo.review_regdate }" pattern="yyyy.MM.dd" /></td>
 				
 			</tr>
 			<tr>
-				<td>별&#32; &#32;점 &#32; &#124; &#32; &#32; <div class="starRev" >
+				<td>별&#32; &#32;점 &#32; &#124; &#32; &#32; ${proInfo.product_point} <div class="starRev" >
 							<span class="starR1">별1_왼쪽</span> <span class="starR2">별1_오른쪽</span>
 							<span class="starR1">별2_왼쪽</span> <span class="starR2">별2_오른쪽</span>
 							<span class="starR1">별3_왼쪽</span> <span class="starR2">별3_오른쪽</span>
@@ -244,7 +248,7 @@
 				</td>
 			</tr>
 			<tr>				
-				<td colspan="2">${reviewInfo.review_conts }</td>	
+				<td colspan="2"> ${reviewInfo.review_conts }</td>	
 			</tr>
 <!-- 		</form> -->
 			</table>
@@ -271,7 +275,7 @@
 								<td rowspan="3" style="width: 20%; height: 10px;" >
 									<c:choose>
 										<c:when test="${proInfo.product_storedfile == null}">
-											<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/productThumb/2.jpg" alt="이미지"></td> <!-- 기본 제품 이미지 -->
+											<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/product/${random}.jpg" alt="이미지" style="width:100%;"></td> <!-- 기본 제품 이미지 -->
 										</c:when>
 										<c:otherwise>
 											<td rowspan="5" style="vertical-align: top; align: center;"><div style="background-image:url('upload/${proInfo.product_storedfile}')" role="img" aria-label="alt text" ></div></td> 

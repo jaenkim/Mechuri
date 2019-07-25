@@ -148,13 +148,13 @@ function skinChekAll(){
 		<c:forEach items="${list}" var="dto">
 		<tbody>
 			<tr style="height: 10px;">
-				<td rowspan="3" style="text-align: center; font-family: Happy; font-size: 20px;">${dto.product_rank}</td>
-				<td rowspan="3" style="width: 20%;text-align: center; "><img src="images/product/${random}.jpg" style="width:120px; text-align: center;" alt="제품 이미지"></td>
-				<td colspan="4">${dto.product_brand}</td>
+				<td rowspan="3" style="text-align: center; font-family: Happy; font-size: 20px; background-color: #ffffff; border-width: 0px;">${dto.product_rank}</td>
+				<td rowspan="3" style="width: 20%;text-align: center; background-color: #ffffff; border-width: 0px;"><img src="images/product/${random}.jpg" style="width:120px; text-align: center;" alt="제품 이미지"></td>
+				<td colspan="4" style="background-color: #ffffff; border-width: 0px;">${dto.product_brand}</td>
 			</tr>
 			<tr>
-				<td style="width: 45%;"><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name}</a></td>
-				<td rowspan="2" style="width:	5%;">
+				<td style="width: 45%; background-color: #ffffff; border-width: 0px;"><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name}</a></td>
+				<td rowspan="2" style="width:	5%; background-color: #ffffff; border-width: 0px;">
 					<c:choose>
 						<c:when test="${dto.product_pointcount == 0}">
 							평점 없음
@@ -165,7 +165,7 @@ function skinChekAll(){
 					</c:choose>
 				</td>
 <%-- 				<td rowspan="2" style="width: 13%;"><img style="width:100px;" src="images/productPoint/<fmt:formatNumber value='${dto.product_point}' pattern='.0' />.png"></td>  --%>
-				<td rowspan="2" style="width: 19%;">
+				<td rowspan="2" style="width: 19%; background-color: #ffffff; border-width: 0px;">
 						<input type="hidden" name="review_class_seq" value="">
 						<input type="hidden" name="review_rating" >
 						<!-- 별모양 -->
@@ -183,7 +183,7 @@ function skinChekAll(){
 				<td rowspan="2" style="width: 6%;">(${dto.product_pointcount })</td>
 			</tr>
 			<tr>
-				<td>${dto.product_price } / ${dto.product_ml }</td>
+				<td style="background-color: #ffffff; border-width: 0px;">${dto.product_price } / ${dto.product_ml }</td>
 			</tr>
 			</tbody>
 		</c:forEach>

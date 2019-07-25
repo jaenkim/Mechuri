@@ -2040,7 +2040,7 @@ dl dd {
 }
 
 table {
-	margin: 0 0 2em 0;
+	margin: 0 0 0 0;
 	width: 100%;
 	background-color: #ffffff !important;
 }
@@ -2057,7 +2057,7 @@ table tr {
 
 
 table td {
-	padding: 0.75em 0.75em;
+	padding: 0 0 0 0;
 	background-color: #ffffff;
 }
 
@@ -2065,7 +2065,7 @@ table th {
 	color: #ffffff !important;
 	font-size: 0.9em;
 	font-weight: 700;
-	padding: 0 0.75em 0.75em 0.75em;
+	padding: 0 0 0 0;
 	text-align: left;
 }
 

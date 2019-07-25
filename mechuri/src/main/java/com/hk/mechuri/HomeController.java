@@ -178,7 +178,7 @@ public class HomeController {
 			int review_productno = Integer.parseInt(request.getParameter("product_no"));
 			String review_membernick = request.getParameter("writer");
 			String review_conts = request.getParameter("reviewconts");
-			Double review_point = Double.parseDouble(request.getParameter("points"));
+			Double review_point = Double.parseDouble(request.getParameter("rate"));
 			String callbackIngre = request.getParameter("callbackIngre");
 			
 			reviewDto rDto = new reviewDto(review_productno,review_membernick,review_conts,review_point);
