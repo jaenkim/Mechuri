@@ -193,7 +193,10 @@ public class HomeController {
 			
 			int review_productno = Integer.parseInt(request.getParameter("product_no"));
 			String review_membernick = request.getParameter("writer");
+			System.out.println("review_membernick"+review_membernick);
 			String review_conts = request.getParameter("reviewconts");
+			System.out.println("review_conts"+review_conts);
+			System.out.println("review_point"+request.getParameter("rate"));
 			Double review_point = Double.parseDouble(request.getParameter("rate"));
 			String callbackIngre = request.getParameter("callbackIngre");
 			

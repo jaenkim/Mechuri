@@ -90,10 +90,10 @@
 	<tr>
 		<c:choose>
 			<c:when test="${proInfo.product_storedfile == null}">
-				<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/product/${random}.jpg" alt="이미지" style="width:100%;"></td> <!-- 기본 제품 이미지 -->
+				<td rowspan="5" style="vertical-align: top; align: center;"><img src="images/product/${random}.jpg" alt="이미지" style="width:80%;"></td> <!-- 기본 제품 이미지 -->
 			</c:when>
 			<c:otherwise>
-				<td rowspan="5" style="vertical-align: top; align: center;"><div style="background-image:url('upload/${proInfo.product_storedfile}')" role="img" aria-label="alt text" ></div></td> 
+				<td rowspan="5" style="vertical-align: top; align: center;"><div style="background-image:url('upload/${proInfo.product_storedfile}')" role="img" aria-label="alt text" style="width:80%;"></div></td> 
 			</c:otherwise>
 		</c:choose>
 		<td style="font-family: Happy; font-size: 20px; margin-left: 10px;">${proInfo.product_name} </td>
@@ -213,8 +213,18 @@
 			</tr>
 			<tr style="border-bottom: solid 1px;">
 				
-				<td rowspan="4"><img src="upload/${reviewInfo.review_storedfile}" alt="이미지"></td>
-				<td>
+				<td rowspan="4" style="width: 30%; padding: 0 0 0 0;">
+					<c:choose>
+						<c:when test="${reviewInfo.review_storedfile == null}">
+							<img src="images/product/${random}.jpg" alt="이미지" style="width:50%;">
+						</c:when>
+						<c:otherwise>
+							<img src="upload/${reviewInfo.review_storedfile}" alt="이미지">
+						</c:otherwise>
+					</c:choose>
+				</td>
+				
+				<td style="padding: 0 0 0 0;">
 <%-- 					<input type="button" value="x" id="delReviewBtn" onclick="delReview(this)" ${naverNickname eq reviewInfo.review_nick?"":"style='display:none'"} /> --%>
 					<c:choose>
 						<c:when test="${naverNickname!=null}">
@@ -231,14 +241,15 @@
 				</td>
 			</tr>
 			<tr>
-				<td>작성자 &#32; &#124; &#32; &#32; ${reviewInfo.review_nick }</td>
+				<td style="padding: 0 0 0 0;">&nbsp;&nbsp;&nbsp;&nbsp;작성자 &nbsp; &#124; &nbsp; &nbsp; ${reviewInfo.review_membernick }</td>
 			</tr>
 			<tr>
-				<td>작성일 &#32; &#124; &#32; &#32; <fmt:formatDate value="${reviewInfo.review_regdate }" pattern="yyyy.MM.dd" /></td>
+				<td style="padding: 0 0 0 0;">&nbsp;&nbsp;&nbsp;&nbsp;작성일 &nbsp; &#124; &nbsp; &nbsp; <fmt:formatDate value="${reviewInfo.review_regdate }" pattern="yyyy.MM.dd" /></td>
 				
 			</tr>
 			<tr>
-				<td>별&#32; &#32;점 &#32; &#124; &#32; &#32; ${proInfo.product_point} <div class="starRev" >
+				<td style="padding: 0 0 0 0;">&nbsp;&nbsp;&nbsp;&nbsp;별&nbsp; &nbsp;점 &nbsp; &#124; &nbsp; &nbsp; ${proInfo.product_point}
+						<div class="starRev" >
 							<span class="starR1">별1_왼쪽</span> <span class="starR2">별1_오른쪽</span>
 							<span class="starR1">별2_왼쪽</span> <span class="starR2">별2_오른쪽</span>
 							<span class="starR1">별3_왼쪽</span> <span class="starR2">별3_오른쪽</span>
@@ -249,7 +260,7 @@
 				</td>
 			</tr>
 			<tr>				
-				<td colspan="2"> ${reviewInfo.review_conts }</td>	
+				<td colspan="2" style="padding: 0 0 0 0;"> ${reviewInfo.review_conts }</td>	
 			</tr>
 <!-- 		</form> -->
 			</table>

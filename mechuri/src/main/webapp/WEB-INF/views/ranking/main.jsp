@@ -82,9 +82,16 @@
 					<div class="inner11 flex11 flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
- 							<img src="upload/${mainrank[0].product_storedfile }" alt="" class="rimg" />
+							<c:choose>
+								<c:when test="${mainrank[0].product_storedfile==null}">
+									<a href="productdetail.do?no=${mainrank[0].product_no}&ingre=${mainrank[0].product_ingre}"><img src="images/product/7.jpg" alt="기초" class="rimg" /></a>
+								</c:when>
+								<c:otherwise>
+									<a href="productdetail.do?no=${mainrank[0].product_no}&ingre=${mainrank[0].product_ingre}"><img src="upload/${mainrank[0].product_storedfile }" alt="기초" class="rimg" /></a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="content">
+						<div class="content rimg">
 							<p>${mainrank[0].product_brand }</p>
 							<h3 style="color:#ffffff;">${mainrank[0].product_name }</h3>
 							<p>${mainrank[0].product_ml }/${mainrank[0].product_price }</p>
@@ -96,9 +103,16 @@
 				<div class="inner11 flex11 flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="upload/${mainrank[1].product_storedfile }" alt="" class="rimg"/>
+							<c:choose>
+								<c:when test="${mainrank[1].product_storedfile==null}">
+									<a href="productdetail.do?no=${mainrank[1].product_no}&ingre=${mainrank[1].product_ingre}"><img src="images/product/10.jpg" alt="베이스" class="rimg" /></a>
+								</c:when>
+								<c:otherwise>
+									<a href="productdetail.do?no=${mainrank[1].product_no}&ingre=${mainrank[1].product_ingre}"><img src="upload/${mainrank[1].product_storedfile }" alt="베이스" class="rimg" /></a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="content">
+						<div class="content rimg">
 							<p>${mainrank[1].product_brand }</p>
 							<h3 style="color:#ffffff;">${mainrank[1].product_name }</h3>
 							<p>${mainrank[1].product_ml }/${mainrank[1].product_price }</p>
@@ -110,9 +124,16 @@
 				<div class="inner11 flex11 flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="upload/${mainrank[2].product_storedfile }" alt="" class="rimg"/>
+							<c:choose>
+								<c:when test="${mainrank[2].product_storedfile==null}">
+									<a href="productdetail.do?no=${mainrank[2].product_no}&ingre=${mainrank[2].product_ingre}"><img src="images/product/6.jpg" alt="클렌징" class="rimg" /></a>
+								</c:when>
+								<c:otherwise>
+									<a href="productdetail.do?no=${mainrank[2].product_no}&ingre=${mainrank[2].product_ingre}"><img src="upload/${mainrank[2].product_storedfile }" alt="클렌징" class="rimg" /></a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="content">
+						<div class="content rimg">
 							<p>${mainrank[2].product_brand }</p>
 							<h3 style="color:#ffffff;">${mainrank[2].product_name }</h3>
 							<p>${mainrank[2].product_ml }/${mainrank[2].product_price }</p>
@@ -124,9 +145,16 @@
 					<div class="inner11 flex11 flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="upload/${mainrank[3].product_storedfile }" alt="" class="rimg"/>
+							<c:choose>
+								<c:when test="${mainrank[3].product_storedfile==null}">
+								<a href="productdetail.do?no=${mainrank[3].product_no}&ingre=${mainrank[3].product_ingre}">	<img src="images/product/3.jpg" alt="색조" class="rimg" /></a>
+								</c:when>
+								<c:otherwise>
+								<a href="productdetail.do?no=${mainrank[3].product_no}&ingre=${mainrank[3].product_ingre}">	<img src="upload/${mainrank[3].product_storedfile }" alt="색조" class="rimg" /></a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="content">
+						<div class="content rimg">
 							<p>${mainrank[3].product_brand }</p>
 							<h3 style="color:#ffffff;">${mainrank[3].product_name }</h3>
 							<p>${mainrank[3].product_ml }/${mainrank[3].product_price }</p>
@@ -139,9 +167,16 @@
 					<div class="inner11 flex12 flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="upload/${mainrank[4].product_storedfile }" alt="" class="rimg"/>
+							<c:choose>
+								<c:when test="${mainrank[4].product_storedfile==null}">
+								<a href="productdetail.do?no=${mainrank[4].product_no}&ingre=${mainrank[4].product_ingre}">	<img src="images/product/1.jpg" alt="선" class="rimg" /></a>
+								</c:when>
+								<c:otherwise>
+								<a href="productdetail.do?no=${mainrank[4].product_no}&ingre=${mainrank[4].product_ingre}">	<img src="upload/${mainrank[4].product_storedfile }" alt="선" class="rimg" /></a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="content">
+						<div class="content rimg">
 							<p>${mainrank[4].product_brand }</p>
 							<h3 style="color:#ffffff;">${mainrank[4].product_name }</h3>
 							<p>${mainrank[4].product_ml }/${mainrank[4].product_price }</p>
@@ -154,9 +189,16 @@
 					<div class="inner11 flex12 flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="upload/${mainrank[5].product_storedfile }" alt="" class="rimg"/>
+							<c:choose>
+								<c:when test="${mainrank[5].product_storedfile==null}">
+							<a href="productdetail.do?no=${mainrank[5].product_no}&ingre=${mainrank[5].product_ingre}">		<img src="images/product/5.jpg" alt="바디" class="rimg" /></a>
+								</c:when>
+								<c:otherwise>
+							<a href="productdetail.do?no=${mainrank[5].product_no}&ingre=${mainrank[5].product_ingre}">		<img src="upload/${mainrank[5].product_storedfile }" alt="바디" class="rimg" /></a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="content">
+						<div class="content rimg">
 							<p>${mainrank[5].product_brand }</p>
 							<h3 style="color:#ffffff;">${mainrank[5].product_name }</h3>
 							<p>${mainrank[5].product_ml }/${mainrank[5].product_price }</p>
@@ -168,9 +210,16 @@
 						<div class="inner11 flex12 flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="upload/${mainrank[6].product_storedfile }" alt="" class="rimg" />
+							<c:choose>
+								<c:when test="${mainrank[6].product_storedfile==null}">
+								<a href="productdetail.do?no=${mainrank[6].product_no}&ingre=${mainrank[6].product_ingre}">	<img src="images/product/8.jpg" alt="맘" class="rimg" /></a>
+								</c:when>
+								<c:otherwise>
+								<a href="productdetail.do?no=${mainrank[6].product_no}&ingre=${mainrank[6].product_ingre}">	<img src="upload/${mainrank[6].product_storedfile }" alt="맘" class="rimg" /></a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="content">
+						<div class="content rimg">
 							<p>${mainrank[6].product_brand }</p>
 							<h3 style="color:#ffffff;">${mainrank[6].product_name }</h3>
 							<p>${mainrank[6].product_ml }/${mainrank[6].product_price }</p>
@@ -182,9 +231,16 @@
 					<div class="inner11 flex12 flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="upload/${mainrank[7].product_storedfile }" alt="" class="rimg" />
+							<c:choose>
+								<c:when test="${mainrank[7].product_storedfile==null}">
+								<a href="productdetail.do?no=${mainrank[7].product_no}&ingre=${mainrank[7].product_ingre}">	<img src="images/product/9.jpg" alt="남성" class="rimg" /></a>
+								</c:when>
+								<c:otherwise>
+								<a href="productdetail.do?no=${mainrank[7].product_no}&ingre=${mainrank[7].product_ingre}">	<img src="upload/${mainrank[7].product_storedfile }" alt="남" class="rimg" /></a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="content">
+						<div class="content rimg">
 							<p>${mainrank[7].product_brand }</p>
 							<h3 style="color:#ffffff;">${mainrank[7].product_name }</h3>
 							<p>${mainrank[7].product_ml }/${mainrank[7].product_price }</p>

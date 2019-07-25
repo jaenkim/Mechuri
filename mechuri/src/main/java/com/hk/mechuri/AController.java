@@ -66,7 +66,7 @@ public class AController {
 		System.out.println("에러위치찾기 1");
 		if(isS) {
 			System.out.println("에러위치찾기 2");
-			return "redirect:main.do";
+			return "redirect:login.do";
 		}else {
 			System.out.println("에러위치찾기 3");
 			model.addAttribute("msg","회원가입 실패");
@@ -127,7 +127,7 @@ public class AController {
 
 		boolean isS=MembersService.compSignUpBoard(dto);
 		if(isS) {
-			return "redirect:main.do";
+			return "redirect:login.do";
 		}else {
 			model.addAttribute("msg","회원가입 실패");
 			return "error";

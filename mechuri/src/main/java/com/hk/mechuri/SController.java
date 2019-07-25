@@ -69,15 +69,16 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		String naverLoginInfo = (String)session.getAttribute("naverEmail");
 		String status = (String)session.getAttribute("mem_status");
 		
-		if(status.equals("C")) {
+		if(status.equals("C")|| status==null) {//기업회원 세션체크
 			return "youcannotwriteboard";
-		}
+		}else{
 		
 		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
 			return "commuError";
 		}else {
 			return "community/boardwrite";
 		}
+	}
 	}
 	
 	
@@ -121,12 +122,12 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		String bPnum = (String)request.getSession().getAttribute("board_pnum");//세션에서 현재페이지 꺼내기
 		String rCount = (String)request.getSession().getAttribute("readcount");//세션에서 카운트  꺼내기
 		
-		if(rCount==null) {
+/*		if(rCount==null) {
 			boardService.readCount(board_no);
 			request.getSession().setAttribute("readcount", board_no+"");
 		} else {
 			
-		}
+		}*/
 		
 		boardDto dto=boardService.getBoard(board_no); //게시글
 		List<replyDto> replylist = boardService.replyDetail(board_no); //해당 게시글의 댓글

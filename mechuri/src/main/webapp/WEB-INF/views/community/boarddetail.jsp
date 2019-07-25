@@ -99,16 +99,17 @@
 <input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
     <div class="col-25">
-      <label for="reply"><input type="text" name="reply_nick" readonly="readonly" 
+      <label for="reply">
+      <input type="text" name="reply_nick" readonly="readonly" 
       value=
-      <c:choose>
-    	<c:when test="${naverNickname eq null}">
-    		${mem_nick}
-    	</c:when>
-  		 <c:otherwise>
-    		${naverNickname}
-    	 </c:otherwise>
-    		</c:choose>
+	   <c:choose>
+	    	<c:when test="${naverNickname eq null}">
+	    		${mem_nick}
+	    	</c:when>
+	  		 <c:otherwise>
+	    		${naverNickname}
+	    	 </c:otherwise>
+	    </c:choose>
     	>
 
       </label>

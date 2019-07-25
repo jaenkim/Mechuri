@@ -165,7 +165,7 @@
 			<div class="form-holder">
 				<br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
-						<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" style="width:70%;display:inline-block; margin-right: 10px;"
+						<input type="password" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" style="width:70%;display:inline-block; margin-right: 10px;"
 							id="tbPwd" class="form-control" style="font-size: 13px;"
 							required="required"> 
 					</div>
