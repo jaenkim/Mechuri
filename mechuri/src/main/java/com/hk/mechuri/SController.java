@@ -227,7 +227,7 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 
 		if(isS) {
 			System.out.println("댓글삭제 if=[");
-			return "redirect:boardDetail.do?board_no="+reply_no;
+			return "redirect:boardlist2.do";
 		} else {
 			System.out.println("댓글삭제 else=[");
 			model.addAttribute("msg","글삭제실패");
