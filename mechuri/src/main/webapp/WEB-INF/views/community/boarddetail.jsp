@@ -149,7 +149,7 @@
 		 </div>   		
 		 <div id="replycon" >${replylist.reply_conts}</div>
 		 <div id="replyregdate"><fmt:formatDate value="${dto.board_regdate}"  pattern="yyyy-MM-dd HH:mm" /></div>
-  	<input type="button" value="댓글삭제" class="button small" onclick="delReply('${reply.board_no}')"> <!-- 댓글삭제버튼이 위의otherwise에들어가면 아예안나옴.. -->
+  	<input type="button" value="댓글삭제" class="button small" onclick="delReply('${reply.reply_no}')"> <!-- 댓글삭제버튼이 위의otherwise에들어가면 아예안나옴.. -->
     </c:forEach>
     </div>
 </div>
@@ -164,8 +164,8 @@
 		location.href="updateForm.do?board_no=${dto.board_no}";
 	}
 	//댓글삭제 이동
-	function delReply(board_no) {
-		location.href="replyDelete.do?board_no=${dto.board_no}"; 
+	function delReply(reply_no) {
+		location.href="replyDelete.do?no="+reply_no ; 
 	}
 	
 </script>

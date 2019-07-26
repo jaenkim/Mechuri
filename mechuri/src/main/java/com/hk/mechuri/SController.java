@@ -214,13 +214,13 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	
 	@RequestMapping(value = "/replyDelete.do") /* 댓글 삭제 */
-	public String replyDelete(HttpSession session,Locale locale, Model model, Integer reply_no) {	
+	public String replyDelete(HttpServletRequest request,HttpSession session,Locale locale, Model model) {	
 		logger.info("상세보기 글 삭제 {}.", locale);	
 		boolean isS;
 		
 		String myLogin = (String)session.getAttribute("mem_name");
 		String myNaverLogin = (String)session.getAttribute("naverEmail");
-		
+		int reply_no=Integer.parseInt(request.getParameter("no"));
 		isS=boardService.delReply(reply_no);
 
 		if(isS) {
