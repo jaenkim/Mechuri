@@ -65,6 +65,7 @@
       
     }
     
+    
   function check(){
 	 
 		if ($("#tbPwd").val() != ($("#cpass").val())) {
