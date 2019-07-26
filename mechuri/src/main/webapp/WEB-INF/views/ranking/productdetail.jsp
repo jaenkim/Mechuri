@@ -218,7 +218,7 @@
 				<td rowspan="4" style="width: 30%; padding: 0 0 0 0;">
 					<c:choose>
 						<c:when test="${reviewInfo.review_storedfile == null}">
-							<img src="images/product/${random}.jpg" alt="이미지" style="width:50%;">
+							
 						</c:when>
 						<c:otherwise>
 							<img src="upload/${reviewInfo.review_storedfile}" alt="이미지">

@@ -319,7 +319,8 @@ VALUES(MSG_SEQ.NEXTVAL, #{msg_title} , #{msg_conts} , SYSDATE, #{msg_receiverno}
 <select id = 'msgList' resultType='msgDto' parameterType="int">
 		SELECT MSG_TITLE, MSG_CONTS, MSG_REGDATE 
 		FROM MSG
-		WHERE (MSG_RECEIVENO = #{mem_no} OR MSG_RECEIVENO = 0)  
+		WHERE (MSG_RECEIVENO = #{mem_no} OR MSG_RECEIVENO = 0) 
+		ORDER BY MSG_REGDATE DESC 
 </select>
 
 <!-- 쪽지 보기(일반회원) 쿼리 -->
@@ -327,6 +328,7 @@ VALUES(MSG_SEQ.NEXTVAL, #{msg_title} , #{msg_conts} , SYSDATE, #{msg_receiverno}
 		SELECT MSG_TITLE, MSG_CONTS, MSG_REGDATE 
 		FROM MSG
 		WHERE ( MSG_RECEIVENO = #{mem_no} OR MSG_RECEIVENO = 1 )
+		ORDER BY MSG_REGDATE DESC  
 </select>
 
  
