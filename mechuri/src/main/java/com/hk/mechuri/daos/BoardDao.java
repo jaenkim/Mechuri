@@ -132,11 +132,11 @@ public class BoardDao implements IBoardDao {
 	}
 
 
-	@Override
+	/*@Override
 	public boolean delReply(int reply_no) {
 		int count=sqlSession.delete(namespace+"delreply",reply_no);
 		return count>0?true:false;
-	}
+	}*/
 
 
 }

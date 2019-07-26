@@ -181,9 +181,9 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </update>
 	
 	
-<select id="delboard" resultType="boardDto" parameterType="int">
+<!-- <select id="delboard" resultType="boardDto" parameterType="int">
 	DELETE FROM BOARD WHERE BOARD_NO=#{board_no}
-</select>
+</select> -->
 
 	<!-- 커뮤니티 첨부파일
  <insert id="insertFileInfo" parameterType='boardDto'>

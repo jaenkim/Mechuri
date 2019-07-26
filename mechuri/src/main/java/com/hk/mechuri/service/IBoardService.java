@@ -34,7 +34,7 @@ public interface IBoardService {
 	
 	public int getPcount();
 
-	public boolean delReply(int reply_no);
+	//public boolean delReply(int reply_no);
 	
 	
 	
