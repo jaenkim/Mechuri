@@ -166,14 +166,14 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </update>
 
 <insert id="replyinsert" parameterType="replyDto">
-INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_nick},#{reply_conts}, 0, NULL, NULL, NULL, NULL )
+	INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_nick},#{reply_conts}, 0, NULL, NULL, NULL, NULL )
 </insert>
 <select id="replylist" resultType="replyDto" parameterType="int">
 	SELECT REPLY_NICK, REPLY_CONTS,REPLY_REGDATE,DECODE(ROUND(SYSDATE-REPLY_REGDATE),0,'true','false') AS REPLY_NEW 
 	FROM REPLY WHERE REPLY_COMMUNO = #{board_no}
 </select>
 <select id="delreply" resultType="replyDto" parameterType="int">
-	DELETE FROM REPLY WHERE REPLY_COMMUNO=#{board_no}
+	DELETE FROM REPLY WHERE REPLY_NO=#{reply_no}
 </select>
 
 <update id="readcount" parameterType="int">
