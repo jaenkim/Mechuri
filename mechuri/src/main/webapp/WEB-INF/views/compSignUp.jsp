@@ -160,8 +160,8 @@
 			
 			<div class="6u$ 12u$(xsmall)" style="width:800px;">
 				<input type="password" placeholder="비밀번호확인" class="form-control" id="cpass"
-					style="font-size: 13px; width:42%;display:inline-block; margin-right: 20px;">
-					<input type="button" value="비밀번호확인"  style="display:inline-block;" onclick="check()">
+					style="font-size: 13px; width:50%;display:inline-block; margin-right: 10px;">
+					<input type="button" value="비밀번호확인"  style="display:inline-block; width:15%; padding:0; font-size: 13px;" onclick="check()">
 					</div>
 			
 		</div>
