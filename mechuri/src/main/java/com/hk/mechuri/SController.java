@@ -213,7 +213,6 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	}
 	
 	
-	
 //	@RequestMapping(value = "/replyDelete.do") /* 댓글 삭제 */
 //	public String replyDelete(HttpServletRequest request,HttpSession session,Locale locale, Model model) {	
 //		logger.info("상세보기 글 삭제 {}.", locale);	
