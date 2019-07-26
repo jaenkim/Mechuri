@@ -53,7 +53,7 @@ public interface IBoardDao {
 	public int getPagecount();
 
 
-	//public boolean delReply(int reply_no);
+	public boolean delReply(int reply_no);
 	
 	
 	

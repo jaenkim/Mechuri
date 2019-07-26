@@ -193,13 +193,14 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	
 	
-	@RequestMapping(value = "/replyboard.do") /*댓글 다는작업*/
+	@RequestMapping(value = "/replyboard.do") /*댓글 다는 작업*/
 	public String replyboard(HttpServletRequest request,Locale locale, Model model, replyDto dto,Integer reply_no,Integer board_no) {	
 		logger.info("답글 추가하기 {}.", locale);
 		
 		dto.setReply_nick(request.getParameter("reply_nick"));
 		dto.setReply_conts(request.getParameter("reply_contents"));
 		dto.setReply_communo(board_no);
+
 	
 		System.out.println("댓글 글번호 컨트롤러 isS위=["+dto.getReply_communo()+"]");
 		boolean isS = boardService.replyBoard(dto);
@@ -213,26 +214,26 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	}
 	
 	
-//	@RequestMapping(value = "/replyDelete.do") /* 댓글 삭제 */
-//	public String replyDelete(HttpServletRequest request,HttpSession session,Locale locale, Model model) {	
-//		logger.info("상세보기 글 삭제 {}.", locale);	
-//		boolean isS;
-//		
-//		String myLogin = (String)session.getAttribute("mem_name");
-//		String myNaverLogin = (String)session.getAttribute("naverEmail");
-//		int reply_no=Integer.parseInt(request.getParameter("no"));
-//		
-//		isS=boardService.delReply(reply_no);
-//
-//		if(isS) {
-//			System.out.println("댓글삭제 if=[");
-//			return "redirect:boardDetail.do?board_no="+reply_no;
-//		} else {
-//			System.out.println("댓글삭제 else=[");
-//			model.addAttribute("msg","글삭제실패");
-//			return "community/boarddetail";
-//		}	
-//	}
+	@RequestMapping(value = "/replyDelete.do") /* 댓글 삭제 */
+	public String replyDelete(HttpServletRequest request,HttpSession session,Locale locale, Model model) {	
+		logger.info("상세보기 글 삭제 {}.", locale);	
+		boolean isS;
+		
+		String myLogin = (String)session.getAttribute("mem_name");
+		String myNaverLogin = (String)session.getAttribute("naverEmail");
+		int reply_no=Integer.parseInt(request.getParameter("reply_no"));
+		
+		isS=boardService.delReply(reply_no);
+
+		if(isS) {
+			System.out.println("댓글삭제 if=[");
+			return "redirect:boardDetail.do?board_no="+reply_no;
+		} else {
+			System.out.println("댓글삭제 else=[");
+			model.addAttribute("msg","글삭제실패");
+			return "community/boarddetail";
+		}	
+	}
 
 	
 	
