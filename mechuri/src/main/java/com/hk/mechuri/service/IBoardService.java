@@ -22,7 +22,7 @@ public interface IBoardService {
 	public boolean delBoard(int board_no);
 	
 	public boolean replyBoard(replyDto dto);
-	public List<replyDto> replyDetail(int board_no);
+	public List<replyDto> replyDetail(int reply_no);
 	
 	public boolean readCount(int board_no);
 	

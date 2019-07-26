@@ -97,9 +97,9 @@ public class BoardDao implements IBoardDao {
 	}
 	
 	@Override
-	public List<replyDto> getReplyList(int bno) {
-		System.out.println("board_no다오=["+bno);
-		return sqlSession.selectList(namespace+"replylist",bno);
+	public List<replyDto> getReplyList(int reply_no) {
+		System.out.println("board_no다오=["+reply_no);
+		return sqlSession.selectList(namespace+"replylist",reply_no);
 	}
 
 	@Override

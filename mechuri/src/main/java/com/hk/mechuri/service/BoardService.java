@@ -121,9 +121,9 @@ public class BoardService implements IBoardService {
 	}
 	
 	@Override
-	public List<replyDto> replyDetail(int board_no) {
-		System.out.println("board_no서비스=["+board_no);
-		return boardDao.getReplyList(board_no);
+	public List<replyDto> replyDetail(int reply_no) {
+		System.out.println("board_no서비스=["+reply_no);
+		return boardDao.getReplyList(reply_no);
 	}
 
 	@Override

@@ -108,7 +108,7 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	
 	@RequestMapping(value = "/boardDetail.do") /*글 상세보기 폼으로 이동*/
-	public String boardDetail(HttpServletRequest request,Locale locale, Model model, Integer board_no,HttpSession session) {	
+	public String boardDetail(HttpServletRequest request,Locale locale, Model model, Integer board_no,HttpSession session, Integer reply_no) {	
 		logger.info("게시글 상세보기 {}.", locale);
 		System.out.println("board_no["+board_no+"]");
 		//String pnum = request.getParameter("pnum");
@@ -130,9 +130,9 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		}*/
 		
 		boardDto dto=boardService.getBoard(board_no); //게시글
-		List<replyDto> replylist = boardService.replyDetail(board_no); //해당 게시글의 댓글
+		List<replyDto> replylist = boardService.replyDetail(reply_no); //해당 게시글의 댓글
 		
-		
+		System.out.println("reply_nick=["+dto.getBoard_nick()+"]");
 		model.addAttribute("dto",dto); //게시글 화면출력
 		model.addAttribute("replylist",replylist); //댓글화면출력
 		
