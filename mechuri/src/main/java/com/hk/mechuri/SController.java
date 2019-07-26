@@ -130,7 +130,7 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		}*/
 		
 		boardDto dto=boardService.getBoard(board_no); //게시글
-		List<replyDto> replylist = boardService.replyDetail(reply_no); //해당 게시글의 댓글
+		List<replyDto> replylist = boardService.replyDetail(board_no); //해당 게시글의 댓글
 		
 		System.out.println("reply_nick=["+dto.getBoard_nick()+"]");
 		model.addAttribute("dto",dto); //게시글 화면출력
