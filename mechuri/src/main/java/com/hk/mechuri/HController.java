@@ -117,7 +117,7 @@ public class HController {
 		boolean isS = addproductService.addProduct(request, dto,session);
 
 		if(isS) {
-			return "redirect:addProductForm.do";
+			return "redirect:ProductList.do";
 		}else {
 			return "error";
 		}
