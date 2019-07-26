@@ -16,8 +16,8 @@ public class msgService {
 	@Autowired
 	private MessageDao msgDao;
 
-	public List<msgDto> getAllList(int mem_no) {
-		return msgDao.getAllList(mem_no);
+	public List<msgDto> getAllList(int mem_no,String mem_status) {
+		return msgDao.getAllList(mem_no,mem_status);
 	}
 	
 
@@ -26,8 +26,8 @@ public class msgService {
 		
 	}
 	
-	public boolean gogomsg(String msg_title, String msg_conts) {
-		return msgDao.gogomsg(msg_title,msg_conts);
+	public boolean gogomsg(String msg_title, String msg_conts,int msg_recevierno) {
+		return msgDao.gogomsg(msg_title,msg_conts,msg_recevierno);
 		
 	}
 	

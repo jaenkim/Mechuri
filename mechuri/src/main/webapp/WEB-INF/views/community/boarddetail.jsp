@@ -96,7 +96,7 @@
 
  
 <div class="container">
- <form action="replyboard.do" method="post">
+ <form action="replyboard.do" method="post" style="height:70px;">
 <input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
     <div class="col-25">
@@ -151,6 +151,7 @@
 		 <div id="replyregdate"><fmt:formatDate value="${replylist.reply_regdate}"  pattern="yyyy-MM-dd HH:mm" /></div>
 		 
 		 <!-- 내 댓글만 삭제버튼 보이게처리 -->
+		 
 	<c:choose>
   		<c:when test="${mem_nick eq replylist.reply_nick }">
   			<input type="button" value="댓글삭제" class="button small" onclick="delReply('${replylist.reply_no}')">
@@ -162,7 +163,7 @@
   			
   		</c:otherwise>
   	</c:choose>	
-		 
+  	
 		 
   <!--	<input type="button" value="댓글삭제" class="button small" onclick="delReply('${replylist.reply_no}')">  댓글삭제버튼이 위의otherwise에들어가면 아예안나옴.. -->
     </c:forEach>
@@ -179,9 +180,9 @@
 		location.href="updateForm.do?board_no=${dto.board_no}";
 	}
 	//댓글삭제 이동
-	function delReply(reply_no) {
-		location.href="replyDelete.do?no="+reply_no ; 
-	}
+	 function delReply(reply_no) {
+		location.href="replyDelete.do?reply_no="+reply_no ; 
+	} 
 	
 </script>
 

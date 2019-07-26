@@ -32,6 +32,16 @@ public class msgDto {
 	}
 
 
+	public msgDto(String msg_title, String msg_conts, int msg_receiverno) {
+		this.msg_title = msg_title;
+		this.msg_conts = msg_conts;
+		this.msg_receiverno = msg_receiverno;
+
+		
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public int getMsg_no() {
 		return msg_no;
 	}

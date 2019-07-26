@@ -181,9 +181,9 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </update>
 	
 	
-<select id="delboard" resultType="boardDto" parameterType="int">
+<!-- <select id="delboard" resultType="boardDto" parameterType="int">
 	DELETE FROM BOARD WHERE BOARD_NO=#{board_no}
-</select>
+</select> -->
 
 	<!-- 커뮤니티 첨부파일
  <insert id="insertFileInfo" parameterType='boardDto'>
@@ -294,15 +294,15 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	
 </insert>
 
-<!-- 쪽지 전체 발송 -->
-<insert id="gogomsg" parameterType="map">
-	<![CDATA[
-		INSERT INTO MSG (MSG_NO, MSG_TITLE, MSG_CONTS, MSG_REGDATE, MSG_RECEIVENO, MSG_RETURNCONTS, MSG_OTHERS01, MSG_OTHER02)
-		VALUES(MSG_SEQ.NEXTVAL, #{msg_title} , #{msg_conts} , SYSDATE , (SELECT MEM_NO FROM MEMBERS WHERE MEM_STATUS='M' ) , NULL, NULL, NULL)	
-	]]>	
-	
-</insert>
 
+<!-- 전체쪽지 발송 -->
+
+<insert id="gogomsg2" parameterType="msgDto">
+
+INSERT INTO MSG(MSG_NO, MSG_TITLE, MSG_CONTS, MSG_REGDATE, MSG_RECEIVENO) 
+VALUES(MSG_SEQ.NEXTVAL, #{msg_title} , #{msg_conts} , SYSDATE, #{msg_receiverno})
+
+</insert>
 
 <!-- 2)제품 수정 승인 쪽지  -->
 
@@ -314,12 +314,19 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 </insert>
 
 
-<!-- 쪽지 리스트 쿼리 -->
+<!-- 쪽지 보기(기업) 쿼리 -->
 
 <select id = 'msgList' resultType='msgDto' parameterType="int">
 		SELECT MSG_TITLE, MSG_CONTS, MSG_REGDATE 
 		FROM MSG
-		WHERE MSG_RECEIVENO = #{mem_no}
+		WHERE (MSG_RECEIVENO = #{mem_no} OR MSG_RECEIVENO = 0)  
+</select>
+
+<!-- 쪽지 보기(일반회원) 쿼리 -->
+<select id = 'msgList2' resultType='msgDto' parameterType="int">
+		SELECT MSG_TITLE, MSG_CONTS, MSG_REGDATE 
+		FROM MSG
+		WHERE ( MSG_RECEIVENO = #{mem_no} OR MSG_RECEIVENO = 1 )
 </select>
 
  
