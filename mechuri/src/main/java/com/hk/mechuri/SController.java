@@ -121,6 +121,7 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		
 		String bPnum = (String)request.getSession().getAttribute("board_pnum");//세션에서 현재페이지 꺼내기
 		String rCount = (String)request.getSession().getAttribute("readcount");//세션에서 카운트  꺼내기
+		 session.setAttribute("board_nono", board_no);
 		
 		if(rCount==null) {
 			boardService.readCount(board_no);
@@ -219,15 +220,15 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		logger.info("상세보기 글 삭제 {}.", locale);	
 		boolean isS;
 		
-		String myLogin = (String)session.getAttribute("mem_name");
-		String myNaverLogin = (String)session.getAttribute("naverEmail");
+	
 		int reply_no=Integer.parseInt(request.getParameter("reply_no"));
-		
+	/*	int del_no = session.setAttribute("", );*/
 		isS=boardService.delReply(reply_no);
-
+		int board_nono=(int)session.getAttribute("board_nono");
 		if(isS) {
 			System.out.println("댓글삭제 if=[");
-			return "redirect:boardlist2.do";
+			
+			return "redirect:boardDetail.do?board_no="+board_nono;
 		} else {
 			System.out.println("댓글삭제 else=[");
 			model.addAttribute("msg","글삭제실패");
