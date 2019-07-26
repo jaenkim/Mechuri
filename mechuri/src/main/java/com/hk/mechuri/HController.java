@@ -144,24 +144,17 @@ public class HController {
 
 
 	@RequestMapping(value = "/approveProduct.do")
-	public String approveProduct(productDto pdto, Locale locale, Model model,HttpServletRequest request) {
+	public String approveProduct(Integer product_no, productDto pdto, Locale locale, Model model,HttpServletRequest request) {
 		logger.info("제품 등록 승인 ing...", locale);
 		
-		pdto.setProduct_name(request.getParameter("product_name"));
-		pdto.setProduct_compno(Integer.parseInt(request.getParameter("product_compno")));
+		pdto  = addproductService.geProduct(product_no);
 		
-		System.out.println("컨트롤러에서 dto.no>>"+pdto.getProduct_no());
-		System.out.println("컨트롤러에서 dto.name>>"+pdto.getProduct_name());
-		System.out.println("컨트롤러에서 dto.compno>>"+pdto.getProduct_compno());
-		
-
-		boolean isS= addproductService.approveProduct(pdto.getProduct_no());
+		boolean isS= addproductService.approveProduct(pdto);
 		if(isS) {
-			boolean msgisS = MsgSerivce.sendMessage2(pdto);
-			if(msgisS) {
-					return "redirect:productadminlist.do";
-			}else {return "error";}
-		}return "error";
+			return "redirect:productadminlist.do";
+		}else {
+			return "error";
+		}
 	}
 
 

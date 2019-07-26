@@ -59,6 +59,11 @@ public class addProductDao {
 		return sqlSession.selectOne(namespace+"geTempinfo",tempinfo_no);
 	}
 	
+	public productDto geProduct(int product_no) { 
+		return sqlSession.selectOne(namespace+"geProduct",product_no);
+	}
+	
+	
 	public boolean approveProduct1(tempinfoDto dto) { //제품 수정 승인
 		int count= sqlSession.update(namespace+"approveProduct1",dto);
 		int count1=0;

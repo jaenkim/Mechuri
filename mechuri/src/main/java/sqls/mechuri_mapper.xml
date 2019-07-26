@@ -424,6 +424,13 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 		WHERE TEMPINFO_NO= #{tempinfo_no} AND TEMPINFO_REGDATE = (SELECT MAX(TEMPINFO_REGDATE) FROM TEMPINFO)
 </select>
 
+<!-- 프로덕트 리스트 가져오기-->
+<select id = 'geProduct' resultType='productDto' parameterType="int">
+		SELECT *  
+		FROM PRODUCT 
+		WHERE PRODUCT_NO= #{product_no} 
+</select>
+
 <!-- product_other01 = 'N'으로 바꿈 (수정신청 여부 알려고) -->
 <update id = 'productOthersN' parameterType="tempinfoDto">
 		UPDATE PRODUCT SET 

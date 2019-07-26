@@ -23,8 +23,6 @@ public class MessageDao {
 	
 		
 	public boolean sendMessage2(productDto pdto) {	//쪽지 추가(제품등록)
-		System.out.println("메시지다오 product_compno>>"+pdto.getProduct_compno());
-		System.out.println("메시지다오 product_name>>"+pdto.getProduct_name());
 		int count=sqlSession.insert(namespace+"sendMessage2",pdto);
 		return count>0?true:false;
 	}

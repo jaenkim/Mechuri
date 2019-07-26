@@ -90,9 +90,17 @@ public class addProductService {
 	}
 	
 	
-	public boolean approveProduct(int product_no) {
+	public boolean approveProduct(productDto pdto) {
 		
-		return addproductDao.approveProduct(product_no);
+		boolean isS=false;
+		
+		isS = addproductDao.approveProduct(pdto.getProduct_no());
+		
+		if(isS==true) {
+			msgDao.sendMessage2(pdto);
+		}
+		return isS;
+		
 	}
 	
 	public productDto getUpdateProductInfo(int product_no) {
@@ -104,6 +112,11 @@ public class addProductService {
 		return addproductDao.geTempinfo(tempinfo_no);
 	}
 	
+	public productDto geProduct(int product_no) {
+		return addproductDao.geProduct(product_no);
+	}
+	
+
 
 	public boolean approveProduct1(tempinfoDto dto) {
 	
@@ -116,6 +129,7 @@ public class addProductService {
 		}
 		return isS;
 	}
+
 
 
 	public boolean productdj(Integer product_no) {
