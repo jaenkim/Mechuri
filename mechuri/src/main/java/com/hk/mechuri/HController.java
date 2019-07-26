@@ -62,7 +62,31 @@ public class HController {
 		return "msg2";
 	}
 
-
+	@RequestMapping(value = "/allmsgsend.do")
+	public String allmsgsend(Locale locale, Model model) {
+		logger.info("관리자 쪽지 발송 폼", locale);
+		return "allmsgsendform";
+	}
+	
+	
+	@RequestMapping(value = "/gogomsg.do")
+	public String gogomsg(Locale locale, Model model,String msg_title, String msg_conts) {
+		logger.info("전체 회원(일반회원)에게 쪽지 발송 ..ing", locale);
+		
+		System.out.println(msg_title);
+		System.out.println(msg_conts);
+		
+		boolean isS= MsgSerivce.gogomsg(msg_title,msg_conts);
+		if(isS) {		
+		return "redirect:allmsgsend.do";
+		}else {
+		
+		return "error";
+		}
+	}
+		
+	
+	
 	@RequestMapping(value = "/addProductForm.do")
 	public String addProductForm(Locale locale, Model model) {
 		logger.info("제품등록신청 폼", locale);
@@ -93,7 +117,7 @@ public class HController {
 		boolean isS = addproductService.addProduct(request, dto,session);
 
 		if(isS) {
-			return "redirect:addProductForm.do";
+			return "redirect:ProductList.do";
 		}else {
 			return "error";
 		}
@@ -120,24 +144,17 @@ public class HController {
 
 
 	@RequestMapping(value = "/approveProduct.do")
-	public String approveProduct(productDto pdto, Locale locale, Model model,HttpServletRequest request) {
+	public String approveProduct(Integer product_no, productDto pdto, Locale locale, Model model,HttpServletRequest request) {
 		logger.info("제품 등록 승인 ing...", locale);
 		
-		pdto.setProduct_name(request.getParameter("product_name"));
-		pdto.setProduct_compno(Integer.parseInt(request.getParameter("product_compno")));
+		pdto  = addproductService.geProduct(product_no);
 		
-		System.out.println("컨트롤러에서 dto.no>>"+pdto.getProduct_no());
-		System.out.println("컨트롤러에서 dto.name>>"+pdto.getProduct_name());
-		System.out.println("컨트롤러에서 dto.compno>>"+pdto.getProduct_compno());
-		
-
-		boolean isS= addproductService.approveProduct(pdto.getProduct_no());
+		boolean isS= addproductService.approveProduct(pdto);
 		if(isS) {
-			boolean msgisS = MsgSerivce.sendMessage2(pdto);
-			if(msgisS) {
-					return "redirect:productadminlist.do";
-			}else {return "error";}
-		}return "error";
+			return "redirect:productadminlist.do";
+		}else {
+			return "error";
+		}
 	}
 
 

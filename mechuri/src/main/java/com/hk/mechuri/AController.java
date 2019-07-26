@@ -66,7 +66,7 @@ public class AController {
 		System.out.println("에러위치찾기 1");
 		if(isS) {
 			System.out.println("에러위치찾기 2");
-			return "redirect:main.do";
+			return "redirect:login.do";
 		}else {
 			System.out.println("에러위치찾기 3");
 			model.addAttribute("msg","회원가입 실패");
@@ -127,7 +127,7 @@ public class AController {
 
 		boolean isS=MembersService.compSignUpBoard(dto);
 		if(isS) {
-			return "redirect:main.do";
+			return "redirect:login.do";
 		}else {
 			model.addAttribute("msg","회원가입 실패");
 			return "error";
@@ -146,8 +146,10 @@ public class AController {
 		int result = random.nextInt(10000)+1000;
 		if(result>10000) {
 			result = result - 1000;
-		}
-		String content = "회원님의 인증 코드는 " + result +" 입니다.";
+		}					
+		String content = "<html><b>회원님의 인증 코드는 " + result +" 입니다.</b>"
+				+"<br>아래 링크를 누르시면 메추리 홈페이지로 이동합니다."
+				+ "<br><a href='http://127.0.0.1:8888/mechuri/main.do'>메추리 홈페이지</a>";
 		ms.mailSend(mem_id, title, content);
 
 		return result;
@@ -206,6 +208,28 @@ public class AController {
 		Map<String, String> resultMap = new HashMap<String, String>();
 		resultMap.put("resultId", id);
 		return resultMap;
+	}
+
+	//비밀번호 찾기 페이지로 이동
+	@RequestMapping(value="/pwFindForm.do",method={RequestMethod.POST, RequestMethod.GET})
+	public String pwFindForm(membersDto dto, Model model) {
+		return "pwFindForm";
+	}
+
+	//비밀번호 찾기(이메일전송)
+	@RequestMapping(value="/pwFind.do",method=RequestMethod.POST)
+	public String pwFind(membersDto dto) 
+	{
+		boolean isS = MembersService.pwFind(dto);
+
+		if(isS)
+		{
+			return "login";
+		}
+		else
+		{
+			return "error";
+		}
 	}
 
 }		

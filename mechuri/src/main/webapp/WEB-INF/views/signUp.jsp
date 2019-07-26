@@ -37,13 +37,13 @@
 			return;
 		}
 		if ($("#tbPwd").val() != ($("#cpass").val())) {
-			alert("비밀번호가 틀렸습니다. 다시 입력해 주세요");
+			alert("비밀번호가 다릅니다. 다시 입력해 주세요");
 			$("#tbPwd").val("");
 			$("#cpass").val("");
 			$("#tbPwd").focus();
 
 		} else {
-			alert("비밀번호가 맞습니다. 가입을 진행해주세요");
+			alert("비밀번호가 일치합니다. 가입을 진행해주세요");
 		}
 		return;
 	}
@@ -133,7 +133,11 @@
 		<div style="width:800px; margin: 0 auto;">
 			<div class="form-holder">
 <!-- 				<center> -->
+<<<<<<< HEAD
 					<h2>일반회원 가입</h2><a href="compSignUp.do">기업회원 가입 바로가기</a>
+=======
+					<h2>일반회원 가입</h2><a href="compSignUp.do">기업 회원 가입이라면</a>
+>>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
 					<br><br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="email" placeholder="ex)aaa@gmail.com" name="mem_id"
@@ -153,10 +157,11 @@
 				<br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="text" id="insrt" placeholder="인증번호를 입력해주세요." style="width:70%;display:inline-block; margin-right: 10px;"
-							style="font-size: 13px;" required="required"> 							<input type="hidden" id="hid" />
+							style="font-size: 13px;" required="required"> 							
+							<input type="hidden" id="hid" />
 														<input type="hidden" id="hid" />
 							
-						<input type="button" class="btn-success" id="btn" disabled="disabled" style="display:inline-block;"
+						<input type="button" class="btn-success" id="btn" disabled="disabled" style="display:inline-block; width:21%"
 							onclick="keyChk()" value="인증">
 					</div>
 				
@@ -165,7 +170,7 @@
 			<div class="form-holder">
 				<br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
-						<input type="text" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" style="width:70%;display:inline-block; margin-right: 10px;"
+						<input type="password" placeholder="비밀번호(영문+숫자,4-12글자)" name="mem_pw" style="width:70%;display:inline-block; margin-right: 10px;"
 							id="tbPwd" class="form-control" style="font-size: 13px;"
 							required="required"> 
 					</div>
@@ -176,7 +181,7 @@
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="password" placeholder="비밀번호 확인" class="form-control" style="width:70%;display:inline-block; margin-right: 10px;"
 							id="cpass" style="font-size: 13px;" required="required">
-							<input type="button" value="비밀번호확인"  style="display:inline-block;" onclick="checkz()">
+							<input type="button" value="비밀번호확인"  style="display:inline-block; width:21%; padding:0" onclick="checkz()">
 					</div>
 				
 
@@ -203,14 +208,15 @@
 				<br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="text" placeholder="핸드폰" name="mem_phone" style="width:70%;display:inline-block; margin-right: 10px;
-							class="form-control" style="font-size: 153x;" required="required">
+							class="form-control" style="font-size: 13px;" required="required">
 					</div>
 				
 			</div>
 			<div class="checkbox"></div>
 
 				<br>
-				<button input type="submit" id="sbmd" style=font-color:white;>회원가입하기</button>
+				<div class="6u$ 12u$(xsmall)">
+				<button input type="submit" id="sbmd" style="font-color:white;font-size: 15px;">회원가입하기</button>
 		
 	</div>
 	</form>

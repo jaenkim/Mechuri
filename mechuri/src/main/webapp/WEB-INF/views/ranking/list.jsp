@@ -10,9 +10,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="assets/css/style.main2.css">
+
 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/css/listSideNav.css">
+<link rel="stylesheet" href="assets/css/style.main2.css">
 <!-- <link rel="stylesheet" href="assets/css/starRating.css"> -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean" rel="stylesheet">
 <script src="assets/js/rankSorting.js"></script>
@@ -128,10 +129,10 @@ function skinChekAll(){
 	<div>
 	
 	</div>
-	<button onclick="sortTD (0)">▲</button><button onclick="reverseTD (0)">▼</button>
-	<button onclick="sortTD ( 1 )">▲</button><button onclick="reverseTD ( 1 )">▼</button>
-	<button onclick="sortTD ( 2 )">▲</button><button onclick="reverseTD ( 2 )">▼</button>
-	<button onclick="sortTD ( 3 )">▲</button><button onclick="reverseTD ( 3 )">▼</button>
+<!-- 	<button onclick="sortTD (0)">▲</button><button onclick="reverseTD (0)">▼</button> -->
+<!-- 	<button onclick="sortTD ( 1 )">▲</button><button onclick="reverseTD ( 1 )">▼</button> -->
+<!-- 	<button onclick="sortTD ( 2 )">▲</button><button onclick="reverseTD ( 2 )">▼</button> -->
+<!-- 	<button onclick="sortTD ( 3 )">▲</button><button onclick="reverseTD ( 3 )">▼</button> -->
 	
 	<table border='1' id="rankingTable">
 <!-- 	<thead> -->
@@ -146,14 +147,14 @@ function skinChekAll(){
   	
 		<c:forEach items="${list}" var="dto">
 		<tbody>
-			<tr style="height: 10px;">
-				<td rowspan="3" style="text-align: center; font-family: Happy; font-size: 20px;">${dto.product_rank}</td>
-				<td rowspan="3" style="width: 20%;text-align: center; "><img src="images/productThumb/2.jpg" style="width:120px; text-align: center;" alt="제품 이미지"></td>
-				<td colspan="4">${dto.product_brand}</td>
+			<tr style="height: 10px; border-bottom-width: 0px;">
+				<td rowspan="3" style="text-align: center; font-family: Happy; font-size: 20px; background-color: #ffffff; border-width: 0px;">${dto.product_rank}</td>
+				<td rowspan="3" style="width: 20%;text-align: center; background-color: #ffffff; border-width: 0px;"><img src="images/product/${random}.jpg" style="width:120px; text-align: center;" alt="제품 이미지"></td>
+				<td colspan="4" style="background-color: #ffffff; border-width: 0px;">${dto.product_brand}</td>
 			</tr>
-			<tr>
-				<td style="width: 45%;"><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name}</a></td>
-				<td rowspan="2" style="width:	5%;">
+			<tr style="border-width: 0px;">
+				<td style="width: 45%; background-color: #ffffff; border-width: 0px;"><a href="productdetail.do?no=${dto.product_no}&ingre=${dto.product_ingre}">${dto.product_name}</a></td>
+				<td rowspan="2" style="width:	5%; background-color: #ffffff; border-width: 0px;">
 					<c:choose>
 						<c:when test="${dto.product_pointcount == 0}">
 							평점 없음
@@ -164,7 +165,7 @@ function skinChekAll(){
 					</c:choose>
 				</td>
 <%-- 				<td rowspan="2" style="width: 13%;"><img style="width:100px;" src="images/productPoint/<fmt:formatNumber value='${dto.product_point}' pattern='.0' />.png"></td>  --%>
-				<td rowspan="2" style="width: 19%;">
+				<td rowspan="2" style="width: 19%; background-color: #ffffff; border-width: 0px;">
 						<input type="hidden" name="review_class_seq" value="">
 						<input type="hidden" name="review_rating" >
 						<!-- 별모양 -->
@@ -181,8 +182,8 @@ function skinChekAll(){
 				</td>
 				<td rowspan="2" style="width: 6%;">(${dto.product_pointcount })</td>
 			</tr>
-			<tr>
-				<td>${dto.product_price } / ${dto.product_ml }</td>
+			<tr style="border-width: 0px;">
+				<td style="background-color: #ffffff; border-width: 0px;">${dto.product_price } / ${dto.product_ml }</td>
 			</tr>
 			</tbody>
 		</c:forEach>

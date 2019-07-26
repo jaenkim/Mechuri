@@ -87,4 +87,7 @@
 		com.hk.ansboard.service.*Service.*Board(..))" id="serviceTransaction" /> 
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceTransaction" /> </aop:config> -->
 
+
+	
+
 </beans>

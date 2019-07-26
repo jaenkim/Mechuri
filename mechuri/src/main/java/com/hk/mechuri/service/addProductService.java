@@ -59,7 +59,8 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
+		//File f=new File("C:/SRC1/mechurizeze/src/main/webapp/upload/"+product_storedfile);
+		File f=new File("C:/Users/alfk0/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile); //은영학원컴 깃에있는 경로
 		try { 
 			multiFile.transferTo(f);
 	
@@ -89,9 +90,17 @@ public class addProductService {
 	}
 	
 	
-	public boolean approveProduct(int product_no) {
+	public boolean approveProduct(productDto pdto) {
 		
-		return addproductDao.approveProduct(product_no);
+		boolean isS=false;
+		
+		isS = addproductDao.approveProduct(pdto.getProduct_no());
+		
+		if(isS==true) {
+			msgDao.sendMessage2(pdto);
+		}
+		return isS;
+		
 	}
 	
 	public productDto getUpdateProductInfo(int product_no) {
@@ -103,6 +112,11 @@ public class addProductService {
 		return addproductDao.geTempinfo(tempinfo_no);
 	}
 	
+	public productDto geProduct(int product_no) {
+		return addproductDao.geProduct(product_no);
+	}
+	
+
 
 	public boolean approveProduct1(tempinfoDto dto) {
 	
@@ -115,6 +129,7 @@ public class addProductService {
 		}
 		return isS;
 	}
+
 
 
 	public boolean productdj(Integer product_no) {
@@ -141,7 +156,8 @@ public class addProductService {
 		String creatUUID = UUID.randomUUID().toString().replaceAll("-", "");
 		String product_storedfile=creatUUID+product_originfile.substring(product_originfile.lastIndexOf("."));
 		int product_filesize=(int)multiFile.getSize();
-		File f=new File("C:/Users/hwangsh/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
+		//File f=new File("C:/SRC1/mechurizeze/src/main/webapp/upload/"+product_storedfile);
+		File f=new File("C:/Users/alfk0/git/Mechuri/mechuri/src/main/webapp/upload/"+product_storedfile);
 		try {
 			multiFile.transferTo(f);
 			dto.setTempinfo_originfile(product_originfile);
@@ -168,6 +184,15 @@ public class addProductService {
 	
 	public List<replyDto> myreplylist(String mem_nick) {
 		return addproductDao.myreplylist(mem_nick);
+	}
+
+
+	public List<boardDto> mainCommuList() {
+		return addproductDao.mainCommuList();
+	}
+	
+	public List<productDto> mainRankList() {
+		return addproductDao.mainRankList();
 	}
 }
 

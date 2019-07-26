@@ -179,8 +179,9 @@
    <nav id="menu">
                <ul class="links">
                <li><a href="userManage.do">일반회원 목록보기</a></li>
-               <li><a href="comUserManage.do">기업회원 목록보기</a></li>
-               <li><a href="productadminlist.do">제품등록 수정 승인</a></li>
+               <li><a href="comUserManage.do">기업회원 가입승인/목록보기</a></li>
+               <li><a href="productadminlist.do">제품등록/수정 승인</a></li>
+               <li><a href="allmsgsend.do">쪽지 발송</a></li>    
                </ul>
             <ul class="actions vertical">
                <li><a href="#" class="button fit">Login</a></li>

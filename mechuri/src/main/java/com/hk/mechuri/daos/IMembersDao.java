@@ -31,8 +31,7 @@ public interface IMembersDao {
 
 	public String memIdSearch(Map<String, String> map);
 
-
+	public membersDto pwSearch(membersDto dto);
 	
-
-
+	public int updatePw(membersDto dto);
 }

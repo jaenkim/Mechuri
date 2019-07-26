@@ -62,6 +62,22 @@
             }
         }).open();
     }
+    
+  function check(){
+	 
+		if ($("#tbPwd").val() != ($("#cpass").val())) {
+			alert("비밀번호가 다릅니다. 다시 입력해 주세요");
+			$("#tbPwd").val("");
+			$("#cpass").val("");
+			$("#tbPwd").focus();
+
+		} else {
+			alert("비밀번호가 일치합니다. 가입을 진행해주세요");
+		}
+		return;
+	}
+ 
+    
 </script>
 
 
@@ -134,7 +150,7 @@
 		<div class="form-holder" >
 			
 			<div class="6u$ 12u$(xsmall)" style="width:800px;">
-				<input type="password" placeholder="비밀번호" name="mem_pw"
+				<input type="password" placeholder="비밀번호" name="mem_pw" id="tbPwd"
 					class="form-control" style="font-size: 13px; width:70%;display:inline-block; margin-right: 10px;">
 			</div>
 			
@@ -143,8 +159,9 @@
 		<div class="form-holder">
 			
 			<div class="6u$ 12u$(xsmall)" style="width:800px;">
-				<input type="password" placeholder="비밀번호확인" class="form-control"
-					style="font-size: 13px; width:70%;display:inline-block; margin-right: 10px;">
+				<input type="password" placeholder="비밀번호확인" class="form-control" id="cpass"
+					style="font-size: 13px; width:50%;display:inline-block; margin-right: 10px;">
+					<input type="button" value="비밀번호확인"  style="display:inline-block; width:15%; padding:0; font-size: 13px;" onclick="check()">
 					</div>
 			
 		</div>

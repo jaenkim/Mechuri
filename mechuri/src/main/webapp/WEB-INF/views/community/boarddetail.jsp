@@ -37,7 +37,7 @@
       <label for="img" style="margin:10% 0% 0% 40%;">사진</label>
     </div>
     <div class="col-75">
-      <div style="background-image:url('upload/${dto.board_storedfile}'); background-size:200px;  background-repeat:no-repeat; width:100px; height:100px; "  role="img"></div>
+      <div style="background-image:url('upload/${dto.board_storedfile}'); background-size:200px;  background-repeat:no-repeat; width:300px; height:300px; "  role="img"></div>
     </div>
   </div>
 
@@ -93,22 +93,24 @@
 </div>
 
 <!-- 여기부터 댓글 -->
- <form action="replyboard.do" method="post">
+
  
 <div class="container">
+ <form action="replyboard.do" method="post">
 <input type="hidden" name="board_no" value="${dto.board_no}" />
   <div class="row">
     <div class="col-25">
-      <label for="reply"><input type="text" name="reply_nick" readonly="readonly" 
+      <label for="reply">
+      <input type="text" name="reply_nick" readonly="readonly" 
       value=
-      <c:choose>
-    	<c:when test="${naverNickname eq null}">
-    		${mem_nick}
-    	</c:when>
-  		 <c:otherwise>
-    		${naverNickname}
-    	 </c:otherwise>
-    		</c:choose>
+	   <c:choose>
+	    	<c:when test="${naverNickname eq null}">
+	    		${mem_nick}
+	    	</c:when>
+	  		 <c:otherwise>
+	    		${naverNickname}
+	    	 </c:otherwise>
+	    </c:choose>
     	>
 
       </label>
@@ -116,7 +118,7 @@
 
     <div class="col-75">
     	<div id="reply1">
-      <input type="text" id="reply" name="reply_contents" required="required" placeholder="댓글을 작성해 주세요" style="width:85%"; />
+      <input type="text" id="reply" name="reply_contents" required="required" placeholder="댓글을 작성해 주세요" style="width:85%;" />
       </div>
       <div id="replybtn1">
       <input type="submit" id="replybtn" value="작성"  />
@@ -124,52 +126,33 @@
     </div>
   </div>
   <br><br>
-   
-  
-  
-  <div>
-  <c:forEach items="${replylist}" var="replylist">
-   	 <div id="replyconts">
-   	 
-   	 
-   	
-   	 <c:choose>
-   	 	<c:when test="${replylist.reply_new eq 'true' }"> 
-   	 	
-    		<div id="replynick"><img src="${pageContext.request.contextPath}/images/new2.png" style="max-width:10%; height:auto;" />
-    		
-    		
-    		</div>
-    		<div id="replycon" >${replylist.reply_conts}</div>
-    		<div id="replyregdate"><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년 MM월 dd일" /></div>
-   		 
-    
-    	</c:when>
-    	<c:otherwise> 
-            <div id="replynick">${replylist.reply_nick}</div>
-    		<div id="replycon">${replylist.reply_conts}</div>
-    		<div id="replyregdate"><fmt:formatDate value="${replylist.reply_regdate}" pattern="yyyy-MM-dd HH:mm" /></div>
-    		<span><input type="button" value="댓글삭제" onclick="delReply('${reply.board_no}')"></span>
-        </c:otherwise> 
-    </c:choose>
-
-  	<input type="button" value="댓글삭제" onclick="delReply('${reply.board_no}')"> <!-- 댓글삭제버튼이 위의otherwise에들어가면 아예안나옴.. -->
-  
-  			
-  	
- 
-    
-    
-    </div>
-    </c:forEach>
-
-    
-  </div>
-  
-  
-</div>
 </form>
 
+   
+  
+ <!--  댓글 출력되는 곳 -->
+
+  <div>
+  <c:forEach items="${replylist}" var="replylist">
+        
+		 <div id="replynick">
+			<c:choose>
+		   	 	<c:when test="${replylist.reply_new eq 'true'}"> 			
+		    		<div id="replynick"><img src="${pageContext.request.contextPath }/images/new2.png" value="${replylist.reply_nick}" style="max-width:50%; height:auto;" /></div>
+		    	</c:when>	
+		    	<c:otherwise>
+		    	
+		    	</c:otherwise>		
+			</c:choose>
+			${replylist.reply_nick}
+						
+		 </div>   		
+		 <div id="replycon" >${replylist.reply_conts}</div>
+		 <div id="replyregdate"><fmt:formatDate value="${dto.board_regdate}"  pattern="yyyy-MM-dd HH:mm" /></div>
+  	<input type="button" value="댓글삭제" class="button small" onclick="delReply('${reply.reply_no}')"> <!-- 댓글삭제버튼이 위의otherwise에들어가면 아예안나옴.. -->
+    </c:forEach>
+    </div>
+</div>
 
 <script type="text/javascript">
 	//글 삭제하기 
@@ -181,8 +164,8 @@
 		location.href="updateForm.do?board_no=${dto.board_no}";
 	}
 	//댓글삭제 이동
-	function delReply(board_no) {
-		location.href="replyDelete.do?board_no=${dto.board_no}"; 
+	function delReply(reply_no) {
+		location.href="replyDelete.do?no="+reply_no ; 
 	}
 	
 </script>

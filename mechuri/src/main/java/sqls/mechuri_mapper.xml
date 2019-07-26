@@ -17,6 +17,17 @@ WHERE PRODUCT_FLAG='Y' AND PRODUCT_DJFLAG IS NULL
 ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </select>
 
+<select id='brandlist' resultType='productDto' parameterType="String">
+SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,PRODUCT_PRICE,
+ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),3) AS PRODUCT_POINT,
+ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),1) AS PRODUCT_POINT2,
+(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
+DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
+FROM PRODUCT
+WHERE PRODUCT_FLAG='Y' AND PRODUCT_DJFLAG IS NULL AND PRODUCT_BRAND=#{product_brand}
+ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
+</select>
+
 <!-- 필터 적용하는 쿼리 -->
 <select id="doFilter" resultType="productDto" parameterType="Map">
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_AGE,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_INGRE,
@@ -53,7 +64,7 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 <!-- 제품 상세페이지 보기 -->
 <select id="productDetail" resultType="productDto" parameterType="int">
 	SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_BRAND,PRODUCT_ML,PRODUCT_PRICE,PRODUCT_CONTS,PRODUCT_BRAND,PRODUCT_COMPNO,PRODUCT_CATELNAME,PRODUCT_CATESNAME,
-	PRODUCT_SKINTYPE,PRODUCT_AGE,PRODUCT_GENDER,PRODUCT_INGRE,PRODUCT_FLAG,
+	PRODUCT_SKINTYPE,PRODUCT_AGE,PRODUCT_GENDER,PRODUCT_INGRE,PRODUCT_FLAG,PRODUCT_STOREDFILE,
 	ROUND((SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO),2) AS PRODUCT_POINT,
 	(SELECT COUNT(*) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) AS PRODUCT_POINTCOUNT,
 	DENSE_RANK() OVER(ORDER BY (SELECT AVG(REVIEW_POINT) FROM REVIEW WHERE REVIEW.REVIEW_PRODUCTNO=PRODUCT.PRODUCT_NO) DESC NULLS LAST) AS PRODUCT_RANK
@@ -76,6 +87,7 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 	REVIEW_POINT,REVIEW_REGDATE,REVIEW_STOREDFILE 
 	FROM REVIEW
 	WHERE REVIEW_PRODUCTNO = #{product_no}
+	ORDER BY REVIEW_NO ASC
 </select>
 <!-- 상세페이지 제품의 성분보기 -->
 <select id="productIngre" resultType="ingreDto" parameterType="Map">
@@ -154,14 +166,14 @@ ORDER BY PRODUCT_POINT DESC NULLS LAST, PRODUCT_NAME ASC
 </update>
 
 <insert id="replyinsert" parameterType="replyDto">
-INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_nick},#{reply_conts}, 0, NULL, NULL, NULL, NULL )
+	INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_nick},#{reply_conts}, 0, NULL, NULL, NULL, NULL )
 </insert>
 <select id="replylist" resultType="replyDto" parameterType="int">
-	SELECT REPLY_NICK, REPLY_CONTS,REPLY_REGDATE,DECODE(ROUND(SYSDATE-REPLY_REGDATE),0,'true','false') AS REPLY_NEW 
+	SELECT REPLY_NO,REPLY_NICK, REPLY_CONTS,REPLY_REGDATE,DECODE(ROUND(SYSDATE-REPLY_REGDATE),0,'true','false') AS REPLY_NEW 
 	FROM REPLY WHERE REPLY_COMMUNO = #{board_no}
 </select>
 <select id="delreply" resultType="replyDto" parameterType="int">
-	DELETE FROM REPLY WHERE REPLY_COMMUNO=#{board_no}
+	DELETE FROM REPLY WHERE REPLY_NO=#{reply_no}
 </select>
 
 <update id="readcount" parameterType="int">
@@ -195,10 +207,11 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_n
 		SELECT PRODUCT_NO, PRODUCT_NAME, PRODUCT_BRAND, PRODUCT_CATELNAME, PRODUCT_CATESNAME, PRODUCT_PRICE
 			FROM (
 			SELECT PRODUCT_NO, PRODUCT_NAME, PRODUCT_BRAND, PRODUCT_CATELNAME, PRODUCT_CATESNAME, PRODUCT_PRICE, ROW_NUMBER() OVER(ORDER BY PRODUCT_NO DESC) AS rNum
-			FROM PRODUCT
+			FROM PRODUCT 
 				<include refid="search"></include>
 			)
-			WHERE rNum BETWEEN #{rowStart} and #{rowEnd} ORDER BY PRODUCT_NO DESC
+			WHERE rNum BETWEEN #{rowStart} and #{rowEnd}
+			ORDER BY PRODUCT_NO DESC
 </select>
 
 <sql id="search">
@@ -229,7 +242,7 @@ INSERT INTO REPLY VALUES(REPLY_SEQ.NEXTVAL, #{reply_communo}, SYSDATE, #{reply_n
 	INSERT INTO MEMBERS(MEM_NO,MEM_ID,MEM_PW,MEM_STATUS,MEM_BRAND,MEM_NAME,MEM_NICK,MEM_PHONE,MEM_EMAIL,
 MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,MEM_HOMEPAGE)
 	VALUES(MEMBERS_SEQ.NEXTVAL,#{mem_id},#{mem_pw},'C',#{mem_brand},#{mem_name},'닉',#{mem_phone},#{mem_email},#{mem_post},#{mem_addr1},#{mem_addr2},
-	SYSDATE,SYSDATE,'N','N',#{mem_homepage})
+	SYSDATE,NULL,'N','N',#{mem_homepage})
 </insert>
 
 <select id="login_check" resultType="String" parameterType="membersDto">
@@ -258,6 +271,17 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
   		WHERE MEM_NAME = #{mem_name} AND MEM_PHONE = #{mem_phone}
 	</select>
 
+<!-- 비밀번호 찾기 -->
+	<select id="findpwForm" resultType="membersDto" parameterType="membersDto">
+		SELECT MEM_PW FROM MEMBERS WHERE
+		MEM_ID=#{mem_id} and MEM_NAME=#{mem_name}
+	</select>
+
+<!-- 비밀번호 변경 -->	
+	<update id="updatePw" parameterType="membersDto">
+		UPDATE MEMBERS SET MEM_PW=#{mem_pw} WHERE MEM_ID=#{mem_id} AND MEM_NAME=#{mem_name}
+	</update>
+	
 
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 시작 -->
 <!-- 쪽지 보내기 쿼리 -->
@@ -268,6 +292,16 @@ MEM_POST,MEM_ADDR1,MEM_ADDR2,MEM_REGDATE,MEM_DELDATE,MEM_DELFLAG,MEM_APPRFLAG,ME
 	]]>	
 	
 </insert>
+
+<!-- 쪽지 전체 발송 -->
+<insert id="gogomsg" parameterType="map">
+	<![CDATA[
+		INSERT INTO MSG (MSG_NO, MSG_TITLE, MSG_CONTS, MSG_REGDATE, MSG_RECEIVENO, MSG_RETURNCONTS, MSG_OTHERS01, MSG_OTHER02)
+		VALUES(MSG_SEQ.NEXTVAL, #{msg_title} , #{msg_conts} , SYSDATE , (SELECT MEM_NO FROM MEMBERS WHERE MEM_STATUS='M' ) , NULL, NULL, NULL)	
+	]]>	
+	
+</insert>
+
 
 <!-- 2)제품 수정 승인 쪽지  -->
 
@@ -390,6 +424,13 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 		WHERE TEMPINFO_NO= #{tempinfo_no} AND TEMPINFO_REGDATE = (SELECT MAX(TEMPINFO_REGDATE) FROM TEMPINFO)
 </select>
 
+<!-- 프로덕트 리스트 가져오기-->
+<select id = 'geProduct' resultType='productDto' parameterType="int">
+		SELECT *  
+		FROM PRODUCT 
+		WHERE PRODUCT_NO= #{product_no} 
+</select>
+
 <!-- product_other01 = 'N'으로 바꿈 (수정신청 여부 알려고) -->
 <update id = 'productOthersN' parameterType="tempinfoDto">
 		UPDATE PRODUCT SET 
@@ -488,6 +529,26 @@ VALUES(PRODUCT_SEQ.nextval, #{product_name}, #{product_ml}, #{product_price}, #{
 		FROM REPLY  
 		WHERE REPLY_NICK= #{mem_nick} 
 </select>
+
+<!-- 메인페이지 커뮤니티 조회수 높은 순으로 4개 가져오기 -->
+<select id = 'mainCommuList' resultType='boardDto'>
+	<![CDATA[
+	SELECT * 
+	FROM (SELECT * FROM BOARD ORDER BY BOARD_COUNT DESC) 
+	WHERE ROWNUM <= 4 
+	]]>
+</select>
+
+<!-- 메인페이지 랭킹 제품 대분류별 랭킹 1위 상품 가져오기 -->
+<select id = 'mainRankList' resultType='productDto'>
+<![CDATA[
+SELECT *
+FROM (SELECT PRODUCT_ML, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_STOREDFILE, PRODUCT_NAME, PRODUCT_NO, PRODUCT_INGRE, PRODUCT_POINT, PRODUCT_CATELNAME, 
+      ROW_NUMBER() OVER (PARTITION BY PRODUCT_CATELNAME ORDER BY PRODUCT_POINT DESC) as ranking FROM PRODUCT) a
+WHERE a.ranking <= 1
+]]>
+</select>
+
 <!-- 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 황승희 끝 -->
 
 

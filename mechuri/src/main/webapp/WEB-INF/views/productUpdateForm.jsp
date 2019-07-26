@@ -31,7 +31,14 @@
 </c:choose>
 <br><br>
 
+	<c:choose>
+	<c:when test="${dto.product_storedfile==null }">
+	<img src="images/product/7.jpg" alt="기초"/>
+	</c:when>
+	<c:otherwise>
 	<img src="upload/${dto.product_storedfile} "/>
+	</c:otherwise>
+	</c:choose>
 	<br><br>
   <label for="filename">제품사진:     </label>
         <input type="file" id="filename" name="filename" onchange="javascript:document.getElementById('file_route').value=this.value">

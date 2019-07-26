@@ -25,11 +25,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.hk.mechuri.dtos.boardDto;
 import com.hk.mechuri.dtos.filterDto;
 import com.hk.mechuri.dtos.ingreDto;
 import com.hk.mechuri.dtos.productDto;
 import com.hk.mechuri.dtos.reviewDto;
 import com.hk.mechuri.service.RankService;
+import com.hk.mechuri.service.addProductService;
 import com.hk.mechuri.service.iRankService;
 
 import javafx.scene.control.Alert;
@@ -43,11 +45,20 @@ public class HomeController {
 	private iRankService rankService;
 
 
+	@Autowired
+	private addProductService productservice;
+
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String main(Locale locale, Model model,HttpSession session) {
 
 		//가장 리뷰점수가 높은 제품 출력(catelname 별 1개씩)
+		List<productDto> mainrank=productservice.mainRankList();
+		model.addAttribute("mainrank",mainrank);
+
 		//가장 조회수가 놓은 커뮤니티의 글 4개 출력
+		List<boardDto> commu=productservice.mainCommuList();
+		model.addAttribute("commu",commu);
+
 		return "ranking/main";
 	}
 
@@ -59,7 +70,10 @@ public class HomeController {
 		if(command == null) {
 			List<productDto> list = rankService.getAllProductList();
 			model.addAttribute("list",list);
-
+			int random = (int)(Math.random()*10)+1;
+			System.out.println("random"+random);
+			model.addAttribute("random", random+"");
+			
 			return "ranking/list";
 
 		}else if(command.equals("filter")) {
@@ -87,6 +101,10 @@ public class HomeController {
 			List<productDto>list2 = rankService.setFilterProductList(ages==null?tempAge:ages,genders==null?tempGender:genders,skins==null?tempSkin:skins,catelname,catesname);	
 			model.addAttribute("list",list2);
 
+			int random = (int)(Math.random()*10)+1;
+			System.out.println("random"+random);
+			model.addAttribute("random", random+"");
+			
 			return "ranking/list";
 			
 		}
@@ -124,6 +142,9 @@ public class HomeController {
 		model.addAttribute("callbackReview", product_ingre);
 		System.out.println("오류 위치 찾기 cccccc");
 		
+		int random = (int)(Math.random()*10)+1;
+		model.addAttribute("random", random);
+		
 		return "ranking/productdetail";
 	}
 		
@@ -134,31 +155,38 @@ public class HomeController {
 			//세션 체크
 			String loginInfo = (String)session.getAttribute("mem_name");
 			String naverLoginInfo = (String)session.getAttribute("naverEmail");
+			String status = (String)session.getAttribute("mem_status");
 			
-			if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
-				return "doLogin";
-			}else {
-					
-				int pNo = Integer.parseInt(request.getParameter("pNo")); 
-				String callbackIngre = request.getParameter("ingre");
-				productDto reviewProduct = rankService.getOneProductInfo(pNo);
-				
-				if(session.getAttribute("naverNickname")!=null) {
-					String reviewNick = (String) session.getAttribute("naverNickname");
-					model.addAttribute("writer", reviewNick);
-					System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(네이버로그인) : ["+reviewNick+"]");
-				}else if(session.getAttribute("mem_nick")!=null) {
-					String reviewNick = (String) session.getAttribute("mem_nick");
-					model.addAttribute("writer", reviewNick);
-					System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(일반회원로그인) : ["+reviewNick+"]");
+			if(status.equals("C")|| status==null) {//기업회원 세션체크
+				return "youcannotwritereview";
+			}else{
+				if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
+					return "doLogin";
 				}else {
-					System.out.println("세션이 없음");
-					return "login";
-				}
-				model.addAttribute("product", reviewProduct);
-				model.addAttribute("callbackIngre", callbackIngre);
-				return "review/insertReview";
-				}
+						
+					int pNo = Integer.parseInt(request.getParameter("pNo")); 
+					String callbackIngre = request.getParameter("ingre");
+					productDto reviewProduct = rankService.getOneProductInfo(pNo);
+					
+					if(session.getAttribute("naverNickname")!=null) {
+						String reviewNick = (String) session.getAttribute("naverNickname");
+						model.addAttribute("writer", reviewNick);
+						System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(네이버로그인) : ["+reviewNick+"]");
+					}else if(session.getAttribute("mem_nick")!=null) {
+						String reviewNick = (String) session.getAttribute("mem_nick");
+						model.addAttribute("writer", reviewNick);
+						System.out.println("홈컨트롤러>리뷰작성페이지로 이동, 작성자닉네임(일반회원로그인) : ["+reviewNick+"]");
+					}else {
+						System.out.println("세션이 없음");
+						return "login";
+					}
+					model.addAttribute("product", reviewProduct);
+					model.addAttribute("callbackIngre", callbackIngre);
+					return "review/insertReview";
+					}
+			}
+			
+			
 		}
 	
 		//리뷰 작성하는 페이지로 이동
@@ -167,8 +195,11 @@ public class HomeController {
 			
 			int review_productno = Integer.parseInt(request.getParameter("product_no"));
 			String review_membernick = request.getParameter("writer");
+			System.out.println("review_membernick"+review_membernick);
 			String review_conts = request.getParameter("reviewconts");
-			Double review_point = Double.parseDouble(request.getParameter("points"));
+			System.out.println("review_conts"+review_conts);
+			System.out.println("review_point"+request.getParameter("review_rating"));
+			Double review_point = Double.parseDouble(request.getParameter("review_rating"));
 			String callbackIngre = request.getParameter("callbackIngre");
 			
 			reviewDto rDto = new reviewDto(review_productno,review_membernick,review_conts,review_point);
@@ -213,6 +244,23 @@ public class HomeController {
 		}//deleteReview END
 		
 		
+
+		//리뷰 작성하는 페이지로 이동
+		@RequestMapping(value = "/brandpage.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String getBrandlist(HttpServletRequest request, Locale locale, Model model, productDto dto, HttpSession session) {
+			
+			String brand = request.getParameter("brand");
+			
+			List<productDto> brandList = rankService.getBrandlist(brand);	
+			model.addAttribute("list",brandList);
+
+			int random = (int)(Math.random()*10)+1;
+			System.out.println("random"+random);
+			model.addAttribute("random", random+"");
+			
+			return "ranking/list";
+			
+		}
 		
 }
 

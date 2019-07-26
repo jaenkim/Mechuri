@@ -67,12 +67,18 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		String mem_nick = (String)session.getAttribute("mem_nick");//세션에 담긴 닉 
 		String loginInfo = (String)session.getAttribute("mem_name");
 		String naverLoginInfo = (String)session.getAttribute("naverEmail");
+		String status = (String)session.getAttribute("mem_status");
+		
+		if(status.equals("C")|| status==null) {//기업회원 세션체크
+			return "youcannotwriteboard";
+		}else{
 		
 		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) {
 			return "commuError";
 		}else {
 			return "community/boardwrite";
 		}
+	}
 	}
 	
 	
@@ -102,31 +108,38 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	
 	@RequestMapping(value = "/boardDetail.do") /*글 상세보기 폼으로 이동*/
-	public String boardDetail(HttpServletRequest request,Locale locale, Model model, Integer board_no) {	
+	public String boardDetail(HttpServletRequest request,Locale locale, Model model, Integer board_no,HttpSession session, Integer reply_no) {	
 		logger.info("게시글 상세보기 {}.", locale);
 		System.out.println("board_no["+board_no+"]");
 		//String pnum = request.getParameter("pnum");
+		
+		String loginInfo = (String)session.getAttribute("mem_name");  //세션에서 일반회원 로그인정보 꺼내기
+		String naverLoginInfo = (String)session.getAttribute("naverEmail");  //세션에서 네이버 일반회원 로그인정보 꺼내기
+		if((loginInfo==null || loginInfo=="") && (naverLoginInfo==null || naverLoginInfo=="")) { //로그인 안했으면 commuError.jsp로 보내기
+			return "commuError";
+		}else {
+		
 		String bPnum = (String)request.getSession().getAttribute("board_pnum");//세션에서 현재페이지 꺼내기
 		String rCount = (String)request.getSession().getAttribute("readcount");//세션에서 카운트  꺼내기
 		
-		if(rCount==null) {
+/*		if(rCount==null) {
 			boardService.readCount(board_no);
 			request.getSession().setAttribute("readcount", board_no+"");
 		} else {
 			
-		}
+		}*/
 		
 		boardDto dto=boardService.getBoard(board_no); //게시글
 		List<replyDto> replylist = boardService.replyDetail(board_no); //해당 게시글의 댓글
 		
-		
+		System.out.println("reply_nick=["+dto.getBoard_nick()+"]");
 		model.addAttribute("dto",dto); //게시글 화면출력
 		model.addAttribute("replylist",replylist); //댓글화면출력
 		
 		
 		return "community/boarddetail";
 	}
-	
+	}
 	
 	
 	@RequestMapping(value = "/boardDelete.do") /* 삭제 */
@@ -201,17 +214,17 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	
 	@RequestMapping(value = "/replyDelete.do") /* 댓글 삭제 */
-	public String replyDelete(HttpSession session,Locale locale, Model model, Integer board_no) {	
+	public String replyDelete(HttpServletRequest request,HttpSession session,Locale locale, Model model) {	
 		logger.info("상세보기 글 삭제 {}.", locale);	
 		boolean isS;
 		
 		String myLogin = (String)session.getAttribute("mem_name");
 		String myNaverLogin = (String)session.getAttribute("naverEmail");
-		
-		isS=boardService.delReply(board_no);
+		int reply_no=Integer.parseInt(request.getParameter("no"));
+		isS=boardService.delReply(reply_no);
 
 		if(isS) {
-			return "redirect:boardDetail.do?board_no="+board_no;
+			return "redirect:boardDetail.do?board_no="+reply_no;
 		} else {
 			model.addAttribute("msg","글삭제실패");
 			return "community/boarddetail";
