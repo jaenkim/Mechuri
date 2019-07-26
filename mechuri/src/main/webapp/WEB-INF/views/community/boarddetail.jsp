@@ -148,8 +148,23 @@
 						
 		 </div>   		
 		 <div id="replycon" >${replylist.reply_conts}</div>
-		 <div id="replyregdate"><fmt:formatDate value="${dto.board_regdate}"  pattern="yyyy-MM-dd HH:mm" /></div>
-  	<input type="button" value="댓글삭제" class="button small" onclick="delReply('${reply.reply_no}')"> <!-- 댓글삭제버튼이 위의otherwise에들어가면 아예안나옴.. -->
+		 <div id="replyregdate"><fmt:formatDate value="${replylist.reply_regdate}"  pattern="yyyy-MM-dd HH:mm" /></div>
+		 
+		 <!-- 내 댓글만 삭제버튼 보이게처리 -->
+	<c:choose>
+  		<c:when test="${mem_nick eq replylist.reply_nick }">
+  			<input type="button" value="댓글삭제" class="button small" onclick="delReply('${replylist.reply_no}')">
+  		</c:when>
+  		<c:when test="${naverNickname eq replylist.reply_nick}">
+  			<input type="button" value="댓글삭제" class="button small" onclick="delReply('${replylist.reply_no}')">
+  		</c:when>
+  		<c:otherwise>
+  			
+  		</c:otherwise>
+  	</c:choose>	
+		 
+		 
+  <!--	<input type="button" value="댓글삭제" class="button small" onclick="delReply('${replylist.reply_no}')">  댓글삭제버튼이 위의otherwise에들어가면 아예안나옴.. -->
     </c:forEach>
     </div>
 </div>

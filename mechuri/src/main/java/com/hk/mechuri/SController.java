@@ -122,17 +122,17 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		String bPnum = (String)request.getSession().getAttribute("board_pnum");//세션에서 현재페이지 꺼내기
 		String rCount = (String)request.getSession().getAttribute("readcount");//세션에서 카운트  꺼내기
 		
-/*		if(rCount==null) {
+		if(rCount==null) {
 			boardService.readCount(board_no);
 			request.getSession().setAttribute("readcount", board_no+"");
 		} else {
 			
-		}*/
+		}
 		
 		boardDto dto=boardService.getBoard(board_no); //게시글
 		List<replyDto> replylist = boardService.replyDetail(board_no); //해당 게시글의 댓글
 		
-		System.out.println("reply_nick=["+dto.getBoard_nick()+"]");
+		
 		model.addAttribute("dto",dto); //게시글 화면출력
 		model.addAttribute("replylist",replylist); //댓글화면출력
 		
@@ -193,13 +193,14 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 	
 	
 	
-	@RequestMapping(value = "/replyboard.do") /*댓글 추가작업 컨트롤러*/
+	@RequestMapping(value = "/replyboard.do") /*댓글 다는작업*/
 	public String replyboard(HttpServletRequest request,Locale locale, Model model, replyDto dto,Integer reply_no,Integer board_no) {	
 		logger.info("답글 추가하기 {}.", locale);
 		
 		dto.setReply_nick(request.getParameter("reply_nick"));
 		dto.setReply_conts(request.getParameter("reply_contents"));
 		dto.setReply_communo(board_no);
+	
 		System.out.println("댓글 글번호 컨트롤러 isS위=["+dto.getReply_communo()+"]");
 		boolean isS = boardService.replyBoard(dto);
 		System.out.println("댓글 글번호 컨트롤러 isS아래=["+dto.getReply_communo()+"]");
@@ -221,11 +222,14 @@ private static final Logger logger = LoggerFactory.getLogger(SController.class);
 		String myLogin = (String)session.getAttribute("mem_name");
 		String myNaverLogin = (String)session.getAttribute("naverEmail");
 		int reply_no=Integer.parseInt(request.getParameter("no"));
+		
 		isS=boardService.delReply(reply_no);
 
 		if(isS) {
+			System.out.println("댓글삭제 if=[");
 			return "redirect:boardDetail.do?board_no="+reply_no;
 		} else {
+			System.out.println("댓글삭제 else=[");
 			model.addAttribute("msg","글삭제실패");
 			return "community/boarddetail";
 		}	
