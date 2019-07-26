@@ -171,7 +171,7 @@ public class AController {
 	//  검색기능 Board꺼
 	// 글 목록+페이징+검색
 	@RequestMapping(value = "/listSearch.do", method=RequestMethod.GET)
-	public void listSearch(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
+	public void listSearch(@ModelAttribute("scri") SearchCriteria scri, Model model, membersDto dto) throws Exception {
 		logger.info("리스트 찾기");
 
 		List<productDto> list = RankService.listSearch(scri);
