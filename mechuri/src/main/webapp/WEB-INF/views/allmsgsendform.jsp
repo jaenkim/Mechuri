@@ -16,11 +16,14 @@
 	<div class="inner">
 	  <header class="align-center">
 <h1>쪽지 발송</h1>
-<p>이 쪽지는 모든 일반회원에게 발송됩니다.</p>
+<p>이 쪽지는 모든 회원에게 발송됩니다.</p>
 	</header>
 
 <form action="gogomsg.do" method="post">
-
+<select name="userorcomp">
+  <option value="0">기업회원</option>
+  <option value="1">일반회원</option>
+</select>
 <b>제목:</b> <input type="text" name="msg_title">
 <b>내용:</b> <textarea rows="10" cols="10" name="msg_conts"></textarea>
 <div style="margin-top:20px; margin-left:250px;">

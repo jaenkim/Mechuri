@@ -142,7 +142,7 @@
                <li><a href="userInfo.do">개인정보 수정</a></li>
                <li><a href="myboardlist.do">내 글보기</a></li>
                <li><a href="myreplylist.do">내 댓글 보기</a></li>
-               <li><a href="#">내 리뷰 보기</a></li>
+               <li><a href="myreviewlist.do">내 리뷰 보기</a></li>
                <li><a href="msglist.do">쪽지함</a></li>
                </ul>
             <ul class="actions vertical">

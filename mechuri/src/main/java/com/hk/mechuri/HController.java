@@ -50,13 +50,18 @@ public class HController {
 	public String sendMessage(HttpServletRequest request, Locale locale, Model model,HttpSession session) {
 		logger.info("쪽지 보기", locale);
 		int mem_no=-1;
+		String mem_status="";
 		
 		if((Integer)session.getAttribute("mem_no")!=null) {
 			mem_no = (Integer)session.getAttribute("mem_no");
+			mem_status = (String)session.getAttribute("mem_status");
 		}else {
 			mem_no = (Integer)session.getAttribute("naverNo");
+			mem_status = (String)session.getAttribute("naverStatus");
+
 		}
-		List<msgDto> list = MsgSerivce.getAllList(mem_no);
+	
+		List<msgDto> list = MsgSerivce.getAllList(mem_no,mem_status);
 		model.addAttribute("list", list );
 
 		return "msg2";
@@ -70,13 +75,14 @@ public class HController {
 	
 	
 	@RequestMapping(value = "/gogomsg.do")
-	public String gogomsg(Locale locale, Model model,String msg_title, String msg_conts) {
+	public String gogomsg(HttpServletRequest request,Locale locale, Model model,String msg_title, String msg_conts) {
 		logger.info("전체 회원(일반회원)에게 쪽지 발송 ..ing", locale);
 		
 		System.out.println(msg_title);
 		System.out.println(msg_conts);
+		int userorcomp = Integer.parseInt(request.getParameter("userorcomp"));
+		boolean isS= MsgSerivce.gogomsg(msg_title,msg_conts,userorcomp);
 		
-		boolean isS= MsgSerivce.gogomsg(msg_title,msg_conts);
 		if(isS) {		
 		return "redirect:allmsgsend.do";
 		}else {

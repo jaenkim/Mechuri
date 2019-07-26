@@ -1,8 +1,8 @@
 package com.hk.mechuri.daos;
 
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,15 +33,19 @@ public class MessageDao {
 	}
 	
 	
-	public List<msgDto> getAllList(int mem_no) {
-		return sqlSession.selectList(namespace+"msgList",mem_no);
+	public List<msgDto> getAllList(int mem_no,String mem_status) {
+		if(mem_status.equals("M")) {
+			return sqlSession.selectList(namespace+"msgList2",mem_no);
+
+		}else {
+			return sqlSession.selectList(namespace+"msgList",mem_no);
+		}
 	}
 	
-	public boolean gogomsg(String msg_title, String msg_conts) {	//쪽지 전체발송
-		Map<String, String>map = new HashMap<String,String>();
-		map.put("msg_title", msg_title);
-		map.put("msg_conts", msg_conts);
-		int count=sqlSession.insert(namespace+"gogomsg",map);
+	public boolean gogomsg(String msg_title, String msg_conts,int msg_receiverno) {	//쪽지 전체발송
+		msgDto dto = new msgDto(msg_title, msg_conts, msg_receiverno);
+		
+		int count=sqlSession.insert(namespace+"gogomsg2",dto);
 		return count>0?true:false;
 	}
 	
