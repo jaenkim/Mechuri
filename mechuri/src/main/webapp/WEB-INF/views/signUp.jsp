@@ -132,12 +132,9 @@
 		<section class="wrapper" id="main">
 		<div style="width:800px; margin: 0 auto;">
 			<div class="form-holder">
-<!-- 				<center> -->
-<<<<<<< HEAD
+
 					<h2>일반회원 가입</h2><a href="compSignUp.do">기업회원 가입 바로가기</a>
-=======
-					<h2>일반회원 가입</h2><a href="compSignUp.do">기업 회원 가입이라면</a>
->>>>>>> branch 'master' of https://github.com/jaenkim/Mechuri.git
+
 					<br><br>
 					<div class="6u$ 12u$(xsmall)" style="width:800px;">
 						<input type="email" placeholder="ex)aaa@gmail.com" name="mem_id"

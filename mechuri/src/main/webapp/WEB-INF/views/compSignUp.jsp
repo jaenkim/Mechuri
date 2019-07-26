@@ -60,7 +60,9 @@
                     guideTextBox.style.display = 'none';
                 }
             }
+        	
         }).open();
+      
     }
     
   function check(){
